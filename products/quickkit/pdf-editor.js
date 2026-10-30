@@ -35,6 +35,9 @@ let itemId = 0;
 let lastRenderToken = 0;
 let thumbObserver = null;
 let signatureHasInk = false;
+let ocrWorker = null;
+let ocrBusy = false;
+let ocrCurrentText = '';
 
 const hints = {
   select: 'Select an item to move it. Choose a tool, then click on the page to add it.',
@@ -42,7 +45,8 @@ const hints = {
   highlight: 'Click the page, or focus the page and press Enter to add a highlight at its center. Arrow keys move a selected item.',
   shape: 'Click the page, or focus the page and press Enter to add a rectangle at its center. Arrow keys move a selected item.',
   image: 'Choose a PNG, JPG or WebP image. It will be placed near the middle of this page.',
-  signature: 'Draw a signature in the pad, then place it on this page.'
+  signature: 'Draw a signature in the pad, then place it on this page.',
+  redact: 'Drag across content to cover it. Export rasterizes this page so covered text is removed from its text layer.'
 };
 
 function setStatus(text, isError = false) {
@@ -51,7 +55,7 @@ function setStatus(text, isError = false) {
 }
 
 function setTool(tool) {
-  if (tool !== 'select' && pdfDocument && activePageRotation % 360 !== 0) {
+  if (tool !== 'select' && tool !== 'redact' && pdfDocument && activePageRotation % 360 !== 0) {
     setStatus('Editing rotated pages is not supported. You can still reorder or delete this page, or open an unrotated copy.', true);
     return;
   }
@@ -66,7 +70,7 @@ function setTool(tool) {
   if (tool !== 'select') clearSelection();
   if (tool === 'image') $('#pdf-image-input').click();
   if (tool === 'signature') $('#signature-dialog').showModal();
-  if (['text', 'highlight', 'shape'].includes(tool)) stage.focus({ preventScroll: true });
+  if (['text', 'highlight', 'shape', 'redact'].includes(tool)) stage.focus({ preventScroll: true });
 }
 
 function currentOriginalPage() { return pageOrder[activePosition]; }
@@ -97,10 +101,10 @@ function updateInspector() {
   }
   $('.inspector-empty').hidden = true;
   $('#inspector-controls').hidden = false;
-  $('#inspector-title').textContent = ({ text: 'Text', highlight: 'Highlight', shape: 'Rectangle', image: 'Image', signature: 'Signature' })[item.kind];
+  $('#inspector-title').textContent = ({ text: 'Text', highlight: 'Highlight', shape: 'Rectangle', redact: 'Redaction', image: 'Image', signature: 'Signature' })[item.kind];
   $('#text-setting').hidden = item.kind !== 'text';
   $('#size-setting').hidden = item.kind !== 'text';
-  $('#color-setting').hidden = !['text', 'highlight', 'shape'].includes(item.kind);
+  $('#color-setting').hidden = !['text', 'highlight', 'shape', 'redact'].includes(item.kind);
   $('#width-setting').hidden = item.kind === 'text' || item.kind === 'signature';
   $('#height-setting').hidden = item.kind === 'text' || item.kind === 'signature';
   if (item.kind === 'text') {
@@ -129,6 +133,7 @@ function updatePageControls() {
   $('#mobile-page-delete').disabled = count <= 1;
   $('#zoom-level').value = `${Math.round(zoom * 100)}%`;
   $('#undo-edit').disabled = !undoSnapshot;
+  $('#ocr-current-page').disabled = !pdfDocument || ocrBusy;
 }
 
 function clearUndoSnapshot() {
@@ -154,6 +159,8 @@ function rememberUndo() {
 
 function undoLastChange() {
   if (!undoSnapshot) return;
+  const currentPage = currentOriginalPage();
+  const previousOrder = [...pageOrder];
   annotationItems.forEach((item) => item.previewUrl && URL.revokeObjectURL(item.previewUrl));
   pageOrder = undoSnapshot.pageOrder;
   activePosition = undoSnapshot.activePosition;
@@ -162,7 +169,9 @@ function undoLastChange() {
   undoSnapshot = null;
   $('#undo-edit').disabled = true;
   controlUndoOpen = false;
-  updateInspector(); renderPageList(); renderActivePage();
+  updateInspector(); renderPageList();
+  if (currentOriginalPage() !== currentPage || pageOrder.some((page, index) => page !== previousOrder[index])) renderActivePage();
+  else { renderOverlays(); updatePageControls(); }
   setStatus('Last change undone.');
 }
 
@@ -253,8 +262,69 @@ async function renderActivePage() {
   if (token !== lastRenderToken) return;
   stage.classList.remove('is-loading');
   renderOverlays();
+  $('#pdf-ocr-results').replaceChildren();
+  $('#copy-ocr-text').hidden = true; ocrCurrentText = '';
+  $('#pdf-ocr-status').textContent = '';
   updatePageControls();
   [...pageList.querySelectorAll('.pdf-thumb-button')].forEach((button, position) => button.setAttribute('aria-current', String(position === activePosition)));
+}
+
+async function recognizeCurrentPage() {
+  const button = $('#ocr-current-page');
+  const canvas = stage.querySelector('canvas');
+  if (!canvas || ocrBusy) return;
+  const recognitionPage = currentOriginalPage();
+  ocrBusy = true; button.disabled = true; button.textContent = 'Loading OCR…';
+  $('#pdf-ocr-results').replaceChildren();
+  const status = $('#pdf-ocr-status');
+  status.textContent = 'Loading the free English OCR engine. The PDF stays on your device; OCR assets are downloaded from the public CDN.';
+  try {
+    const { createWorker } = await import('tesseract.js');
+    if (!ocrWorker) ocrWorker = await createWorker('eng', 1, { logger: (progress) => {
+      if (progress.status === 'recognizing text') status.textContent = `Recognizing text… ${Math.round((progress.progress || 0) * 100)}%`;
+      else if (progress.status === 'loading language traineddata') status.textContent = 'Downloading English recognition data…';
+    } });
+    const { data } = await ocrWorker.recognize(canvas, {}, { blocks: true });
+    if (currentOriginalPage() !== recognitionPage) { status.textContent = 'Page changed while OCR was running. Select Find text again on the current page.'; return; }
+    const lines = data.blocks?.flatMap((block) => block.paragraphs?.flatMap((paragraph) => paragraph.lines || []) || []) || [];
+    const detected = lines.filter((entry) => entry.text?.trim() && entry.bbox && entry.bbox.x1 > entry.bbox.x0 && entry.bbox.y1 > entry.bbox.y0).slice(0, 200);
+    const list = $('#pdf-ocr-results');
+    if (!detected.length) { status.textContent = 'No text regions were recognized on this page. Try a clearer or larger scan.'; return; }
+    detected.forEach((line) => {
+      const li = document.createElement('li');
+      const recognized = document.createElement('span'); recognized.className = 'pdf-ocr-text'; recognized.textContent = line.text.trim().slice(0, 160);
+      const add = document.createElement('button'); add.type = 'button'; add.className = 'pdf-ocr-result'; add.textContent = 'Redact';
+      const replace = document.createElement('button'); replace.type = 'button'; replace.className = 'pdf-ocr-result'; replace.textContent = 'Replace text';
+      const markRegion = (replacement) => {
+        const box = line.bbox;
+        const padX = Math.max(2, (box.x1 - box.x0) * .06) / canvas.width;
+        const padY = Math.max(2, (box.y1 - box.y0) * .12) / canvas.height;
+        const x = clamp(box.x0 / canvas.width - padX, 0, 1);
+        const y = clamp(box.y0 / canvas.height - padY, 0, 1);
+        const right = clamp(box.x1 / canvas.width + padX, 0, 1);
+        const bottom = clamp(box.y1 / canvas.height + padY, 0, 1);
+        const width = right - x; const height = bottom - y;
+        addItem('redact', x, y, { width, height, color: replacement ? '#ffffff' : '#111111', recognizedText: line.text.trim() });
+        if (replacement) {
+          const cssHeight = (box.y1 - box.y0) * stage.clientHeight / canvas.height;
+          const fontSize = clamp(cssHeight * 72 / (96 * renderScale), 8, 72);
+          const textHeight = Math.max(height, fontSize * 96 / 72 * renderScale * 1.5 / stage.clientHeight);
+          addItem('text', x, y, { width, height: textHeight, text: line.text.trim(), fontSize, color: '#111111' });
+          setStatus('Replacement text is editable in the right-hand settings. Check the OCR and adjust the font size and box before export.');
+        } else setStatus('OCR region marked for redaction. Review the covered area before downloading.');
+      };
+      add.addEventListener('click', () => markRegion(false));
+      replace.addEventListener('click', () => markRegion(true));
+      li.append(recognized, add, replace); list.append(li);
+    });
+    ocrCurrentText = detected.map((line) => line.text.trim()).join('\n');
+    $('#copy-ocr-text').hidden = false;
+    status.textContent = `Found ${detected.length} text regions. Select a result to mark it for redaction; check the page because OCR can be wrong.`;
+  } catch (error) {
+    status.textContent = `OCR could not start: ${error?.message || 'check your connection and try again.'}`;
+  } finally {
+    ocrBusy = false; button.textContent = 'Find text'; updatePageControls();
+  }
 }
 
 function renderOverlays() {
@@ -278,6 +348,7 @@ function renderOverlays() {
         element.style.fontFamily = 'Arial, sans-serif';
       }
       if (item.kind === 'shape') element.style.borderColor = item.color;
+      if (item.kind === 'redact') { element.style.backgroundColor = item.color || '#111111'; element.title = 'Covered content is removed from the exported page image.'; }
     }
     element.dataset.id = item.id;
     element.setAttribute('role', 'button');
@@ -367,6 +438,7 @@ function addItem(kind, x, y, extra = {}) {
     text: { width: 0.35, height: 0.06, text: 'Text', fontSize: 18, color: '#172536' },
     highlight: { width: 0.3, height: 0.055, color: '#f2cf4a' },
     shape: { width: 0.28, height: 0.12, color: '#2864b8' },
+    redact: { width: 0.25, height: 0.045, color: '#111111' },
     image: { width: 0.24, height: 0.18 },
     signature: { width: 0.28, height: 0.12 }
   }[kind];
@@ -383,9 +455,31 @@ function placeActiveTool(x, y) {
   if (activeTool === 'text') addItem('text', x, y);
   if (activeTool === 'highlight') addItem('highlight', x, y);
   if (activeTool === 'shape') addItem('shape', x, y);
+  if (activeTool === 'redact') addItem('redact', x, y);
   setTool('select');
   setStatus('Edit added. Drag it to position, adjust it in the panel, then download.');
 }
+
+let redactStart = null;
+stage.addEventListener('pointerdown', (event) => {
+  if (activeTool !== 'redact' || !pdfDocument || event.target.closest('.pdf-overlay')) return;
+  const rect = stage.getBoundingClientRect();
+  redactStart = { x: clamp((event.clientX - rect.left) / rect.width, 0, 1), y: clamp((event.clientY - rect.top) / rect.height, 0, 1), rect, pointerId: event.pointerId };
+  stage.setPointerCapture(event.pointerId);
+});
+stage.addEventListener('pointerup', (event) => {
+  if (!redactStart || redactStart.pointerId !== event.pointerId) return;
+  const start = redactStart; redactStart = null;
+  const endX = clamp((event.clientX - start.rect.left) / start.rect.width, 0, 1);
+  const endY = clamp((event.clientY - start.rect.top) / start.rect.height, 0, 1);
+  const x = Math.min(start.x, endX); const y = Math.min(start.y, endY);
+  const width = Math.abs(endX - start.x); const height = Math.abs(endY - start.y);
+  if (width > .006 && height > .003) {
+    addItem('redact', x, y, { width, height, color: '#111111' });
+    setTool('select');
+    setStatus('Redaction area marked. Review the covered region, then download. This page will be flattened to remove the original text layer.');
+  }
+});
 
 stage.addEventListener('click', (event) => {
   if (activeTool === 'select' || !pdfDocument || event.target.closest('.pdf-overlay')) return;
@@ -532,6 +626,12 @@ dropzone.addEventListener('dragover', (event) => { event.preventDefault(); dropz
 dropzone.addEventListener('dragleave', () => dropzone.classList.remove('is-dragging'));
 dropzone.addEventListener('drop', (event) => { event.preventDefault(); dropzone.classList.remove('is-dragging'); loadFile(event.dataTransfer.files?.[0]); });
 tools.forEach((button) => button.addEventListener('click', () => setTool(button.dataset.tool)));
+$('#ocr-current-page').addEventListener('click', recognizeCurrentPage);
+$('#copy-ocr-text').addEventListener('click', async () => {
+  if (!ocrCurrentText) return;
+  try { await navigator.clipboard.writeText(ocrCurrentText); $('#pdf-ocr-status').textContent = 'Recognized text copied to the clipboard.'; }
+  catch { $('#pdf-ocr-status').textContent = 'Clipboard access was blocked by this browser. Select the recognized text above and copy it manually.'; }
+});
 $('#page-previous').addEventListener('click', () => goToPosition(activePosition - 1));
 $('#page-next').addEventListener('click', () => goToPosition(activePosition + 1));
 $('#page-move-up').addEventListener('click', () => movePage(activePosition, activePosition - 1));
@@ -554,6 +654,7 @@ document.addEventListener('keydown', (event) => {
   if ((event.key === 'Delete' || event.key === 'Backspace') && selectedId && !['INPUT', 'TEXTAREA'].includes(document.activeElement.tagName)) removeSelectedItem();
   if (event.key === 'Escape' && $('#signature-dialog').open) { $('#signature-dialog').close(); setTool('select'); }
 });
+window.addEventListener('beforeunload', () => { ocrWorker?.terminate(); });
 let resizeTimer;
 window.addEventListener('resize', () => { clearTimeout(resizeTimer); resizeTimer = setTimeout(() => { if (pdfDocument) renderActivePage(); }, 160); });
 
@@ -562,40 +663,69 @@ function pdfColor(hex) {
   return rgb(parseInt(value.slice(0, 2), 16) / 255, parseInt(value.slice(2, 4), 16) / 255, parseInt(value.slice(4, 6), 16) / 255);
 }
 
+async function addVectorOverlays(page, output, items) {
+  const { width, height } = page.getSize();
+  for (const item of items) {
+    const x = item.x * width; const w = item.width * width; const h = item.height * height; const yTop = item.y * height;
+    if (item.kind === 'text') {
+      const size = clamp(Number(item.fontSize) || 18, 8, 96); const scale = 3;
+      const canvas = document.createElement('canvas'); canvas.width = Math.max(1, Math.ceil(w * scale)); canvas.height = Math.max(1, Math.ceil(h * scale));
+      const context = canvas.getContext('2d'); context.scale(scale, scale); context.fillStyle = item.color || '#172536'; context.font = `${size}px ${item.fontFamily || 'Arial, sans-serif'}`; context.textBaseline = 'top';
+      item.text.split('\n').forEach((line, index) => context.fillText(line, 0, index * size * 1.2, Math.max(1, w)));
+      const textBlob = await new Promise((resolve, reject) => canvas.toBlob((value) => value ? resolve(value) : reject(new Error('Could not render text for this PDF.')), 'image/png'));
+      page.drawImage(await output.embedPng(new Uint8Array(await textBlob.arrayBuffer())), { x, y: height - yTop - h, width: w, height: h });
+    } else if (item.kind === 'highlight') {
+      page.drawRectangle({ x, y: height - yTop - h, width: w, height: h, color: pdfColor(item.color), opacity: .34, borderWidth: 0 });
+    } else if (item.kind === 'shape') {
+      page.drawRectangle({ x, y: height - yTop - h, width: w, height: h, borderColor: pdfColor(item.color), borderWidth: 1.5, color: rgb(1, 1, 1), opacity: 0, borderOpacity: 1 });
+    } else if (item.kind === 'image' || item.kind === 'signature') {
+      page.drawImage(await output.embedPng(item.bytes), { x, y: height - yTop - h, width: w, height: h });
+    }
+  }
+}
+
+async function addRasterizedRedactionPage(output, input, originalIndex, items) {
+  const sourcePage = await pdfDocument.getPage(originalIndex + 1);
+  const base = sourcePage.getViewport({ scale: 1 });
+  const safeScale = Math.min(2, Math.sqrt(16_000_000 / (base.width * base.height)));
+  const viewport = sourcePage.getViewport({ scale: Math.max(.6, safeScale) });
+  const canvas = document.createElement('canvas'); canvas.width = Math.ceil(viewport.width); canvas.height = Math.ceil(viewport.height);
+  const context = canvas.getContext('2d', { alpha: false });
+  context.fillStyle = '#fff'; context.fillRect(0, 0, canvas.width, canvas.height);
+  await sourcePage.render({ canvas, canvasContext: context, viewport }).promise;
+  const pdfPage = input.getPage(originalIndex);
+  const size = pdfPage.getSize();
+  const pixelScale = Math.min(viewport.width / size.width, viewport.height / size.height);
+  for (const item of items) {
+    const x = item.x * canvas.width; const y = item.y * canvas.height; const w = item.width * canvas.width; const h = item.height * canvas.height;
+    if (item.kind === 'redact') { context.fillStyle = item.color || '#111111'; context.fillRect(x, y, w, h); }
+    else if (item.kind === 'highlight') { context.fillStyle = `${item.color || '#f2cf4a'}55`; context.fillRect(x, y, w, h); }
+    else if (item.kind === 'shape') { context.strokeStyle = item.color || '#2864b8'; context.lineWidth = Math.max(2, pixelScale); context.strokeRect(x, y, w, h); }
+    else if (item.kind === 'text') {
+      context.fillStyle = item.color || '#172536'; context.font = `${clamp(Number(item.fontSize) || 18, 8, 96) * pixelScale}px ${item.fontFamily || 'Arial, sans-serif'}`; context.textBaseline = 'top';
+      item.text.split('\n').forEach((line, index) => context.fillText(line, x, y + index * clamp(Number(item.fontSize) || 18, 8, 96) * pixelScale * 1.2, Math.max(1, w)));
+    } else if (item.kind === 'image' || item.kind === 'signature') {
+      const bitmap = await createImageBitmap(new Blob([item.bytes], { type: 'image/png' })); context.drawImage(bitmap, x, y, w, h); bitmap.close();
+    }
+  }
+  const blob = await new Promise((resolve, reject) => canvas.toBlob((value) => value ? resolve(value) : reject(new Error('Could not flatten the redacted page. Try a smaller page.')), 'image/png'));
+  const image = await output.embedPng(new Uint8Array(await blob.arrayBuffer()));
+  const pageWidth = viewport.width / (96 / 72 * Math.max(.6, safeScale));
+  const pageHeight = viewport.height / (96 / 72 * Math.max(.6, safeScale));
+  const page = output.addPage([pageWidth, pageHeight]);
+  page.drawImage(image, { x: 0, y: 0, width: pageWidth, height: pageHeight });
+}
+
 async function buildOutput() {
   const input = await PDFDocument.load(sourceBytes.slice());
   const output = await PDFDocument.create();
-  const pages = await output.copyPages(input, pageOrder);
-  pages.forEach((page) => output.addPage(page));
-  for (let position = 0; position < pageOrder.length; position++) {
-    const page = output.getPage(position);
-    const { width, height } = page.getSize();
-    const originalIndex = pageOrder[position];
+  for (const originalIndex of pageOrder) {
     const items = annotationItems.filter((item) => item.page === originalIndex);
-    for (const item of items) {
-      const x = item.x * width;
-      const w = item.width * width;
-      const h = item.height * height;
-      const yTop = item.y * height;
-      if (item.kind === 'text') {
-        const size = clamp(Number(item.fontSize) || 18, 8, 96);
-        const scale = 3;
-        const canvas = document.createElement('canvas');
-        canvas.width = Math.max(1, Math.ceil(w * scale)); canvas.height = Math.max(1, Math.ceil(h * scale));
-        const context = canvas.getContext('2d');
-        context.scale(scale, scale); context.fillStyle = item.color || '#172536'; context.font = `${size}px ${item.fontFamily || 'Arial, sans-serif'}`; context.textBaseline = 'top';
-        item.text.split('\n').forEach((line, index) => context.fillText(line, 0, index * size * 1.2, Math.max(1, w)));
-        const textBlob = await new Promise((resolve, reject) => canvas.toBlob((value) => value ? resolve(value) : reject(new Error('Could not render text for this PDF.')), 'image/png'));
-        const textImage = await output.embedPng(new Uint8Array(await textBlob.arrayBuffer()));
-        page.drawImage(textImage, { x, y: height - yTop - h, width: w, height: h });
-      } else if (item.kind === 'highlight') {
-        page.drawRectangle({ x, y: height - yTop - h, width: w, height: h, color: pdfColor(item.color), opacity: .34, borderWidth: 0 });
-      } else if (item.kind === 'shape') {
-        page.drawRectangle({ x, y: height - yTop - h, width: w, height: h, borderColor: pdfColor(item.color), borderWidth: 1.5, color: rgb(1, 1, 1), opacity: 0, borderOpacity: 1 });
-      } else if (item.kind === 'image' || item.kind === 'signature') {
-        const image = await output.embedPng(item.bytes);
-        page.drawImage(image, { x, y: height - yTop - h, width: w, height: h });
-      }
+    if (items.some((item) => item.kind === 'redact')) {
+      await addRasterizedRedactionPage(output, input, originalIndex, items);
+    } else {
+      const [page] = await output.copyPages(input, [originalIndex]); output.addPage(page);
+      await addVectorOverlays(page, output, items);
     }
   }
   return output.save();

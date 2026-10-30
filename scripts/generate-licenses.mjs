@@ -7,7 +7,7 @@ const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const lock = JSON.parse(await readFile(path.join(root, 'package-lock.json'), 'utf8'));
 const products = {
   workkit: ['gsap'],
-  quickkit: ['gsap', 'pdf-lib', 'pdfjs-dist', 'qrcode'],
+  quickkit: ['gsap', 'cropperjs', 'pdf-lib', 'pdfjs-dist', 'qrcode', 'tesseract.js'],
   formready: ['gsap', 'cropperjs']
 };
 const productNotes = {

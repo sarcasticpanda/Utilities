@@ -1,5 +1,6 @@
 {
-  "generatedAt": "2026-10-30T12:02:04.917Z",
+  "generatedAt": "2026-10-30T12:43:40.522Z",
+  "origin": "http://127.0.0.1:4174",
   "browser": "156.0.8078.4",
   "checks": [
     {
@@ -100,12 +101,32 @@
     {
       "name": "Edited PDF downloads and is readable",
       "pass": true,
-      "detail": "pages: 2, bytes: 22217"
+      "detail": "pages: 2, bytes: 22232"
     },
     {
       "name": "Export preserves page order and original text; new text is embedded as an image",
       "pass": true,
       "detail": "Original page two  Sample text for local annotation testing. | Original page one  Sample text for local annotation testing."
+    },
+    {
+      "name": "OCR recognizes text on a PDF page locally",
+      "pass": true,
+      "detail": "Found 2 text regions. Select a result to mark it for redaction; check the page because OCR can be wrong."
+    },
+    {
+      "name": "OCR can create a masked, editable text replacement",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Replacement text can be edited and previewed",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Rasterized redaction removes original searchable text from that page",
+      "pass": true,
+      "detail": ""
     },
     {
       "name": "The final remaining page cannot be deleted",
@@ -125,7 +146,7 @@
     {
       "name": "Loaded editor fits mobile width without clipping",
       "pass": true,
-      "detail": "{\"width\":390,\"scrollWidth\":390,\"rects\":[{\"selector\":\".pdf-editor-topbar\",\"left\":17,\"right\":373,\"top\":255,\"bottom\":321,\"width\":356,\"height\":66},{\"selector\":\".pdf-toolbar\",\"left\":17,\"right\":373,\"top\":321,\"bottom\":442,\"width\":356,\"height\":121},{\"selector\":\".pdf-page-rail\",\"left\":17,\"right\":373,\"top\":504,\"bottom\":642,\"width\":356,\"height\":138},{\"selector\":\".pdf-viewer-toolbar\",\"left\":17,\"right\":373,\"top\":642,\"bottom\":684,\"width\":356,\"height\":42},{\"selector\":\".pdf-page-stage\",\"left\":38,\"right\":352,\"top\":696,\"bottom\":1114,\"width\":314,\"height\":419},{\"selector\":\".pdf-top-actions\",\"left\":180,\"right\":363,\"top\":265,\"bottom\":301,\"width\":183,\"height\":36}]}"
+      "detail": "{\"width\":390,\"scrollWidth\":390,\"rects\":[{\"selector\":\".pdf-editor-topbar\",\"left\":17,\"right\":373,\"top\":255,\"bottom\":321,\"width\":356,\"height\":66},{\"selector\":\".pdf-toolbar\",\"left\":17,\"right\":373,\"top\":321,\"bottom\":413,\"width\":356,\"height\":92},{\"selector\":\".pdf-page-rail\",\"left\":17,\"right\":373,\"top\":475,\"bottom\":613,\"width\":356,\"height\":138},{\"selector\":\".pdf-viewer-toolbar\",\"left\":17,\"right\":373,\"top\":613,\"bottom\":655,\"width\":356,\"height\":42},{\"selector\":\".pdf-page-stage\",\"left\":38,\"right\":352,\"top\":667,\"bottom\":1085,\"width\":314,\"height\":419},{\"selector\":\".pdf-top-actions\",\"left\":180,\"right\":363,\"top\":265,\"bottom\":301,\"width\":183,\"height\":36}]}"
     },
     {
       "name": "Essential editing and download controls are visible on mobile",

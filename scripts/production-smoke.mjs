@@ -7,7 +7,7 @@ import { fileURLToPath } from 'node:url';
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const sites = {
   workkit: { origin: 'https://workkit-hours-tools.pages.dev', paths: ['/', '/time-card-calculator.html', '/overtime-calculator.html', '/salary-converter.html'] },
-  quickkit: { origin: 'https://quickkit-browser-tools.pages.dev', paths: ['/', '/image-compressor.html', '/pdf-editor.html', '/pdf-merge.html', '/text-tools.html', '/wifi-qr.html'] },
+  quickkit: { origin: 'https://quickkit-browser-tools.pages.dev', paths: ['/', '/image-to-pdf.html', '/image-compressor.html', '/pdf-editor.html', '/pdf-merge.html', '/text-tools.html', '/wifi-qr.html'] },
   formready: { origin: 'https://formready-photo-tools.pages.dev', paths: ['/', '/image-preparer.html'] }
 };
 const outDir = path.join(root, 'qa-results', 'production');

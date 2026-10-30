@@ -78,7 +78,7 @@ async function setImage(page, selector, { width = 640, height = 480, type = 'ima
 
 for (const [product, paths] of Object.entries({
   workkit: ['', 'time-card-calculator.html', 'overtime-calculator.html', 'salary-converter.html'],
-  quickkit: ['', 'image-compressor.html', 'text-tools.html', 'wifi-qr.html', 'pdf-editor.html', 'pdf-merge.html'],
+  quickkit: ['', 'image-to-pdf.html', 'image-compressor.html', 'text-tools.html', 'wifi-qr.html', 'pdf-editor.html', 'pdf-merge.html'],
   formready: ['', 'image-preparer.html']
 })) for (const path of paths) await checkLayout(product, path);
 

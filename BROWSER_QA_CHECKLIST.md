@@ -1,6 +1,6 @@
 # Browser QA checklist and evidence
 
-The browser script and machine-readable evidence are in `scripts/browser-qa.mjs` and `qa-results/browser-qa-results.json`. Final screenshots are in `qa-results/screenshots-polished/`. The latest full local sweep followed the production build on 2026-10-30 and recorded **75 entries, 0 failures** across 12 routes; the separate PDF editor workflow passed 28 checks.
+The browser script and machine-readable evidence are in `scripts/browser-qa.mjs` and `qa-results/browser-qa-results.json`. Final screenshots are in `qa-results/screenshots-polished/`. The latest full local sweep followed the production build on 2026-10-30 and recorded **79 checks, 0 failures** across 13 routes; the PDF editor workflow passed 32 checks locally and live.
 
 ## Test setup
 
@@ -45,7 +45,7 @@ The browser script and machine-readable evidence are in `scripts/browser-qa.mjs`
 - [x] Password generation respects the requested 24-character length.
 - [x] Wi-Fi QR canvas decodes with escaped network name and password.
 - [x] Two valid one-page PDFs merge into a loadable two-page PDF download.
-- [x] Dedicated PDF editor Chromium workflow passes 28 checks: initial view; invalid upload; page rendering; failed replacement recovery; add/edit/move/remove text; highlight, rectangle, image and drawn signature; page reorder/delete; one-page protection; readable PDF download; text/page order preservation; 390px and 320px phone fit; no file-upload requests.
+- [x] Dedicated PDF editor Chromium workflow passes 32 checks: initial view; invalid upload; page rendering; failed replacement recovery; add/edit/move/remove text; highlight, rectangle, image and signature; page reorder/delete; OCR recognition/copy; editable OCR replacement; redacted page export contains no extractable source text; readable PDF download; 390px and 320px phone fit; no file-upload requests.
 - [x] PDF editor screenshots inspected at desktop, 390px phone and 320px narrow-phone widths. Evidence: `qa-results/pdf-editor/results.json` and `qa-results/pdf-editor/`.
 - [ ] Test large real-world PDFs and low-memory mobile devices; file size is capped at 100 MB but device memory varies.
 - [ ] Click/open verification of the image-compressor download, unsupported files, unattainable targets and reset/object-URL cleanup need additional scenarios.
@@ -67,7 +67,7 @@ The browser script and machine-readable evidence are in `scripts/browser-qa.mjs`
 | Product | Layout coverage | Functional evidence | Console/network | Result |
 |---|---|---|---|---|
 | WorkKit | 4 widths, 4 routes | Overnight + break, local restore, CSV link, overtime, equal-time validation, HH:MM, invalid-total guard, print flow, INR formatting | No non-GET; no layout-sweep console errors | Pass with follow-up checks listed above |
-| QuickKit | 4 widths, 6 routes | Image compression result/link, text cleanup, password, decoded QR, valid PDF merge; PDF editor separately tested with 28 functional checks | No non-GET; no layout-sweep console errors | Pass with follow-up checks listed above |
+| QuickKit | 4 widths, 7 routes | Image-to-PDF route, image compression result/link, text cleanup, password, decoded QR, valid PDF merge; PDF editor separately tested with 32 functional checks | No non-GET; no layout-sweep console errors | Pass with follow-up checks listed above |
 | FormReady | 4 widths, 2 routes | Crop UI, exact output check, download, clear, rotate/reset, physical-unit conversion, stale-result clearing | No non-GET; no layout-sweep console errors | Pass with follow-up checks listed above |
 
 ## Production smoke — previous Sites version 3 (historical)
@@ -84,9 +84,9 @@ Production evidence: `qa-results/production-smoke-results.json`; production desk
 
 ## Production smoke — Cloudflare Pages release
 
-- [x] All 12 deployed homepage/tool routes returned HTTP 200, valid H1/canonical metadata, no horizontal overflow, and no browser page or console errors.
+- [x] All 13 deployed homepage/tool routes returned HTTP 200, valid H1/canonical metadata, no horizontal overflow, and no browser page or console errors.
 - [x] Deployed sitemaps and robots.txt files returned HTTP 200.
 - [x] WorkKit overtime, QuickKit text cleanup, and FormReady crop flows passed on the public Pages sites.
-- [x] QuickKit PDF editor passed all 28 dedicated production checks, including local-only file processing, edit/undo, export readability and mobile widths.
+- [x] QuickKit PDF editor passed all 32 dedicated production checks, including OCR replacement/redaction, local-only file processing, edit/undo, export readability and mobile widths.
 
 Production evidence: qa-results/production-smoke-results.json and qa-results/pdf-editor-production/results.json.

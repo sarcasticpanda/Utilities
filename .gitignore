@@ -9,3 +9,11 @@ Thumbs.db
 
 # Local deployment archives
 site-archives/
+
+# Local host metadata and duplicate visual QA captures
+products/*/.openai/
+.wrangler/
+qa-results/production/
+qa-results/pdf-editor-production/*.png
+qa-results/screenshots-final/
+qa-results/screenshots-polished/

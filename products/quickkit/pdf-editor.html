@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Edit a PDF in your browser with text, highlights, shapes, images and signatures. Reorder or remove pages, then download the edited PDF. Files stay on your device.">
+  <meta name="description" content="Use this free PDF editor to add text, shapes and signatures, recognize text with OCR, replace or redact selected regions, and reorder pages in your browser.">
   <meta name="theme-color" content="#f3f6fb">
-  <title>Online PDF Editor: Add Text, Sign and Reorder Pages | QuickKit</title>
+  <title>PDF Editor with OCR — Add Text, Redact and Sign | QuickKit</title>
   <link rel="stylesheet" href="/styles.css">
   <link rel="stylesheet" href="/pdf-editor.css">
 
@@ -14,7 +14,7 @@
 
 
 
-<link rel="canonical" href="https://quickkit-browser-tools.pages.dev/pdf-editor.html"><meta property="og:title" content="Online PDF Editor: Add Text, Sign and Reorder Pages | QuickKit"><meta property="og:description" content="Edit a PDF in your browser with text, highlights, shapes, images and signatures. Reorder or remove pages, then download the edited PDF. Files stay on your device."><meta property="og:type" content="website"><meta property="og:url" content="https://quickkit-browser-tools.pages.dev/pdf-editor.html"><meta name="twitter:card" content="summary"></head>
+<link rel="canonical" href="https://quickkit-browser-tools.pages.dev/pdf-editor.html"><meta property="og:title" content="PDF Editor with OCR — Add Text, Redact and Sign | QuickKit"><meta property="og:description" content="Use this free PDF editor to add text, shapes and signatures, recognize text with OCR, replace or redact selected regions, and reorder pages in your browser."><meta property="og:type" content="website"><meta property="og:url" content="https://quickkit-browser-tools.pages.dev/pdf-editor.html"><meta name="twitter:card" content="summary"></head>
 <body data-page="pdf-editor">
   <header class="site-header">
     <a class="brand" href="./"><span class="brand-mark">q</span><span>quickkit</span></a>
@@ -48,14 +48,19 @@
           <button type="button" class="pdf-tool" data-tool="text" aria-pressed="false" title="Add text">Text</button>
           <button type="button" class="pdf-tool" data-tool="highlight" aria-pressed="false" title="Add a highlight">Highlight</button>
           <button type="button" class="pdf-tool" data-tool="shape" aria-pressed="false" title="Add a rectangle">Shape</button>
+          <button type="button" class="pdf-tool" data-tool="redact" aria-pressed="false" title="Cover existing page content">Redact</button>
           <button type="button" class="pdf-tool" data-tool="image" aria-pressed="false" title="Place an image">Image</button>
           <button type="button" class="pdf-tool" data-tool="signature" aria-pressed="false" title="Draw and place a signature">Sign</button>
         </div>
+        <button type="button" class="pdf-tool" id="ocr-current-page" title="Recognize text on this page">Find text</button>
         <button type="button" class="pdf-tool" id="undo-edit" aria-label="Undo last edit" title="Undo last edit (Ctrl+Z)" disabled>Undo</button>
         <div class="pdf-zoom-controls" aria-label="Page zoom"><button type="button" id="zoom-out" aria-label="Zoom out">−</button><output id="zoom-level">100%</output><button type="button" id="zoom-in" aria-label="Zoom in">+</button></div>
         <input id="pdf-image-input" type="file" accept="image/png,image/jpeg,image/webp" hidden>
       </div>
       <p class="pdf-tool-hint" id="pdf-tool-hint">Select an item to move it. Choose a tool, then click on the page to add it. Keyboard users can focus the page and press Enter to place an item at its center.</p>
+      <p class="pdf-ocr-status" id="pdf-ocr-status" role="status" aria-live="polite"></p>
+      <button type="button" class="pdf-ocr-copy" id="copy-ocr-text" hidden>Copy recognized text</button>
+      <ol class="pdf-ocr-results" id="pdf-ocr-results" aria-label="Recognized text on this page"></ol>
       <div class="pdf-editor-layout">
         <aside class="pdf-page-rail" aria-label="PDF pages"><div class="pdf-rail-heading"><strong>Pages</strong><span id="rail-count">0</span></div><ol id="pdf-page-list" class="pdf-page-list"></ol></aside>
         <section class="pdf-viewer" aria-label="Selected PDF page">
@@ -65,11 +70,11 @@
         <aside id="pdf-inspector" class="pdf-inspector" aria-label="Selected item settings"><div class="inspector-empty"><strong>Make an edit</strong><span>Choose a tool above, then click the page. Select an item to adjust it.</span></div><div id="inspector-controls" hidden><div class="inspector-heading"><strong id="inspector-title">Selected item</strong><button type="button" id="remove-item" aria-label="Delete selected item">Remove</button></div><label id="text-setting" class="inspector-field" hidden>Text<input id="item-text" type="text" maxlength="500"></label><label id="size-setting" class="inspector-field" hidden>Text size <span><input id="item-size" type="number" min="8" max="96" value="18"> pt</span></label><label id="color-setting" class="inspector-field" hidden>Color<input id="item-color" type="color" value="#f2cf4a"></label><label id="width-setting" class="inspector-field" hidden>Width <span><input id="item-width" type="range" min="8" max="75" value="28"><output id="item-width-value">28%</output></span></label><label id="height-setting" class="inspector-field" hidden>Height <span><input id="item-height" type="range" min="3" max="45" value="12"><output id="item-height-value">12%</output></span></label></div></aside>
       </div>
       <div class="pdf-mobile-page-actions"><button type="button" id="mobile-page-up">Move page earlier</button><button type="button" id="mobile-page-down">Move page later</button><button type="button" id="mobile-page-delete">Delete page</button></div>
-      <p class="pdf-editor-disclaimer">QuickKit adds new content over the page; text is flattened into the exported page image, so it is not selectable as PDF text. Existing text is not rewritten. Adding content to rotated pages and password-protected files is not supported. Save a copy before using the result for important documents.</p>
+      <p class="pdf-editor-disclaimer">New text is editable before export. OCR replacement covers the old text with a mask and places new text; matching the original font and spacing is approximate. A redacted page is flattened, removing its original selectable text and links; this can change appearance and increase file size. OCR can be inaccurate: check every region. This visual redaction is not a substitute for legal or forensic document review. Password-protected files are not supported. Save a copy before using the result for important documents.</p>
       <p class="message pdf-editor-status" id="pdf-editor-status" role="status" aria-live="polite"></p>
     </section>
 
-    <section class="below-tool pdf-editor-info"><h2>A focused set of PDF tools</h2><p>Add text, highlights, rectangles, images and a hand-drawn signature; move or remove added items; reorder or delete pages; and save a new PDF. For combining separate files, use <a href="pdf-merge.html">Merge PDF</a>.</p><p>Document previews and edits run locally in this browser. This tool does not upload your PDF to QuickKit.</p></section>
+    <section class="below-tool pdf-editor-info"><h2>A focused set of PDF tools</h2><p>Add text, highlights, rectangles, images and a hand-drawn signature; move or remove added items; reorder or delete pages; and save a new PDF. Find and copy English text with OCR, then redact a detected region or begin a masked text replacement. Replacing existing text approximates its original font and spacing. For combining separate files, use <a href="pdf-merge.html">Merge PDF</a>.</p><p>Document previews and edits run locally in this browser. OCR downloads its worker and English model from jsDelivr. This tool does not upload your PDF to QuickKit.</p></section>
   </main>
   <footer class="site-footer wrap"><a href="./">QuickKit home</a><div><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="about.html">About</a></div></footer>
   <dialog id="signature-dialog" class="signature-dialog" aria-labelledby="signature-title"><form method="dialog" class="signature-dialog-inner"><div class="signature-heading"><div><h2 id="signature-title">Add your signature</h2><p>Draw with a mouse, trackpad or finger, or type your name. It stays on this device.</p></div><button type="button" id="close-signature" aria-label="Close signature pad">×</button></div><canvas id="signature-canvas" width="560" height="210" aria-label="Signature drawing area"></canvas><div class="signature-actions"><button type="button" id="clear-signature" class="button button-plain">Clear</button><button type="button" id="place-signature" class="button button-primary">Place drawn signature</button></div><label class="typed-signature-field" for="typed-signature">Or type a name<input id="typed-signature" type="text" maxlength="100" autocomplete="name" placeholder="Your name"></label><div class="signature-actions"><button type="button" id="place-typed-signature" class="button button-primary">Place typed signature</button></div></form></dialog>

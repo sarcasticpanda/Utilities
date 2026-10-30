@@ -4,7 +4,7 @@
 **Public state:** All three products are live on Cloudflare Pages; the previous Sites URLs remain available as fallback.
 **Current worktree:** All three Cloudflare Pages deployments are live; QuickKit’s PDF editor is deployed and verified on the production Pages host.
 **Last release:** 2026-10-30
-**Current release evidence:** production smoke test covered 12 Pages routes with 0 failures. **Current local QA:** all three sites build; the full 12-route responsive sweep passed 75 checks, and QuickKit’s editor workflow passed 28 checks locally and live.
+**Current release evidence:** all three products build; the responsive sweep passed 79 checks; QuickKit's OCR/replacement/redaction editor passed 32 checks locally and on its live Pages domain.
 
 ## Release summary
 
@@ -24,8 +24,8 @@
 - [x] Kept file processing in the browser; production requests show no app feature uploads. Cloudflare's first-party browser challenge issues a separate security POST.
 - [x] Published all three independent Cloudflare Pages sites; the earlier Sites releases remain as fallback URLs.
 - [x] Ran production browser smoke checks: all 12 Pages routes returned HTTP 200; canonical tags, sitemap and robots files worked; a representative interactive flow passed for each product.
-- [x] Ran the full local Playwright sweep on 2026-10-30: 75 entries, 0 failures; tested all 12 main routes at 1440×900, 768×1024, 390×844 and 320×740.
-- [x] Ran a separate 28-check Chromium editor workflow covering annotation and page-management interactions, PDF export, desktop/mobile layout and local-only file handling.
+- [x] Ran the full local Playwright sweep on 2026-10-30: 79 entries, 0 failures; tested all main routes at 1440×900, 768×1024, 390×844 and 320×740.
+- [x] Ran a 32-check Chromium PDF editor workflow locally and live, including OCR, editable replacement, actual redaction export, text removal from the redacted page, PDF page management, desktop/mobile layout and local-only file handling.
 - [x] Captured final UI screenshots in `qa-results/screenshots-polished/` and production screenshots in `qa-results/production/`.
 
 ## Product scope shipped
@@ -41,11 +41,13 @@
 
 ### QuickKit
 
+- [x] Convert selected photos to PDF with crop, rotate, filters, reorder, page size/orientation and margins.
 - [x] Compress images against a measured KB limit, merge PDFs, count/clean text, generate passwords, and make Wi-Fi QR codes.
-- [x] Add a local PDF editor with text, highlight, rectangle, image/signature annotations, page previews, page reorder/delete, zoom and PDF download. Browser smoke passes 28 checks; see `qa-results/pdf-editor/results.json`.
-- [x] Published the PDF editor at https://quickkit-browser-tools.pages.dev/pdf-editor.html; its live 28-check workflow passed.
+- [x] Add a local PDF editor with text, highlight, rectangle, image/signature annotations, page previews, page reorder/delete, zoom and PDF download.
+- [x] Add OCR text recognition/copy and OCR-assisted redaction; redact exports flatten affected pages so source text is not left extractable beneath the mask. See `qa-results/pdf-editor/results.json`.
+- [x] Deploy the image-to-PDF and OCR/replacement/redaction updates to https://quickkit-browser-tools.pages.dev; 32 live editor checks passed.
 - [x] Lazy-load the larger PDF and QR libraries.
-- [ ] Add image-to-PDF, PDF split, more conversion formats and advanced batch tools only after user demand and mobile-memory checks.
+- [ ] Add PDF split, Word/PDF conversion and advanced batch tools only with accurate fidelity limits and mobile-memory checks.
 
 ### FormReady
 

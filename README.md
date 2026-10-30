@@ -6,7 +6,7 @@ Three focused browser tools for everyday work: edit PDFs, track hours, and prepa
 
 | Product | What it does | Open |
 |---|---|---|
-| **QuickKit** | PDF editor and merger, image compression, text helpers, password generator and Wi-Fi QR codes | [quickkit-browser-tools.pages.dev](https://quickkit-browser-tools.pages.dev/) |
+| **QuickKit** | Photos to PDF, PDF annotations/OCR redaction, PDF merge, image compression, text tools and Wi-Fi QR codes | [quickkit-browser-tools.pages.dev](https://quickkit-browser-tools.pages.dev/) |
 | **WorkKit** | Time cards, overnight shifts, breaks, overtime and hourly-to-salary estimates | [workkit-hours-tools.pages.dev](https://workkit-hours-tools.pages.dev/) |
 | **FormReady** | Crop, resize, compress and measure a photo or signature for an application | [formready-photo-tools.pages.dev](https://formready-photo-tools.pages.dev/) |
 
@@ -14,8 +14,9 @@ Three focused browser tools for everyday work: edit PDFs, track hours, and prepa
 
 ### QuickKit
 
-<p><a href="https://quickkit-browser-tools.pages.dev/"><img src="qa-results/screenshots/quickkit-home-desktop.png" alt="QuickKit desktop homepage screenshot" width="72%"></a></p>
-<p><a href="https://quickkit-browser-tools.pages.dev/"><img src="qa-results/screenshots/quickkit-home-mobile.png" alt="QuickKit mobile homepage screenshot" width="32%"></a></p>
+<p>Short mobile captures, shown as separate screen sections rather than one long page:</p>
+<p><a href="https://quickkit-browser-tools.pages.dev/"><img src="qa-results/readme-parts/quickkit-home-hero.png" alt="QuickKit home, mobile hero section" width="31%"></a> <a href="https://quickkit-browser-tools.pages.dev/#tools"><img src="qa-results/readme-parts/quickkit-home-tools.png" alt="QuickKit home, mobile tool cards" width="31%"></a> <a href="https://quickkit-browser-tools.pages.dev/image-to-pdf.html"><img src="qa-results/readme-parts/quickkit-image-to-pdf-gallery.png" alt="Images to PDF, mobile gallery section" width="31%"></a></p>
+<p><a href="https://quickkit-browser-tools.pages.dev/image-to-pdf.html"><img src="qa-results/readme-parts/quickkit-image-to-pdf-edit.png" alt="Images to PDF, mobile crop and editing section" width="31%"></a> <a href="https://quickkit-browser-tools.pages.dev/pdf-editor.html"><img src="qa-results/readme-parts/quickkit-pdf-editor-replace.png" alt="PDF editor, OCR text recognition and redaction on mobile" width="31%"></a></p>
 
 ### WorkKit
 
@@ -30,7 +31,7 @@ Three focused browser tools for everyday work: edit PDFs, track hours, and prepa
 ## Highlights
 
 - Responsive pages checked at desktop, tablet and narrow phone sizes.
-- QuickKit edits PDFs in the browser: add text, highlights, shapes and signatures; reorder or remove pages; download the result.
+- QuickKit converts and arranges photos into PDFs, annotates PDF pages, and offers OCR-assisted text replacement/redaction that flattens affected pages on export.
 - WorkKit validates shifts and avoids counting overlapping work twice; it saves drafts locally and exports CSV.
 - FormReady measures the generated image dimensions and file size against requirements entered by the visitor.
 - File processing happens in the browser; the tools do not upload visitors' files to an application server.

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-30T12:06:03.864Z",
+  "generatedAt": "2026-10-30T12:48:46.584Z",
   "browser": "Chromium 156.0.8078.4",
   "sites": {
     "workkit": {
@@ -77,9 +77,20 @@
         {
           "route": "/",
           "status": 200,
-          "title": "Free PDF Editor, PDF Merger and Image Tools | QuickKit",
-          "h1": "Get the little things out of your way.",
+          "title": "Free PDF and Image Tools: Convert Photos to PDF | QuickKit",
+          "h1": "Turn photos into a PDF.",
           "canonical": "https://quickkit-browser-tools.pages.dev/",
+          "scrollWidth": 1440,
+          "width": 1440,
+          "errors": [],
+          "canonicalMatches": true
+        },
+        {
+          "route": "/image-to-pdf.html",
+          "status": 200,
+          "title": "JPG to PDF Converter — Crop and Arrange Images | QuickKit",
+          "h1": "Convert images to PDF",
+          "canonical": "https://quickkit-browser-tools.pages.dev/image-to-pdf.html",
           "scrollWidth": 1440,
           "width": 1440,
           "errors": [],
@@ -99,7 +110,7 @@
         {
           "route": "/pdf-editor.html",
           "status": 200,
-          "title": "Online PDF Editor: Add Text, Sign and Reorder Pages | QuickKit",
+          "title": "PDF Editor with OCR — Add Text, Redact and Sign | QuickKit",
           "h1": "Edit a PDF, right here",
           "canonical": "https://quickkit-browser-tools.pages.dev/pdf-editor.html",
           "scrollWidth": 1440,
@@ -149,6 +160,7 @@
         "status": 200,
         "urls": [
           "https://quickkit-browser-tools.pages.dev/",
+          "https://quickkit-browser-tools.pages.dev/image-to-pdf.html",
           "https://quickkit-browser-tools.pages.dev/image-compressor.html",
           "https://quickkit-browser-tools.pages.dev/pdf-editor.html",
           "https://quickkit-browser-tools.pages.dev/pdf-merge.html",
@@ -338,7 +350,62 @@
     {
       "site": "quickkit",
       "method": "GET",
-      "url": "https://quickkit-browser-tools.pages.dev/assets/app-TOTloAVY.js"
+      "url": "https://quickkit-browser-tools.pages.dev/assets/preload-helper-PPVm8Dsz.js"
+    },
+    {
+      "site": "quickkit",
+      "method": "GET",
+      "url": "https://quickkit-browser-tools.pages.dev/assets/app-D0aOOAR0.js"
+    },
+    {
+      "site": "quickkit",
+      "method": "GET",
+      "url": "https://quickkit-browser-tools.pages.dev/assets/styles-qOJqZkOM.css"
+    },
+    {
+      "site": "quickkit",
+      "method": "GET",
+      "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
+    },
+    {
+      "site": "quickkit",
+      "method": "GET",
+      "url": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2"
+    },
+    {
+      "site": "quickkit",
+      "method": "GET",
+      "url": "https://quickkit-browser-tools.pages.dev/image-to-pdf.html"
+    },
+    {
+      "site": "quickkit",
+      "method": "GET",
+      "url": "https://quickkit-browser-tools.pages.dev/image-to-pdf"
+    },
+    {
+      "site": "quickkit",
+      "method": "GET",
+      "url": "https://quickkit-browser-tools.pages.dev/assets/image-to-pdf--0hZv6D0.js"
+    },
+    {
+      "site": "quickkit",
+      "method": "GET",
+      "url": "https://quickkit-browser-tools.pages.dev/assets/modulepreload-polyfill-B5Qt9EMX.js"
+    },
+    {
+      "site": "quickkit",
+      "method": "GET",
+      "url": "https://quickkit-browser-tools.pages.dev/assets/_commonjsHelpers-CqkleIqs.js"
+    },
+    {
+      "site": "quickkit",
+      "method": "GET",
+      "url": "https://quickkit-browser-tools.pages.dev/assets/index-CfA9Roq9.js"
+    },
+    {
+      "site": "quickkit",
+      "method": "GET",
+      "url": "https://quickkit-browser-tools.pages.dev/assets/image-to-pdf-BJB00w_R.css"
     },
     {
       "site": "quickkit",
@@ -373,7 +440,12 @@
     {
       "site": "quickkit",
       "method": "GET",
-      "url": "https://quickkit-browser-tools.pages.dev/assets/app-TOTloAVY.js"
+      "url": "https://quickkit-browser-tools.pages.dev/assets/preload-helper-PPVm8Dsz.js"
+    },
+    {
+      "site": "quickkit",
+      "method": "GET",
+      "url": "https://quickkit-browser-tools.pages.dev/assets/app-D0aOOAR0.js"
     },
     {
       "site": "quickkit",
@@ -403,12 +475,17 @@
     {
       "site": "quickkit",
       "method": "GET",
-      "url": "https://quickkit-browser-tools.pages.dev/assets/pdf-editor-GqvsnwBz.js"
+      "url": "https://quickkit-browser-tools.pages.dev/assets/pdf-editor-B8xQxed6.js"
     },
     {
       "site": "quickkit",
       "method": "GET",
       "url": "https://quickkit-browser-tools.pages.dev/assets/modulepreload-polyfill-B5Qt9EMX.js"
+    },
+    {
+      "site": "quickkit",
+      "method": "GET",
+      "url": "https://quickkit-browser-tools.pages.dev/assets/preload-helper-PPVm8Dsz.js"
     },
     {
       "site": "quickkit",
@@ -423,7 +500,7 @@
     {
       "site": "quickkit",
       "method": "GET",
-      "url": "https://quickkit-browser-tools.pages.dev/assets/pdf-editor-B7pJUPpx.css"
+      "url": "https://quickkit-browser-tools.pages.dev/assets/pdf-editor-BmO8eoT5.css"
     },
     {
       "site": "quickkit",
@@ -458,7 +535,12 @@
     {
       "site": "quickkit",
       "method": "GET",
-      "url": "https://quickkit-browser-tools.pages.dev/assets/app-TOTloAVY.js"
+      "url": "https://quickkit-browser-tools.pages.dev/assets/preload-helper-PPVm8Dsz.js"
+    },
+    {
+      "site": "quickkit",
+      "method": "GET",
+      "url": "https://quickkit-browser-tools.pages.dev/assets/app-D0aOOAR0.js"
     },
     {
       "site": "quickkit",
@@ -493,7 +575,12 @@
     {
       "site": "quickkit",
       "method": "GET",
-      "url": "https://quickkit-browser-tools.pages.dev/assets/app-TOTloAVY.js"
+      "url": "https://quickkit-browser-tools.pages.dev/assets/preload-helper-PPVm8Dsz.js"
+    },
+    {
+      "site": "quickkit",
+      "method": "GET",
+      "url": "https://quickkit-browser-tools.pages.dev/assets/app-D0aOOAR0.js"
     },
     {
       "site": "quickkit",
@@ -528,7 +615,12 @@
     {
       "site": "quickkit",
       "method": "GET",
-      "url": "https://quickkit-browser-tools.pages.dev/assets/app-TOTloAVY.js"
+      "url": "https://quickkit-browser-tools.pages.dev/assets/preload-helper-PPVm8Dsz.js"
+    },
+    {
+      "site": "quickkit",
+      "method": "GET",
+      "url": "https://quickkit-browser-tools.pages.dev/assets/app-D0aOOAR0.js"
     },
     {
       "site": "quickkit",
@@ -613,7 +705,7 @@
   ],
   "cloudflareSecurityChallengeRequests": 0,
   "summary": {
-    "pages": 12,
+    "pages": 13,
     "failures": 0,
     "errors": []
   }

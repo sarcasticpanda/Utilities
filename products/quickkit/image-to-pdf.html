@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Convert JPG, PNG or WebP images to PDF for free. Select, crop, rotate, filter and reorder photos, then choose page size, orientation and margins.">
+  <meta name="theme-color" content="#f3f6fb">
+  <title>JPG to PDF Converter — Crop and Arrange Images | QuickKit</title>
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/image-to-pdf.css">
+<link rel="canonical" href="https://quickkit-browser-tools.pages.dev/image-to-pdf.html"><meta property="og:title" content="JPG to PDF Converter — Crop and Arrange Images | QuickKit"><meta property="og:description" content="Convert JPG, PNG or WebP images to PDF for free. Select, crop, rotate, filter and reorder photos, then choose page size, orientation and margins."><meta property="og:type" content="website"><meta property="og:url" content="https://quickkit-browser-tools.pages.dev/image-to-pdf.html"><meta name="twitter:card" content="summary"></head>
+<body data-page="image-to-pdf">
+  <header class="site-header">
+    <a class="brand" href="./"><span class="brand-mark">q</span><span>quickkit</span></a>
+    <nav aria-label="Main navigation"><a href="image-compressor.html">Images</a><a href="image-to-pdf.html" aria-current="page">Images to PDF</a><a href="pdf-editor.html">PDF tools</a><a href="text-tools.html">Text</a></nav>
+    <a class="header-action" href="./#tools">All tools ↗</a>
+  </header>
+
+  <main class="wrap tool-page image-pdf-page">
+    <div class="breadcrumbs"><a href="./">Home</a><span>/</span><a href="./#tools">PDF tools</a><span>/</span>Images to PDF</div>
+    <div class="tool-intro image-pdf-intro">
+      <p class="eyebrow">Photo to document</p>
+      <h1>Convert images to PDF</h1>
+      <p class="lede">Pick photos from your gallery, arrange the pages, crop and adjust each image, then save one PDF. Your files stay on this device.</p>
+    </div>
+
+    <section class="image-pdf-workspace" aria-label="Image to PDF converter">
+      <div class="image-pdf-gallery-panel">
+        <div class="gallery-heading"><div><h2>Your images</h2><p id="selection-count" aria-live="polite">No images added</p></div><div class="selection-actions"><button type="button" id="select-all" disabled>Select all</button><button type="button" id="deselect-all" disabled>Deselect all</button></div></div>
+        <label class="image-dropzone" id="image-dropzone" for="image-files">
+          <span class="dropzone-icon" aria-hidden="true">＋</span>
+          <strong>Choose photos or drop them here</strong>
+          <span>JPG, PNG or WebP · up to 20 files and 100 MB total</span>
+          <span class="dropzone-picker">Open photos or files</span>
+          <input id="image-files" type="file" accept="image/jpeg,image/png,image/webp" multiple>
+        </label>
+        <ol class="image-gallery" id="image-gallery" aria-label="Image order in the PDF"></ol>
+        <p class="gallery-tip">Use the checkboxes to include or exclude pages. Drag a photo to reorder it, or use the arrow buttons.</p>
+      </div>
+
+      <div class="image-pdf-editor-panel">
+        <div class="editor-heading"><div><h2>Edit the selected photo</h2><p id="active-image-name">Select a photo to crop or adjust it.</p></div><button type="button" class="button button-plain" id="reset-image-edit" disabled>Reset photo</button></div>
+        <div class="crop-stage" id="crop-stage"><div class="crop-empty"><span class="empty-icon">IMG</span><b>Your photo preview appears here</b><span>Add one or more photos to start.</span></div></div>
+        <div class="crop-actions" aria-label="Photo crop controls"><button type="button" id="rotate-left" disabled>Rotate left</button><button type="button" id="rotate-right" disabled>Rotate right</button><button type="button" id="flip-image" disabled>Flip</button><button type="button" id="reset-crop" disabled>Reset crop</button></div>
+
+        <div class="filter-controls">
+          <label class="image-filter-select">Filter<select id="image-filter" disabled><option value="none">Original</option><option value="grayscale">Black and white</option><option value="sepia">Sepia</option><option value="warm">Warm</option><option value="cool">Cool</option></select></label>
+          <label class="range-control">Brightness <output id="brightness-value">100%</output><input id="brightness" type="range" min="70" max="130" value="100" disabled></label>
+          <label class="range-control">Contrast <output id="contrast-value">100%</output><input id="contrast" type="range" min="70" max="140" value="100" disabled></label>
+        </div>
+        <div class="apply-edit-row"><p id="edit-status" role="status" aria-live="polite">Choose a photo to begin editing.</p><button type="button" class="button button-primary" id="apply-edit" disabled>Apply crop and filter</button></div>
+
+        <div class="pdf-options">
+          <div class="options-heading"><div><h2>PDF page settings</h2><p><span id="pdf-page-count">0 pages</span> · one selected photo per page</p></div></div>
+          <div class="option-grid">
+            <label>Page size<select id="paper-size"><option value="a4">A4</option><option value="letter">US Letter</option><option value="legal">US Legal</option><option value="image">Fit to image</option></select></label>
+            <label>Orientation<select id="page-orientation"><option value="auto">Auto per image</option><option value="portrait">Portrait</option><option value="landscape">Landscape</option></select></label>
+            <label>Page margin<select id="page-margin"><option value="0">None</option><option value="5">5 mm</option><option value="10" selected>10 mm</option><option value="15">15 mm</option><option value="20">20 mm</option></select></label>
+          </div>
+          <p class="page-settings-note">Photos are fitted inside each page without stretching. Choose “Fit to image” to keep each page close to its photo’s proportions.</p>
+          <button type="button" class="button button-primary convert-button" id="convert-images" disabled>Create PDF</button>
+          <button type="button" class="button button-plain clear-images" id="clear-images" disabled>Clear all images</button>
+          <p class="privacy-copy"><span aria-hidden="true">✓</span> Photos are processed locally in your browser.</p>
+          <p id="image-pdf-message" class="image-pdf-message" role="status" aria-live="polite"></p>
+          <div class="pdf-result" id="image-pdf-result"><div class="result-empty"><span class="empty-icon">PDF</span><b>Your PDF download will appear here</b><span>Add photos, select pages and create the PDF.</span></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="below-tool image-pdf-help">
+      <h2>Make a PDF from your photos</h2>
+      <p>Select photos from your phone’s photo library or computer, or drop files into the gallery on desktop. Each selected photo becomes one page. You can crop, rotate, flip and apply a basic filter to each photo, then set the paper size, orientation and margins before creating the PDF.</p>
+      <h2>Formats and limits</h2>
+      <p>JPG, PNG and WebP images are supported. The converter accepts up to 20 images, with a maximum of 20 MB per image and 100 MB total. Very large decoded images are capped to protect browser memory. This tool creates a new PDF; it does not upload or store your selected files.</p>
+      <h2>Other PDF tools</h2>
+      <p><a href="pdf-editor.html">Edit a PDF</a> · <a href="pdf-merge.html">Merge PDFs</a></p>
+    </section>
+  </main>
+
+  <footer class="site-footer wrap"><a href="./">QuickKit home</a><div><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="about.html">About</a><a href="open-source-acknowledgements.html">Open-source</a></div></footer>
+  <script type="module" src="/image-to-pdf.js"></script>
+</body>
+</html>

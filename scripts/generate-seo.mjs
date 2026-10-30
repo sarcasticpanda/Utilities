@@ -5,7 +5,7 @@ import { fileURLToPath } from 'node:url';
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const pages = {
   workkit: ['/', '/time-card-calculator.html', '/overtime-calculator.html', '/salary-converter.html'],
-  quickkit: ['/', '/image-compressor.html', '/pdf-editor.html', '/pdf-merge.html', '/text-tools.html', '/wifi-qr.html'],
+  quickkit: ['/', '/image-to-pdf.html', '/image-compressor.html', '/pdf-editor.html', '/pdf-merge.html', '/text-tools.html', '/wifi-qr.html'],
   formready: ['/', '/image-preparer.html']
 };
 for (const [product, sitemapPaths] of Object.entries(pages)) {

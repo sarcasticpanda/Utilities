@@ -25,7 +25,7 @@ Search visibility is a long-running outcome. This log tracks the parts we can ve
 ## Publish and follow-up
 
 - [x] Production builds completed for all products.
-- [x] Previous Sites version 3 passed its 11-route live smoke test; the current Pages release passed all 12 routes below.
+- [x] Previous Sites version 3 passed its 11-route live smoke test; the current Pages release passed all 13 routes below.
 - [x] Production tool interactions passed for one representative flow per product.
 - [ ] Verify indexing and crawl reports after Search Console/Bing access is connected.
 - [ ] Monitor search terms, regions and landing pages before adding more content.
@@ -51,8 +51,10 @@ Custom domains are not connected. Traffic, ranking, immediate indexing, ad appro
 
 - [x] Cloudflare account was authorized and verified; profile cloudflare-pages-launch deployed all three projects.
 - [x] QuickKit, WorkKit and FormReady production builds deployed to their free pages.dev hosts.
-- [x] Local Chromium QA passed 75 checks with 0 failures.
-- [x] QuickKit PDF editor passed 28 checks locally and on the live Pages host.
-- [x] Production browser smoke passed 12 routes and representative flows with 0 failures.
+- [x] Local Chromium QA passed 79 checks with 0 failures.
+- [x] QuickKit PDF editor OCR/replacement/redaction workflow passed 32 checks locally and on the live Pages host.
+- [x] QuickKit image-to-PDF is included in its sitemap and deployed on Pages.
+- [x] Three-site responsive browser QA passed 79 checks with no failures.
+- [x] Production browser smoke passed 13 routes and representative flows with 0 failures.
 - [x] No application files are uploaded by the browser tools; file processing stays local.
 - [ ] Domain registration and custom DNS are optional, separate and still pending. No purchase has been made.

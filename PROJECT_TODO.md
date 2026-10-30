@@ -20,14 +20,16 @@ All three sites are live on Cloudflare Pages, and QuickKit’s PDF editor is liv
 ## Product backlog
 
 - [ ] WorkKit: consider biweekly timesheets, 5/7-day templates, duplicate-shift entry and multiple breaks after a separate calculation and mobile UX review.
-- [ ] QuickKit: consider image-to-PDF, PDF splitting and more conversion paths after mobile memory testing.
+- [x] QuickKit: photo-to-PDF workflow with gallery selection, crop/rotate/filter, reorder, paper settings and local export.
+- [x] QuickKit: English OCR text copy, detected-region redaction and masked editable replacement; raster export removes original page text.
+- [ ] QuickKit: add PDF splitting and additional conversion formats after defining fidelity requirements and mobile memory limits.
 - [ ] FormReady: add user-defined local presets next; add official photo presets only after recording and verifying current official requirements.
 
 ## Release facts
 
 - [x] Three Cloudflare Pages sites are public; live status and URLs are in `VISIBILITY_AND_DEPLOYMENT_CHECKLIST.md`.
 - [x] All three Pages projects are deployed; the earlier Sites releases remain available as fallback.
-- [x] Local build passed; the 75-check Chromium browser sweep passed with 0 failures; the 28-check PDF-editor workflow passed locally and on Pages; production smoke passed 12 routes with 0 failures.
+- [x] All three builds passed; responsive Chromium sweep passed 79 checks with 0 failures; the PDF editor passed 32 checks locally and live; production smoke passed 13 routes with 0 failures.
 - [x] Final screenshots and machine-readable QA evidence are in `qa-results/`.
 
 Search traffic, indexing speed, ad approval and revenue are external outcomes, not promises of a same-day launch.

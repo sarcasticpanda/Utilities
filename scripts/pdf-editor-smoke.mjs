@@ -141,6 +141,25 @@ for (let i = 1; i <= outputForText.numPages; i++) {
 }
 const annotationImages = output.getPages().some((page) => (page.node.normalizedEntries().XObject?.entries().length || 0) > 0);
 check('Export preserves page order and original text; new text is embedded as an image', orderText[0].includes('Original page two') && orderText[1].includes('Original page one') && annotationImages, orderText.join(' | '));
+await desktop.locator('#ocr-current-page').click();
+await desktop.waitForFunction(() => document.querySelector('#pdf-ocr-status')?.innerText.includes('Found') || document.querySelector('#pdf-ocr-status')?.innerText.includes('could not start'), null, { timeout: 120000 });
+const ocrStatus = await desktop.locator('#pdf-ocr-status').innerText();
+const ocrFoundText = (await desktop.locator('#pdf-ocr-results').innerText()).includes('Original page one');
+check('OCR recognizes text on a PDF page locally', ocrFoundText, ocrStatus);
+if (ocrFoundText) {
+  const originalLine = desktop.locator('#pdf-ocr-results li').filter({ hasText: 'Original page one' }).first();
+  await originalLine.locator('button').nth(1).click();
+  check('OCR can create a masked, editable text replacement', await desktop.locator('.pdf-overlay-redact').count() === 1 && await desktop.locator('#item-text').inputValue() === 'Original page one');
+  await desktop.locator('#item-text').fill('Replacement text');
+  check('Replacement text can be edited and previewed', await desktop.locator('.pdf-overlay-text').filter({ hasText: 'Replacement text' }).count() === 1);
+  const redactedDownloadWait = desktop.waitForEvent('download');
+  await desktop.locator('#download-pdf').click();
+  const redactedDownload = await redactedDownloadWait;
+  const redactedBytes = new Uint8Array(await readFile(await redactedDownload.path()));
+  const redactedPdf = await pdfjs.getDocument({ data: redactedBytes, standardFontDataUrl: `${resolve(root, 'node_modules/pdfjs-dist/standard_fonts')}/`, disableFontFace: true, isEvalSupported: false }).promise;
+  const redactedPageText = (await (await redactedPdf.getPage(2)).getTextContent()).items.map((item) => item.str).join(' ');
+  check('Rasterized redaction removes original searchable text from that page', redactedPageText.trim().length === 0, redactedPageText);
+}
 const onePage = await PDFDocument.create(); onePage.addPage([480, 640]);
 await desktop.locator('#replace-pdf').click();
 await desktop.locator('#pdf-source').setInputFiles({ name: 'one-page.pdf', mimeType: 'application/pdf', buffer: Buffer.from(await onePage.save()) });
