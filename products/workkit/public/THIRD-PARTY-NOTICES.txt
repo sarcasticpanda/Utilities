@@ -1,0 +1,7 @@
+Third-party notices for libraries bundled into this site. The sites are independent implementations; the open-source repositories in reference-notes were studied for product research and their code was not copied.
+
+================================================================================
+gsap 3.15.0
+License: Standard 'no charge' license: https://gsap.com/standard-license.
+================================================================================
+The package does not include a standard license file. See its package metadata and source distribution.
