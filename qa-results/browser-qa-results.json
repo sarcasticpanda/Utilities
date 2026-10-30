@@ -1,0 +1,1936 @@
+{
+  "generatedAt": "2026-10-30T09:29:02.848Z",
+  "browser": "Chromium via Playwright",
+  "products": {
+    "workkit/index.html@desktop": {
+      "layout": {
+        "width": 1440,
+        "scrollWidth": 1440,
+        "title": "WorkKit — Work hours, pay and overtime calculators",
+        "h1": "Make work hours add up.",
+        "visibleButtons": 0
+      },
+      "noOverflow": true,
+      "consoleErrors": [],
+      "requests": [
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4173/"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4173/@vite/client"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4173/styles.css"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4173/app.js"
+        },
+        {
+          "method": "GET",
+          "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4173/@fs/C:/Users/Lunar%20Panda/OneDrive/Documentos/ChatGPT/Utilities/node_modules/vite/dist/client/env.mjs"
+        },
+        {
+          "method": "GET",
+          "url": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2"
+        }
+      ]
+    },
+    "workkit/index.html@tablet": {
+      "layout": {
+        "width": 768,
+        "scrollWidth": 768,
+        "title": "WorkKit — Work hours, pay and overtime calculators",
+        "h1": "Make work hours add up.",
+        "visibleButtons": 0
+      },
+      "noOverflow": true,
+      "consoleErrors": [],
+      "requests": [
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4173/"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4173/@vite/client"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4173/styles.css"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4173/app.js"
+        },
+        {
+          "method": "GET",
+          "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4173/@fs/C:/Users/Lunar%20Panda/OneDrive/Documentos/ChatGPT/Utilities/node_modules/vite/dist/client/env.mjs"
+        },
+        {
+          "method": "GET",
+          "url": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2"
+        }
+      ]
+    },
+    "workkit/index.html@mobile": {
+      "layout": {
+        "width": 390,
+        "scrollWidth": 390,
+        "title": "WorkKit — Work hours, pay and overtime calculators",
+        "h1": "Make work hours add up.",
+        "visibleButtons": 0
+      },
+      "noOverflow": true,
+      "consoleErrors": [],
+      "requests": [
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4173/"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4173/@vite/client"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4173/styles.css"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4173/app.js"
+        },
+        {
+          "method": "GET",
+          "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4173/@fs/C:/Users/Lunar%20Panda/OneDrive/Documentos/ChatGPT/Utilities/node_modules/vite/dist/client/env.mjs"
+        },
+        {
+          "method": "GET",
+          "url": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2"
+        }
+      ]
+    },
+    "workkit/index.html@narrow-mobile": {
+      "layout": {
+        "width": 320,
+        "scrollWidth": 320,
+        "title": "WorkKit — Work hours, pay and overtime calculators",
+        "h1": "Make work hours add up.",
+        "visibleButtons": 0
+      },
+      "noOverflow": true,
+      "consoleErrors": [],
+      "requests": [
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4173/"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4173/@vite/client"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4173/styles.css"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4173/app.js"
+        },
+        {
+          "method": "GET",
+          "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4173/@fs/C:/Users/Lunar%20Panda/OneDrive/Documentos/ChatGPT/Utilities/node_modules/vite/dist/client/env.mjs"
+        },
+        {
+          "method": "GET",
+          "url": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2"
+        }
+      ]
+    },
+    "workkit/time-card-calculator.html@desktop": {
+      "layout": {
+        "width": 1440,
+        "scrollWidth": 1440,
+        "title": "Time Card Calculator — WorkKit",
+        "h1": "Time card calculator",
+        "visibleButtons": 5
+      },
+      "noOverflow": true,
+      "consoleErrors": [],
+      "requests": [
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4173/time-card-calculator.html"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4173/@vite/client"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4173/styles.css"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4173/app.js"
+        },
+        {
+          "method": "GET",
+          "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4173/@fs/C:/Users/Lunar%20Panda/OneDrive/Documentos/ChatGPT/Utilities/node_modules/vite/dist/client/env.mjs"
+        },
+        {
+          "method": "GET",
+          "url": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2"
+        }
+      ]
+    },
+    "workkit/time-card-calculator.html@tablet": {
+      "layout": {
+        "width": 768,
+        "scrollWidth": 768,
+        "title": "Time Card Calculator — WorkKit",
+        "h1": "Time card calculator",
+        "visibleButtons": 5
+      },
+      "noOverflow": true,
+      "consoleErrors": [],
+      "requests": [
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4173/time-card-calculator.html"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4173/@vite/client"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4173/styles.css"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4173/app.js"
+        },
+        {
+          "method": "GET",
+          "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4173/@fs/C:/Users/Lunar%20Panda/OneDrive/Documentos/ChatGPT/Utilities/node_modules/vite/dist/client/env.mjs"
+        },
+        {
+          "method": "GET",
+          "url": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2"
+        }
+      ]
+    },
+    "workkit/time-card-calculator.html@mobile": {
+      "layout": {
+        "width": 390,
+        "scrollWidth": 390,
+        "title": "Time Card Calculator — WorkKit",
+        "h1": "Time card calculator",
+        "visibleButtons": 5
+      },
+      "noOverflow": true,
+      "consoleErrors": [],
+      "requests": [
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4173/time-card-calculator.html"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4173/@vite/client"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4173/styles.css"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4173/app.js"
+        },
+        {
+          "method": "GET",
+          "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4173/@fs/C:/Users/Lunar%20Panda/OneDrive/Documentos/ChatGPT/Utilities/node_modules/vite/dist/client/env.mjs"
+        },
+        {
+          "method": "GET",
+          "url": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2"
+        }
+      ]
+    },
+    "workkit/time-card-calculator.html@narrow-mobile": {
+      "layout": {
+        "width": 320,
+        "scrollWidth": 320,
+        "title": "Time Card Calculator — WorkKit",
+        "h1": "Time card calculator",
+        "visibleButtons": 5
+      },
+      "noOverflow": true,
+      "consoleErrors": [],
+      "requests": [
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4173/time-card-calculator.html"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4173/@vite/client"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4173/styles.css"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4173/app.js"
+        },
+        {
+          "method": "GET",
+          "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4173/@fs/C:/Users/Lunar%20Panda/OneDrive/Documentos/ChatGPT/Utilities/node_modules/vite/dist/client/env.mjs"
+        },
+        {
+          "method": "GET",
+          "url": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2"
+        }
+      ]
+    },
+    "workkit/overtime-calculator.html@desktop": {
+      "layout": {
+        "width": 1440,
+        "scrollWidth": 1440,
+        "title": "Overtime Calculator — WorkKit",
+        "h1": "Overtime calculator",
+        "visibleButtons": 1
+      },
+      "noOverflow": true,
+      "consoleErrors": [],
+      "requests": [
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4173/overtime-calculator.html"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4173/@vite/client"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4173/styles.css"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4173/app.js"
+        },
+        {
+          "method": "GET",
+          "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4173/@fs/C:/Users/Lunar%20Panda/OneDrive/Documentos/ChatGPT/Utilities/node_modules/vite/dist/client/env.mjs"
+        },
+        {
+          "method": "GET",
+          "url": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2"
+        }
+      ]
+    },
+    "workkit/overtime-calculator.html@tablet": {
+      "layout": {
+        "width": 768,
+        "scrollWidth": 768,
+        "title": "Overtime Calculator — WorkKit",
+        "h1": "Overtime calculator",
+        "visibleButtons": 1
+      },
+      "noOverflow": true,
+      "consoleErrors": [],
+      "requests": [
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4173/overtime-calculator.html"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4173/@vite/client"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4173/styles.css"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4173/app.js"
+        },
+        {
+          "method": "GET",
+          "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4173/@fs/C:/Users/Lunar%20Panda/OneDrive/Documentos/ChatGPT/Utilities/node_modules/vite/dist/client/env.mjs"
+        },
+        {
+          "method": "GET",
+          "url": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2"
+        }
+      ]
+    },
+    "workkit/overtime-calculator.html@mobile": {
+      "layout": {
+        "width": 390,
+        "scrollWidth": 390,
+        "title": "Overtime Calculator — WorkKit",
+        "h1": "Overtime calculator",
+        "visibleButtons": 1
+      },
+      "noOverflow": true,
+      "consoleErrors": [],
+      "requests": [
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4173/overtime-calculator.html"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4173/@vite/client"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4173/styles.css"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4173/app.js"
+        },
+        {
+          "method": "GET",
+          "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4173/@fs/C:/Users/Lunar%20Panda/OneDrive/Documentos/ChatGPT/Utilities/node_modules/vite/dist/client/env.mjs"
+        },
+        {
+          "method": "GET",
+          "url": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2"
+        }
+      ]
+    },
+    "workkit/overtime-calculator.html@narrow-mobile": {
+      "layout": {
+        "width": 320,
+        "scrollWidth": 320,
+        "title": "Overtime Calculator — WorkKit",
+        "h1": "Overtime calculator",
+        "visibleButtons": 1
+      },
+      "noOverflow": true,
+      "consoleErrors": [],
+      "requests": [
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4173/overtime-calculator.html"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4173/@vite/client"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4173/styles.css"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4173/app.js"
+        },
+        {
+          "method": "GET",
+          "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4173/@fs/C:/Users/Lunar%20Panda/OneDrive/Documentos/ChatGPT/Utilities/node_modules/vite/dist/client/env.mjs"
+        },
+        {
+          "method": "GET",
+          "url": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2"
+        }
+      ]
+    },
+    "workkit/salary-converter.html@desktop": {
+      "layout": {
+        "width": 1440,
+        "scrollWidth": 1440,
+        "title": "Hourly to Salary Converter — WorkKit",
+        "h1": "Hourly to salary converter",
+        "visibleButtons": 1
+      },
+      "noOverflow": true,
+      "consoleErrors": [],
+      "requests": [
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4173/salary-converter.html"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4173/@vite/client"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4173/styles.css"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4173/app.js"
+        },
+        {
+          "method": "GET",
+          "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4173/@fs/C:/Users/Lunar%20Panda/OneDrive/Documentos/ChatGPT/Utilities/node_modules/vite/dist/client/env.mjs"
+        },
+        {
+          "method": "GET",
+          "url": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2"
+        }
+      ]
+    },
+    "workkit/salary-converter.html@tablet": {
+      "layout": {
+        "width": 768,
+        "scrollWidth": 768,
+        "title": "Hourly to Salary Converter — WorkKit",
+        "h1": "Hourly to salary converter",
+        "visibleButtons": 1
+      },
+      "noOverflow": true,
+      "consoleErrors": [],
+      "requests": [
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4173/salary-converter.html"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4173/@vite/client"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4173/styles.css"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4173/app.js"
+        },
+        {
+          "method": "GET",
+          "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4173/@fs/C:/Users/Lunar%20Panda/OneDrive/Documentos/ChatGPT/Utilities/node_modules/vite/dist/client/env.mjs"
+        },
+        {
+          "method": "GET",
+          "url": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2"
+        }
+      ]
+    },
+    "workkit/salary-converter.html@mobile": {
+      "layout": {
+        "width": 390,
+        "scrollWidth": 390,
+        "title": "Hourly to Salary Converter — WorkKit",
+        "h1": "Hourly to salary converter",
+        "visibleButtons": 1
+      },
+      "noOverflow": true,
+      "consoleErrors": [],
+      "requests": [
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4173/salary-converter.html"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4173/@vite/client"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4173/styles.css"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4173/app.js"
+        },
+        {
+          "method": "GET",
+          "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4173/@fs/C:/Users/Lunar%20Panda/OneDrive/Documentos/ChatGPT/Utilities/node_modules/vite/dist/client/env.mjs"
+        },
+        {
+          "method": "GET",
+          "url": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2"
+        }
+      ]
+    },
+    "workkit/salary-converter.html@narrow-mobile": {
+      "layout": {
+        "width": 320,
+        "scrollWidth": 320,
+        "title": "Hourly to Salary Converter — WorkKit",
+        "h1": "Hourly to salary converter",
+        "visibleButtons": 1
+      },
+      "noOverflow": true,
+      "consoleErrors": [],
+      "requests": [
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4173/salary-converter.html"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4173/@vite/client"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4173/styles.css"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4173/app.js"
+        },
+        {
+          "method": "GET",
+          "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4173/@fs/C:/Users/Lunar%20Panda/OneDrive/Documentos/ChatGPT/Utilities/node_modules/vite/dist/client/env.mjs"
+        },
+        {
+          "method": "GET",
+          "url": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2"
+        }
+      ]
+    },
+    "quickkit/index.html@desktop": {
+      "layout": {
+        "width": 1440,
+        "scrollWidth": 1440,
+        "title": "QuickKit — Small tasks, sorted",
+        "h1": "Get the little things out of your way.",
+        "visibleButtons": 0
+      },
+      "noOverflow": true,
+      "consoleErrors": [],
+      "requests": [
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4174/"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4174/@vite/client"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4174/styles.css"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4174/app.js?t=1793352483101"
+        },
+        {
+          "method": "GET",
+          "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4174/@fs/C:/Users/Lunar%20Panda/OneDrive/Documentos/ChatGPT/Utilities/node_modules/vite/dist/client/env.mjs"
+        },
+        {
+          "method": "GET",
+          "url": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2"
+        }
+      ]
+    },
+    "quickkit/index.html@tablet": {
+      "layout": {
+        "width": 768,
+        "scrollWidth": 768,
+        "title": "QuickKit — Small tasks, sorted",
+        "h1": "Get the little things out of your way.",
+        "visibleButtons": 0
+      },
+      "noOverflow": true,
+      "consoleErrors": [],
+      "requests": [
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4174/"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4174/@vite/client"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4174/styles.css"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4174/app.js?t=1793352483101"
+        },
+        {
+          "method": "GET",
+          "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4174/@fs/C:/Users/Lunar%20Panda/OneDrive/Documentos/ChatGPT/Utilities/node_modules/vite/dist/client/env.mjs"
+        },
+        {
+          "method": "GET",
+          "url": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2"
+        }
+      ]
+    },
+    "quickkit/index.html@mobile": {
+      "layout": {
+        "width": 390,
+        "scrollWidth": 390,
+        "title": "QuickKit — Small tasks, sorted",
+        "h1": "Get the little things out of your way.",
+        "visibleButtons": 0
+      },
+      "noOverflow": true,
+      "consoleErrors": [],
+      "requests": [
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4174/"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4174/@vite/client"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4174/styles.css"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4174/app.js?t=1793352483101"
+        },
+        {
+          "method": "GET",
+          "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4174/@fs/C:/Users/Lunar%20Panda/OneDrive/Documentos/ChatGPT/Utilities/node_modules/vite/dist/client/env.mjs"
+        },
+        {
+          "method": "GET",
+          "url": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2"
+        }
+      ]
+    },
+    "quickkit/index.html@narrow-mobile": {
+      "layout": {
+        "width": 320,
+        "scrollWidth": 320,
+        "title": "QuickKit — Small tasks, sorted",
+        "h1": "Get the little things out of your way.",
+        "visibleButtons": 0
+      },
+      "noOverflow": true,
+      "consoleErrors": [],
+      "requests": [
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4174/"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4174/@vite/client"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4174/styles.css"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4174/app.js?t=1793352483101"
+        },
+        {
+          "method": "GET",
+          "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4174/@fs/C:/Users/Lunar%20Panda/OneDrive/Documentos/ChatGPT/Utilities/node_modules/vite/dist/client/env.mjs"
+        },
+        {
+          "method": "GET",
+          "url": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2"
+        }
+      ]
+    },
+    "quickkit/image-compressor.html@desktop": {
+      "layout": {
+        "width": 1440,
+        "scrollWidth": 1440,
+        "title": "Image Compressor to KB — QuickKit",
+        "h1": "Compress image to KB",
+        "visibleButtons": 6
+      },
+      "noOverflow": true,
+      "consoleErrors": [],
+      "requests": [
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4174/image-compressor.html"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4174/@vite/client"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4174/styles.css"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4174/app.js?t=1793352483101"
+        },
+        {
+          "method": "GET",
+          "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4174/@fs/C:/Users/Lunar%20Panda/OneDrive/Documentos/ChatGPT/Utilities/node_modules/vite/dist/client/env.mjs"
+        },
+        {
+          "method": "GET",
+          "url": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2"
+        }
+      ]
+    },
+    "quickkit/image-compressor.html@tablet": {
+      "layout": {
+        "width": 768,
+        "scrollWidth": 768,
+        "title": "Image Compressor to KB — QuickKit",
+        "h1": "Compress image to KB",
+        "visibleButtons": 6
+      },
+      "noOverflow": true,
+      "consoleErrors": [],
+      "requests": [
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4174/image-compressor.html"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4174/@vite/client"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4174/styles.css"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4174/app.js?t=1793352483101"
+        },
+        {
+          "method": "GET",
+          "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4174/@fs/C:/Users/Lunar%20Panda/OneDrive/Documentos/ChatGPT/Utilities/node_modules/vite/dist/client/env.mjs"
+        },
+        {
+          "method": "GET",
+          "url": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2"
+        }
+      ]
+    },
+    "quickkit/image-compressor.html@mobile": {
+      "layout": {
+        "width": 390,
+        "scrollWidth": 390,
+        "title": "Image Compressor to KB — QuickKit",
+        "h1": "Compress image to KB",
+        "visibleButtons": 6
+      },
+      "noOverflow": true,
+      "consoleErrors": [],
+      "requests": [
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4174/image-compressor.html"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4174/@vite/client"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4174/styles.css"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4174/app.js?t=1793352483101"
+        },
+        {
+          "method": "GET",
+          "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4174/@fs/C:/Users/Lunar%20Panda/OneDrive/Documentos/ChatGPT/Utilities/node_modules/vite/dist/client/env.mjs"
+        },
+        {
+          "method": "GET",
+          "url": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2"
+        }
+      ]
+    },
+    "quickkit/image-compressor.html@narrow-mobile": {
+      "layout": {
+        "width": 320,
+        "scrollWidth": 320,
+        "title": "Image Compressor to KB — QuickKit",
+        "h1": "Compress image to KB",
+        "visibleButtons": 6
+      },
+      "noOverflow": true,
+      "consoleErrors": [],
+      "requests": [
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4174/image-compressor.html"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4174/@vite/client"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4174/styles.css"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4174/app.js?t=1793352483101"
+        },
+        {
+          "method": "GET",
+          "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4174/@fs/C:/Users/Lunar%20Panda/OneDrive/Documentos/ChatGPT/Utilities/node_modules/vite/dist/client/env.mjs"
+        },
+        {
+          "method": "GET",
+          "url": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2"
+        }
+      ]
+    },
+    "quickkit/text-tools.html@desktop": {
+      "layout": {
+        "width": 1440,
+        "scrollWidth": 1440,
+        "title": "Word Counter and Text Cleaner — QuickKit",
+        "h1": "Word counter and text cleaner",
+        "visibleButtons": 6
+      },
+      "noOverflow": true,
+      "consoleErrors": [],
+      "requests": [
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4174/text-tools.html"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4174/@vite/client"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4174/styles.css"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4174/app.js?t=1793352483101"
+        },
+        {
+          "method": "GET",
+          "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4174/@fs/C:/Users/Lunar%20Panda/OneDrive/Documentos/ChatGPT/Utilities/node_modules/vite/dist/client/env.mjs"
+        },
+        {
+          "method": "GET",
+          "url": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2"
+        }
+      ]
+    },
+    "quickkit/text-tools.html@tablet": {
+      "layout": {
+        "width": 768,
+        "scrollWidth": 768,
+        "title": "Word Counter and Text Cleaner — QuickKit",
+        "h1": "Word counter and text cleaner",
+        "visibleButtons": 6
+      },
+      "noOverflow": true,
+      "consoleErrors": [],
+      "requests": [
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4174/text-tools.html"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4174/@vite/client"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4174/styles.css"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4174/app.js?t=1793352483101"
+        },
+        {
+          "method": "GET",
+          "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4174/@fs/C:/Users/Lunar%20Panda/OneDrive/Documentos/ChatGPT/Utilities/node_modules/vite/dist/client/env.mjs"
+        },
+        {
+          "method": "GET",
+          "url": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2"
+        }
+      ]
+    },
+    "quickkit/text-tools.html@mobile": {
+      "layout": {
+        "width": 390,
+        "scrollWidth": 390,
+        "title": "Word Counter and Text Cleaner — QuickKit",
+        "h1": "Word counter and text cleaner",
+        "visibleButtons": 6
+      },
+      "noOverflow": true,
+      "consoleErrors": [],
+      "requests": [
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4174/text-tools.html"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4174/@vite/client"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4174/styles.css"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4174/app.js?t=1793352483101"
+        },
+        {
+          "method": "GET",
+          "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4174/@fs/C:/Users/Lunar%20Panda/OneDrive/Documentos/ChatGPT/Utilities/node_modules/vite/dist/client/env.mjs"
+        },
+        {
+          "method": "GET",
+          "url": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2"
+        }
+      ]
+    },
+    "quickkit/text-tools.html@narrow-mobile": {
+      "layout": {
+        "width": 320,
+        "scrollWidth": 320,
+        "title": "Word Counter and Text Cleaner — QuickKit",
+        "h1": "Word counter and text cleaner",
+        "visibleButtons": 6
+      },
+      "noOverflow": true,
+      "consoleErrors": [],
+      "requests": [
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4174/text-tools.html"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4174/@vite/client"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4174/styles.css"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4174/app.js?t=1793352483101"
+        },
+        {
+          "method": "GET",
+          "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4174/@fs/C:/Users/Lunar%20Panda/OneDrive/Documentos/ChatGPT/Utilities/node_modules/vite/dist/client/env.mjs"
+        },
+        {
+          "method": "GET",
+          "url": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2"
+        }
+      ]
+    },
+    "quickkit/wifi-qr.html@desktop": {
+      "layout": {
+        "width": 1440,
+        "scrollWidth": 1440,
+        "title": "Wi-Fi QR Code Generator — QuickKit",
+        "h1": "Wi-Fi QR code generator",
+        "visibleButtons": 1
+      },
+      "noOverflow": true,
+      "consoleErrors": [],
+      "requests": [
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4174/wifi-qr.html"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4174/@vite/client"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4174/styles.css"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4174/app.js?t=1793352483101"
+        },
+        {
+          "method": "GET",
+          "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4174/@fs/C:/Users/Lunar%20Panda/OneDrive/Documentos/ChatGPT/Utilities/node_modules/vite/dist/client/env.mjs"
+        },
+        {
+          "method": "GET",
+          "url": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2"
+        }
+      ]
+    },
+    "quickkit/wifi-qr.html@tablet": {
+      "layout": {
+        "width": 768,
+        "scrollWidth": 768,
+        "title": "Wi-Fi QR Code Generator — QuickKit",
+        "h1": "Wi-Fi QR code generator",
+        "visibleButtons": 1
+      },
+      "noOverflow": true,
+      "consoleErrors": [],
+      "requests": [
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4174/wifi-qr.html"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4174/@vite/client"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4174/styles.css"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4174/app.js?t=1793352483101"
+        },
+        {
+          "method": "GET",
+          "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4174/@fs/C:/Users/Lunar%20Panda/OneDrive/Documentos/ChatGPT/Utilities/node_modules/vite/dist/client/env.mjs"
+        },
+        {
+          "method": "GET",
+          "url": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2"
+        }
+      ]
+    },
+    "quickkit/wifi-qr.html@mobile": {
+      "layout": {
+        "width": 390,
+        "scrollWidth": 390,
+        "title": "Wi-Fi QR Code Generator — QuickKit",
+        "h1": "Wi-Fi QR code generator",
+        "visibleButtons": 1
+      },
+      "noOverflow": true,
+      "consoleErrors": [],
+      "requests": [
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4174/wifi-qr.html"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4174/@vite/client"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4174/styles.css"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4174/app.js?t=1793352483101"
+        },
+        {
+          "method": "GET",
+          "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4174/@fs/C:/Users/Lunar%20Panda/OneDrive/Documentos/ChatGPT/Utilities/node_modules/vite/dist/client/env.mjs"
+        },
+        {
+          "method": "GET",
+          "url": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2"
+        }
+      ]
+    },
+    "quickkit/wifi-qr.html@narrow-mobile": {
+      "layout": {
+        "width": 320,
+        "scrollWidth": 320,
+        "title": "Wi-Fi QR Code Generator — QuickKit",
+        "h1": "Wi-Fi QR code generator",
+        "visibleButtons": 1
+      },
+      "noOverflow": true,
+      "consoleErrors": [],
+      "requests": [
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4174/wifi-qr.html"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4174/@vite/client"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4174/styles.css"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4174/app.js?t=1793352483101"
+        },
+        {
+          "method": "GET",
+          "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4174/@fs/C:/Users/Lunar%20Panda/OneDrive/Documentos/ChatGPT/Utilities/node_modules/vite/dist/client/env.mjs"
+        },
+        {
+          "method": "GET",
+          "url": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2"
+        }
+      ]
+    },
+    "quickkit/pdf-merge.html@desktop": {
+      "layout": {
+        "width": 1440,
+        "scrollWidth": 1440,
+        "title": "Merge PDF Files — QuickKit",
+        "h1": "Merge PDF files",
+        "visibleButtons": 1
+      },
+      "noOverflow": true,
+      "consoleErrors": [],
+      "requests": [
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4174/pdf-merge.html"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4174/@vite/client"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4174/styles.css"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4174/app.js?t=1793352483101"
+        },
+        {
+          "method": "GET",
+          "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4174/@fs/C:/Users/Lunar%20Panda/OneDrive/Documentos/ChatGPT/Utilities/node_modules/vite/dist/client/env.mjs"
+        },
+        {
+          "method": "GET",
+          "url": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2"
+        }
+      ]
+    },
+    "quickkit/pdf-merge.html@tablet": {
+      "layout": {
+        "width": 768,
+        "scrollWidth": 768,
+        "title": "Merge PDF Files — QuickKit",
+        "h1": "Merge PDF files",
+        "visibleButtons": 1
+      },
+      "noOverflow": true,
+      "consoleErrors": [],
+      "requests": [
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4174/pdf-merge.html"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4174/@vite/client"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4174/styles.css"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4174/app.js?t=1793352483101"
+        },
+        {
+          "method": "GET",
+          "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4174/@fs/C:/Users/Lunar%20Panda/OneDrive/Documentos/ChatGPT/Utilities/node_modules/vite/dist/client/env.mjs"
+        },
+        {
+          "method": "GET",
+          "url": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2"
+        }
+      ]
+    },
+    "quickkit/pdf-merge.html@mobile": {
+      "layout": {
+        "width": 390,
+        "scrollWidth": 390,
+        "title": "Merge PDF Files — QuickKit",
+        "h1": "Merge PDF files",
+        "visibleButtons": 1
+      },
+      "noOverflow": true,
+      "consoleErrors": [],
+      "requests": [
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4174/pdf-merge.html"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4174/@vite/client"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4174/styles.css"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4174/app.js?t=1793352483101"
+        },
+        {
+          "method": "GET",
+          "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4174/@fs/C:/Users/Lunar%20Panda/OneDrive/Documentos/ChatGPT/Utilities/node_modules/vite/dist/client/env.mjs"
+        },
+        {
+          "method": "GET",
+          "url": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2"
+        }
+      ]
+    },
+    "quickkit/pdf-merge.html@narrow-mobile": {
+      "layout": {
+        "width": 320,
+        "scrollWidth": 320,
+        "title": "Merge PDF Files — QuickKit",
+        "h1": "Merge PDF files",
+        "visibleButtons": 1
+      },
+      "noOverflow": true,
+      "consoleErrors": [],
+      "requests": [
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4174/pdf-merge.html"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4174/@vite/client"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4174/styles.css"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4174/app.js?t=1793352483101"
+        },
+        {
+          "method": "GET",
+          "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4174/@fs/C:/Users/Lunar%20Panda/OneDrive/Documentos/ChatGPT/Utilities/node_modules/vite/dist/client/env.mjs"
+        },
+        {
+          "method": "GET",
+          "url": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2"
+        }
+      ]
+    },
+    "formready/index.html@desktop": {
+      "layout": {
+        "width": 1440,
+        "scrollWidth": 1440,
+        "title": "FormReady — Prepare your application photo or signature",
+        "h1": "Get your photo or signature ready.",
+        "visibleButtons": 0
+      },
+      "noOverflow": true,
+      "consoleErrors": [],
+      "requests": [
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4175/"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4175/@vite/client"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4175/styles.css"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4175/app.js"
+        },
+        {
+          "method": "GET",
+          "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4175/@fs/C:/Users/Lunar%20Panda/OneDrive/Documentos/ChatGPT/Utilities/node_modules/vite/dist/client/env.mjs"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4175/@fs/C:/Users/Lunar%20Panda/OneDrive/Documentos/ChatGPT/Utilities/node_modules/.vite/deps/cropperjs.js?v=eaee0db8"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4175/@fs/C:/Users/Lunar%20Panda/OneDrive/Documentos/ChatGPT/Utilities/node_modules/cropperjs/dist/cropper.css"
+        },
+        {
+          "method": "GET",
+          "url": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2"
+        }
+      ]
+    },
+    "formready/index.html@tablet": {
+      "layout": {
+        "width": 768,
+        "scrollWidth": 768,
+        "title": "FormReady — Prepare your application photo or signature",
+        "h1": "Get your photo or signature ready.",
+        "visibleButtons": 0
+      },
+      "noOverflow": true,
+      "consoleErrors": [],
+      "requests": [
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4175/"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4175/@vite/client"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4175/styles.css"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4175/app.js"
+        },
+        {
+          "method": "GET",
+          "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4175/@fs/C:/Users/Lunar%20Panda/OneDrive/Documentos/ChatGPT/Utilities/node_modules/vite/dist/client/env.mjs"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4175/@fs/C:/Users/Lunar%20Panda/OneDrive/Documentos/ChatGPT/Utilities/node_modules/.vite/deps/cropperjs.js?v=eaee0db8"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4175/@fs/C:/Users/Lunar%20Panda/OneDrive/Documentos/ChatGPT/Utilities/node_modules/cropperjs/dist/cropper.css"
+        },
+        {
+          "method": "GET",
+          "url": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2"
+        }
+      ]
+    },
+    "formready/index.html@mobile": {
+      "layout": {
+        "width": 390,
+        "scrollWidth": 390,
+        "title": "FormReady — Prepare your application photo or signature",
+        "h1": "Get your photo or signature ready.",
+        "visibleButtons": 0
+      },
+      "noOverflow": true,
+      "consoleErrors": [],
+      "requests": [
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4175/"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4175/@vite/client"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4175/styles.css"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4175/app.js"
+        },
+        {
+          "method": "GET",
+          "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4175/@fs/C:/Users/Lunar%20Panda/OneDrive/Documentos/ChatGPT/Utilities/node_modules/vite/dist/client/env.mjs"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4175/@fs/C:/Users/Lunar%20Panda/OneDrive/Documentos/ChatGPT/Utilities/node_modules/.vite/deps/cropperjs.js?v=eaee0db8"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4175/@fs/C:/Users/Lunar%20Panda/OneDrive/Documentos/ChatGPT/Utilities/node_modules/cropperjs/dist/cropper.css"
+        },
+        {
+          "method": "GET",
+          "url": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2"
+        }
+      ]
+    },
+    "formready/index.html@narrow-mobile": {
+      "layout": {
+        "width": 320,
+        "scrollWidth": 320,
+        "title": "FormReady — Prepare your application photo or signature",
+        "h1": "Get your photo or signature ready.",
+        "visibleButtons": 0
+      },
+      "noOverflow": true,
+      "consoleErrors": [],
+      "requests": [
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4175/"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4175/@vite/client"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4175/styles.css"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4175/app.js"
+        },
+        {
+          "method": "GET",
+          "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4175/@fs/C:/Users/Lunar%20Panda/OneDrive/Documentos/ChatGPT/Utilities/node_modules/.vite/deps/cropperjs.js?v=eaee0db8"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4175/@fs/C:/Users/Lunar%20Panda/OneDrive/Documentos/ChatGPT/Utilities/node_modules/cropperjs/dist/cropper.css"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4175/@fs/C:/Users/Lunar%20Panda/OneDrive/Documentos/ChatGPT/Utilities/node_modules/vite/dist/client/env.mjs"
+        },
+        {
+          "method": "GET",
+          "url": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2"
+        }
+      ]
+    },
+    "formready/image-preparer.html@desktop": {
+      "layout": {
+        "width": 1440,
+        "scrollWidth": 1440,
+        "title": "Photo and Signature Resizer — FormReady",
+        "h1": "Photo and signature resizer",
+        "visibleButtons": 5
+      },
+      "noOverflow": true,
+      "consoleErrors": [],
+      "requests": [
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4175/image-preparer.html"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4175/@vite/client"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4175/styles.css"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4175/app.js"
+        },
+        {
+          "method": "GET",
+          "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4175/@fs/C:/Users/Lunar%20Panda/OneDrive/Documentos/ChatGPT/Utilities/node_modules/vite/dist/client/env.mjs"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4175/@fs/C:/Users/Lunar%20Panda/OneDrive/Documentos/ChatGPT/Utilities/node_modules/.vite/deps/cropperjs.js?v=eaee0db8"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4175/@fs/C:/Users/Lunar%20Panda/OneDrive/Documentos/ChatGPT/Utilities/node_modules/cropperjs/dist/cropper.css"
+        },
+        {
+          "method": "GET",
+          "url": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2"
+        }
+      ]
+    },
+    "formready/image-preparer.html@tablet": {
+      "layout": {
+        "width": 768,
+        "scrollWidth": 768,
+        "title": "Photo and Signature Resizer — FormReady",
+        "h1": "Photo and signature resizer",
+        "visibleButtons": 5
+      },
+      "noOverflow": true,
+      "consoleErrors": [],
+      "requests": [
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4175/image-preparer.html"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4175/@vite/client"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4175/styles.css"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4175/app.js"
+        },
+        {
+          "method": "GET",
+          "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4175/@fs/C:/Users/Lunar%20Panda/OneDrive/Documentos/ChatGPT/Utilities/node_modules/vite/dist/client/env.mjs"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4175/@fs/C:/Users/Lunar%20Panda/OneDrive/Documentos/ChatGPT/Utilities/node_modules/.vite/deps/cropperjs.js?v=eaee0db8"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4175/@fs/C:/Users/Lunar%20Panda/OneDrive/Documentos/ChatGPT/Utilities/node_modules/cropperjs/dist/cropper.css"
+        },
+        {
+          "method": "GET",
+          "url": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2"
+        }
+      ]
+    },
+    "formready/image-preparer.html@mobile": {
+      "layout": {
+        "width": 390,
+        "scrollWidth": 390,
+        "title": "Photo and Signature Resizer — FormReady",
+        "h1": "Photo and signature resizer",
+        "visibleButtons": 5
+      },
+      "noOverflow": true,
+      "consoleErrors": [],
+      "requests": [
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4175/image-preparer.html"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4175/@vite/client"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4175/styles.css"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4175/app.js"
+        },
+        {
+          "method": "GET",
+          "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4175/@fs/C:/Users/Lunar%20Panda/OneDrive/Documentos/ChatGPT/Utilities/node_modules/vite/dist/client/env.mjs"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4175/@fs/C:/Users/Lunar%20Panda/OneDrive/Documentos/ChatGPT/Utilities/node_modules/.vite/deps/cropperjs.js?v=eaee0db8"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4175/@fs/C:/Users/Lunar%20Panda/OneDrive/Documentos/ChatGPT/Utilities/node_modules/cropperjs/dist/cropper.css"
+        },
+        {
+          "method": "GET",
+          "url": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2"
+        }
+      ]
+    },
+    "formready/image-preparer.html@narrow-mobile": {
+      "layout": {
+        "width": 320,
+        "scrollWidth": 320,
+        "title": "Photo and Signature Resizer — FormReady",
+        "h1": "Photo and signature resizer",
+        "visibleButtons": 5
+      },
+      "noOverflow": true,
+      "consoleErrors": [],
+      "requests": [
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4175/image-preparer.html"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4175/@vite/client"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4175/styles.css"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4175/app.js"
+        },
+        {
+          "method": "GET",
+          "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4175/@fs/C:/Users/Lunar%20Panda/OneDrive/Documentos/ChatGPT/Utilities/node_modules/.vite/deps/cropperjs.js?v=eaee0db8"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4175/@fs/C:/Users/Lunar%20Panda/OneDrive/Documentos/ChatGPT/Utilities/node_modules/cropperjs/dist/cropper.css"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4175/@fs/C:/Users/Lunar%20Panda/OneDrive/Documentos/ChatGPT/Utilities/node_modules/vite/dist/client/env.mjs"
+        },
+        {
+          "method": "GET",
+          "url": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2"
+        }
+      ]
+    },
+    "WorkKit overnight shift plus break totals 15.5h and $310": {
+      "pass": true,
+      "details": "actual 15.50 hours, $310.00"
+    },
+    "WorkKit local draft restores shifts and rate": {
+      "pass": true,
+      "details": "stored draft reload"
+    },
+    "WorkKit CSV download": {
+      "pass": true,
+      "details": "workkit-timesheet.csv"
+    },
+    "WorkKit equal start/end is treated as a 24h shift only with explicit entry": {
+      "pass": true,
+      "details": "24.00"
+    },
+    "WorkKit 45h overtime example": {
+      "pass": true,
+      "details": "$950.00"
+    },
+    "QuickKit image compression outputs measured result and download": {
+      "pass": true,
+      "details": "20.4 KB original\n48.4 KB result\n640 × 480px\nAt or below 50 KB\nDownload image"
+    },
+    "QuickKit trim cleanup": {
+      "pass": true,
+      "details": "\"hello world\\n\\nhello world\""
+    },
+    "QuickKit duplicate line cleanup": {
+      "pass": true,
+      "details": "\"hello world\\n\""
+    },
+    "QuickKit password generator length": {
+      "pass": true,
+      "details": "length 24"
+    },
+    "QuickKit Wi-Fi QR decodes with escaped credentials": {
+      "pass": true,
+      "details": "WIFI:T:WPA;S:Home\\; WiFi;P:safe\\:password;H:false;;"
+    },
+    "QuickKit PDF merge produces valid 2-page PDF": {
+      "pass": true,
+      "details": "pages: 2"
+    },
+    "FormReady exact dimensions and size check": {
+      "pass": true,
+      "details": "ready to review; PASS\nFormat\nJPEG\nPASS\nDimensions\n120 × 140px\nPASS\nFile size\n6.9 KB"
+    },
+    "FormReady image download": {
+      "pass": true,
+      "details": "formready-photo.jpg"
+    },
+    "FormReady reset clears cropper and result": {
+      "pass": true,
+      "details": "cropper reset"
+    }
+  },
+  "errors": [],
+  "summary": {
+    "total": 58,
+    "failures": 0,
+    "errors": []
+  }
+}
