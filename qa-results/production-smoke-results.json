@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-30T12:48:46.584Z",
+  "generatedAt": "2026-10-30T14:15:53.454Z",
   "browser": "Chromium 156.0.8078.4",
   "sites": {
     "workkit": {
@@ -30,7 +30,7 @@
         {
           "route": "/overtime-calculator.html",
           "status": 200,
-          "title": "Overtime Pay Calculator: Weekly Hours and Pay | WorkKit",
+          "title": "Overtime Pay Calculator and Currency Converter | WorkKit",
           "h1": "Overtime calculator",
           "canonical": "https://workkit-hours-tools.pages.dev/overtime-calculator.html",
           "scrollWidth": 1440,
@@ -64,7 +64,9 @@
         ]
       },
       "interaction": {
-        "pay": "$950.00"
+        "pay": "$950.00",
+        "conversion": "₹90,449.50",
+        "rateStatus": "1 USD = 95.21 INR · daily mid-market reference · 2026-10-30 · Frankfurter"
       },
       "overlapInteraction": {
         "message": "Shifts overlap. Adjust the times so the same minutes are not counted twice.",
@@ -175,6 +177,19 @@
         "placed": 1,
         "pages": 1,
         "filename": "production-check-edited.pdf"
+      },
+      "sourceTextInteraction": {
+        "text": [
+          "Edited live line"
+        ],
+        "errors": [],
+        "filename": "live-source-text-edited.pdf"
+      },
+      "imageToPdfInteraction": {
+        "pages": 1,
+        "width": 841.89,
+        "height": 595.28,
+        "filename": "quickkit-images.pdf"
       }
     },
     "formready": {
@@ -230,12 +245,12 @@
     {
       "site": "workkit",
       "method": "GET",
-      "url": "https://workkit-hours-tools.pages.dev/assets/app-BfJgoS0C.js"
+      "url": "https://workkit-hours-tools.pages.dev/assets/app-DUMdSQ27.js"
     },
     {
       "site": "workkit",
       "method": "GET",
-      "url": "https://workkit-hours-tools.pages.dev/assets/styles-DnfvafAB.css"
+      "url": "https://workkit-hours-tools.pages.dev/assets/styles-LdpwY07u.css"
     },
     {
       "site": "workkit",
@@ -260,12 +275,12 @@
     {
       "site": "workkit",
       "method": "GET",
-      "url": "https://workkit-hours-tools.pages.dev/assets/app-BfJgoS0C.js"
+      "url": "https://workkit-hours-tools.pages.dev/assets/app-DUMdSQ27.js"
     },
     {
       "site": "workkit",
       "method": "GET",
-      "url": "https://workkit-hours-tools.pages.dev/assets/styles-DnfvafAB.css"
+      "url": "https://workkit-hours-tools.pages.dev/assets/styles-LdpwY07u.css"
     },
     {
       "site": "workkit",
@@ -290,12 +305,12 @@
     {
       "site": "workkit",
       "method": "GET",
-      "url": "https://workkit-hours-tools.pages.dev/assets/app-BfJgoS0C.js"
+      "url": "https://workkit-hours-tools.pages.dev/assets/app-DUMdSQ27.js"
     },
     {
       "site": "workkit",
       "method": "GET",
-      "url": "https://workkit-hours-tools.pages.dev/assets/styles-DnfvafAB.css"
+      "url": "https://workkit-hours-tools.pages.dev/assets/styles-LdpwY07u.css"
     },
     {
       "site": "workkit",
@@ -320,12 +335,12 @@
     {
       "site": "workkit",
       "method": "GET",
-      "url": "https://workkit-hours-tools.pages.dev/assets/app-BfJgoS0C.js"
+      "url": "https://workkit-hours-tools.pages.dev/assets/app-DUMdSQ27.js"
     },
     {
       "site": "workkit",
       "method": "GET",
-      "url": "https://workkit-hours-tools.pages.dev/assets/styles-DnfvafAB.css"
+      "url": "https://workkit-hours-tools.pages.dev/assets/styles-LdpwY07u.css"
     },
     {
       "site": "workkit",
@@ -335,7 +350,7 @@
     {
       "site": "workkit",
       "method": "GET",
-      "url": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2"
+      "url": "https://fonts.gstatic.com/l/font?kit=QGYFz_MVcBeNP4NjuGObqx1XmO1I4TC1aYqc4vi0GKDIIyHlBNBZBFQ&skey=bafc0b239d492b2c&v=v15"
     },
     {
       "site": "quickkit",
@@ -355,7 +370,7 @@
     {
       "site": "quickkit",
       "method": "GET",
-      "url": "https://quickkit-browser-tools.pages.dev/assets/app-D0aOOAR0.js"
+      "url": "https://quickkit-browser-tools.pages.dev/assets/app-zWG5Oc7j.js"
     },
     {
       "site": "quickkit",
@@ -385,7 +400,7 @@
     {
       "site": "quickkit",
       "method": "GET",
-      "url": "https://quickkit-browser-tools.pages.dev/assets/image-to-pdf--0hZv6D0.js"
+      "url": "https://quickkit-browser-tools.pages.dev/assets/image-to-pdf-DNgktiYY.js"
     },
     {
       "site": "quickkit",
@@ -400,7 +415,7 @@
     {
       "site": "quickkit",
       "method": "GET",
-      "url": "https://quickkit-browser-tools.pages.dev/assets/index-CfA9Roq9.js"
+      "url": "https://quickkit-browser-tools.pages.dev/assets/index-D7KNmNtJ.js"
     },
     {
       "site": "quickkit",
@@ -445,7 +460,7 @@
     {
       "site": "quickkit",
       "method": "GET",
-      "url": "https://quickkit-browser-tools.pages.dev/assets/app-D0aOOAR0.js"
+      "url": "https://quickkit-browser-tools.pages.dev/assets/app-zWG5Oc7j.js"
     },
     {
       "site": "quickkit",
@@ -475,7 +490,7 @@
     {
       "site": "quickkit",
       "method": "GET",
-      "url": "https://quickkit-browser-tools.pages.dev/assets/pdf-editor-B8xQxed6.js"
+      "url": "https://quickkit-browser-tools.pages.dev/assets/pdf-editor-oBTPz0SZ.js"
     },
     {
       "site": "quickkit",
@@ -495,12 +510,12 @@
     {
       "site": "quickkit",
       "method": "GET",
-      "url": "https://quickkit-browser-tools.pages.dev/assets/index-CfA9Roq9.js"
+      "url": "https://quickkit-browser-tools.pages.dev/assets/index-D7KNmNtJ.js"
     },
     {
       "site": "quickkit",
       "method": "GET",
-      "url": "https://quickkit-browser-tools.pages.dev/assets/pdf-editor-BmO8eoT5.css"
+      "url": "https://quickkit-browser-tools.pages.dev/assets/pdf-editor-ChDte_N5.css"
     },
     {
       "site": "quickkit",
@@ -540,7 +555,7 @@
     {
       "site": "quickkit",
       "method": "GET",
-      "url": "https://quickkit-browser-tools.pages.dev/assets/app-D0aOOAR0.js"
+      "url": "https://quickkit-browser-tools.pages.dev/assets/app-zWG5Oc7j.js"
     },
     {
       "site": "quickkit",
@@ -580,7 +595,7 @@
     {
       "site": "quickkit",
       "method": "GET",
-      "url": "https://quickkit-browser-tools.pages.dev/assets/app-D0aOOAR0.js"
+      "url": "https://quickkit-browser-tools.pages.dev/assets/app-zWG5Oc7j.js"
     },
     {
       "site": "quickkit",
@@ -620,7 +635,7 @@
     {
       "site": "quickkit",
       "method": "GET",
-      "url": "https://quickkit-browser-tools.pages.dev/assets/app-D0aOOAR0.js"
+      "url": "https://quickkit-browser-tools.pages.dev/assets/app-zWG5Oc7j.js"
     },
     {
       "site": "quickkit",
@@ -701,6 +716,246 @@
       "site": "formready",
       "method": "GET",
       "url": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2"
+    },
+    {
+      "site": "workkit",
+      "method": "GET",
+      "url": "https://workkit-hours-tools.pages.dev/overtime-calculator.html"
+    },
+    {
+      "site": "workkit",
+      "method": "GET",
+      "url": "https://workkit-hours-tools.pages.dev/overtime-calculator"
+    },
+    {
+      "site": "workkit",
+      "method": "GET",
+      "url": "https://workkit-hours-tools.pages.dev/assets/app-DUMdSQ27.js"
+    },
+    {
+      "site": "workkit",
+      "method": "GET",
+      "url": "https://workkit-hours-tools.pages.dev/assets/styles-LdpwY07u.css"
+    },
+    {
+      "site": "workkit",
+      "method": "GET",
+      "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
+    },
+    {
+      "site": "workkit",
+      "method": "GET",
+      "url": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2"
+    },
+    {
+      "site": "workkit",
+      "method": "GET",
+      "url": "https://api.frankfurter.dev/v2/rate/usd/inr"
+    },
+    {
+      "site": "workkit",
+      "method": "GET",
+      "url": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJuktqQ4E.woff2"
+    },
+    {
+      "site": "quickkit",
+      "method": "GET",
+      "url": "https://quickkit-browser-tools.pages.dev/pdf-editor.html"
+    },
+    {
+      "site": "quickkit",
+      "method": "GET",
+      "url": "https://quickkit-browser-tools.pages.dev/pdf-editor"
+    },
+    {
+      "site": "quickkit",
+      "method": "GET",
+      "url": "https://quickkit-browser-tools.pages.dev/assets/pdf-editor-oBTPz0SZ.js"
+    },
+    {
+      "site": "quickkit",
+      "method": "GET",
+      "url": "https://quickkit-browser-tools.pages.dev/assets/modulepreload-polyfill-B5Qt9EMX.js"
+    },
+    {
+      "site": "quickkit",
+      "method": "GET",
+      "url": "https://quickkit-browser-tools.pages.dev/assets/preload-helper-PPVm8Dsz.js"
+    },
+    {
+      "site": "quickkit",
+      "method": "GET",
+      "url": "https://quickkit-browser-tools.pages.dev/assets/_commonjsHelpers-CqkleIqs.js"
+    },
+    {
+      "site": "quickkit",
+      "method": "GET",
+      "url": "https://quickkit-browser-tools.pages.dev/assets/index-D7KNmNtJ.js"
+    },
+    {
+      "site": "quickkit",
+      "method": "GET",
+      "url": "https://quickkit-browser-tools.pages.dev/assets/pdf-editor-ChDte_N5.css"
+    },
+    {
+      "site": "quickkit",
+      "method": "GET",
+      "url": "https://quickkit-browser-tools.pages.dev/assets/styles-qOJqZkOM.css"
+    },
+    {
+      "site": "quickkit",
+      "method": "GET",
+      "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
+    },
+    {
+      "site": "quickkit",
+      "method": "GET",
+      "url": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2"
+    },
+    {
+      "site": "quickkit",
+      "method": "GET",
+      "url": "https://quickkit-browser-tools.pages.dev/assets/pdf.worker.min-CjEcRF4W.mjs"
+    },
+    {
+      "site": "quickkit",
+      "method": "GET",
+      "url": "https://quickkit-browser-tools.pages.dev/pdf-editor.html"
+    },
+    {
+      "site": "quickkit",
+      "method": "GET",
+      "url": "https://quickkit-browser-tools.pages.dev/pdf-editor"
+    },
+    {
+      "site": "quickkit",
+      "method": "GET",
+      "url": "https://quickkit-browser-tools.pages.dev/assets/pdf-editor-oBTPz0SZ.js"
+    },
+    {
+      "site": "quickkit",
+      "method": "GET",
+      "url": "https://quickkit-browser-tools.pages.dev/assets/modulepreload-polyfill-B5Qt9EMX.js"
+    },
+    {
+      "site": "quickkit",
+      "method": "GET",
+      "url": "https://quickkit-browser-tools.pages.dev/assets/preload-helper-PPVm8Dsz.js"
+    },
+    {
+      "site": "quickkit",
+      "method": "GET",
+      "url": "https://quickkit-browser-tools.pages.dev/assets/_commonjsHelpers-CqkleIqs.js"
+    },
+    {
+      "site": "quickkit",
+      "method": "GET",
+      "url": "https://quickkit-browser-tools.pages.dev/assets/index-D7KNmNtJ.js"
+    },
+    {
+      "site": "quickkit",
+      "method": "GET",
+      "url": "https://quickkit-browser-tools.pages.dev/assets/pdf-editor-ChDte_N5.css"
+    },
+    {
+      "site": "quickkit",
+      "method": "GET",
+      "url": "https://quickkit-browser-tools.pages.dev/assets/styles-qOJqZkOM.css"
+    },
+    {
+      "site": "quickkit",
+      "method": "GET",
+      "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
+    },
+    {
+      "site": "quickkit",
+      "method": "GET",
+      "url": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2"
+    },
+    {
+      "site": "quickkit",
+      "method": "GET",
+      "url": "https://quickkit-browser-tools.pages.dev/assets/pdf.worker.min-CjEcRF4W.mjs"
+    },
+    {
+      "site": "quickkit",
+      "method": "GET",
+      "url": "https://quickkit-browser-tools.pages.dev/assets/qpdf-BbBs8sQi.js"
+    },
+    {
+      "site": "quickkit",
+      "method": "GET",
+      "url": "https://quickkit-browser-tools.pages.dev/assets/qpdf-DPxze0U1.wasm"
+    },
+    {
+      "site": "quickkit",
+      "method": "GET",
+      "url": "https://quickkit-browser-tools.pages.dev/assets/pdf.worker.min-CjEcRF4W.mjs"
+    },
+    {
+      "site": "quickkit",
+      "method": "GET",
+      "url": "https://quickkit-browser-tools.pages.dev/assets/pdf.worker.min-CjEcRF4W.mjs"
+    },
+    {
+      "site": "quickkit",
+      "method": "GET",
+      "url": "https://quickkit-browser-tools.pages.dev/image-to-pdf.html"
+    },
+    {
+      "site": "quickkit",
+      "method": "GET",
+      "url": "https://quickkit-browser-tools.pages.dev/image-to-pdf"
+    },
+    {
+      "site": "quickkit",
+      "method": "GET",
+      "url": "https://quickkit-browser-tools.pages.dev/assets/image-to-pdf-DNgktiYY.js"
+    },
+    {
+      "site": "quickkit",
+      "method": "GET",
+      "url": "https://quickkit-browser-tools.pages.dev/assets/modulepreload-polyfill-B5Qt9EMX.js"
+    },
+    {
+      "site": "quickkit",
+      "method": "GET",
+      "url": "https://quickkit-browser-tools.pages.dev/assets/_commonjsHelpers-CqkleIqs.js"
+    },
+    {
+      "site": "quickkit",
+      "method": "GET",
+      "url": "https://quickkit-browser-tools.pages.dev/assets/index-D7KNmNtJ.js"
+    },
+    {
+      "site": "quickkit",
+      "method": "GET",
+      "url": "https://quickkit-browser-tools.pages.dev/assets/image-to-pdf-BJB00w_R.css"
+    },
+    {
+      "site": "quickkit",
+      "method": "GET",
+      "url": "https://quickkit-browser-tools.pages.dev/assets/styles-qOJqZkOM.css"
+    },
+    {
+      "site": "quickkit",
+      "method": "GET",
+      "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
+    },
+    {
+      "site": "quickkit",
+      "method": "GET",
+      "url": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2"
+    },
+    {
+      "site": "quickkit",
+      "method": "GET",
+      "url": "blob:https://quickkit-browser-tools.pages.dev/ffbc6a56-91f8-4c8a-9644-bb431591ab4e"
+    },
+    {
+      "site": "quickkit",
+      "method": "GET",
+      "url": "blob:https://quickkit-browser-tools.pages.dev/ffbc6a56-91f8-4c8a-9644-bb431591ab4e"
     }
   ],
   "cloudflareSecurityChallengeRequests": 0,

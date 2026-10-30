@@ -58,6 +58,7 @@ async function checkLayout(product, path) {
 }
 async function assert(name, condition, details = '') {
   results.products[name] = { pass: Boolean(condition), details };
+  console.log(`${condition ? 'PASS' : 'FAIL'} ${name}`);
   if (!condition) results.errors.push(`${name}: ${details || 'failed'}`);
 }
 async function setImage(page, selector, { width = 640, height = 480, type = 'image/png', name = 'test-image.png' } = {}) {
@@ -130,11 +131,29 @@ for (const [product, paths] of Object.entries({
   await assert('WorkKit restores all fifteen weekly shift rows', await page.locator('#shift-list .shift-row').count() === 15, `rows ${await page.locator('#shift-list .shift-row').count()}`);
   await page.close();
   const ot = await pageFor('workkit', 'overtime-calculator.html', { width: 390, height: 844 });
+  const fxRequests = [];
+  await ot.page.route('https://api.frankfurter.dev/v2/rate/**', async (route) => {
+    const url = new URL(route.request().url());
+    fxRequests.push({ method: route.request().method(), path: url.pathname });
+    const [, , , base, quote] = url.pathname.split('/');
+    const rate = base === 'usd' && quote === 'inr' ? 83.5 : base === 'inr' && quote === 'gbp' ? .01 : 1.25;
+    await route.fulfill({ json: { date: '2026-10-29', base: base.toUpperCase(), quote: quote.toUpperCase(), rate } });
+  });
   await ot.page.locator('#ot-hours').fill('45'); await ot.page.locator('#ot-rate').fill('20'); await ot.page.locator('#overtime-form button[type=submit]').click();
   const overtimePay = await ot.page.locator('#ot-pay').innerText();
   await assert('WorkKit 45h overtime example', overtimePay === '$950.00', overtimePay);
+  await ot.page.waitForFunction(() => document.querySelector('#ot-fx-rate')?.innerText.includes('daily mid-market reference'));
+  await assert('WorkKit converts weekly gross pay with a dated daily rate', await ot.page.locator('#ot-fx-pay').innerText() === '₹79,325.00' && (await ot.page.locator('#ot-fx-rate').innerText()).includes('2026-10-29'), `${await ot.page.locator('#ot-fx-pay').innerText()} · ${await ot.page.locator('#ot-fx-rate').innerText()}`);
+  await assert('WorkKit sends only currency codes to the exchange-rate API', fxRequests.length === 1 && fxRequests[0].method === 'GET' && fxRequests[0].path === '/v2/rate/usd/inr' && !JSON.stringify(fxRequests).match(/950|20|45/u), JSON.stringify(fxRequests));
   await ot.page.locator('#currency').selectOption('INR');
   await assert('WorkKit overtime estimate supports INR formatting', await ot.page.locator('#ot-pay').innerText() === '₹950.00', await ot.page.locator('#ot-pay').innerText());
+  await assert('WorkKit shows the same-currency amount without an unnecessary rate request', await ot.page.locator('#ot-fx-pay').innerText() === '₹950.00' && (await ot.page.locator('#ot-fx-rate').innerText()).includes('Same currency') && fxRequests.length === 1, `${await ot.page.locator('#ot-fx-pay').innerText()} · requests ${fxRequests.length}`);
+  await ot.page.locator('#ot-target-currency').selectOption('GBP');
+  await ot.page.waitForFunction(() => document.querySelector('#ot-fx-rate')?.innerText.includes('daily mid-market reference'));
+  await assert('WorkKit can convert between other selected currencies', await ot.page.locator('#ot-fx-pay').innerText() === '£9.50' && fxRequests.at(-1)?.path === '/v2/rate/inr/gbp', `${await ot.page.locator('#ot-fx-pay').innerText()} · ${JSON.stringify(fxRequests)}`);
+  await ot.page.locator('#ot-fx-refresh').click();
+  await ot.page.waitForFunction(() => document.querySelector('#ot-fx-rate')?.innerText.includes('daily mid-market reference'));
+  await assert('WorkKit refreshes a cached currency pair on request', fxRequests.filter((request) => request.path === '/v2/rate/inr/gbp').length === 2, JSON.stringify(fxRequests));
   await ot.page.close();
   const salary = await pageFor('workkit', 'salary-converter.html', { width: 390, height: 844 });
   await salary.page.locator('#salary-rate').fill('20'); await salary.page.locator('#salary-form button[type=submit]').click();
@@ -145,6 +164,45 @@ for (const [product, paths] of Object.entries({
 
 // QuickKit: image compression, text handling, QR payload and valid multi-PDF merge.
 {
+  const imagePdf = await pageFor('quickkit', 'image-to-pdf.html', { width: 1440, height: 900 });
+  const galleryImages = await Promise.all([[640, 480, '#2b5868'], [480, 640, '#b84b3f']].map(([width, height, color], index) => imagePdf.page.evaluate(async ({ width, height, color, index }) => {
+    const canvas = document.createElement('canvas'); canvas.width = width; canvas.height = height;
+    const context = canvas.getContext('2d'); context.fillStyle = color; context.fillRect(0, 0, width, height);
+    context.fillStyle = '#f4c84b'; context.font = 'bold 42px sans-serif'; context.fillText(`PHOTO ${index + 1}`, 30, 80);
+    const blob = await new Promise((resolve) => canvas.toBlob(resolve, 'image/png'));
+    return Array.from(new Uint8Array(await blob.arrayBuffer()));
+  }, { width, height, color, index })));
+  await imagePdf.page.locator('#image-files').setInputFiles(galleryImages.map((data, index) => ({ name: `photo-${index + 1}.png`, mimeType: 'image/png', buffer: Buffer.from(data) })));
+  await imagePdf.page.locator('#image-gallery li').nth(1).waitFor();
+  await assert('QuickKit image-to-PDF gallery accepts multiple local photos', await imagePdf.page.locator('#image-gallery li').count() === 2 && await imagePdf.page.locator('#selection-count').innerText() === '2 of 2 photos selected', await imagePdf.page.locator('#selection-count').innerText());
+  await imagePdf.page.locator('#deselect-all').click();
+  await assert('QuickKit image-to-PDF can exclude every page before conversion', await imagePdf.page.locator('#convert-images').isDisabled() && await imagePdf.page.locator('#pdf-page-count').innerText() === '0 pages', await imagePdf.page.locator('#pdf-page-count').innerText());
+  await imagePdf.page.locator('#select-all').click();
+  await imagePdf.page.locator('#image-gallery li').nth(1).locator('button').first().click();
+  const reorderedNames = (await imagePdf.page.locator('.gallery-file-name').allInnerTexts()).map((name) => name.split('\n')[0]);
+  await assert('QuickKit image-to-PDF reorders pages using gallery controls', reorderedNames[0] === 'photo-2.png' && reorderedNames[1] === 'photo-1.png', reorderedNames.join(', '));
+  await imagePdf.page.locator('#image-gallery li').nth(0).dragTo(imagePdf.page.locator('#image-gallery li').nth(1));
+  const draggedNames = (await imagePdf.page.locator('.gallery-file-name').allInnerTexts()).map((name) => name.split('\n')[0]);
+  await assert('QuickKit image-to-PDF supports drag-and-drop page ordering', draggedNames[0] === 'photo-1.png' && draggedNames[1] === 'photo-2.png', draggedNames.join(', '));
+  await imagePdf.page.locator('#page-margin').selectOption('15');
+  await imagePdf.page.locator('#paper-size').selectOption('a4');
+  await imagePdf.page.locator('#rotate-right').click();
+  await imagePdf.page.locator('#rotate-left').click();
+  await imagePdf.page.locator('#image-filter').selectOption('grayscale');
+  await imagePdf.page.locator('#brightness').fill('110');
+  await imagePdf.page.locator('#apply-edit').click();
+  await imagePdf.page.locator('#image-gallery li').first().waitFor();
+  await assert('QuickKit image-to-PDF applies crop/rotation and filter edits before export', (await imagePdf.page.locator('#image-gallery li').first().innerText()).includes('edited') && await imagePdf.page.locator('#convert-images').isEnabled(), await imagePdf.page.locator('#edit-status').innerText());
+  await imagePdf.page.locator('#convert-images').click();
+  await imagePdf.page.locator('#image-pdf-result .download-link').waitFor();
+  const imagePdfDownload = imagePdf.page.waitForEvent('download');
+  await imagePdf.page.locator('#image-pdf-result .download-link').click();
+  const imagePdfFile = await imagePdfDownload;
+  const generatedImagePdf = await PDFDocument.load(await (await import('node:fs/promises')).readFile(await imagePdfFile.path()));
+  const generatedPages = generatedImagePdf.getPages();
+  await assert('QuickKit image-to-PDF applies margins and keeps chosen page order', generatedPages.length === 2 && generatedPages[0].getWidth() > generatedPages[0].getHeight() && generatedPages[1].getWidth() < generatedPages[1].getHeight(), `pages: ${generatedPages.map((page) => `${Math.round(page.getWidth())}×${Math.round(page.getHeight())}`).join(', ')}`);
+  await imagePdf.page.close();
+
   const { page } = await pageFor('quickkit', 'image-compressor.html', { width: 1440, height: 900 });
   await setImage(page, '#image-file'); await page.locator('#compress-image').click();
   await page.locator('#image-result .download-link').waitFor();

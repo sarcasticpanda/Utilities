@@ -1,6 +1,8 @@
 import * as pdfjsLib from 'pdfjs-dist/build/pdf.mjs';
 import pdfWorkerUrl from 'pdfjs-dist/build/pdf.worker.min.mjs?url';
 import { PDFDocument, rgb } from 'pdf-lib';
+import { createPdfToolkit } from 'pdfstudio';
+import { applyEditablePdfText, scanEditablePdfPage } from './pdf-source-text.js';
 
 pdfjsLib.GlobalWorkerOptions.workerSrc = pdfWorkerUrl;
 
@@ -38,6 +40,9 @@ let signatureHasInk = false;
 let ocrWorker = null;
 let ocrBusy = false;
 let ocrCurrentText = '';
+let qpdfToolkitPromise = null;
+let sourceTextScan = null;
+let sourceTextEdits = [];
 
 const hints = {
   select: 'Select an item to move it. Choose a tool, then click on the page to add it.',
@@ -52,6 +57,92 @@ const hints = {
 function setStatus(text, isError = false) {
   editorStatus.textContent = text;
   editorStatus.style.color = isError ? '#a4503d' : '#4f6f59';
+}
+
+function getQpdfToolkit() {
+  qpdfToolkitPromise ||= createPdfToolkit();
+  return qpdfToolkitPromise;
+}
+
+function updateSourceTextEditCount() {
+  const output = $('#pdf-source-text-staged');
+  output.hidden = sourceTextEdits.length === 0;
+  output.textContent = sourceTextEdits.length ? `${sourceTextEdits.length} direct text ${sourceTextEdits.length === 1 ? 'edit' : 'edits'} will be written into the PDF when you download.` : '';
+}
+
+function renderSourceTextScan(scan) {
+  sourceTextScan = scan;
+  const list = $('#pdf-source-text-list');
+  list.replaceChildren();
+  for (const candidate of scan.candidates) {
+    const staged = sourceTextEdits.find((edit) => edit.id === candidate.id);
+    const row = document.createElement('li'); row.className = 'pdf-source-text-row';
+    const original = Object.assign(document.createElement('span'), { className: 'pdf-source-text-original', textContent: candidate.originalText, title: `Original text · ${candidate.fontName} ${candidate.fontSize} pt` });
+    const input = Object.assign(document.createElement('input'), { type: 'text', maxLength: 200, value: staged?.text ?? candidate.originalText, ariaLabel: `Replace ${candidate.originalText}` });
+    const action = Object.assign(document.createElement('button'), { type: 'button', textContent: staged ? 'Update' : 'Replace' });
+    action.addEventListener('click', () => {
+      const text = input.value;
+      if (/[\r\n]/u.test(text) || /[^\x20-\x7e]/u.test(text)) {
+        $('#pdf-source-text-status').textContent = 'Use one line of printable English characters for this font.';
+        input.focus(); return;
+      }
+      const next = { ...candidate, text };
+      rememberUndo();
+      sourceTextEdits = sourceTextEdits.filter((edit) => edit.id !== candidate.id);
+      if (text !== candidate.originalText) sourceTextEdits.push(next);
+      controlUndoOpen = false;
+      updateSourceTextEditCount(); renderSourceTextScan(scan);
+      updatePageControls();
+      $('#pdf-source-text-status').textContent = text ? 'Change staged. The PDF itself will be updated when you download.' : 'Text cleared. The PDF itself will be updated when you download.';
+    });
+    if (staged) {
+      const remove = Object.assign(document.createElement('button'), { type: 'button', textContent: 'Clear edit', ariaLabel: `Clear edit for ${candidate.originalText}` });
+      remove.addEventListener('click', () => { rememberUndo(); sourceTextEdits = sourceTextEdits.filter((edit) => edit.id !== candidate.id); controlUndoOpen = false; updateSourceTextEditCount(); renderSourceTextScan(scan); updatePageControls(); });
+      row.append(original, input, action, remove);
+    } else {
+      const erase = Object.assign(document.createElement('button'), { type: 'button', textContent: 'Delete text', ariaLabel: `Delete ${candidate.originalText}` });
+      erase.addEventListener('click', () => { input.value = ''; action.click(); });
+      row.append(original, input, action, erase);
+    }
+    list.append(row);
+  }
+  const refusals = $('#pdf-source-text-refusals');
+  refusals.replaceChildren();
+  scan.unavailable.forEach(({ text, reason }) => {
+    const item = document.createElement('li'); item.textContent = text ? `${text} — ${reason}` : reason; refusals.append(item);
+  });
+  $('#pdf-source-text-unsupported').hidden = scan.unavailable.length === 0;
+  if (!scan.candidates.length) {
+    const empty = document.createElement('li'); empty.className = 'pdf-source-text-empty';
+    empty.textContent = scan.unavailable.length ? 'No text on this page matches the direct-edit limits. See the unsupported lines below.' : 'No directly editable PDF text was found on this page. Scanned pages need OCR first.';
+    list.append(empty);
+  }
+}
+
+function resetSourceTextScan() {
+  sourceTextScan = null;
+  $('#pdf-source-text-list').replaceChildren();
+  $('#pdf-source-text-refusals').replaceChildren();
+  $('#pdf-source-text-unsupported').hidden = true;
+  $('#pdf-source-text-status').textContent = `Page ${activePosition + 1} selected. Scan this page to find text that can be changed in place.`;
+}
+
+async function scanCurrentSourceText() {
+  const button = $('#scan-source-text');
+  button.disabled = true; button.textContent = 'Scanning…';
+  $('#pdf-source-text-status').textContent = `Loading the on-device PDF engine and scanning page ${activePosition + 1}…`;
+  try {
+    const qpdf = await getQpdfToolkit();
+    const scan = await scanEditablePdfPage(sourceBytes, currentOriginalPage(), qpdf);
+    renderSourceTextScan(scan);
+    $('#pdf-source-text-status').textContent = `Page ${activePosition + 1}: ${scan.candidates.length} directly editable ${scan.candidates.length === 1 ? 'line' : 'lines'} found. Each edit preserves the original font and text position.`;
+  } catch (error) {
+    console.error('PDF source-text scan failed:', error);
+    $('#pdf-source-text-list').replaceChildren();
+    $('#pdf-source-text-status').textContent = error?.message || 'This page could not be scanned safely. No changes were made.';
+  } finally {
+    button.disabled = false; button.textContent = 'Scan this page';
+  }
 }
 
 function setTool(tool) {
@@ -148,6 +239,7 @@ function rememberUndo() {
     pageOrder: [...pageOrder],
     activePosition,
     selectedId,
+    sourceTextEdits: sourceTextEdits.map((edit) => ({ ...edit })),
     annotationItems: annotationItems.map((item) => {
       const copy = { ...item, bytes: item.bytes?.slice() };
       if (copy.bytes) copy.previewUrl = URL.createObjectURL(new Blob([copy.bytes], { type: 'image/png' }));
@@ -166,10 +258,11 @@ function undoLastChange() {
   activePosition = undoSnapshot.activePosition;
   selectedId = undoSnapshot.selectedId;
   annotationItems = undoSnapshot.annotationItems;
+  sourceTextEdits = undoSnapshot.sourceTextEdits || [];
   undoSnapshot = null;
   $('#undo-edit').disabled = true;
   controlUndoOpen = false;
-  updateInspector(); renderPageList();
+  updateInspector(); updateSourceTextEditCount(); if (sourceTextScan) renderSourceTextScan(sourceTextScan); renderPageList();
   if (currentOriginalPage() !== currentPage || pageOrder.some((page, index) => page !== previousOrder[index])) renderActivePage();
   else { renderOverlays(); updatePageControls(); }
   setStatus('Last change undone.');
@@ -407,6 +500,7 @@ function renderOverlays() {
 
 function goToPosition(position) {
   activePosition = clamp(position, 0, pageOrder.length - 1);
+  resetSourceTextScan();
   clearSelection();
   renderPageList();
   renderActivePage();
@@ -427,7 +521,10 @@ function deleteActivePage() {
   rememberUndo();
   const removed = pageOrder.splice(activePosition, 1)[0];
   annotationItems = annotationItems.filter((item) => item.page !== removed);
+  sourceTextEdits = sourceTextEdits.filter((edit) => edit.pageIndex !== removed);
+  updateSourceTextEditCount();
   activePosition = Math.min(activePosition, pageOrder.length - 1);
+  resetSourceTextScan();
   clearSelection(); renderPageList(); renderActivePage();
   setStatus(`Page removed. ${pageOrder.length} pages remain. Download to save your changes.`);
 }
@@ -601,6 +698,8 @@ async function loadFile(file) {
     pdfLoadingTask = nextLoadingTask;
     annotationItems.forEach((item) => item.previewUrl && URL.revokeObjectURL(item.previewUrl));
     sourceBytes = nextBytes;
+    sourceTextEdits = []; sourceTextScan = null; updateSourceTextEditCount();
+    $('#pdf-source-text-list').replaceChildren(); $('#pdf-source-text-status').textContent = 'Scan the selected page to find text that can be changed in place.';
     pdfDocument = nextPdfJsDocument;
     originalPageCount = pdfDocument.numPages;
     pageOrder = Array.from({ length: originalPageCount }, (_, index) => index);
@@ -626,6 +725,13 @@ dropzone.addEventListener('dragover', (event) => { event.preventDefault(); dropz
 dropzone.addEventListener('dragleave', () => dropzone.classList.remove('is-dragging'));
 dropzone.addEventListener('drop', (event) => { event.preventDefault(); dropzone.classList.remove('is-dragging'); loadFile(event.dataTransfer.files?.[0]); });
 tools.forEach((button) => button.addEventListener('click', () => setTool(button.dataset.tool)));
+$('#edit-source-text').addEventListener('click', () => {
+  const panel = $('#pdf-source-text-panel');
+  panel.hidden = !panel.hidden;
+  $('#edit-source-text').setAttribute('aria-expanded', String(!panel.hidden));
+  if (!panel.hidden) $('#scan-source-text').focus();
+});
+$('#scan-source-text').addEventListener('click', scanCurrentSourceText);
 $('#ocr-current-page').addEventListener('click', recognizeCurrentPage);
 $('#copy-ocr-text').addEventListener('click', async () => {
   if (!ocrCurrentText) return;
@@ -684,8 +790,8 @@ async function addVectorOverlays(page, output, items) {
   }
 }
 
-async function addRasterizedRedactionPage(output, input, originalIndex, items) {
-  const sourcePage = await pdfDocument.getPage(originalIndex + 1);
+async function addRasterizedRedactionPage(output, input, sourceDocument, originalIndex, items) {
+  const sourcePage = await sourceDocument.getPage(originalIndex + 1);
   const base = sourcePage.getViewport({ scale: 1 });
   const safeScale = Math.min(2, Math.sqrt(16_000_000 / (base.width * base.height)));
   const viewport = sourcePage.getViewport({ scale: Math.max(.6, safeScale) });
@@ -716,19 +822,63 @@ async function addRasterizedRedactionPage(output, input, originalIndex, items) {
   page.drawImage(image, { x: 0, y: 0, width: pageWidth, height: pageHeight });
 }
 
-async function buildOutput() {
-  const input = await PDFDocument.load(sourceBytes.slice());
-  const output = await PDFDocument.create();
-  for (const originalIndex of pageOrder) {
-    const items = annotationItems.filter((item) => item.page === originalIndex);
-    if (items.some((item) => item.kind === 'redact')) {
-      await addRasterizedRedactionPage(output, input, originalIndex, items);
-    } else {
-      const [page] = await output.copyPages(input, [originalIndex]); output.addPage(page);
-      await addVectorOverlays(page, output, items);
+async function verifySourceTextOutput(bytes) {
+  if (!sourceTextEdits.length) return;
+  const outputTask = pdfjsLib.getDocument({ data: bytes.slice(), isEvalSupported: false });
+  const outputDocument = await outputTask.promise;
+  try {
+    const editsByPage = new Map();
+    sourceTextEdits.forEach((edit) => {
+      if (!editsByPage.has(edit.pageIndex)) editsByPage.set(edit.pageIndex, []);
+      editsByPage.get(edit.pageIndex).push(edit);
+    });
+    for (const [pageIndex, edits] of editsByPage) {
+      const originalPage = await pdfDocument.getPage(pageIndex + 1);
+      const outputPage = await outputDocument.getPage(pageIndex + 1);
+      const originalText = (await originalPage.getTextContent()).items.map((item) => item.str);
+      const outputText = (await outputPage.getTextContent()).items.map((item) => item.str);
+      const expected = new Map();
+      const count = (items, value) => items.filter((item) => item === value).length;
+      for (const edit of edits) {
+        const before = count(originalText, edit.originalText);
+        if (before === 0) throw new Error(`Could not verify the original line “${edit.originalText}” in the PDF text layer.`);
+        if (!expected.has(edit.originalText)) expected.set(edit.originalText, before);
+        expected.set(edit.originalText, expected.get(edit.originalText) - 1);
+        if (edit.text) {
+          if (!expected.has(edit.text)) expected.set(edit.text, count(originalText, edit.text));
+          expected.set(edit.text, expected.get(edit.text) + 1);
+        }
+      }
+      for (const [text, expectedCount] of expected) if (count(outputText, text) !== expectedCount) throw new Error('The PDF reader could not confirm the requested text edits. No file was downloaded.');
     }
+  } finally { await outputTask.destroy(); }
+}
+
+async function buildOutput() {
+  let workingBytes = sourceBytes;
+  if (sourceTextEdits.length) {
+    setStatus('Writing existing text into the PDF, then checking the saved text layer…');
+    const qpdf = await getQpdfToolkit();
+    const result = await applyEditablePdfText(sourceBytes, sourceTextEdits, qpdf);
+    await verifySourceTextOutput(result.bytes);
+    workingBytes = result.bytes;
   }
-  return output.save();
+  const sourceTask = workingBytes === sourceBytes ? null : pdfjsLib.getDocument({ data: workingBytes.slice(), isEvalSupported: false });
+  const sourceDocument = sourceTask ? await sourceTask.promise : pdfDocument;
+  try {
+    const input = await PDFDocument.load(workingBytes.slice());
+    const output = await PDFDocument.create();
+    for (const originalIndex of pageOrder) {
+      const items = annotationItems.filter((item) => item.page === originalIndex);
+      if (items.some((item) => item.kind === 'redact')) {
+        await addRasterizedRedactionPage(output, input, sourceDocument, originalIndex, items);
+      } else {
+        const [page] = await output.copyPages(input, [originalIndex]); output.addPage(page);
+        await addVectorOverlays(page, output, items);
+      }
+    }
+    return await output.save();
+  } finally { await sourceTask?.destroy(); }
 }
 
 $('#download-pdf').addEventListener('click', async () => {
@@ -746,7 +896,7 @@ $('#download-pdf').addEventListener('click', async () => {
     button.textContent = 'Download PDF';
     setStatus('Your edited PDF is ready.');
   } catch (error) {
-    console.error(error);
+    if (error?.name !== 'PdfTextEditError') console.error(error);
     setStatus(error?.message || 'Could not export this PDF. Try a smaller or unencrypted file.', true);
   } finally { button.disabled = false; button.textContent = 'Download PDF'; }
 });

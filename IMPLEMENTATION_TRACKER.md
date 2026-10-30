@@ -2,9 +2,9 @@
 
 **Spec:** `UTILITY_SITES_COMPLETE_MASTER.md`
 **Public state:** All three products are live on Cloudflare Pages; the previous Sites URLs remain available as fallback.
-**Current worktree:** All three Cloudflare Pages deployments are live; QuickKit’s PDF editor is deployed and verified on the production Pages host.
+**Current worktree:** All three Cloudflare Pages sites are live. QuickKit PDF editing/image-to-PDF and WorkKit overtime currency conversion are deployed and production-checked.
 **Last release:** 2026-10-30
-**Current release evidence:** all three products build; the responsive sweep passed 79 checks; QuickKit's OCR/replacement/redaction editor passed 32 checks locally and on its live Pages domain.
+**Current release evidence:** all three products build; the cross-product responsive/browser suite passed 90 checks with zero failures; QuickKit's PDF editor passed 40 checks with zero failures; the live production smoke passed all 13 routes and representative PDF, image-to-PDF and currency interactions.
 
 ## Release summary
 
@@ -23,7 +23,7 @@
 - [x] Added origin-matched canonical tags, social metadata, `robots.txt` and `sitemap.xml` to each deployed static bundle.
 - [x] Kept file processing in the browser; production requests show no app feature uploads. Cloudflare's first-party browser challenge issues a separate security POST.
 - [x] Published all three independent Cloudflare Pages sites; the earlier Sites releases remain as fallback URLs.
-- [x] Ran production browser smoke checks: all 12 Pages routes returned HTTP 200; canonical tags, sitemap and robots files worked; a representative interactive flow passed for each product.
+- [x] Ran production browser smoke checks after the latest deployment: all 13 Pages routes returned HTTP 200; canonical tags, sitemap and robots files worked; representative PDF, image-to-PDF and currency flows passed, with no JS errors or horizontal overflow.
 - [x] Ran the full local Playwright sweep on 2026-10-30: 79 entries, 0 failures; tested all main routes at 1440×900, 768×1024, 390×844 and 320×740.
 - [x] Ran a 32-check Chromium PDF editor workflow locally and live, including OCR, editable replacement, actual redaction export, text removal from the redacted page, PDF page management, desktop/mobile layout and local-only file handling.
 - [x] Captured final UI screenshots in `qa-results/screenshots-polished/` and production screenshots in `qa-results/production/`.
@@ -44,8 +44,11 @@
 - [x] Convert selected photos to PDF with crop, rotate, filters, reorder, page size/orientation and margins.
 - [x] Compress images against a measured KB limit, merge PDFs, count/clean text, generate passwords, and make Wi-Fi QR codes.
 - [x] Add a local PDF editor with text, highlight, rectangle, image/signature annotations, page previews, page reorder/delete, zoom and PDF download.
+- [x] Add direct existing-text editing for a bounded set of standard Type 1/WinAnsi text runs, with true source-stream replacement/deletion and PDF.js output verification. Wider or unsupported text is refused; OCR masked replacement remains available.
 - [x] Add OCR text recognition/copy and OCR-assisted redaction; redact exports flatten affected pages so source text is not left extractable beneath the mask. See `qa-results/pdf-editor/results.json`.
-- [x] Deploy the image-to-PDF and OCR/replacement/redaction updates to https://quickkit-browser-tools.pages.dev; 32 live editor checks passed.
+- [x] Use OffPDF (MIT) as a behavior reference and pdfstudio/qpdf-WASM (Apache-2.0) as the browser writer; no code was copied from either repository. License notices are included.
+- [x] Verify source-text edits in browser: searchable replacement, deletion, unchanged surrounding text, over-width refusal, 320 px fit and no PDF upload.
+- [x] Deploy the image-to-PDF and OCR/replacement/redaction updates to https://quickkit-browser-tools.pages.dev; direct source-text edit, output verification and live image-to-PDF interaction passed.
 - [x] Lazy-load the larger PDF and QR libraries.
 - [ ] Add PDF split, Word/PDF conversion and advanced batch tools only with accurate fidelity limits and mobile-memory checks.
 
@@ -62,6 +65,7 @@
 - [x] Show total work time as both decimal hours and hours/minutes; suppress partial totals when any entered shift is invalid.
 - [x] Add browser print / Save as PDF for complete timesheets, alongside CSV export.
 - [x] Add USD, INR, GBP, EUR, CAD, AUD and AED formatting in all WorkKit pay calculators; currency selection does not convert rates.
+- [x] Add a separate overtime pay currency view with dated Frankfurter daily reference rates. Pay and hours remain local; only currency codes are sent for lookup. Browser verification is recorded in `WORKKIT_OVERTIME_CURRENCY_PLAN.md`.
 - [ ] Add biweekly periods, 5/7-day templates and extra break entries only after a separate calculation and mobile UX review.
 
 ### Competitor review
@@ -88,3 +92,4 @@
 - Temporary research artifacts and exact source analysis: `reference-notes/README.md`.
 - Local production builds use Vite. The current static apps have no account system, database or server-side file processing.
 - Traffic, indexing speed, ad approval and earnings depend on external services and user demand.
+- AdSense eligibility notes for `pages.dev` and the three site-by-site approval flow are in `SEO_ADSENSE_PLAN.md`; none of the sites currently serves ads.

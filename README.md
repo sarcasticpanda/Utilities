@@ -31,8 +31,8 @@ Three focused browser tools for everyday work: edit PDFs, track hours, and prepa
 ## Highlights
 
 - Responsive pages checked at desktop, tablet and narrow phone sizes.
-- QuickKit converts and arranges photos into PDFs, annotates PDF pages, and offers OCR-assisted text replacement/redaction that flattens affected pages on export.
-- WorkKit validates shifts and avoids counting overlapping work twice; it saves drafts locally and exports CSV.
+- QuickKit converts and arranges photos into PDFs, annotates PDF pages, and can directly replace or delete a limited set of supported existing PDF text runs. OCR-assisted replacement/redaction is available for other page content; OCR replacement is approximate, while redaction flattens affected pages on export.
+- WorkKit validates shifts and avoids counting overlapping work twice; it saves drafts locally, exports CSV, and can show an overtime estimate in another currency using a dated daily reference rate.
 - FormReady measures the generated image dimensions and file size against requirements entered by the visitor.
 - File processing happens in the browser; the tools do not upload visitors' files to an application server.
 - Privacy, terms, about, contact and third-party acknowledgement pages are included for each product.

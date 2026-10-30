@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-30T12:38:44.607Z",
+  "generatedAt": "2026-10-30T14:07:11.805Z",
   "browser": "Chromium 156.0.8078.4",
   "products": {
     "workkit/index.html@desktop": {
@@ -19,11 +19,11 @@
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4173/assets/app-BfJgoS0C.js"
+          "url": "http://127.0.0.1:4173/assets/app-DUMdSQ27.js"
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4173/assets/styles-DnfvafAB.css"
+          "url": "http://127.0.0.1:4173/assets/styles-LdpwY07u.css"
         },
         {
           "method": "GET",
@@ -52,11 +52,11 @@
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4173/assets/app-BfJgoS0C.js"
+          "url": "http://127.0.0.1:4173/assets/app-DUMdSQ27.js"
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4173/assets/styles-DnfvafAB.css"
+          "url": "http://127.0.0.1:4173/assets/styles-LdpwY07u.css"
         },
         {
           "method": "GET",
@@ -85,11 +85,11 @@
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4173/assets/app-BfJgoS0C.js"
+          "url": "http://127.0.0.1:4173/assets/app-DUMdSQ27.js"
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4173/assets/styles-DnfvafAB.css"
+          "url": "http://127.0.0.1:4173/assets/styles-LdpwY07u.css"
         },
         {
           "method": "GET",
@@ -118,11 +118,11 @@
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4173/assets/app-BfJgoS0C.js"
+          "url": "http://127.0.0.1:4173/assets/app-DUMdSQ27.js"
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4173/assets/styles-DnfvafAB.css"
+          "url": "http://127.0.0.1:4173/assets/styles-LdpwY07u.css"
         },
         {
           "method": "GET",
@@ -151,11 +151,11 @@
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4173/assets/app-BfJgoS0C.js"
+          "url": "http://127.0.0.1:4173/assets/app-DUMdSQ27.js"
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4173/assets/styles-DnfvafAB.css"
+          "url": "http://127.0.0.1:4173/assets/styles-LdpwY07u.css"
         },
         {
           "method": "GET",
@@ -184,11 +184,11 @@
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4173/assets/app-BfJgoS0C.js"
+          "url": "http://127.0.0.1:4173/assets/app-DUMdSQ27.js"
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4173/assets/styles-DnfvafAB.css"
+          "url": "http://127.0.0.1:4173/assets/styles-LdpwY07u.css"
         },
         {
           "method": "GET",
@@ -217,11 +217,11 @@
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4173/assets/app-BfJgoS0C.js"
+          "url": "http://127.0.0.1:4173/assets/app-DUMdSQ27.js"
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4173/assets/styles-DnfvafAB.css"
+          "url": "http://127.0.0.1:4173/assets/styles-LdpwY07u.css"
         },
         {
           "method": "GET",
@@ -250,11 +250,11 @@
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4173/assets/app-BfJgoS0C.js"
+          "url": "http://127.0.0.1:4173/assets/app-DUMdSQ27.js"
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4173/assets/styles-DnfvafAB.css"
+          "url": "http://127.0.0.1:4173/assets/styles-LdpwY07u.css"
         },
         {
           "method": "GET",
@@ -270,9 +270,9 @@
       "layout": {
         "width": 1440,
         "scrollWidth": 1440,
-        "title": "Overtime Pay Calculator: Weekly Hours and Pay | WorkKit",
+        "title": "Overtime Pay Calculator and Currency Converter | WorkKit",
         "h1": "Overtime calculator",
-        "visibleButtons": 1
+        "visibleButtons": 2
       },
       "noOverflow": true,
       "consoleErrors": [],
@@ -283,11 +283,11 @@
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4173/assets/app-BfJgoS0C.js"
+          "url": "http://127.0.0.1:4173/assets/app-DUMdSQ27.js"
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4173/assets/styles-DnfvafAB.css"
+          "url": "http://127.0.0.1:4173/assets/styles-LdpwY07u.css"
         },
         {
           "method": "GET",
@@ -303,9 +303,9 @@
       "layout": {
         "width": 768,
         "scrollWidth": 768,
-        "title": "Overtime Pay Calculator: Weekly Hours and Pay | WorkKit",
+        "title": "Overtime Pay Calculator and Currency Converter | WorkKit",
         "h1": "Overtime calculator",
-        "visibleButtons": 1
+        "visibleButtons": 2
       },
       "noOverflow": true,
       "consoleErrors": [],
@@ -316,11 +316,11 @@
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4173/assets/app-BfJgoS0C.js"
+          "url": "http://127.0.0.1:4173/assets/app-DUMdSQ27.js"
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4173/assets/styles-DnfvafAB.css"
+          "url": "http://127.0.0.1:4173/assets/styles-LdpwY07u.css"
         },
         {
           "method": "GET",
@@ -336,9 +336,9 @@
       "layout": {
         "width": 390,
         "scrollWidth": 390,
-        "title": "Overtime Pay Calculator: Weekly Hours and Pay | WorkKit",
+        "title": "Overtime Pay Calculator and Currency Converter | WorkKit",
         "h1": "Overtime calculator",
-        "visibleButtons": 1
+        "visibleButtons": 2
       },
       "noOverflow": true,
       "consoleErrors": [],
@@ -349,11 +349,11 @@
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4173/assets/app-BfJgoS0C.js"
+          "url": "http://127.0.0.1:4173/assets/app-DUMdSQ27.js"
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4173/assets/styles-DnfvafAB.css"
+          "url": "http://127.0.0.1:4173/assets/styles-LdpwY07u.css"
         },
         {
           "method": "GET",
@@ -369,9 +369,9 @@
       "layout": {
         "width": 320,
         "scrollWidth": 320,
-        "title": "Overtime Pay Calculator: Weekly Hours and Pay | WorkKit",
+        "title": "Overtime Pay Calculator and Currency Converter | WorkKit",
         "h1": "Overtime calculator",
-        "visibleButtons": 1
+        "visibleButtons": 2
       },
       "noOverflow": true,
       "consoleErrors": [],
@@ -382,11 +382,11 @@
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4173/assets/app-BfJgoS0C.js"
+          "url": "http://127.0.0.1:4173/assets/app-DUMdSQ27.js"
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4173/assets/styles-DnfvafAB.css"
+          "url": "http://127.0.0.1:4173/assets/styles-LdpwY07u.css"
         },
         {
           "method": "GET",
@@ -415,11 +415,11 @@
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4173/assets/app-BfJgoS0C.js"
+          "url": "http://127.0.0.1:4173/assets/app-DUMdSQ27.js"
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4173/assets/styles-DnfvafAB.css"
+          "url": "http://127.0.0.1:4173/assets/styles-LdpwY07u.css"
         },
         {
           "method": "GET",
@@ -448,11 +448,11 @@
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4173/assets/app-BfJgoS0C.js"
+          "url": "http://127.0.0.1:4173/assets/app-DUMdSQ27.js"
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4173/assets/styles-DnfvafAB.css"
+          "url": "http://127.0.0.1:4173/assets/styles-LdpwY07u.css"
         },
         {
           "method": "GET",
@@ -481,11 +481,11 @@
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4173/assets/app-BfJgoS0C.js"
+          "url": "http://127.0.0.1:4173/assets/app-DUMdSQ27.js"
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4173/assets/styles-DnfvafAB.css"
+          "url": "http://127.0.0.1:4173/assets/styles-LdpwY07u.css"
         },
         {
           "method": "GET",
@@ -514,11 +514,11 @@
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4173/assets/app-BfJgoS0C.js"
+          "url": "http://127.0.0.1:4173/assets/app-DUMdSQ27.js"
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4173/assets/styles-DnfvafAB.css"
+          "url": "http://127.0.0.1:4173/assets/styles-LdpwY07u.css"
         },
         {
           "method": "GET",
@@ -555,7 +555,7 @@
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4174/assets/app-D0aOOAR0.js"
+          "url": "http://127.0.0.1:4174/assets/app-zWG5Oc7j.js"
         },
         {
           "method": "GET",
@@ -596,7 +596,7 @@
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4174/assets/app-D0aOOAR0.js"
+          "url": "http://127.0.0.1:4174/assets/app-zWG5Oc7j.js"
         },
         {
           "method": "GET",
@@ -637,7 +637,7 @@
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4174/assets/app-D0aOOAR0.js"
+          "url": "http://127.0.0.1:4174/assets/app-zWG5Oc7j.js"
         },
         {
           "method": "GET",
@@ -678,7 +678,7 @@
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4174/assets/app-D0aOOAR0.js"
+          "url": "http://127.0.0.1:4174/assets/app-zWG5Oc7j.js"
         },
         {
           "method": "GET",
@@ -698,7 +698,7 @@
       "layout": {
         "width": 1440,
         "scrollWidth": 1440,
-        "title": "Convert Images to PDF — Crop, Arrange and Download | QuickKit",
+        "title": "JPG to PDF Converter — Crop and Arrange Images | QuickKit",
         "h1": "Convert images to PDF",
         "visibleButtons": 10
       },
@@ -711,7 +711,7 @@
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4174/assets/image-to-pdf--0hZv6D0.js"
+          "url": "http://127.0.0.1:4174/assets/image-to-pdf-DNgktiYY.js"
         },
         {
           "method": "GET",
@@ -723,7 +723,7 @@
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4174/assets/index-CfA9Roq9.js"
+          "url": "http://127.0.0.1:4174/assets/index-D7KNmNtJ.js"
         },
         {
           "method": "GET",
@@ -739,7 +739,7 @@
         },
         {
           "method": "GET",
-          "url": "https://fonts.gstatic.com/l/font?kit=QGYFz_MVcBeNP4NjuGObqx1XmO1I4TC1aYqc4vi0GKDIIyHlBNBZBFQ&skey=bafc0b239d492b2c&v=v15"
+          "url": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2"
         }
       ]
     },
@@ -747,7 +747,7 @@
       "layout": {
         "width": 768,
         "scrollWidth": 768,
-        "title": "Convert Images to PDF — Crop, Arrange and Download | QuickKit",
+        "title": "JPG to PDF Converter — Crop and Arrange Images | QuickKit",
         "h1": "Convert images to PDF",
         "visibleButtons": 10
       },
@@ -760,7 +760,7 @@
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4174/assets/image-to-pdf--0hZv6D0.js"
+          "url": "http://127.0.0.1:4174/assets/image-to-pdf-DNgktiYY.js"
         },
         {
           "method": "GET",
@@ -772,7 +772,7 @@
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4174/assets/index-CfA9Roq9.js"
+          "url": "http://127.0.0.1:4174/assets/index-D7KNmNtJ.js"
         },
         {
           "method": "GET",
@@ -796,7 +796,7 @@
       "layout": {
         "width": 390,
         "scrollWidth": 390,
-        "title": "Convert Images to PDF — Crop, Arrange and Download | QuickKit",
+        "title": "JPG to PDF Converter — Crop and Arrange Images | QuickKit",
         "h1": "Convert images to PDF",
         "visibleButtons": 10
       },
@@ -809,7 +809,7 @@
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4174/assets/image-to-pdf--0hZv6D0.js"
+          "url": "http://127.0.0.1:4174/assets/image-to-pdf-DNgktiYY.js"
         },
         {
           "method": "GET",
@@ -821,7 +821,7 @@
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4174/assets/index-CfA9Roq9.js"
+          "url": "http://127.0.0.1:4174/assets/index-D7KNmNtJ.js"
         },
         {
           "method": "GET",
@@ -845,7 +845,7 @@
       "layout": {
         "width": 320,
         "scrollWidth": 320,
-        "title": "Convert Images to PDF — Crop, Arrange and Download | QuickKit",
+        "title": "JPG to PDF Converter — Crop and Arrange Images | QuickKit",
         "h1": "Convert images to PDF",
         "visibleButtons": 10
       },
@@ -858,7 +858,7 @@
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4174/assets/image-to-pdf--0hZv6D0.js"
+          "url": "http://127.0.0.1:4174/assets/image-to-pdf-DNgktiYY.js"
         },
         {
           "method": "GET",
@@ -870,7 +870,7 @@
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4174/assets/index-CfA9Roq9.js"
+          "url": "http://127.0.0.1:4174/assets/index-D7KNmNtJ.js"
         },
         {
           "method": "GET",
@@ -915,7 +915,7 @@
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4174/assets/app-D0aOOAR0.js"
+          "url": "http://127.0.0.1:4174/assets/app-zWG5Oc7j.js"
         },
         {
           "method": "GET",
@@ -956,7 +956,7 @@
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4174/assets/app-D0aOOAR0.js"
+          "url": "http://127.0.0.1:4174/assets/app-zWG5Oc7j.js"
         },
         {
           "method": "GET",
@@ -997,7 +997,7 @@
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4174/assets/app-D0aOOAR0.js"
+          "url": "http://127.0.0.1:4174/assets/app-zWG5Oc7j.js"
         },
         {
           "method": "GET",
@@ -1038,7 +1038,7 @@
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4174/assets/app-D0aOOAR0.js"
+          "url": "http://127.0.0.1:4174/assets/app-zWG5Oc7j.js"
         },
         {
           "method": "GET",
@@ -1079,7 +1079,7 @@
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4174/assets/app-D0aOOAR0.js"
+          "url": "http://127.0.0.1:4174/assets/app-zWG5Oc7j.js"
         },
         {
           "method": "GET",
@@ -1120,7 +1120,7 @@
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4174/assets/app-D0aOOAR0.js"
+          "url": "http://127.0.0.1:4174/assets/app-zWG5Oc7j.js"
         },
         {
           "method": "GET",
@@ -1161,7 +1161,7 @@
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4174/assets/app-D0aOOAR0.js"
+          "url": "http://127.0.0.1:4174/assets/app-zWG5Oc7j.js"
         },
         {
           "method": "GET",
@@ -1202,7 +1202,7 @@
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4174/assets/app-D0aOOAR0.js"
+          "url": "http://127.0.0.1:4174/assets/app-zWG5Oc7j.js"
         },
         {
           "method": "GET",
@@ -1243,7 +1243,7 @@
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4174/assets/app-D0aOOAR0.js"
+          "url": "http://127.0.0.1:4174/assets/app-zWG5Oc7j.js"
         },
         {
           "method": "GET",
@@ -1284,7 +1284,7 @@
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4174/assets/app-D0aOOAR0.js"
+          "url": "http://127.0.0.1:4174/assets/app-zWG5Oc7j.js"
         },
         {
           "method": "GET",
@@ -1325,7 +1325,7 @@
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4174/assets/app-D0aOOAR0.js"
+          "url": "http://127.0.0.1:4174/assets/app-zWG5Oc7j.js"
         },
         {
           "method": "GET",
@@ -1366,7 +1366,7 @@
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4174/assets/app-D0aOOAR0.js"
+          "url": "http://127.0.0.1:4174/assets/app-zWG5Oc7j.js"
         },
         {
           "method": "GET",
@@ -1386,7 +1386,7 @@
       "layout": {
         "width": 1440,
         "scrollWidth": 1440,
-        "title": "Online PDF Editor: Add Text, Sign and Reorder Pages | QuickKit",
+        "title": "PDF Editor with OCR — Add Text, Redact and Sign | QuickKit",
         "h1": "Edit a PDF, right here",
         "visibleButtons": 0
       },
@@ -1399,7 +1399,7 @@
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4174/assets/pdf-editor-C6wSCYCv.js"
+          "url": "http://127.0.0.1:4174/assets/pdf-editor-BY3aZ7cz.js"
         },
         {
           "method": "GET",
@@ -1415,11 +1415,11 @@
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4174/assets/index-CfA9Roq9.js"
+          "url": "http://127.0.0.1:4174/assets/index-D7KNmNtJ.js"
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4174/assets/pdf-editor-CjOoyZK3.css"
+          "url": "http://127.0.0.1:4174/assets/pdf-editor-BN-7E8Dq.css"
         },
         {
           "method": "GET",
@@ -1439,7 +1439,7 @@
       "layout": {
         "width": 768,
         "scrollWidth": 768,
-        "title": "Online PDF Editor: Add Text, Sign and Reorder Pages | QuickKit",
+        "title": "PDF Editor with OCR — Add Text, Redact and Sign | QuickKit",
         "h1": "Edit a PDF, right here",
         "visibleButtons": 0
       },
@@ -1452,7 +1452,7 @@
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4174/assets/pdf-editor-C6wSCYCv.js"
+          "url": "http://127.0.0.1:4174/assets/pdf-editor-BY3aZ7cz.js"
         },
         {
           "method": "GET",
@@ -1468,11 +1468,11 @@
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4174/assets/index-CfA9Roq9.js"
+          "url": "http://127.0.0.1:4174/assets/index-D7KNmNtJ.js"
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4174/assets/pdf-editor-CjOoyZK3.css"
+          "url": "http://127.0.0.1:4174/assets/pdf-editor-BN-7E8Dq.css"
         },
         {
           "method": "GET",
@@ -1492,7 +1492,7 @@
       "layout": {
         "width": 390,
         "scrollWidth": 390,
-        "title": "Online PDF Editor: Add Text, Sign and Reorder Pages | QuickKit",
+        "title": "PDF Editor with OCR — Add Text, Redact and Sign | QuickKit",
         "h1": "Edit a PDF, right here",
         "visibleButtons": 0
       },
@@ -1505,7 +1505,7 @@
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4174/assets/pdf-editor-C6wSCYCv.js"
+          "url": "http://127.0.0.1:4174/assets/pdf-editor-BY3aZ7cz.js"
         },
         {
           "method": "GET",
@@ -1521,11 +1521,11 @@
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4174/assets/index-CfA9Roq9.js"
+          "url": "http://127.0.0.1:4174/assets/index-D7KNmNtJ.js"
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4174/assets/pdf-editor-CjOoyZK3.css"
+          "url": "http://127.0.0.1:4174/assets/pdf-editor-BN-7E8Dq.css"
         },
         {
           "method": "GET",
@@ -1545,7 +1545,7 @@
       "layout": {
         "width": 320,
         "scrollWidth": 320,
-        "title": "Online PDF Editor: Add Text, Sign and Reorder Pages | QuickKit",
+        "title": "PDF Editor with OCR — Add Text, Redact and Sign | QuickKit",
         "h1": "Edit a PDF, right here",
         "visibleButtons": 0
       },
@@ -1558,7 +1558,7 @@
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4174/assets/pdf-editor-C6wSCYCv.js"
+          "url": "http://127.0.0.1:4174/assets/pdf-editor-BY3aZ7cz.js"
         },
         {
           "method": "GET",
@@ -1574,11 +1574,11 @@
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4174/assets/index-CfA9Roq9.js"
+          "url": "http://127.0.0.1:4174/assets/index-D7KNmNtJ.js"
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4174/assets/pdf-editor-CjOoyZK3.css"
+          "url": "http://127.0.0.1:4174/assets/pdf-editor-BN-7E8Dq.css"
         },
         {
           "method": "GET",
@@ -1619,7 +1619,7 @@
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4174/assets/app-D0aOOAR0.js"
+          "url": "http://127.0.0.1:4174/assets/app-zWG5Oc7j.js"
         },
         {
           "method": "GET",
@@ -1660,7 +1660,7 @@
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4174/assets/app-D0aOOAR0.js"
+          "url": "http://127.0.0.1:4174/assets/app-zWG5Oc7j.js"
         },
         {
           "method": "GET",
@@ -1701,7 +1701,7 @@
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4174/assets/app-D0aOOAR0.js"
+          "url": "http://127.0.0.1:4174/assets/app-zWG5Oc7j.js"
         },
         {
           "method": "GET",
@@ -1713,7 +1713,7 @@
         },
         {
           "method": "GET",
-          "url": "https://fonts.gstatic.com/l/font?kit=QGYFz_MVcBeNP4NjuGObqx1XmO1I4TC1aYqc4vi0GKDIIyHlBNBZBFQ&skey=bafc0b239d492b2c&v=v15"
+          "url": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2"
         }
       ]
     },
@@ -1742,7 +1742,7 @@
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4174/assets/app-D0aOOAR0.js"
+          "url": "http://127.0.0.1:4174/assets/app-zWG5Oc7j.js"
         },
         {
           "method": "GET",
@@ -2102,13 +2102,57 @@
       "pass": true,
       "details": "$950.00"
     },
+    "WorkKit converts weekly gross pay with a dated daily rate": {
+      "pass": true,
+      "details": "₹79,325.00 · 1 USD = 83.5 INR · daily mid-market reference · 2026-10-29 · Frankfurter"
+    },
+    "WorkKit sends only currency codes to the exchange-rate API": {
+      "pass": true,
+      "details": "[{\"method\":\"GET\",\"path\":\"/v2/rate/usd/inr\"}]"
+    },
     "WorkKit overtime estimate supports INR formatting": {
       "pass": true,
       "details": "₹950.00"
     },
+    "WorkKit shows the same-currency amount without an unnecessary rate request": {
+      "pass": true,
+      "details": "₹950.00 · requests 1"
+    },
+    "WorkKit can convert between other selected currencies": {
+      "pass": true,
+      "details": "£9.50 · [{\"method\":\"GET\",\"path\":\"/v2/rate/usd/inr\"},{\"method\":\"GET\",\"path\":\"/v2/rate/inr/gbp\"}]"
+    },
+    "WorkKit refreshes a cached currency pair on request": {
+      "pass": true,
+      "details": "[{\"method\":\"GET\",\"path\":\"/v2/rate/usd/inr\"},{\"method\":\"GET\",\"path\":\"/v2/rate/inr/gbp\"},{\"method\":\"GET\",\"path\":\"/v2/rate/inr/gbp\"}]"
+    },
     "WorkKit salary conversion supports INR formatting": {
       "pass": true,
       "details": "₹41,600.00"
+    },
+    "QuickKit image-to-PDF gallery accepts multiple local photos": {
+      "pass": true,
+      "details": "2 of 2 photos selected"
+    },
+    "QuickKit image-to-PDF can exclude every page before conversion": {
+      "pass": true,
+      "details": "0 pages"
+    },
+    "QuickKit image-to-PDF reorders pages using gallery controls": {
+      "pass": true,
+      "details": "photo-2.png, photo-1.png"
+    },
+    "QuickKit image-to-PDF supports drag-and-drop page ordering": {
+      "pass": true,
+      "details": "photo-1.png, photo-2.png"
+    },
+    "QuickKit image-to-PDF applies crop/rotation and filter edits before export": {
+      "pass": true,
+      "details": "Edits applied to this photo."
+    },
+    "QuickKit image-to-PDF applies margins and keeps chosen page order": {
+      "pass": true,
+      "details": "pages: 842×595, 595×842"
     },
     "QuickKit image compression outputs measured result and download": {
       "pass": true,
@@ -2171,31 +2215,11 @@
     },
     {
       "method": "GET",
-      "url": "http://127.0.0.1:4173/assets/app-BfJgoS0C.js"
+      "url": "http://127.0.0.1:4173/assets/app-DUMdSQ27.js"
     },
     {
       "method": "GET",
-      "url": "http://127.0.0.1:4173/assets/styles-DnfvafAB.css"
-    },
-    {
-      "method": "GET",
-      "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
-    },
-    {
-      "method": "GET",
-      "url": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2"
-    },
-    {
-      "method": "GET",
-      "url": "http://127.0.0.1:4173/"
-    },
-    {
-      "method": "GET",
-      "url": "http://127.0.0.1:4173/assets/app-BfJgoS0C.js"
-    },
-    {
-      "method": "GET",
-      "url": "http://127.0.0.1:4173/assets/styles-DnfvafAB.css"
+      "url": "http://127.0.0.1:4173/assets/styles-LdpwY07u.css"
     },
     {
       "method": "GET",
@@ -2211,11 +2235,11 @@
     },
     {
       "method": "GET",
-      "url": "http://127.0.0.1:4173/assets/app-BfJgoS0C.js"
+      "url": "http://127.0.0.1:4173/assets/app-DUMdSQ27.js"
     },
     {
       "method": "GET",
-      "url": "http://127.0.0.1:4173/assets/styles-DnfvafAB.css"
+      "url": "http://127.0.0.1:4173/assets/styles-LdpwY07u.css"
     },
     {
       "method": "GET",
@@ -2231,11 +2255,31 @@
     },
     {
       "method": "GET",
-      "url": "http://127.0.0.1:4173/assets/app-BfJgoS0C.js"
+      "url": "http://127.0.0.1:4173/assets/app-DUMdSQ27.js"
     },
     {
       "method": "GET",
-      "url": "http://127.0.0.1:4173/assets/styles-DnfvafAB.css"
+      "url": "http://127.0.0.1:4173/assets/styles-LdpwY07u.css"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/app-DUMdSQ27.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/styles-LdpwY07u.css"
     },
     {
       "method": "GET",
@@ -2251,31 +2295,11 @@
     },
     {
       "method": "GET",
-      "url": "http://127.0.0.1:4173/assets/app-BfJgoS0C.js"
+      "url": "http://127.0.0.1:4173/assets/app-DUMdSQ27.js"
     },
     {
       "method": "GET",
-      "url": "http://127.0.0.1:4173/assets/styles-DnfvafAB.css"
-    },
-    {
-      "method": "GET",
-      "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
-    },
-    {
-      "method": "GET",
-      "url": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2"
-    },
-    {
-      "method": "GET",
-      "url": "http://127.0.0.1:4173/time-card-calculator.html"
-    },
-    {
-      "method": "GET",
-      "url": "http://127.0.0.1:4173/assets/app-BfJgoS0C.js"
-    },
-    {
-      "method": "GET",
-      "url": "http://127.0.0.1:4173/assets/styles-DnfvafAB.css"
+      "url": "http://127.0.0.1:4173/assets/styles-LdpwY07u.css"
     },
     {
       "method": "GET",
@@ -2291,11 +2315,11 @@
     },
     {
       "method": "GET",
-      "url": "http://127.0.0.1:4173/assets/app-BfJgoS0C.js"
+      "url": "http://127.0.0.1:4173/assets/app-DUMdSQ27.js"
     },
     {
       "method": "GET",
-      "url": "http://127.0.0.1:4173/assets/styles-DnfvafAB.css"
+      "url": "http://127.0.0.1:4173/assets/styles-LdpwY07u.css"
     },
     {
       "method": "GET",
@@ -2311,11 +2335,31 @@
     },
     {
       "method": "GET",
-      "url": "http://127.0.0.1:4173/assets/app-BfJgoS0C.js"
+      "url": "http://127.0.0.1:4173/assets/app-DUMdSQ27.js"
     },
     {
       "method": "GET",
-      "url": "http://127.0.0.1:4173/assets/styles-DnfvafAB.css"
+      "url": "http://127.0.0.1:4173/assets/styles-LdpwY07u.css"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/time-card-calculator.html"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/app-DUMdSQ27.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/styles-LdpwY07u.css"
     },
     {
       "method": "GET",
@@ -2331,31 +2375,11 @@
     },
     {
       "method": "GET",
-      "url": "http://127.0.0.1:4173/assets/app-BfJgoS0C.js"
+      "url": "http://127.0.0.1:4173/assets/app-DUMdSQ27.js"
     },
     {
       "method": "GET",
-      "url": "http://127.0.0.1:4173/assets/styles-DnfvafAB.css"
-    },
-    {
-      "method": "GET",
-      "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
-    },
-    {
-      "method": "GET",
-      "url": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2"
-    },
-    {
-      "method": "GET",
-      "url": "http://127.0.0.1:4173/overtime-calculator.html"
-    },
-    {
-      "method": "GET",
-      "url": "http://127.0.0.1:4173/assets/app-BfJgoS0C.js"
-    },
-    {
-      "method": "GET",
-      "url": "http://127.0.0.1:4173/assets/styles-DnfvafAB.css"
+      "url": "http://127.0.0.1:4173/assets/styles-LdpwY07u.css"
     },
     {
       "method": "GET",
@@ -2371,11 +2395,11 @@
     },
     {
       "method": "GET",
-      "url": "http://127.0.0.1:4173/assets/app-BfJgoS0C.js"
+      "url": "http://127.0.0.1:4173/assets/app-DUMdSQ27.js"
     },
     {
       "method": "GET",
-      "url": "http://127.0.0.1:4173/assets/styles-DnfvafAB.css"
+      "url": "http://127.0.0.1:4173/assets/styles-LdpwY07u.css"
     },
     {
       "method": "GET",
@@ -2391,11 +2415,31 @@
     },
     {
       "method": "GET",
-      "url": "http://127.0.0.1:4173/assets/app-BfJgoS0C.js"
+      "url": "http://127.0.0.1:4173/assets/app-DUMdSQ27.js"
     },
     {
       "method": "GET",
-      "url": "http://127.0.0.1:4173/assets/styles-DnfvafAB.css"
+      "url": "http://127.0.0.1:4173/assets/styles-LdpwY07u.css"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/overtime-calculator.html"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/app-DUMdSQ27.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/styles-LdpwY07u.css"
     },
     {
       "method": "GET",
@@ -2411,31 +2455,11 @@
     },
     {
       "method": "GET",
-      "url": "http://127.0.0.1:4173/assets/app-BfJgoS0C.js"
+      "url": "http://127.0.0.1:4173/assets/app-DUMdSQ27.js"
     },
     {
       "method": "GET",
-      "url": "http://127.0.0.1:4173/assets/styles-DnfvafAB.css"
-    },
-    {
-      "method": "GET",
-      "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
-    },
-    {
-      "method": "GET",
-      "url": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2"
-    },
-    {
-      "method": "GET",
-      "url": "http://127.0.0.1:4173/salary-converter.html"
-    },
-    {
-      "method": "GET",
-      "url": "http://127.0.0.1:4173/assets/app-BfJgoS0C.js"
-    },
-    {
-      "method": "GET",
-      "url": "http://127.0.0.1:4173/assets/styles-DnfvafAB.css"
+      "url": "http://127.0.0.1:4173/assets/styles-LdpwY07u.css"
     },
     {
       "method": "GET",
@@ -2451,11 +2475,11 @@
     },
     {
       "method": "GET",
-      "url": "http://127.0.0.1:4173/assets/app-BfJgoS0C.js"
+      "url": "http://127.0.0.1:4173/assets/app-DUMdSQ27.js"
     },
     {
       "method": "GET",
-      "url": "http://127.0.0.1:4173/assets/styles-DnfvafAB.css"
+      "url": "http://127.0.0.1:4173/assets/styles-LdpwY07u.css"
     },
     {
       "method": "GET",
@@ -2471,11 +2495,31 @@
     },
     {
       "method": "GET",
-      "url": "http://127.0.0.1:4173/assets/app-BfJgoS0C.js"
+      "url": "http://127.0.0.1:4173/assets/app-DUMdSQ27.js"
     },
     {
       "method": "GET",
-      "url": "http://127.0.0.1:4173/assets/styles-DnfvafAB.css"
+      "url": "http://127.0.0.1:4173/assets/styles-LdpwY07u.css"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/salary-converter.html"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/app-DUMdSQ27.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/styles-LdpwY07u.css"
     },
     {
       "method": "GET",
@@ -2499,7 +2543,7 @@
     },
     {
       "method": "GET",
-      "url": "http://127.0.0.1:4174/assets/app-D0aOOAR0.js"
+      "url": "http://127.0.0.1:4174/assets/app-zWG5Oc7j.js"
     },
     {
       "method": "GET",
@@ -2527,7 +2571,7 @@
     },
     {
       "method": "GET",
-      "url": "http://127.0.0.1:4174/assets/app-D0aOOAR0.js"
+      "url": "http://127.0.0.1:4174/assets/app-zWG5Oc7j.js"
     },
     {
       "method": "GET",
@@ -2555,7 +2599,7 @@
     },
     {
       "method": "GET",
-      "url": "http://127.0.0.1:4174/assets/app-D0aOOAR0.js"
+      "url": "http://127.0.0.1:4174/assets/app-zWG5Oc7j.js"
     },
     {
       "method": "GET",
@@ -2583,7 +2627,7 @@
     },
     {
       "method": "GET",
-      "url": "http://127.0.0.1:4174/assets/app-D0aOOAR0.js"
+      "url": "http://127.0.0.1:4174/assets/app-zWG5Oc7j.js"
     },
     {
       "method": "GET",
@@ -2603,7 +2647,7 @@
     },
     {
       "method": "GET",
-      "url": "http://127.0.0.1:4174/assets/image-to-pdf--0hZv6D0.js"
+      "url": "http://127.0.0.1:4174/assets/image-to-pdf-DNgktiYY.js"
     },
     {
       "method": "GET",
@@ -2615,43 +2659,7 @@
     },
     {
       "method": "GET",
-      "url": "http://127.0.0.1:4174/assets/index-CfA9Roq9.js"
-    },
-    {
-      "method": "GET",
-      "url": "http://127.0.0.1:4174/assets/image-to-pdf-BJB00w_R.css"
-    },
-    {
-      "method": "GET",
-      "url": "http://127.0.0.1:4174/assets/styles-qOJqZkOM.css"
-    },
-    {
-      "method": "GET",
-      "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
-    },
-    {
-      "method": "GET",
-      "url": "https://fonts.gstatic.com/l/font?kit=QGYFz_MVcBeNP4NjuGObqx1XmO1I4TC1aYqc4vi0GKDIIyHlBNBZBFQ&skey=bafc0b239d492b2c&v=v15"
-    },
-    {
-      "method": "GET",
-      "url": "http://127.0.0.1:4174/image-to-pdf.html"
-    },
-    {
-      "method": "GET",
-      "url": "http://127.0.0.1:4174/assets/image-to-pdf--0hZv6D0.js"
-    },
-    {
-      "method": "GET",
-      "url": "http://127.0.0.1:4174/assets/modulepreload-polyfill-B5Qt9EMX.js"
-    },
-    {
-      "method": "GET",
-      "url": "http://127.0.0.1:4174/assets/_commonjsHelpers-CqkleIqs.js"
-    },
-    {
-      "method": "GET",
-      "url": "http://127.0.0.1:4174/assets/index-CfA9Roq9.js"
+      "url": "http://127.0.0.1:4174/assets/index-D7KNmNtJ.js"
     },
     {
       "method": "GET",
@@ -2675,7 +2683,7 @@
     },
     {
       "method": "GET",
-      "url": "http://127.0.0.1:4174/assets/image-to-pdf--0hZv6D0.js"
+      "url": "http://127.0.0.1:4174/assets/image-to-pdf-DNgktiYY.js"
     },
     {
       "method": "GET",
@@ -2687,7 +2695,7 @@
     },
     {
       "method": "GET",
-      "url": "http://127.0.0.1:4174/assets/index-CfA9Roq9.js"
+      "url": "http://127.0.0.1:4174/assets/index-D7KNmNtJ.js"
     },
     {
       "method": "GET",
@@ -2711,7 +2719,7 @@
     },
     {
       "method": "GET",
-      "url": "http://127.0.0.1:4174/assets/image-to-pdf--0hZv6D0.js"
+      "url": "http://127.0.0.1:4174/assets/image-to-pdf-DNgktiYY.js"
     },
     {
       "method": "GET",
@@ -2723,7 +2731,43 @@
     },
     {
       "method": "GET",
-      "url": "http://127.0.0.1:4174/assets/index-CfA9Roq9.js"
+      "url": "http://127.0.0.1:4174/assets/index-D7KNmNtJ.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4174/assets/image-to-pdf-BJB00w_R.css"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4174/assets/styles-qOJqZkOM.css"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4174/image-to-pdf.html"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4174/assets/image-to-pdf-DNgktiYY.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4174/assets/modulepreload-polyfill-B5Qt9EMX.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4174/assets/_commonjsHelpers-CqkleIqs.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4174/assets/index-D7KNmNtJ.js"
     },
     {
       "method": "GET",
@@ -2755,7 +2799,7 @@
     },
     {
       "method": "GET",
-      "url": "http://127.0.0.1:4174/assets/app-D0aOOAR0.js"
+      "url": "http://127.0.0.1:4174/assets/app-zWG5Oc7j.js"
     },
     {
       "method": "GET",
@@ -2783,7 +2827,7 @@
     },
     {
       "method": "GET",
-      "url": "http://127.0.0.1:4174/assets/app-D0aOOAR0.js"
+      "url": "http://127.0.0.1:4174/assets/app-zWG5Oc7j.js"
     },
     {
       "method": "GET",
@@ -2811,7 +2855,7 @@
     },
     {
       "method": "GET",
-      "url": "http://127.0.0.1:4174/assets/app-D0aOOAR0.js"
+      "url": "http://127.0.0.1:4174/assets/app-zWG5Oc7j.js"
     },
     {
       "method": "GET",
@@ -2839,7 +2883,7 @@
     },
     {
       "method": "GET",
-      "url": "http://127.0.0.1:4174/assets/app-D0aOOAR0.js"
+      "url": "http://127.0.0.1:4174/assets/app-zWG5Oc7j.js"
     },
     {
       "method": "GET",
@@ -2867,7 +2911,7 @@
     },
     {
       "method": "GET",
-      "url": "http://127.0.0.1:4174/assets/app-D0aOOAR0.js"
+      "url": "http://127.0.0.1:4174/assets/app-zWG5Oc7j.js"
     },
     {
       "method": "GET",
@@ -2895,7 +2939,7 @@
     },
     {
       "method": "GET",
-      "url": "http://127.0.0.1:4174/assets/app-D0aOOAR0.js"
+      "url": "http://127.0.0.1:4174/assets/app-zWG5Oc7j.js"
     },
     {
       "method": "GET",
@@ -2923,7 +2967,7 @@
     },
     {
       "method": "GET",
-      "url": "http://127.0.0.1:4174/assets/app-D0aOOAR0.js"
+      "url": "http://127.0.0.1:4174/assets/app-zWG5Oc7j.js"
     },
     {
       "method": "GET",
@@ -2951,7 +2995,7 @@
     },
     {
       "method": "GET",
-      "url": "http://127.0.0.1:4174/assets/app-D0aOOAR0.js"
+      "url": "http://127.0.0.1:4174/assets/app-zWG5Oc7j.js"
     },
     {
       "method": "GET",
@@ -2979,7 +3023,7 @@
     },
     {
       "method": "GET",
-      "url": "http://127.0.0.1:4174/assets/app-D0aOOAR0.js"
+      "url": "http://127.0.0.1:4174/assets/app-zWG5Oc7j.js"
     },
     {
       "method": "GET",
@@ -3007,7 +3051,7 @@
     },
     {
       "method": "GET",
-      "url": "http://127.0.0.1:4174/assets/app-D0aOOAR0.js"
+      "url": "http://127.0.0.1:4174/assets/app-zWG5Oc7j.js"
     },
     {
       "method": "GET",
@@ -3035,7 +3079,7 @@
     },
     {
       "method": "GET",
-      "url": "http://127.0.0.1:4174/assets/app-D0aOOAR0.js"
+      "url": "http://127.0.0.1:4174/assets/app-zWG5Oc7j.js"
     },
     {
       "method": "GET",
@@ -3063,7 +3107,7 @@
     },
     {
       "method": "GET",
-      "url": "http://127.0.0.1:4174/assets/app-D0aOOAR0.js"
+      "url": "http://127.0.0.1:4174/assets/app-zWG5Oc7j.js"
     },
     {
       "method": "GET",
@@ -3083,7 +3127,7 @@
     },
     {
       "method": "GET",
-      "url": "http://127.0.0.1:4174/assets/pdf-editor-C6wSCYCv.js"
+      "url": "http://127.0.0.1:4174/assets/pdf-editor-BY3aZ7cz.js"
     },
     {
       "method": "GET",
@@ -3099,11 +3143,11 @@
     },
     {
       "method": "GET",
-      "url": "http://127.0.0.1:4174/assets/index-CfA9Roq9.js"
+      "url": "http://127.0.0.1:4174/assets/index-D7KNmNtJ.js"
     },
     {
       "method": "GET",
-      "url": "http://127.0.0.1:4174/assets/pdf-editor-CjOoyZK3.css"
+      "url": "http://127.0.0.1:4174/assets/pdf-editor-BN-7E8Dq.css"
     },
     {
       "method": "GET",
@@ -3123,7 +3167,7 @@
     },
     {
       "method": "GET",
-      "url": "http://127.0.0.1:4174/assets/pdf-editor-C6wSCYCv.js"
+      "url": "http://127.0.0.1:4174/assets/pdf-editor-BY3aZ7cz.js"
     },
     {
       "method": "GET",
@@ -3139,11 +3183,11 @@
     },
     {
       "method": "GET",
-      "url": "http://127.0.0.1:4174/assets/index-CfA9Roq9.js"
+      "url": "http://127.0.0.1:4174/assets/index-D7KNmNtJ.js"
     },
     {
       "method": "GET",
-      "url": "http://127.0.0.1:4174/assets/pdf-editor-CjOoyZK3.css"
+      "url": "http://127.0.0.1:4174/assets/pdf-editor-BN-7E8Dq.css"
     },
     {
       "method": "GET",
@@ -3163,7 +3207,7 @@
     },
     {
       "method": "GET",
-      "url": "http://127.0.0.1:4174/assets/pdf-editor-C6wSCYCv.js"
+      "url": "http://127.0.0.1:4174/assets/pdf-editor-BY3aZ7cz.js"
     },
     {
       "method": "GET",
@@ -3179,11 +3223,11 @@
     },
     {
       "method": "GET",
-      "url": "http://127.0.0.1:4174/assets/index-CfA9Roq9.js"
+      "url": "http://127.0.0.1:4174/assets/index-D7KNmNtJ.js"
     },
     {
       "method": "GET",
-      "url": "http://127.0.0.1:4174/assets/pdf-editor-CjOoyZK3.css"
+      "url": "http://127.0.0.1:4174/assets/pdf-editor-BN-7E8Dq.css"
     },
     {
       "method": "GET",
@@ -3203,7 +3247,7 @@
     },
     {
       "method": "GET",
-      "url": "http://127.0.0.1:4174/assets/pdf-editor-C6wSCYCv.js"
+      "url": "http://127.0.0.1:4174/assets/pdf-editor-BY3aZ7cz.js"
     },
     {
       "method": "GET",
@@ -3219,11 +3263,11 @@
     },
     {
       "method": "GET",
-      "url": "http://127.0.0.1:4174/assets/index-CfA9Roq9.js"
+      "url": "http://127.0.0.1:4174/assets/index-D7KNmNtJ.js"
     },
     {
       "method": "GET",
-      "url": "http://127.0.0.1:4174/assets/pdf-editor-CjOoyZK3.css"
+      "url": "http://127.0.0.1:4174/assets/pdf-editor-BN-7E8Dq.css"
     },
     {
       "method": "GET",
@@ -3251,7 +3295,7 @@
     },
     {
       "method": "GET",
-      "url": "http://127.0.0.1:4174/assets/app-D0aOOAR0.js"
+      "url": "http://127.0.0.1:4174/assets/app-zWG5Oc7j.js"
     },
     {
       "method": "GET",
@@ -3279,7 +3323,7 @@
     },
     {
       "method": "GET",
-      "url": "http://127.0.0.1:4174/assets/app-D0aOOAR0.js"
+      "url": "http://127.0.0.1:4174/assets/app-zWG5Oc7j.js"
     },
     {
       "method": "GET",
@@ -3307,7 +3351,7 @@
     },
     {
       "method": "GET",
-      "url": "http://127.0.0.1:4174/assets/app-D0aOOAR0.js"
+      "url": "http://127.0.0.1:4174/assets/app-zWG5Oc7j.js"
     },
     {
       "method": "GET",
@@ -3319,7 +3363,7 @@
     },
     {
       "method": "GET",
-      "url": "https://fonts.gstatic.com/l/font?kit=QGYFz_MVcBeNP4NjuGObqx1XmO1I4TC1aYqc4vi0GKDIIyHlBNBZBFQ&skey=bafc0b239d492b2c&v=v15"
+      "url": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2"
     },
     {
       "method": "GET",
@@ -3335,7 +3379,7 @@
     },
     {
       "method": "GET",
-      "url": "http://127.0.0.1:4174/assets/app-D0aOOAR0.js"
+      "url": "http://127.0.0.1:4174/assets/app-zWG5Oc7j.js"
     },
     {
       "method": "GET",
@@ -3547,35 +3591,11 @@
     },
     {
       "method": "GET",
-      "url": "http://127.0.0.1:4173/assets/app-BfJgoS0C.js"
+      "url": "http://127.0.0.1:4173/assets/app-DUMdSQ27.js"
     },
     {
       "method": "GET",
-      "url": "http://127.0.0.1:4173/assets/styles-DnfvafAB.css"
-    },
-    {
-      "method": "GET",
-      "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
-    },
-    {
-      "method": "GET",
-      "url": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2"
-    },
-    {
-      "method": "GET",
-      "url": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJuktqQ4E.woff2"
-    },
-    {
-      "method": "GET",
-      "url": "http://127.0.0.1:4173/time-card-calculator.html"
-    },
-    {
-      "method": "GET",
-      "url": "http://127.0.0.1:4173/assets/app-BfJgoS0C.js"
-    },
-    {
-      "method": "GET",
-      "url": "http://127.0.0.1:4173/assets/styles-DnfvafAB.css"
+      "url": "http://127.0.0.1:4173/assets/styles-LdpwY07u.css"
     },
     {
       "method": "GET",
@@ -3595,11 +3615,35 @@
     },
     {
       "method": "GET",
-      "url": "http://127.0.0.1:4173/assets/app-BfJgoS0C.js"
+      "url": "http://127.0.0.1:4173/assets/app-DUMdSQ27.js"
     },
     {
       "method": "GET",
-      "url": "http://127.0.0.1:4173/assets/styles-DnfvafAB.css"
+      "url": "http://127.0.0.1:4173/assets/styles-LdpwY07u.css"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJuktqQ4E.woff2"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/time-card-calculator.html"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/app-DUMdSQ27.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/styles-LdpwY07u.css"
     },
     {
       "method": "GET",
@@ -3619,11 +3663,11 @@
     },
     {
       "method": "GET",
-      "url": "http://127.0.0.1:4173/assets/app-BfJgoS0C.js"
+      "url": "http://127.0.0.1:4173/assets/app-DUMdSQ27.js"
     },
     {
       "method": "GET",
-      "url": "http://127.0.0.1:4173/assets/styles-DnfvafAB.css"
+      "url": "http://127.0.0.1:4173/assets/styles-LdpwY07u.css"
     },
     {
       "method": "GET",
@@ -3635,7 +3679,19 @@
     },
     {
       "method": "GET",
+      "url": "https://api.frankfurter.dev/v2/rate/usd/inr"
+    },
+    {
+      "method": "GET",
       "url": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJuktqQ4E.woff2"
+    },
+    {
+      "method": "GET",
+      "url": "https://api.frankfurter.dev/v2/rate/inr/gbp"
+    },
+    {
+      "method": "GET",
+      "url": "https://api.frankfurter.dev/v2/rate/inr/gbp"
     },
     {
       "method": "GET",
@@ -3643,11 +3699,11 @@
     },
     {
       "method": "GET",
-      "url": "http://127.0.0.1:4173/assets/app-BfJgoS0C.js"
+      "url": "http://127.0.0.1:4173/assets/app-DUMdSQ27.js"
     },
     {
       "method": "GET",
-      "url": "http://127.0.0.1:4173/assets/styles-DnfvafAB.css"
+      "url": "http://127.0.0.1:4173/assets/styles-LdpwY07u.css"
     },
     {
       "method": "GET",
@@ -3663,7 +3719,11 @@
     },
     {
       "method": "GET",
-      "url": "http://127.0.0.1:4174/image-compressor.html"
+      "url": "http://127.0.0.1:4174/image-to-pdf.html"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4174/assets/image-to-pdf-DNgktiYY.js"
     },
     {
       "method": "GET",
@@ -3671,11 +3731,15 @@
     },
     {
       "method": "GET",
-      "url": "http://127.0.0.1:4174/assets/preload-helper-PPVm8Dsz.js"
+      "url": "http://127.0.0.1:4174/assets/_commonjsHelpers-CqkleIqs.js"
     },
     {
       "method": "GET",
-      "url": "http://127.0.0.1:4174/assets/app-D0aOOAR0.js"
+      "url": "http://127.0.0.1:4174/assets/index-D7KNmNtJ.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4174/assets/image-to-pdf-BJB00w_R.css"
     },
     {
       "method": "GET",
@@ -3691,11 +3755,55 @@
     },
     {
       "method": "GET",
-      "url": "blob:http://127.0.0.1:4174/b5515d73-538d-407b-9360-b58cca2daaa0"
+      "url": "blob:http://127.0.0.1:4174/ad66e168-a146-4e36-ae7f-72fd8b2164a5"
     },
     {
       "method": "GET",
-      "url": "blob:http://127.0.0.1:4174/40639e4d-2397-46d6-87a1-bc159754d8b6"
+      "url": "blob:http://127.0.0.1:4174/ad66e168-a146-4e36-ae7f-72fd8b2164a5"
+    },
+    {
+      "method": "GET",
+      "url": "blob:http://127.0.0.1:4174/85a53f14-3830-465c-9f52-27b6d5a31e2d"
+    },
+    {
+      "method": "GET",
+      "url": "blob:http://127.0.0.1:4174/f8bfe6c7-9de4-42d5-88c2-556e83ab9c5d"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4174/image-compressor.html"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4174/assets/modulepreload-polyfill-B5Qt9EMX.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4174/assets/preload-helper-PPVm8Dsz.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4174/assets/app-zWG5Oc7j.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4174/assets/styles-qOJqZkOM.css"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2"
+    },
+    {
+      "method": "GET",
+      "url": "blob:http://127.0.0.1:4174/51717b41-dddd-4729-b1ea-8f3971ae6629"
+    },
+    {
+      "method": "GET",
+      "url": "blob:http://127.0.0.1:4174/afd9f265-4be3-43be-a21b-4601eee5b163"
     },
     {
       "method": "GET",
@@ -3711,7 +3819,7 @@
     },
     {
       "method": "GET",
-      "url": "http://127.0.0.1:4174/assets/app-D0aOOAR0.js"
+      "url": "http://127.0.0.1:4174/assets/app-zWG5Oc7j.js"
     },
     {
       "method": "GET",
@@ -3739,7 +3847,7 @@
     },
     {
       "method": "GET",
-      "url": "http://127.0.0.1:4174/assets/app-D0aOOAR0.js"
+      "url": "http://127.0.0.1:4174/assets/app-zWG5Oc7j.js"
     },
     {
       "method": "GET",
@@ -3775,7 +3883,7 @@
     },
     {
       "method": "GET",
-      "url": "http://127.0.0.1:4174/assets/app-D0aOOAR0.js"
+      "url": "http://127.0.0.1:4174/assets/app-zWG5Oc7j.js"
     },
     {
       "method": "GET",
@@ -3791,7 +3899,7 @@
     },
     {
       "method": "GET",
-      "url": "http://127.0.0.1:4174/assets/index-CfA9Roq9.js"
+      "url": "http://127.0.0.1:4174/assets/index-D7KNmNtJ.js"
     },
     {
       "method": "GET",
@@ -3823,31 +3931,31 @@
     },
     {
       "method": "GET",
-      "url": "blob:http://127.0.0.1:4175/e44e14a7-d00e-4ae9-851c-6b48031588d6"
+      "url": "blob:http://127.0.0.1:4175/9d06d09f-bad3-4ae4-a53c-4ab18d5b525f"
     },
     {
       "method": "GET",
-      "url": "blob:http://127.0.0.1:4175/e44e14a7-d00e-4ae9-851c-6b48031588d6"
+      "url": "blob:http://127.0.0.1:4175/9d06d09f-bad3-4ae4-a53c-4ab18d5b525f"
     },
     {
       "method": "GET",
-      "url": "blob:http://127.0.0.1:4175/e44e14a7-d00e-4ae9-851c-6b48031588d6"
+      "url": "blob:http://127.0.0.1:4175/9d06d09f-bad3-4ae4-a53c-4ab18d5b525f"
     },
     {
       "method": "GET",
-      "url": "blob:http://127.0.0.1:4175/39443fc7-5b09-4693-8994-0f2cf1c16a7c"
+      "url": "blob:http://127.0.0.1:4175/81e82b58-a7a0-493e-a5d2-d7d712300efe"
     },
     {
       "method": "GET",
-      "url": "blob:http://127.0.0.1:4175/130f83c7-509b-4a7d-9430-d9fd8746682f"
+      "url": "blob:http://127.0.0.1:4175/0446de8f-47bf-4145-8b8f-f84a7e5059c8"
     },
     {
       "method": "GET",
-      "url": "blob:http://127.0.0.1:4175/a4d6667e-428d-4888-857f-559fb947d362"
+      "url": "blob:http://127.0.0.1:4175/81cbff66-aa89-4ebf-b96a-b0f7cdc988bd"
     }
   ],
   "summary": {
-    "total": 79,
+    "total": 90,
     "failures": 0,
     "errors": []
   }

@@ -23,8 +23,9 @@ Free time-card, work-hours, overtime and salary-estimate calculators.
 - Hourly-to-salary comparison.
 - Local draft storage, CSV export and print/save as PDF.
 - Currency formatting for USD, INR, GBP, EUR, CAD, AUD and AED. Currency selection formats the amount; it does not convert exchange rates.
+- Separate overtime estimate conversion view using Frankfurter's dated daily reference rate. Work hours and pay remain local; only currency codes are sent to the rate service.
 
-WorkKit provides estimates and is not payroll, tax, legal or financial advice. Shift values stay in the browser; they are not sent to a WorkKit application server.
+The conversion uses a daily mid-market reference observation, not a live bank, cash or payroll rate. WorkKit provides estimates and is not payroll, tax, legal or financial advice. Shift values stay in the browser; they are not sent to a WorkKit application server.
 
 ## Development
 

@@ -1,5 +1,5 @@
 import { chromium } from 'playwright';
-import { PDFDocument } from 'pdf-lib';
+import { PDFDocument, StandardFonts } from 'pdf-lib';
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -66,11 +66,16 @@ for (const [name, site] of Object.entries(sites)) {
 {
   const site = sites.workkit;
   const page = await browser.newPage({ viewport });
+  page.on('request', (request) => results.requests.push({ site: 'workkit', method: request.method(), url: request.url() }));
   await page.goto(`${site.origin}/overtime-calculator.html`, { waitUntil: 'domcontentloaded' });
   await page.locator('#ot-hours').fill('45'); await page.locator('#ot-rate').fill('20'); await page.locator('#overtime-form button[type=submit]').click();
   const pay = await page.locator('#ot-pay').innerText();
-  results.sites.workkit.interaction = { pay };
+  await page.waitForFunction(() => document.querySelector('#ot-fx-rate')?.innerText.includes('daily mid-market reference') || document.querySelector('#ot-fx-rate')?.innerText.includes('unavailable'), null, { timeout: 20000 });
+  const conversion = await page.locator('#ot-fx-pay').innerText();
+  const rateStatus = await page.locator('#ot-fx-rate').innerText();
+  results.sites.workkit.interaction = { pay, conversion, rateStatus };
   if (pay !== '$950.00') results.errors.push(`WorkKit production calculation returned ${pay}`);
+  if (!rateStatus.includes('daily mid-market reference') || conversion === '—') results.errors.push(`WorkKit live currency conversion did not return a dated rate: ${rateStatus}`);
   await page.close();
 }
 {
@@ -101,6 +106,7 @@ for (const [name, site] of Object.entries(sites)) {
 {
   const site = sites.quickkit;
   const page = await browser.newPage({ viewport });
+  page.on('request', (request) => results.requests.push({ site: 'quickkit', method: request.method(), url: request.url() }));
   const sample = await PDFDocument.create(); sample.addPage([480, 640]);
   await page.goto(`${site.origin}/pdf-editor.html`, { waitUntil: 'domcontentloaded' });
   await page.locator('#pdf-source').setInputFiles({ name: 'production-check.pdf', mimeType: 'application/pdf', buffer: Buffer.from(await sample.save()) });
@@ -112,6 +118,54 @@ for (const [name, site] of Object.entries(sites)) {
   const download = await downloadWait; const downloaded = await PDFDocument.load(await readFile(await download.path()));
   results.sites.quickkit.pdfEditorInteraction = { placed, pages: downloaded.getPageCount(), filename: download.suggestedFilename() };
   if (placed !== 1 || downloaded.getPageCount() !== 1) results.errors.push('QuickKit PDF editor production flow failed');
+  await page.close();
+}
+{
+  const site = sites.quickkit;
+  const page = await browser.newPage({ viewport });
+  const errors = [];
+  page.on('pageerror', (error) => errors.push(error.message));
+  page.on('console', (message) => { if (message.type() === 'error') errors.push(message.text()); });
+  page.on('request', (request) => results.requests.push({ site: 'quickkit', method: request.method(), url: request.url() }));
+  const sample = await PDFDocument.create();
+  const font = await sample.embedFont(StandardFonts.Helvetica);
+  sample.addPage([480, 640]).drawText('Original live line', { x: 45, y: 560, size: 20, font });
+  await page.goto(`${site.origin}/pdf-editor.html`, { waitUntil: 'domcontentloaded' });
+  await page.locator('#pdf-source').setInputFiles({ name: 'live-source-text.pdf', mimeType: 'application/pdf', buffer: Buffer.from(await sample.save()) });
+  await page.locator('#pdf-workspace').waitFor({ state: 'visible' });
+  await page.locator('#edit-source-text').click(); await page.locator('#scan-source-text').click();
+  await page.waitForFunction(() => document.querySelectorAll('#pdf-source-text-list .pdf-source-text-row').length > 0);
+  const row = page.locator('.pdf-source-text-row').filter({ hasText: 'Original live line' });
+  await row.locator('input').fill('Edited live line'); await row.getByRole('button', { name: 'Replace' }).click();
+  const downloadWait = page.waitForEvent('download'); await page.locator('#download-pdf').click();
+  const download = await downloadWait; const bytes = new Uint8Array(await readFile(await download.path()));
+  const pdfjs = await import('pdfjs-dist/legacy/build/pdf.mjs');
+  const outputTask = pdfjs.getDocument({ data: bytes, isEvalSupported: false });
+  const output = await outputTask.promise;
+  const text = (await (await output.getPage(1)).getTextContent()).items.map((item) => item.str);
+  results.sites.quickkit.sourceTextInteraction = { text, errors, filename: download.suggestedFilename() };
+  if (!text.includes('Edited live line') || text.includes('Original live line') || errors.length) results.errors.push(`QuickKit live source-text edit failed: ${JSON.stringify(results.sites.quickkit.sourceTextInteraction)}`);
+  await outputTask.destroy(); await page.close();
+}
+{
+  const site = sites.quickkit;
+  const page = await browser.newPage({ viewport });
+  page.on('request', (request) => results.requests.push({ site: 'quickkit', method: request.method(), url: request.url() }));
+  await page.goto(`${site.origin}/image-to-pdf.html`, { waitUntil: 'domcontentloaded' });
+  const image = await page.evaluate(() => new Promise((resolve) => {
+    const canvas = document.createElement('canvas'); canvas.width = 320; canvas.height = 240;
+    const context = canvas.getContext('2d'); context.fillStyle = '#34525d'; context.fillRect(0, 0, 320, 240);
+    canvas.toBlob(async (blob) => resolve(Array.from(new Uint8Array(await blob.arrayBuffer()))), 'image/png');
+  }));
+  await page.locator('#image-files').setInputFiles({ name: 'live-photo.png', mimeType: 'image/png', buffer: Buffer.from(image) });
+  await page.locator('#image-gallery li').waitFor();
+  await page.locator('#page-margin').selectOption('15'); await page.locator('#convert-images').click();
+  await page.locator('#image-pdf-result .download-link').waitFor();
+  const downloadWait = page.waitForEvent('download'); await page.locator('#image-pdf-result .download-link').click();
+  const download = await downloadWait;
+  const output = await PDFDocument.load(await readFile(await download.path()));
+  results.sites.quickkit.imageToPdfInteraction = { pages: output.getPageCount(), width: output.getPage(0).getWidth(), height: output.getPage(0).getHeight(), filename: download.suggestedFilename() };
+  if (output.getPageCount() !== 1 || !(output.getPage(0).getWidth() > output.getPage(0).getHeight())) results.errors.push('QuickKit live image-to-PDF conversion did not preserve the landscape image orientation.');
   await page.close();
 }
 {

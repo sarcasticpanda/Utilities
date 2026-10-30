@@ -17,6 +17,7 @@ Browser-based PDF, image, text, password and Wi-Fi QR tools.
 
 - Convert and order photos into PDFs; crop, rotate, filter, and set paper size/orientation/margins.
 - Edit PDF pages with added text, highlights, rectangles, images and signatures; reorder/delete pages and export a new PDF.
+- Replace or delete existing PDF text directly when a line meets the editor's supported structure and font rules. The editor preserves its source position and font and verifies the exported text before download.
 - Use OCR to copy recognized text, redact a detected region, or start a masked text replacement with editable overlaid text.
 - Run local English OCR to copy recognized text or mark OCR-detected regions for redaction. Redacted pages are flattened on export to remove their source text layer.
 - Merge PDFs in the browser.
@@ -24,7 +25,7 @@ Browser-based PDF, image, text, password and Wi-Fi QR tools.
 - Count and clean text; generate passwords.
 - Create a Wi-Fi QR code.
 
-PDF editing is annotation-based and does not rewrite arbitrary existing PDF text with its original font. OCR replacement covers old text with a mask and overlays new text; font and spacing match is approximate. OCR can be wrong. Redacting a page flattens that page, removing its text layer and links and potentially changing visual quality. Password-protected files are not supported. PDFs are processed on-device; OCR downloads its open-source engine and English model from a public CDN but does not upload the document.
+Direct existing-text edits are intentionally limited to single-line, printable ASCII text in supported Standard Type 1/WinAnsi fonts, where the replacement fits the original width. Other fonts, complex scripts, reflow, encrypted/signed PDFs and unsupported layouts are refused; this is not universal font-perfect PDF editing. OCR replacement covers old text with a mask and overlays new text, so font and spacing are approximate and OCR can be wrong. Redacting a page flattens that page, removing its text layer and links and potentially changing visual quality. PDFs are processed on-device; OCR downloads its open-source engine and English model from a public CDN but does not upload the document. The PDF editor lazily downloads its qpdf WebAssembly engine when direct text editing is used.
 
 ## Development
 

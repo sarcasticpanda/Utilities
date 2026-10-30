@@ -41,9 +41,11 @@ AdSense is the publisher product that can pay for displaying ads on a site. Goog
 4. After approval, use Auto ads to start, preview placements, and exclude any area where ads would interfere with upload, edit, calculate or download controls. If preferred, place ad units manually in reserved areas outside the interactive tool.
 5. Publish the generated `ads.txt` file if Google recommends it for the account and verify it is reachable at each site's root.
 
-No AdSense account, ad code, publisher ID, payment information, or ads.txt file has been added. The owner must supply the AdSense-issued code only after approval; do not guess or use a placeholder publisher ID. Current Pages URLs are hosted subdomains (`*.pages.dev`), so try the exact host in AdSense Sites; Google's eligibility rules distinguish ordinary subdomains from subdomains on supported public-suffix platforms. If AdSense rejects a Pages hostname or requires a domain you own, connect a custom domain first. Google verifies ownership and reviews the content before ads can serve. The review can take a few days and sometimes 2–4 weeks.
+No AdSense account, ad code, publisher ID, payment information, or ads.txt file has been added. The owner must supply the AdSense-issued code only after approval; do not guess or use a placeholder publisher ID. Cloudflare's `pages.dev` is listed as a public suffix, and Google's Sites guidance permits subdomains on public-suffix platforms (for example `site.appspot.com`), so try each exact Pages hostname in **Sites** after the account exists. Google's separate initial sign-up URL guidance is narrower and may not accept a Pages hostname as the account's initial site; if so, create the account without a site and add the Pages host from Sites later, or connect a custom domain. AdSense still has to verify control and approve every site before ads can serve. The review often takes a few days and can take 2–4 weeks.
 
-**What the owner does next:** sign in at [AdSense](https://adsense.google.com/start/), try adding one live hostname under Sites, and follow the verification prompt. Do not add payment details in this repository. If the host is accepted, copy the account-issued publisher ID and verification/ad code; only then can it be safely configured and deployed. Ads do not appear until the account and site are approved and the owner enables ads.
+**What the owner does next:** sign in at [AdSense](https://adsense.google.com/start/), add one live Pages hostname under Sites, and follow the verification prompt. If the sign-up form rejects it, finish account setup without a site and add it from Sites. Do not add payment details in this repository. If Google issues verification/ad code, the owner can provide the publisher ID and code for deployment after approval. Ads do not appear until the account and site are approved and the owner enables ads. Never click your own ads or ask visitors to click them; invalid traffic can disable serving or the account.
+
+Ad revenue is not a fixed amount per visit. It varies with eligible impressions, genuine ad engagement, audience, ad demand and placement. Google requires account verification and payment setup, and pays after the account reaches the threshold for its reporting currency. There is no guaranteed approval, traffic level or income.
 
 ## References
 
@@ -53,3 +55,9 @@ No AdSense account, ad code, publisher ID, payment information, or ads.txt file 
 - [AdSense: connect your site and review](https://support.google.com/adsense/answer/7584263)
 - [AdSense: sign-up and review](https://support.google.com/adsense/answer/10162)
 - [AdSense: set up ads, Auto ads or ad units](https://support.google.com/adsense/answer/7037624)
+- [AdSense: add a new site](https://support.google.com/adsense/answer/12169212)
+- [AdSense: site URL rules at signup](https://support.google.com/adsense/answer/2784438)
+- [AdSense: what can be added as a site](https://support.google.com/adsense/answer/12170421)
+- [AdSense: payment thresholds](https://support.google.com/adsense/answer/1709871)
+- [AdSense: invalid traffic](https://support.google.com/adsense/answer/16737)
+- [Public Suffix List](https://publicsuffix.org/list/public_suffix_list.dat)

@@ -22,6 +22,9 @@ All three sites are live on Cloudflare Pages, and QuickKit’s PDF editor is liv
 - [ ] WorkKit: consider biweekly timesheets, 5/7-day templates, duplicate-shift entry and multiple breaks after a separate calculation and mobile UX review.
 - [x] QuickKit: photo-to-PDF workflow with gallery selection, crop/rotate/filter, reorder, paper settings and local export.
 - [x] QuickKit: English OCR text copy, detected-region redaction and masked editable replacement; raster export removes original page text.
+- [x] QuickKit: add browser-only direct PDF text replacement/deletion for a clearly bounded subset, with qpdf-WASM writing, PDF.js output checks, width refusals and OCR fallback. Details and remaining device review: `PDF_SOURCE_TEXT_EDITING_PLAN.md`.
+- [x] QuickKit: verify image-to-PDF gallery include/exclude, drag order, crop/rotation/filter, margins, orientation and downloadable page order in browser QA.
+- [x] WorkKit: add dated reference-rate conversion to overtime; verify math, source/target currency-only API requests, same-currency handling and refresh.
 - [ ] QuickKit: add PDF splitting and additional conversion formats after defining fidelity requirements and mobile memory limits.
 - [ ] FormReady: add user-defined local presets next; add official photo presets only after recording and verifying current official requirements.
 

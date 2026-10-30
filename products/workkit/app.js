@@ -10,7 +10,8 @@ if (revealElements.length && !matchMedia('(prefers-reduced-motion: reduce)').mat
 const dayNames = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'];
 const currencyLocales = { USD: 'en-US', INR: 'en-IN', GBP: 'en-GB', EUR: 'en-IE', CAD: 'en-CA', AUD: 'en-AU', AED: 'en-AE' };
 const currencyCode = () => document.querySelector('#currency')?.value || 'USD';
-const money = (value) => { const currency = currencyCode(); return new Intl.NumberFormat(currencyLocales[currency] || 'en-US', { style: 'currency', currency }).format(Number.isFinite(value) ? value : 0); };
+const moneyFor = (value, currency) => new Intl.NumberFormat(currencyLocales[currency] || 'en-US', { style: 'currency', currency }).format(Number.isFinite(value) ? value : 0);
+const money = (value) => moneyFor(value, currencyCode());
 const number = (value, places = 2) => (Number.isFinite(value) ? value : 0).toFixed(places);
 const page = document.body.dataset.page;
 
@@ -151,6 +152,53 @@ if (page === 'timecard') {
 
 if (page === 'overtime') {
   const form = document.querySelector('#overtime-form');
+  const sourceCurrency = document.querySelector('#currency');
+  const targetCurrency = document.querySelector('#ot-target-currency');
+  const fxAmount = document.querySelector('#ot-fx-pay');
+  const fxStatus = document.querySelector('#ot-fx-rate');
+  const fxRates = new Map();
+  let overtimeGross = null;
+  let fxRequestId = 0;
+
+  async function updateOvertimeCurrency(forceRefresh = false) {
+    const requestId = ++fxRequestId;
+    if (!Number.isFinite(overtimeGross)) {
+      fxAmount.textContent = '—';
+      fxStatus.textContent = 'Calculate your overtime pay to see the reference conversion.';
+      return;
+    }
+    const base = sourceCurrency.value;
+    const quote = targetCurrency.value;
+    if (base === quote) {
+      fxAmount.textContent = moneyFor(overtimeGross, quote);
+      fxStatus.textContent = `Same currency selected · ${base} estimate shown above.`;
+      return;
+    }
+    const key = `${base}/${quote}`;
+    if (forceRefresh) fxRates.delete(key);
+    fxStatus.textContent = 'Loading the latest daily reference rate…';
+    try {
+      let observation = fxRates.get(key);
+      if (!observation) {
+        const response = await fetch(`https://api.frankfurter.dev/v2/rate/${base.toLowerCase()}/${quote.toLowerCase()}`, { headers: { Accept: 'application/json' }, cache: forceRefresh ? 'no-cache' : 'default' });
+        if (!response.ok) throw new Error(`Rate service returned ${response.status}.`);
+        const data = await response.json();
+        const rate = Number(data.rate);
+        if (!(rate > 0) || data.base !== base || data.quote !== quote || !/^\d{4}-\d{2}-\d{2}$/u.test(data.date)) throw new Error('Rate response was incomplete.');
+        observation = { rate, date: data.date };
+        fxRates.set(key, observation);
+      }
+      if (requestId !== fxRequestId) return;
+      fxAmount.textContent = moneyFor(overtimeGross * observation.rate, quote);
+      const formattedRate = new Intl.NumberFormat('en-US', { maximumFractionDigits: 6 }).format(observation.rate);
+      fxStatus.textContent = `1 ${base} = ${formattedRate} ${quote} · daily mid-market reference · ${observation.date} · Frankfurter`;
+    } catch {
+      if (requestId !== fxRequestId) return;
+      fxAmount.textContent = '—';
+      fxStatus.textContent = 'A reference rate is unavailable right now. Check your connection and refresh to try again.';
+    }
+  }
+
   form.addEventListener('submit', (event) => {
     event.preventDefault();
     const hours = Number(document.querySelector('#ot-hours').value);
@@ -161,9 +209,13 @@ if (page === 'overtime') {
     const overtime = Math.max(0, hours - after);
     document.querySelector('#ot-regular').textContent = number(regular);
     document.querySelector('#ot-extra').textContent = number(overtime);
-    document.querySelector('#ot-pay').textContent = money(regular * rate + overtime * rate * multiplier);
+    overtimeGross = regular * rate + overtime * rate * multiplier;
+    document.querySelector('#ot-pay').textContent = money(overtimeGross);
+    updateOvertimeCurrency();
   });
   document.querySelector('#currency').addEventListener('change', () => { if (form.checkValidity()) form.requestSubmit(); });
+  targetCurrency.addEventListener('change', () => updateOvertimeCurrency());
+  document.querySelector('#ot-fx-refresh').addEventListener('click', () => updateOvertimeCurrency(true));
 }
 
 if (page === 'salary') {
