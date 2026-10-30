@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-30T14:15:53.454Z",
+  "generatedAt": "2026-10-30T15:13:51.426Z",
   "browser": "Chromium 156.0.8078.4",
   "sites": {
     "workkit": {
@@ -65,8 +65,8 @@
       },
       "interaction": {
         "pay": "$950.00",
-        "conversion": "₹90,449.50",
-        "rateStatus": "1 USD = 95.21 INR · daily mid-market reference · 2026-10-30 · Frankfurter"
+        "conversion": "₹90,440.00",
+        "rateStatus": "1 USD = 95.2 INR · daily mid-market reference · 2026-10-30 · Frankfurter"
       },
       "overlapInteraction": {
         "message": "Shifts overlap. Adjust the times so the same minutes are not counted twice.",
@@ -79,7 +79,7 @@
         {
           "route": "/",
           "status": 200,
-          "title": "Free PDF and Image Tools: Convert Photos to PDF | QuickKit",
+          "title": "Free PDF, Word and Image Tools | QuickKit",
           "h1": "Turn photos into a PDF.",
           "canonical": "https://quickkit-browser-tools.pages.dev/",
           "scrollWidth": 1440,
@@ -115,6 +115,17 @@
           "title": "PDF Editor with OCR — Add Text, Redact and Sign | QuickKit",
           "h1": "Edit a PDF, right here",
           "canonical": "https://quickkit-browser-tools.pages.dev/pdf-editor.html",
+          "scrollWidth": 1440,
+          "width": 1440,
+          "errors": [],
+          "canonicalMatches": true
+        },
+        {
+          "route": "/document-converter.html",
+          "status": 200,
+          "title": "DOCX to PDF and PDF to Word | QuickKit",
+          "h1": "Convert Word and PDF files",
+          "canonical": "https://quickkit-browser-tools.pages.dev/document-converter.html",
           "scrollWidth": 1440,
           "width": 1440,
           "errors": [],
@@ -165,6 +176,7 @@
           "https://quickkit-browser-tools.pages.dev/image-to-pdf.html",
           "https://quickkit-browser-tools.pages.dev/image-compressor.html",
           "https://quickkit-browser-tools.pages.dev/pdf-editor.html",
+          "https://quickkit-browser-tools.pages.dev/document-converter.html",
           "https://quickkit-browser-tools.pages.dev/pdf-merge.html",
           "https://quickkit-browser-tools.pages.dev/text-tools.html",
           "https://quickkit-browser-tools.pages.dev/wifi-qr.html"
@@ -350,7 +362,7 @@
     {
       "site": "workkit",
       "method": "GET",
-      "url": "https://fonts.gstatic.com/l/font?kit=QGYFz_MVcBeNP4NjuGObqx1XmO1I4TC1aYqc4vi0GKDIIyHlBNBZBFQ&skey=bafc0b239d492b2c&v=v15"
+      "url": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2"
     },
     {
       "site": "quickkit",
@@ -370,12 +382,12 @@
     {
       "site": "quickkit",
       "method": "GET",
-      "url": "https://quickkit-browser-tools.pages.dev/assets/app-zWG5Oc7j.js"
+      "url": "https://quickkit-browser-tools.pages.dev/assets/app-CE9w8dy1.js"
     },
     {
       "site": "quickkit",
       "method": "GET",
-      "url": "https://quickkit-browser-tools.pages.dev/assets/styles-qOJqZkOM.css"
+      "url": "https://quickkit-browser-tools.pages.dev/assets/styles-xmZFjk0L.css"
     },
     {
       "site": "quickkit",
@@ -400,7 +412,7 @@
     {
       "site": "quickkit",
       "method": "GET",
-      "url": "https://quickkit-browser-tools.pages.dev/assets/image-to-pdf-DNgktiYY.js"
+      "url": "https://quickkit-browser-tools.pages.dev/assets/image-to-pdf-CW1f6oOT.js"
     },
     {
       "site": "quickkit",
@@ -410,12 +422,12 @@
     {
       "site": "quickkit",
       "method": "GET",
-      "url": "https://quickkit-browser-tools.pages.dev/assets/_commonjsHelpers-CqkleIqs.js"
+      "url": "https://quickkit-browser-tools.pages.dev/assets/_commonjsHelpers-Cpj98o6Y.js"
     },
     {
       "site": "quickkit",
       "method": "GET",
-      "url": "https://quickkit-browser-tools.pages.dev/assets/index-D7KNmNtJ.js"
+      "url": "https://quickkit-browser-tools.pages.dev/assets/index-C0Nvg3Eg.js"
     },
     {
       "site": "quickkit",
@@ -425,7 +437,7 @@
     {
       "site": "quickkit",
       "method": "GET",
-      "url": "https://quickkit-browser-tools.pages.dev/assets/styles-qOJqZkOM.css"
+      "url": "https://quickkit-browser-tools.pages.dev/assets/styles-xmZFjk0L.css"
     },
     {
       "site": "quickkit",
@@ -460,12 +472,12 @@
     {
       "site": "quickkit",
       "method": "GET",
-      "url": "https://quickkit-browser-tools.pages.dev/assets/app-zWG5Oc7j.js"
+      "url": "https://quickkit-browser-tools.pages.dev/assets/app-CE9w8dy1.js"
     },
     {
       "site": "quickkit",
       "method": "GET",
-      "url": "https://quickkit-browser-tools.pages.dev/assets/styles-qOJqZkOM.css"
+      "url": "https://quickkit-browser-tools.pages.dev/assets/styles-xmZFjk0L.css"
     },
     {
       "site": "quickkit",
@@ -490,7 +502,7 @@
     {
       "site": "quickkit",
       "method": "GET",
-      "url": "https://quickkit-browser-tools.pages.dev/assets/pdf-editor-oBTPz0SZ.js"
+      "url": "https://quickkit-browser-tools.pages.dev/assets/pdf-editor-CmyEv18t.js"
     },
     {
       "site": "quickkit",
@@ -505,22 +517,87 @@
     {
       "site": "quickkit",
       "method": "GET",
-      "url": "https://quickkit-browser-tools.pages.dev/assets/_commonjsHelpers-CqkleIqs.js"
+      "url": "https://quickkit-browser-tools.pages.dev/assets/pdf-text-extractor-CEVCP_51.js"
     },
     {
       "site": "quickkit",
       "method": "GET",
-      "url": "https://quickkit-browser-tools.pages.dev/assets/index-D7KNmNtJ.js"
+      "url": "https://quickkit-browser-tools.pages.dev/assets/_commonjsHelpers-Cpj98o6Y.js"
     },
     {
       "site": "quickkit",
       "method": "GET",
-      "url": "https://quickkit-browser-tools.pages.dev/assets/pdf-editor-ChDte_N5.css"
+      "url": "https://quickkit-browser-tools.pages.dev/assets/index-C0Nvg3Eg.js"
     },
     {
       "site": "quickkit",
       "method": "GET",
-      "url": "https://quickkit-browser-tools.pages.dev/assets/styles-qOJqZkOM.css"
+      "url": "https://quickkit-browser-tools.pages.dev/assets/pdf-editor-CwdWufjH.css"
+    },
+    {
+      "site": "quickkit",
+      "method": "GET",
+      "url": "https://quickkit-browser-tools.pages.dev/assets/styles-xmZFjk0L.css"
+    },
+    {
+      "site": "quickkit",
+      "method": "GET",
+      "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
+    },
+    {
+      "site": "quickkit",
+      "method": "GET",
+      "url": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2"
+    },
+    {
+      "site": "quickkit",
+      "method": "GET",
+      "url": "https://quickkit-browser-tools.pages.dev/document-converter.html"
+    },
+    {
+      "site": "quickkit",
+      "method": "GET",
+      "url": "https://quickkit-browser-tools.pages.dev/document-converter"
+    },
+    {
+      "site": "quickkit",
+      "method": "GET",
+      "url": "https://quickkit-browser-tools.pages.dev/assets/document-converter-B6ItF_TJ.js"
+    },
+    {
+      "site": "quickkit",
+      "method": "GET",
+      "url": "https://quickkit-browser-tools.pages.dev/assets/modulepreload-polyfill-B5Qt9EMX.js"
+    },
+    {
+      "site": "quickkit",
+      "method": "GET",
+      "url": "https://quickkit-browser-tools.pages.dev/assets/pdf-text-extractor-CEVCP_51.js"
+    },
+    {
+      "site": "quickkit",
+      "method": "GET",
+      "url": "https://quickkit-browser-tools.pages.dev/assets/_commonjsHelpers-Cpj98o6Y.js"
+    },
+    {
+      "site": "quickkit",
+      "method": "GET",
+      "url": "https://quickkit-browser-tools.pages.dev/assets/_commonjs-dynamic-modules-TDtrdbi3.js"
+    },
+    {
+      "site": "quickkit",
+      "method": "GET",
+      "url": "https://quickkit-browser-tools.pages.dev/assets/pdf-to-docx-BIbl4b87.js"
+    },
+    {
+      "site": "quickkit",
+      "method": "GET",
+      "url": "https://quickkit-browser-tools.pages.dev/assets/document-converter-CcupqxLC.css"
+    },
+    {
+      "site": "quickkit",
+      "method": "GET",
+      "url": "https://quickkit-browser-tools.pages.dev/assets/styles-xmZFjk0L.css"
     },
     {
       "site": "quickkit",
@@ -555,12 +632,12 @@
     {
       "site": "quickkit",
       "method": "GET",
-      "url": "https://quickkit-browser-tools.pages.dev/assets/app-zWG5Oc7j.js"
+      "url": "https://quickkit-browser-tools.pages.dev/assets/app-CE9w8dy1.js"
     },
     {
       "site": "quickkit",
       "method": "GET",
-      "url": "https://quickkit-browser-tools.pages.dev/assets/styles-qOJqZkOM.css"
+      "url": "https://quickkit-browser-tools.pages.dev/assets/styles-xmZFjk0L.css"
     },
     {
       "site": "quickkit",
@@ -595,12 +672,12 @@
     {
       "site": "quickkit",
       "method": "GET",
-      "url": "https://quickkit-browser-tools.pages.dev/assets/app-zWG5Oc7j.js"
+      "url": "https://quickkit-browser-tools.pages.dev/assets/app-CE9w8dy1.js"
     },
     {
       "site": "quickkit",
       "method": "GET",
-      "url": "https://quickkit-browser-tools.pages.dev/assets/styles-qOJqZkOM.css"
+      "url": "https://quickkit-browser-tools.pages.dev/assets/styles-xmZFjk0L.css"
     },
     {
       "site": "quickkit",
@@ -635,12 +712,12 @@
     {
       "site": "quickkit",
       "method": "GET",
-      "url": "https://quickkit-browser-tools.pages.dev/assets/app-zWG5Oc7j.js"
+      "url": "https://quickkit-browser-tools.pages.dev/assets/app-CE9w8dy1.js"
     },
     {
       "site": "quickkit",
       "method": "GET",
-      "url": "https://quickkit-browser-tools.pages.dev/assets/styles-qOJqZkOM.css"
+      "url": "https://quickkit-browser-tools.pages.dev/assets/styles-xmZFjk0L.css"
     },
     {
       "site": "quickkit",
@@ -770,7 +847,7 @@
     {
       "site": "quickkit",
       "method": "GET",
-      "url": "https://quickkit-browser-tools.pages.dev/assets/pdf-editor-oBTPz0SZ.js"
+      "url": "https://quickkit-browser-tools.pages.dev/assets/pdf-editor-CmyEv18t.js"
     },
     {
       "site": "quickkit",
@@ -785,22 +862,27 @@
     {
       "site": "quickkit",
       "method": "GET",
-      "url": "https://quickkit-browser-tools.pages.dev/assets/_commonjsHelpers-CqkleIqs.js"
+      "url": "https://quickkit-browser-tools.pages.dev/assets/pdf-text-extractor-CEVCP_51.js"
     },
     {
       "site": "quickkit",
       "method": "GET",
-      "url": "https://quickkit-browser-tools.pages.dev/assets/index-D7KNmNtJ.js"
+      "url": "https://quickkit-browser-tools.pages.dev/assets/_commonjsHelpers-Cpj98o6Y.js"
     },
     {
       "site": "quickkit",
       "method": "GET",
-      "url": "https://quickkit-browser-tools.pages.dev/assets/pdf-editor-ChDte_N5.css"
+      "url": "https://quickkit-browser-tools.pages.dev/assets/index-C0Nvg3Eg.js"
     },
     {
       "site": "quickkit",
       "method": "GET",
-      "url": "https://quickkit-browser-tools.pages.dev/assets/styles-qOJqZkOM.css"
+      "url": "https://quickkit-browser-tools.pages.dev/assets/pdf-editor-CwdWufjH.css"
+    },
+    {
+      "site": "quickkit",
+      "method": "GET",
+      "url": "https://quickkit-browser-tools.pages.dev/assets/styles-xmZFjk0L.css"
     },
     {
       "site": "quickkit",
@@ -830,7 +912,7 @@
     {
       "site": "quickkit",
       "method": "GET",
-      "url": "https://quickkit-browser-tools.pages.dev/assets/pdf-editor-oBTPz0SZ.js"
+      "url": "https://quickkit-browser-tools.pages.dev/assets/pdf-editor-CmyEv18t.js"
     },
     {
       "site": "quickkit",
@@ -845,22 +927,27 @@
     {
       "site": "quickkit",
       "method": "GET",
-      "url": "https://quickkit-browser-tools.pages.dev/assets/_commonjsHelpers-CqkleIqs.js"
+      "url": "https://quickkit-browser-tools.pages.dev/assets/pdf-text-extractor-CEVCP_51.js"
     },
     {
       "site": "quickkit",
       "method": "GET",
-      "url": "https://quickkit-browser-tools.pages.dev/assets/index-D7KNmNtJ.js"
+      "url": "https://quickkit-browser-tools.pages.dev/assets/_commonjsHelpers-Cpj98o6Y.js"
     },
     {
       "site": "quickkit",
       "method": "GET",
-      "url": "https://quickkit-browser-tools.pages.dev/assets/pdf-editor-ChDte_N5.css"
+      "url": "https://quickkit-browser-tools.pages.dev/assets/index-C0Nvg3Eg.js"
     },
     {
       "site": "quickkit",
       "method": "GET",
-      "url": "https://quickkit-browser-tools.pages.dev/assets/styles-qOJqZkOM.css"
+      "url": "https://quickkit-browser-tools.pages.dev/assets/pdf-editor-CwdWufjH.css"
+    },
+    {
+      "site": "quickkit",
+      "method": "GET",
+      "url": "https://quickkit-browser-tools.pages.dev/assets/styles-xmZFjk0L.css"
     },
     {
       "site": "quickkit",
@@ -910,7 +997,7 @@
     {
       "site": "quickkit",
       "method": "GET",
-      "url": "https://quickkit-browser-tools.pages.dev/assets/image-to-pdf-DNgktiYY.js"
+      "url": "https://quickkit-browser-tools.pages.dev/assets/image-to-pdf-CW1f6oOT.js"
     },
     {
       "site": "quickkit",
@@ -920,12 +1007,12 @@
     {
       "site": "quickkit",
       "method": "GET",
-      "url": "https://quickkit-browser-tools.pages.dev/assets/_commonjsHelpers-CqkleIqs.js"
+      "url": "https://quickkit-browser-tools.pages.dev/assets/_commonjsHelpers-Cpj98o6Y.js"
     },
     {
       "site": "quickkit",
       "method": "GET",
-      "url": "https://quickkit-browser-tools.pages.dev/assets/index-D7KNmNtJ.js"
+      "url": "https://quickkit-browser-tools.pages.dev/assets/index-C0Nvg3Eg.js"
     },
     {
       "site": "quickkit",
@@ -935,7 +1022,7 @@
     {
       "site": "quickkit",
       "method": "GET",
-      "url": "https://quickkit-browser-tools.pages.dev/assets/styles-qOJqZkOM.css"
+      "url": "https://quickkit-browser-tools.pages.dev/assets/styles-xmZFjk0L.css"
     },
     {
       "site": "quickkit",
@@ -950,17 +1037,17 @@
     {
       "site": "quickkit",
       "method": "GET",
-      "url": "blob:https://quickkit-browser-tools.pages.dev/ffbc6a56-91f8-4c8a-9644-bb431591ab4e"
+      "url": "blob:https://quickkit-browser-tools.pages.dev/c3466db5-2925-4dd2-8cf7-a3216d914ff9"
     },
     {
       "site": "quickkit",
       "method": "GET",
-      "url": "blob:https://quickkit-browser-tools.pages.dev/ffbc6a56-91f8-4c8a-9644-bb431591ab4e"
+      "url": "blob:https://quickkit-browser-tools.pages.dev/c3466db5-2925-4dd2-8cf7-a3216d914ff9"
     }
   ],
   "cloudflareSecurityChallengeRequests": 0,
   "summary": {
-    "pages": 13,
+    "pages": 14,
     "failures": 0,
     "errors": []
   }

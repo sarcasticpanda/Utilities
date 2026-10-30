@@ -74,7 +74,7 @@ function updateCounts() {
 function setDirty(value) {
   dirty = value;
   const item = activeItem();
-  editStatus.textContent = !item ? 'Choose a photo to begin editing.' : value ? 'You have unapplied edits. Apply them before creating the PDF or changing photos.' : item.outputBlob ? 'Edits applied to this photo.' : 'Crop and adjust this photo, then apply your changes.';
+  editStatus.textContent = !item ? 'Choose a photo to begin editing.' : value ? 'Preview updated. Apply these edits to include them in your PDF.' : item.outputBlob ? 'Edits applied to this photo.' : 'Adjust the crop or filter. The preview updates as you edit.';
   updateCounts();
 }
 function renderGallery() {
@@ -150,6 +150,10 @@ function filterString(item) {
   };
   return `brightness(${item.brightness / 100}) contrast(${item.contrast / 100}) ${filters[item.filter] || ''}`.trim();
 }
+function updateCropPreview(item) {
+  const filter = filterString(item);
+  stage.querySelectorAll('.cropper-canvas img, .cropper-view-box img').forEach((image) => { image.style.filter = filter; });
+}
 function syncFilterControls(item) {
   document.querySelector('#image-filter').value = item.filter;
   document.querySelector('#brightness').value = String(item.brightness);
@@ -174,11 +178,12 @@ function openEditor(id) {
       if (item.cropData) cropper?.setData(item.cropData);
       if (item.rotation) cropper?.rotateTo(item.rotation);
       if (item.scaleX === -1) cropper?.scaleX(-1);
+      updateCropPreview(item);
       ignoreCropEvents = false;
     },
     crop() { if (!ignoreCropEvents && activeId === item.id) { setDirty(true); invalidateResult(); } }
   });
-  editStatus.textContent = item.outputBlob ? 'Edits applied to this photo.' : 'Drag the crop handles, then apply your changes.';
+  editStatus.textContent = item.outputBlob ? 'Edits applied to this photo.' : 'Drag the crop handles or choose a filter. Preview updates as you edit.';
   renderGallery();
 }
 function markFilterChanged() {
@@ -188,6 +193,7 @@ function markFilterChanged() {
   item.contrast = Number(document.querySelector('#contrast').value);
   document.querySelector('#brightness-value').value = `${item.brightness}%`;
   document.querySelector('#contrast-value').value = `${item.contrast}%`;
+  updateCropPreview(item);
   setDirty(true); invalidateResult();
 }
 async function encodeCanvas(canvas, type = 'image/png', quality) {

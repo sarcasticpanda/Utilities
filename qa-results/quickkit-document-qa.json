@@ -1,0 +1,82 @@
+{
+  "generatedAt": "2026-10-30T15:13:39.126Z",
+  "origin": "https://quickkit-browser-tools.pages.dev",
+  "checks": [
+    {
+      "name": "DOCX upload produces an actual print preview with text",
+      "pass": true,
+      "detail": "QuickKit document test\n\nDOCX to PDF keeps this selectable sentence.\n\nSecond paragraph with bold-ready plain text."
+    },
+    {
+      "name": "DOCX print / Save as PDF action calls the browser print flow",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "PDF to DOCX creates a valid Word package with extracted text from both pages",
+      "pass": true,
+      "detail": "Page 1 QuickKit extraction fixture Split text fragments survive extraction. Page one includes selectable text. Page 2 Page two text is preserved."
+    },
+    {
+      "name": "PDF to DOCX reports pages and text lines",
+      "pass": true,
+      "detail": "Created a Word document from 4 text lines on 2 of 2 pages. Review reading order and layout in Word."
+    },
+    {
+      "name": "PDF editor extracts text from every page including split text operations",
+      "pass": true,
+      "detail": "Page 1\nQuickKit extraction fixture\nSplit text fragments survive extraction.\nPage one includes selectable text.\n\nPage 2\nPage two text is preserved."
+    },
+    {
+      "name": "PDF editor Word export opens and contains the extracted text",
+      "pass": true,
+      "detail": "Page 1 QuickKit extraction fixture Split text fragments survive extraction. Page one includes selectable text. Page 2 Page two text is preserved."
+    },
+    {
+      "name": "PDF extraction fixture itself has two real pages and embedded text",
+      "pass": true,
+      "detail": "pages=2"
+    },
+    {
+      "name": "Image-only PDF fails clearly instead of producing a blank Word document",
+      "pass": true,
+      "detail": "PDF to Word failed: No selectable text was found. This may be a scanned PDF; run OCR in the PDF editor first."
+    },
+    {
+      "name": "Image filter visibly updates the crop preview before Apply",
+      "pass": true,
+      "detail": "brightness(1) contrast(1) grayscale(1)"
+    },
+    {
+      "name": "Applied grayscale filter changes the edited output image pixels",
+      "pass": true,
+      "detail": "{\"r\":89,\"g\":89,\"b\":89,\"difference\":0}"
+    },
+    {
+      "name": "Image-to-PDF export contains one page with the selected landscape orientation",
+      "pass": true,
+      "detail": "pages=1"
+    },
+    {
+      "name": "Exported PDF renders with the grayscale filter applied",
+      "pass": true,
+      "detail": "{\"r\":85,\"g\":85,\"b\":85,\"difference\":0}"
+    },
+    {
+      "name": "Document converter fits 390px mobile viewport without horizontal overflow",
+      "pass": true,
+      "detail": "{\"viewport\":375,\"scroll\":375,\"panels\":[{\"left\":16,\"right\":359.20001220703125},{\"left\":16,\"right\":359.20001220703125}]}"
+    },
+    {
+      "name": "Document converter fits 320px mobile viewport without horizontal overflow",
+      "pass": true,
+      "detail": "{\"viewport\":305,\"scroll\":305,\"panels\":[{\"left\":16,\"right\":288.8000183105469},{\"left\":16,\"right\":288.8000183105469}]}"
+    },
+    {
+      "name": "No uncaught page errors or failed resource requests occurred",
+      "pass": true,
+      "detail": ""
+    }
+  ],
+  "failures": 0
+}

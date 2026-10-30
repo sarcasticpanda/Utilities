@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Convert a Word document to a print-ready PDF or extract selectable PDF text into an editable Word document. Files stay in your browser.">
+  <meta name="theme-color" content="#f3f6fb">
+  <title>DOCX to PDF and PDF to Word | QuickKit</title>
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/document-converter.css">
+  <link rel="canonical" href="https://quickkit-browser-tools.pages.dev/document-converter.html">
+  <meta property="og:title" content="DOCX to PDF and PDF to Word | QuickKit">
+  <meta property="og:description" content="Prepare a Word document for PDF or extract selectable PDF text into an editable Word file, in your browser.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://quickkit-browser-tools.pages.dev/document-converter.html">
+  <meta name="twitter:card" content="summary">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+</head>
+<body data-page="document-converter">
+  <header class="site-header">
+    <a class="brand" href="./"><span class="brand-mark">q</span><span>quickkit</span></a>
+    <nav aria-label="Main navigation"><a href="image-to-pdf.html">Images</a><a href="pdf-editor.html">PDF</a><a href="document-converter.html" aria-current="page">Documents</a><a href="text-tools.html">Text</a></nav>
+    <a class="header-action" href="./#tools">All tools ↗</a>
+  </header>
+  <main class="wrap tool-page">
+    <div class="breadcrumbs"><a href="./">Home</a><span>/</span>Document converter</div>
+    <div class="tool-intro"><h1>Convert Word and PDF files</h1><p class="lede">Prepare a DOCX for PDF, or turn selectable PDF text into an editable Word file. Files stay in this browser.</p></div>
+    <div class="document-converter-grid">
+      <section class="document-converter-panel" aria-labelledby="docx-pdf-title">
+        <div class="converter-heading"><span class="converter-mark">DOCX → PDF</span><h2 id="docx-pdf-title">Word to PDF</h2><p>Preview your Word content, then use your browser’s print dialog to save it as a PDF.</p></div>
+        <label class="document-dropzone" id="docx-dropzone" for="docx-source"><strong>Choose a Word document</strong><span>or drop a .docx file here · up to 30 MB</span><input id="docx-source" type="file" accept=".docx,application/vnd.openxmlformats-officedocument.wordprocessingml.document"></label>
+        <p class="document-status" id="docx-status" role="status" aria-live="polite">The browser rebuilds the document from its text and common formatting. Review the preview before saving.</p>
+        <div class="docx-actions"><button type="button" class="button button-primary" id="print-docx" disabled>Print / Save as PDF</button><button type="button" class="button button-plain" id="clear-docx" disabled>Clear</button></div>
+        <iframe id="docx-preview" title="Print-ready Word document preview" sandbox="allow-same-origin allow-modals" hidden></iframe>
+        <p class="document-limit">Complex columns, floating text, tracked changes and exact page layout may differ. In the print dialog, choose “Save as PDF.”</p>
+      </section>
+
+      <section class="document-converter-panel" aria-labelledby="pdf-docx-title">
+        <div class="converter-heading"><span class="converter-mark converter-mark-pdf">PDF → DOCX</span><h2 id="pdf-docx-title">PDF to Word</h2><p>Extract selectable PDF text into a new, editable Word document.</p></div>
+        <label class="document-dropzone" id="pdf-dropzone" for="pdf-source"><strong>Choose a PDF</strong><span>or drop a PDF here · up to 100 MB and 200 pages</span><input id="pdf-source" type="file" accept=".pdf,application/pdf"></label>
+        <button type="button" class="button button-primary document-convert-button" id="convert-pdf-docx" disabled>Extract text and create Word file</button>
+        <p class="document-status" id="pdf-status" role="status" aria-live="polite">Scanned pages need OCR first in the <a href="pdf-editor.html">PDF editor</a>.</p>
+        <div id="pdf-result" class="document-result" hidden></div>
+        <p class="document-limit">Text and page order are kept when available. PDF columns, images, tables and exact formatting may need cleanup in Word.</p>
+      </section>
+    </div>
+    <section class="below-tool document-privacy"><h2>Your documents stay on this device</h2><p>Both tools process the selected file in your browser. Word-to-PDF uses the browser’s print dialog; PDF-to-Word reads the PDF text layer. The converter does not upload or store your files.</p></section>
+  </main>
+  <footer class="site-footer wrap"><a href="./">QuickKit home</a><div><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="about.html">About</a><a href="open-source-acknowledgements.html">Open-source</a></div></footer>
+  <script type="module" src="/document-converter.js"></script>
+</body>
+</html>

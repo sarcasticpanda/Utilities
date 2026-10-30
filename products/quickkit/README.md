@@ -5,6 +5,7 @@ Browser-based PDF, image, text, password and Wi-Fi QR tools.
 **Live site:** https://quickkit-browser-tools.pages.dev/<br>
 **Images to PDF:** https://quickkit-browser-tools.pages.dev/image-to-pdf.html<br>
 **PDF editor:** https://quickkit-browser-tools.pages.dev/pdf-editor.html
+**Word and PDF converter:** https://quickkit-browser-tools.pages.dev/document-converter.html
 
 ## Screenshots
 
@@ -16,6 +17,8 @@ Browser-based PDF, image, text, password and Wi-Fi QR tools.
 ## Tools
 
 - Convert and order photos into PDFs; crop, rotate, filter, and set paper size/orientation/margins.
+- Convert DOCX to a print-ready browser preview and extract selectable PDF text into editable DOCX files.
+- Extract selectable text from every PDF page into a copyable view, TXT download or DOCX.
 - Edit PDF pages with added text, highlights, rectangles, images and signatures; reorder/delete pages and export a new PDF.
 - Replace or delete existing PDF text directly when a line meets the editor's supported structure and font rules. The editor preserves its source position and font and verifies the exported text before download.
 - Use OCR to copy recognized text, redact a detected region, or start a masked text replacement with editable overlaid text.
@@ -27,9 +30,11 @@ Browser-based PDF, image, text, password and Wi-Fi QR tools.
 
 Direct existing-text edits are intentionally limited to single-line, printable ASCII text in supported Standard Type 1/WinAnsi fonts, where the replacement fits the original width. Other fonts, complex scripts, reflow, encrypted/signed PDFs and unsupported layouts are refused; this is not universal font-perfect PDF editing. OCR replacement covers old text with a mask and overlays new text, so font and spacing are approximate and OCR can be wrong. Redacting a page flattens that page, removing its text layer and links and potentially changing visual quality. PDFs are processed on-device; OCR downloads its open-source engine and English model from a public CDN but does not upload the document. The PDF editor lazily downloads its qpdf WebAssembly engine when direct text editing is used.
 
+DOCX-to-PDF rebuilds a print preview from document text and common formatting, then opens the browser print dialog; choose “Save as PDF.” Complex Word layout can change. PDF-to-DOCX keeps extracted text and page order when available but does not preserve page layout, images or tables. Scanned PDFs need OCR first. The converter limits input to 30 MB for DOCX, 100 MB and 200 pages for PDF. Image filters update the preview immediately and are baked into the photo when “Apply crop and filter” is pressed.
+
 ## Development
 
-From the workspace root, run `npm ci`, then `npm run dev:quickkit`. Build with `npm run build:quickkit`. The PDF editor smoke workflow is `npm run qa:pdf-editor`.
+From the workspace root, run `npm ci`, then `npm run dev:quickkit`. Build with `npm run build:quickkit`. Run `npm run qa:pdf-editor` and `npm run qa:quickkit-documents` (set `HEADED=1` to observe Chromium).
 
 ## Project and third-party notices
 

@@ -8,6 +8,7 @@
     "dev:quickkit": "vite --config products/quickkit/vite.config.js",
     "dev:formready": "vite --config products/formready/vite.config.js",
     "qa:pdf-editor": "node scripts/pdf-editor-smoke.mjs",
+    "qa:quickkit-documents": "node scripts/quickkit-document-qa.mjs",
     "build:workkit": "vite build --config products/workkit/vite.config.js",
     "build:quickkit": "vite build --config products/quickkit/vite.config.js",
     "build:formready": "vite build --config products/formready/vite.config.js",

@@ -17,3 +17,4 @@ qa-results/production/
 qa-results/pdf-editor-production/*.png
 qa-results/screenshots-final/
 qa-results/screenshots-polished/
+qa-results/quickkit-document-fixtures/*

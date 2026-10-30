@@ -6,9 +6,9 @@ import { fileURLToPath } from 'node:url';
 import { resolve } from 'node:path';
 
 const base = {
-  workkit: 'http://127.0.0.1:4173',
-  quickkit: 'http://127.0.0.1:4174',
-  formready: 'http://127.0.0.1:4175'
+  workkit: process.env.WORKKIT_ORIGIN || 'http://127.0.0.1:4173',
+  quickkit: process.env.QUICKKIT_ORIGIN || 'http://127.0.0.1:4174',
+  formready: process.env.FORMREADY_ORIGIN || 'http://127.0.0.1:4175'
 };
 const viewports = [{ name: 'desktop', width: 1440, height: 900 }, { name: 'tablet', width: 768, height: 1024 }, { name: 'mobile', width: 390, height: 844 }, { name: 'narrow-mobile', width: 320, height: 740 }];
 const rootDir = fileURLToPath(new URL('..', import.meta.url));
@@ -190,8 +190,18 @@ for (const [product, paths] of Object.entries({
   await imagePdf.page.locator('#rotate-left').click();
   await imagePdf.page.locator('#image-filter').selectOption('grayscale');
   await imagePdf.page.locator('#brightness').fill('110');
+  const liveFilterPreview = await imagePdf.page.locator('.cropper-canvas img').first().evaluate((image) => getComputedStyle(image).filter);
+  await assert('QuickKit filter selection updates the visible crop preview immediately', liveFilterPreview.includes('grayscale(1)'), liveFilterPreview);
   await imagePdf.page.locator('#apply-edit').click();
   await imagePdf.page.locator('#image-gallery li').first().waitFor();
+  const filteredPixels = await imagePdf.page.locator('#image-gallery li img').first().evaluate(async (image) => {
+    await image.decode();
+    const canvas = document.createElement('canvas'); canvas.width = canvas.height = 1;
+    const context = canvas.getContext('2d', { willReadFrequently: true }); context.drawImage(image, 0, 0, 1, 1);
+    const [red, green, blue] = context.getImageData(0, 0, 1, 1).data;
+    return { red, green, blue, maxChannelDifference: Math.max(red, green, blue) - Math.min(red, green, blue) };
+  });
+  await assert('QuickKit applied grayscale filter changes the edited photo pixels', filteredPixels.maxChannelDifference <= 3, JSON.stringify(filteredPixels));
   await assert('QuickKit image-to-PDF applies crop/rotation and filter edits before export', (await imagePdf.page.locator('#image-gallery li').first().innerText()).includes('edited') && await imagePdf.page.locator('#convert-images').isEnabled(), await imagePdf.page.locator('#edit-status').innerText());
   await imagePdf.page.locator('#convert-images').click();
   await imagePdf.page.locator('#image-pdf-result .download-link').waitFor();

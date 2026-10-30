@@ -1,6 +1,6 @@
 # Browser QA checklist and evidence
 
-The browser script and machine-readable evidence are in `scripts/browser-qa.mjs` and `qa-results/browser-qa-results.json`. Final screenshots are in `qa-results/screenshots-polished/`. The latest full local sweep followed the production build on 2026-10-30 and recorded **79 checks, 0 failures** across 13 routes; the PDF editor workflow passed 32 checks locally and live.
+The browser script and machine-readable evidence are in `scripts/browser-qa.mjs` and `qa-results/browser-qa-results.json`. Final screenshots are in `qa-results/screenshots-polished/`. The earlier full local sweep recorded **79 checks, 0 failures** across 13 routes. The current PDF editor workflow passes **40/40** locally and live; `scripts/quickkit-document-qa.mjs` passes **15/15** locally, in visible Chromium and live.
 
 ## Test setup
 
@@ -50,6 +50,10 @@ The browser script and machine-readable evidence are in `scripts/browser-qa.mjs`
 - [ ] Test large real-world PDFs and low-memory mobile devices; file size is capped at 100 MB but device memory varies.
 - [ ] Click/open verification of the image-compressor download, unsupported files, unattainable targets and reset/object-URL cleanup need additional scenarios.
 - [ ] Clipboard permissions and copy feedback need a browser permission pass.
+- [x] DOCX → PDF preview and print invocation, split text PDF → DOCX, scanned-PDF feedback, all-page text extraction and Word export; `qa:quickkit-documents`. Automated coverage verifies the browser print call, but does not operate the native print dialog.
+- [x] Filter changes update the Cropper preview and final downloaded PDF pixels; `qa:quickkit-documents`.
+- [ ] DOCX → PDF preview and native Save-as-PDF flow, split text PDF → DOCX, scanned-PDF feedback, all-page text extraction and Word export; see `qa:quickkit-documents`. Automated coverage verifies preview and print invocation, but does not operate the native print dialog.
+- [ ] Verify filter changes update the Cropper preview and final downloaded PDF pixels; see `qa:quickkit-documents`.
 
 ## FormReady
 
@@ -87,6 +91,8 @@ Production evidence: `qa-results/production-smoke-results.json`; production desk
 - [x] All 13 deployed homepage/tool routes returned HTTP 200, valid H1/canonical metadata, no horizontal overflow, and no browser page or console errors.
 - [x] Deployed sitemaps and robots.txt files returned HTTP 200.
 - [x] WorkKit overtime, QuickKit text cleanup, and FormReady crop flows passed on the public Pages sites.
-- [x] QuickKit PDF editor passed all 32 dedicated production checks, including OCR replacement/redaction, local-only file processing, edit/undo, export readability and mobile widths.
+- [x] QuickKit PDF editor passed all 40 dedicated production checks, including OCR replacement/redaction, local-only file processing, edit/undo, export readability and mobile widths.
 
 Production evidence: qa-results/production-smoke-results.json and qa-results/pdf-editor-production/results.json.
+
+Latest full production sweep: `node scripts/production-smoke.mjs` — 14 routes, 0 failures. QuickKit document/filter suite — 15/15 against production; PDF editor — 40/40 against production.

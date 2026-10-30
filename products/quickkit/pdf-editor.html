@@ -14,7 +14,8 @@
 
 
 
-<link rel="canonical" href="https://quickkit-browser-tools.pages.dev/pdf-editor.html"><meta property="og:title" content="PDF Editor with OCR — Add Text, Redact and Sign | QuickKit"><meta property="og:description" content="Use this free PDF editor to add text, shapes and signatures, recognize text with OCR, replace or redact selected regions, and reorder pages in your browser."><meta property="og:type" content="website"><meta property="og:url" content="https://quickkit-browser-tools.pages.dev/pdf-editor.html"><meta name="twitter:card" content="summary"></head>
+<link rel="canonical" href="https://quickkit-browser-tools.pages.dev/pdf-editor.html"><meta property="og:title" content="PDF Editor with OCR — Add Text, Redact and Sign | QuickKit"><meta property="og:description" content="Use this free PDF editor to add text, shapes and signatures, recognize text with OCR, replace or redact selected regions, and reorder pages in your browser."><meta property="og:type" content="website"><meta property="og:url" content="https://quickkit-browser-tools.pages.dev/pdf-editor.html"><meta name="twitter:card" content="summary">  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+</head>
 <body data-page="pdf-editor">
   <header class="site-header">
     <a class="brand" href="./"><span class="brand-mark">q</span><span>quickkit</span></a>
@@ -53,6 +54,7 @@
           <button type="button" class="pdf-tool" data-tool="signature" aria-pressed="false" title="Draw and place a signature">Sign</button>
         </div>
         <button type="button" class="pdf-tool" id="edit-source-text" aria-expanded="false" aria-controls="pdf-source-text-panel" title="Change supported existing PDF text">Edit text</button>
+        <button type="button" class="pdf-tool" id="extract-pdf-text" title="Extract selectable text from every page" disabled>Extract text</button>
         <button type="button" class="pdf-tool" id="ocr-current-page" title="Recognize text on this page">Find text</button>
         <button type="button" class="pdf-tool" id="undo-edit" aria-label="Undo last edit" title="Undo last edit (Ctrl+Z)" disabled>Undo</button>
         <div class="pdf-zoom-controls" aria-label="Page zoom"><button type="button" id="zoom-out" aria-label="Zoom out">−</button><output id="zoom-level">100%</output><button type="button" id="zoom-in" aria-label="Zoom in">+</button></div>
@@ -65,6 +67,13 @@
         <ol id="pdf-source-text-list" class="pdf-source-text-list" aria-label="Text lines on this PDF page"></ol>
         <details id="pdf-source-text-unsupported" hidden><summary>Lines this editor cannot change</summary><ul id="pdf-source-text-refusals"></ul></details>
         <p id="pdf-source-text-staged" class="pdf-source-text-staged" hidden></p>
+      </section>
+      <section class="pdf-source-text-panel pdf-extract-panel" id="pdf-extract-panel" hidden aria-labelledby="pdf-extract-title">
+        <div class="pdf-source-text-heading"><div><h2 id="pdf-extract-title">Extract text from this PDF</h2><p>Reads selectable text already stored in the document. Scanned pages need OCR.</p></div></div>
+        <p id="pdf-extract-status" role="status" aria-live="polite">Extract text from every page to copy it or create an editable Word document.</p>
+        <label class="pdf-extract-label" for="pdf-extracted-text">Extracted text</label>
+        <textarea id="pdf-extracted-text" class="pdf-extracted-text" readonly placeholder="Extracted PDF text will appear here."></textarea>
+        <div class="pdf-extract-actions"><button type="button" class="button button-plain" id="copy-extracted-text" disabled>Copy text</button><button type="button" class="button button-plain" id="download-pdf-text" disabled>Download TXT</button><button type="button" class="button button-primary" id="download-pdf-docx" disabled>Download Word file</button></div>
       </section>
       <p class="pdf-ocr-status" id="pdf-ocr-status" role="status" aria-live="polite"></p>
       <button type="button" class="pdf-ocr-copy" id="copy-ocr-text" hidden>Copy recognized text</button>

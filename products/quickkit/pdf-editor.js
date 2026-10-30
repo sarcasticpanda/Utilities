@@ -2,7 +2,9 @@ import * as pdfjsLib from 'pdfjs-dist/build/pdf.mjs';
 import pdfWorkerUrl from 'pdfjs-dist/build/pdf.worker.min.mjs?url';
 import { PDFDocument, rgb } from 'pdf-lib';
 import { createPdfToolkit } from 'pdfstudio';
+import qpdfWasmUrl from 'pdfstudio/qpdf.wasm?url';
 import { applyEditablePdfText, scanEditablePdfPage } from './pdf-source-text.js';
+import { extractPdfPagesText, formatPdfPagesText } from './pdf-text-extractor.js';
 
 pdfjsLib.GlobalWorkerOptions.workerSrc = pdfWorkerUrl;
 
@@ -43,6 +45,7 @@ let ocrCurrentText = '';
 let qpdfToolkitPromise = null;
 let sourceTextScan = null;
 let sourceTextEdits = [];
+let extractedPdfPages = [];
 
 const hints = {
   select: 'Select an item to move it. Choose a tool, then click on the page to add it.',
@@ -60,7 +63,7 @@ function setStatus(text, isError = false) {
 }
 
 function getQpdfToolkit() {
-  qpdfToolkitPromise ||= createPdfToolkit();
+  qpdfToolkitPromise ||= createPdfToolkit({ wasmUrl: qpdfWasmUrl });
   return qpdfToolkitPromise;
 }
 
@@ -145,6 +148,48 @@ async function scanCurrentSourceText() {
   }
 }
 
+async function extractDocumentText() {
+  if (!sourceBytes || !pdfDocument) return;
+  const button = $('#extract-pdf-text');
+  const panel = $('#pdf-extract-panel');
+  panel.hidden = false;
+  button.disabled = true; button.textContent = 'Extracting…';
+  $('#pdf-extract-status').textContent = 'Reading text from page 1…';
+  $('#pdf-extracted-text').value = '';
+  for (const selector of ['#copy-extracted-text', '#download-pdf-text', '#download-pdf-docx']) $(selector).disabled = true;
+  try {
+    const expectedBytes = sourceBytes;
+    const pages = await extractPdfPagesText(pdfjsLib, sourceBytes.slice(), (page, total) => {
+      $('#pdf-extract-status').textContent = `Reading text from page ${page} of ${total}…`;
+    });
+    if (sourceBytes !== expectedBytes) return;
+    const text = formatPdfPagesText(pages);
+    extractedPdfPages = pages;
+    $('#pdf-extracted-text').value = text;
+    const lineCount = pages.reduce((total, page) => total + page.lines.length, 0);
+    if (!lineCount) {
+      $('#pdf-extract-status').textContent = 'No selectable text was found. This may be a scanned PDF. Use Find text (OCR) on a page to recognize text.';
+      return;
+    }
+    for (const selector of ['#copy-extracted-text', '#download-pdf-text', '#download-pdf-docx']) $(selector).disabled = false;
+    const pagesWithText = pages.filter((page) => page.lines.length).length;
+    $('#pdf-extract-status').textContent = `Extracted ${lineCount} text lines from ${pagesWithText} of ${pages.length} pages. Reading order is best-effort; check the result before using it.`;
+  } catch (error) {
+    console.error('PDF text extraction failed:', error);
+    $('#pdf-extract-status').textContent = `Text extraction failed: ${error?.message || 'This PDF may be damaged or unsupported.'}`;
+  } finally {
+    button.disabled = false; button.textContent = 'Extract text';
+  }
+}
+
+function saveBlob(blob, filename) {
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement('a');
+  link.href = url; link.download = filename;
+  document.body.append(link); link.click(); link.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 30000);
+}
+
 function setTool(tool) {
   if (tool !== 'select' && tool !== 'redact' && pdfDocument && activePageRotation % 360 !== 0) {
     setStatus('Editing rotated pages is not supported. You can still reorder or delete this page, or open an unrotated copy.', true);
@@ -225,6 +270,7 @@ function updatePageControls() {
   $('#zoom-level').value = `${Math.round(zoom * 100)}%`;
   $('#undo-edit').disabled = !undoSnapshot;
   $('#ocr-current-page').disabled = !pdfDocument || ocrBusy;
+  $('#extract-pdf-text').disabled = !pdfDocument || ocrBusy;
 }
 
 function clearUndoSnapshot() {
@@ -699,6 +745,9 @@ async function loadFile(file) {
     annotationItems.forEach((item) => item.previewUrl && URL.revokeObjectURL(item.previewUrl));
     sourceBytes = nextBytes;
     sourceTextEdits = []; sourceTextScan = null; updateSourceTextEditCount();
+    extractedPdfPages = []; $('#pdf-extract-panel').hidden = true; $('#pdf-extracted-text').value = '';
+    $('#pdf-extract-status').textContent = 'Extract text from every page to copy it or create an editable Word document.';
+    for (const selector of ['#copy-extracted-text', '#download-pdf-text', '#download-pdf-docx']) $(selector).disabled = true;
     $('#pdf-source-text-list').replaceChildren(); $('#pdf-source-text-status').textContent = 'Scan the selected page to find text that can be changed in place.';
     pdfDocument = nextPdfJsDocument;
     originalPageCount = pdfDocument.numPages;
@@ -733,6 +782,32 @@ $('#edit-source-text').addEventListener('click', () => {
 });
 $('#scan-source-text').addEventListener('click', scanCurrentSourceText);
 $('#ocr-current-page').addEventListener('click', recognizeCurrentPage);
+$('#extract-pdf-text').addEventListener('click', extractDocumentText);
+$('#copy-extracted-text').addEventListener('click', async () => {
+  const text = $('#pdf-extracted-text').value;
+  if (!text) return;
+  try { await navigator.clipboard.writeText(text); $('#pdf-extract-status').textContent = 'Extracted text copied to the clipboard.'; }
+  catch { $('#pdf-extract-status').textContent = 'Clipboard access was blocked. Select the text above and copy it manually.'; }
+});
+$('#download-pdf-text').addEventListener('click', () => {
+  const text = $('#pdf-extracted-text').value;
+  if (!text) return;
+  const baseName = fileName.replace(/\.pdf$/iu, '').replace(/[^\p{L}\p{N}._-]+/gu, '-').slice(0, 100) || 'document';
+  saveBlob(new Blob([text], { type: 'text/plain;charset=utf-8' }), `${baseName}-text.txt`);
+});
+$('#download-pdf-docx').addEventListener('click', async () => {
+  if (!extractedPdfPages.length) return;
+  const button = $('#download-pdf-docx'); button.disabled = true; button.textContent = 'Creating Word file…';
+  try {
+    const { createDocxFromPdfPages } = await import('./pdf-to-docx.js');
+    const blob = await createDocxFromPdfPages(extractedPdfPages, fileName.replace(/\.pdf$/iu, ''));
+    const baseName = fileName.replace(/\.pdf$/iu, '').replace(/[^\p{L}\p{N}._-]+/gu, '-').slice(0, 100) || 'document';
+    saveBlob(blob, `${baseName}-converted.docx`);
+    $('#pdf-extract-status').textContent = 'Word document downloaded. Text and page order are included; exact PDF layout, images and tables may need cleanup.';
+  } catch (error) {
+    $('#pdf-extract-status').textContent = `Could not create the Word file: ${error?.message || 'Try a smaller PDF.'}`;
+  } finally { button.disabled = false; button.textContent = 'Download Word file'; }
+});
 $('#copy-ocr-text').addEventListener('click', async () => {
   if (!ocrCurrentText) return;
   try { await navigator.clipboard.writeText(ocrCurrentText); $('#pdf-ocr-status').textContent = 'Recognized text copied to the clipboard.'; }

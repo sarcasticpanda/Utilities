@@ -21,6 +21,7 @@ All three sites are live on Cloudflare Pages, and QuickKit’s PDF editor is liv
 
 - [ ] WorkKit: consider biweekly timesheets, 5/7-day templates, duplicate-shift entry and multiple breaks after a separate calculation and mobile UX review.
 - [x] QuickKit: photo-to-PDF workflow with gallery selection, crop/rotate/filter, reorder, paper settings and local export.
+- [x] QuickKit: DOCX print preview, selectable-text PDF-to-DOCX export, all-page text extraction, and image-filter export regression checks.
 - [x] QuickKit: English OCR text copy, detected-region redaction and masked editable replacement; raster export removes original page text.
 - [x] QuickKit: add browser-only direct PDF text replacement/deletion for a clearly bounded subset, with qpdf-WASM writing, PDF.js output checks, width refusals and OCR fallback. Details and remaining device review: `PDF_SOURCE_TEXT_EDITING_PLAN.md`.
 - [x] QuickKit: verify image-to-PDF gallery include/exclude, drag order, crop/rotation/filter, margins, orientation and downloadable page order in browser QA.
@@ -32,7 +33,8 @@ All three sites are live on Cloudflare Pages, and QuickKit’s PDF editor is liv
 
 - [x] Three Cloudflare Pages sites are public; live status and URLs are in `VISIBILITY_AND_DEPLOYMENT_CHECKLIST.md`.
 - [x] All three Pages projects are deployed; the earlier Sites releases remain available as fallback.
-- [x] All three builds passed; responsive Chromium sweep passed 79 checks with 0 failures; the PDF editor passed 32 checks locally and live; production smoke passed 13 routes with 0 failures.
+- [x] All three builds passed; earlier responsive Chromium sweep passed 79 checks with 0 failures; latest PDF editor passed 40/40 and document/filter workflow passed 15/15 against production. Full cross-site production smoke passed 14 routes with 0 failures, including the converter.
+- [x] Publish the document-converter release after visible-browser checks; 15 document/filter checks and 40 PDF-editor checks passed against the production URL.
 - [x] Final screenshots and machine-readable QA evidence are in `qa-results/`.
 
 Search traffic, indexing speed, ad approval and revenue are external outcomes, not promises of a same-day launch.

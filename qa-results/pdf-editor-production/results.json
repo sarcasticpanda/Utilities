@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-10-30T14:10:05.522Z",
-  "origin": "http://127.0.0.1:4176",
+  "generatedAt": "2026-10-30T15:07:55.416Z",
+  "origin": "https://e781af43.quickkit-browser-tools.pages.dev",
   "browser": "156.0.8078.4",
   "checks": [
     {
@@ -46,7 +46,7 @@
     {
       "name": "Added text can be dragged to a new position",
       "pass": true,
-      "detail": "495,665 → 540,687"
+      "detail": "495,499 → 540,521"
     },
     {
       "name": "Highlight annotation can be placed",
@@ -176,7 +176,7 @@
     {
       "name": "Loaded editor fits mobile width without clipping",
       "pass": true,
-      "detail": "{\"width\":390,\"scrollWidth\":390,\"rects\":[{\"selector\":\".pdf-editor-topbar\",\"left\":17,\"right\":373,\"top\":255,\"bottom\":321,\"width\":356,\"height\":66},{\"selector\":\".pdf-toolbar\",\"left\":17,\"right\":373,\"top\":321,\"bottom\":413,\"width\":356,\"height\":92},{\"selector\":\".pdf-page-rail\",\"left\":17,\"right\":373,\"top\":475,\"bottom\":613,\"width\":356,\"height\":138},{\"selector\":\".pdf-viewer-toolbar\",\"left\":17,\"right\":373,\"top\":613,\"bottom\":655,\"width\":356,\"height\":42},{\"selector\":\".pdf-page-stage\",\"left\":38,\"right\":352,\"top\":667,\"bottom\":1085,\"width\":314,\"height\":419},{\"selector\":\".pdf-top-actions\",\"left\":180,\"right\":363,\"top\":265,\"bottom\":301,\"width\":183,\"height\":36}]}"
+      "detail": "{\"width\":390,\"scrollWidth\":390,\"rects\":[{\"selector\":\".pdf-editor-topbar\",\"left\":17,\"right\":373,\"top\":255,\"bottom\":321,\"width\":356,\"height\":66},{\"selector\":\".pdf-toolbar\",\"left\":17,\"right\":373,\"top\":321,\"bottom\":452,\"width\":356,\"height\":131},{\"selector\":\".pdf-page-rail\",\"left\":17,\"right\":373,\"top\":924,\"bottom\":1062,\"width\":356,\"height\":138},{\"selector\":\".pdf-viewer-toolbar\",\"left\":17,\"right\":373,\"top\":1062,\"bottom\":1104,\"width\":356,\"height\":42},{\"selector\":\".pdf-page-stage\",\"left\":38,\"right\":352,\"top\":1116,\"bottom\":1534,\"width\":314,\"height\":419},{\"selector\":\".pdf-top-actions\",\"left\":180,\"right\":363,\"top\":265,\"bottom\":301,\"width\":183,\"height\":36}]}"
     },
     {
       "name": "Essential editing and download controls are visible on mobile",
@@ -186,7 +186,7 @@
     {
       "name": "Source-text edit and delete controls fit and do not overlap on mobile",
       "pass": true,
-      "detail": "{\"width\":390,\"scrollWidth\":390,\"panel\":{\"left\":17,\"right\":373,\"width\":356},\"rows\":[{\"buttons\":[{\"left\":37,\"right\":192,\"top\":670.578125,\"bottom\":702.578125},{\"left\":198,\"right\":353,\"top\":670.578125,\"bottom\":702.578125}],\"separate\":true},{\"buttons\":[{\"left\":37,\"right\":192,\"top\":788.578125,\"bottom\":820.578125},{\"left\":198,\"right\":353,\"top\":788.578125,\"bottom\":820.578125}],\"separate\":true}]}"
+      "detail": "{\"width\":390,\"scrollWidth\":390,\"panel\":{\"left\":17,\"right\":373,\"width\":356},\"rows\":[{\"buttons\":[{\"left\":37,\"right\":192,\"top\":709.578125,\"bottom\":741.578125},{\"left\":198,\"right\":353,\"top\":709.578125,\"bottom\":741.578125}],\"separate\":true},{\"buttons\":[{\"left\":37,\"right\":192,\"top\":827.578125,\"bottom\":859.578125},{\"left\":198,\"right\":353,\"top\":827.578125,\"bottom\":859.578125}],\"separate\":true}]}"
     },
     {
       "name": "Editor fits a narrow 320px phone viewport",

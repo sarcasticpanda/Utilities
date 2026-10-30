@@ -2,9 +2,9 @@
 
 **Spec:** `UTILITY_SITES_COMPLETE_MASTER.md`
 **Public state:** All three products are live on Cloudflare Pages; the previous Sites URLs remain available as fallback.
-**Current worktree:** All three Cloudflare Pages sites are live. QuickKit PDF editing/image-to-PDF and WorkKit overtime currency conversion are deployed and production-checked.
+**Current worktree:** All three Cloudflare Pages sites are live. QuickKit's DOCX/PDF converter, all-page PDF text extraction, PDF editor and image filters are deployed and production-checked; WorkKit overtime currency conversion remains live.
 **Last release:** 2026-10-30
-**Current release evidence:** all three products build; the cross-product responsive/browser suite passed 90 checks with zero failures; QuickKit's PDF editor passed 40 checks with zero failures; the live production smoke passed all 13 routes and representative PDF, image-to-PDF and currency interactions.
+**Current release evidence:** QuickKit document/filter QA passed 13 checks locally, in headed Chromium and against production; the PDF editor passed 40 checks locally and against production. The full live cross-product smoke passed all 14 routes with zero failures after including the converter.
 
 ## Release summary
 
@@ -23,7 +23,9 @@
 - [x] Added origin-matched canonical tags, social metadata, `robots.txt` and `sitemap.xml` to each deployed static bundle.
 - [x] Kept file processing in the browser; production requests show no app feature uploads. Cloudflare's first-party browser challenge issues a separate security POST.
 - [x] Published all three independent Cloudflare Pages sites; the earlier Sites releases remain as fallback URLs.
-- [x] Ran production browser smoke checks after the latest deployment: all 13 Pages routes returned HTTP 200; canonical tags, sitemap and robots files worked; representative PDF, image-to-PDF and currency flows passed, with no JS errors or horizontal overflow.
+- [x] Ran production browser smoke checks after the latest deployment: all 14 Pages routes returned HTTP 200; canonical tags, sitemap and robots files worked; representative PDF, image-to-PDF and currency flows passed, with no JS errors or horizontal overflow.
+- [x] Deployed the Word/PDF converter, all-page PDF text extraction, filter preview/export fix, qpdf WASM URL fix and favicon to Cloudflare Pages. Fresh visible-browser tabs confirm the converter on both the immutable deployment URL and stable `pages.dev` alias.
+- [x] QuickKit document/filter production suite passed 15/15; PDF editor production suite passed 40/40, including OCR/redaction, direct source text replacement/deletion, 320px/390px layout and no file-upload requests.
 - [x] Ran the full local Playwright sweep on 2026-10-30: 79 entries, 0 failures; tested all main routes at 1440×900, 768×1024, 390×844 and 320×740.
 - [x] Ran a 32-check Chromium PDF editor workflow locally and live, including OCR, editable replacement, actual redaction export, text removal from the redacted page, PDF page management, desktop/mobile layout and local-only file handling.
 - [x] Captured final UI screenshots in `qa-results/screenshots-polished/` and production screenshots in `qa-results/production/`.
