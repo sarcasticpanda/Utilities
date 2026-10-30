@@ -1,4 +1,8 @@
-Third-party notices for libraries bundled into this site. The sites are independent implementations; the open-source repositories in reference-notes were studied for product research and their code was not copied.
+Third-party notices for code bundled into this site.
+
+The reference repositories in reference-notes were studied for product research; no code from those repositories is included in FormReady.
+
+GSAP is provided under the Standard “No Charge” License. Its terms permit commercial use subject to stated restrictions; see https://gsap.com/community/standard-license/.
 
 ================================================================================
 gsap 3.15.0

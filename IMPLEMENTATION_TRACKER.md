@@ -1,104 +1,88 @@
-# Three Utility Sites: Implementation Tracker
+# Three Utility Sites — Implementation and release tracker
 
-**Source of truth:** `UTILITY_SITES_COMPLETE_MASTER.md`  
-**Reference analysis:** `reference-notes/README.md`  
-**Current state:** all three product implementations and local production output folders are present. The saved Chromium QA run dated 2026-10-30 records 58 checks, 0 failures and 0 errors (`qa-results/browser-qa-results.json`). Deployment and several release-readiness checks remain open.  
-**Rule:** do not mark a stage complete until its exit checks pass and evidence is recorded below.
+**Spec:** `UTILITY_SITES_COMPLETE_MASTER.md`
+**Public state:** All three products are live on Cloudflare Pages; the previous Sites URLs remain available as fallback.
+**Current worktree:** All three Cloudflare Pages deployments are live; QuickKit’s PDF editor is deployed and verified on the production Pages host.
+**Last release:** 2026-10-30
+**Current release evidence:** production smoke test covered 12 Pages routes with 0 failures. **Current local QA:** all three sites build; the full 12-route responsive sweep passed 75 checks, and QuickKit’s editor workflow passed 28 checks locally and live.
 
-## Completion gates
+## Release summary
 
-1. **Understand:** specs, repo selection, reuse and licensing reviewed.
-2. **Build:** each site's promised core flow is implemented and its page content is original.
-3. **Verify:** production build succeeds; tool states, mobile layout, accessibility basics and browser checks pass.
-4. **Publish:** public HTTPS URL works and post-deploy smoke checks pass.
-5. **Visibility:** crawl/index setup is correct; submit sitemap and record submission status. Search ranking and ad approval are external processes and are not launch gates.
-
-No gate is complete while a required check is unchecked, failing, or unsupported by evidence. Keep known limitations visible; never change a failed box to pass just to move on.
-
-## Current stage: implementation complete; release verification and deployment remain
-
-- [x] Read `UTILITY_SITES_COMPLETE_MASTER.md` and identify product requirements.
-- [x] Review reference repo documentation and create `reference-notes/`.
-- [ ] Record Git remote/revision and deployment CLIs/accounts.
-- [x] Select a maintainable static architecture for three separately branded properties.
-- [ ] Record initial commit/revision for each source repo used.
-- [ ] Create per-product README/build instructions.
-- [x] Implement all three product sites and save responsive browser QA evidence.
-
-## WorkKit
-
-### Build
-
-- [ ] Original brand, responsive navigation, homepage and tool discovery.
-- [ ] Time card/timesheet: add, edit, remove and duplicate shifts.
-- [ ] Breaks, overnight shifts, decimal hours and validation.
-- [ ] Gross pay and weekly overtime calculation.
-- [ ] CSV export, local draft save, reset, empty and error states.
-- [ ] Connected transfer from hours to pay/overtime where useful.
-- [ ] Responsive tool page, explanatory content and related links.
-- [ ] Privacy, terms, about, contact, acknowledgement pages.
-- [ ] Unique metadata, canonical URL, sitemap and robots.
-
-### Verify
-
-- [ ] Calculation boundary cases recorded and checked.
-- [ ] Browser functional and visual checks recorded in `BROWSER_QA_CHECKLIST.md`.
-- [ ] No horizontal overflow or clipped primary controls at target viewports.
-- [ ] Console/network checked for runtime failures and unexpected data transfer.
-
-## QuickKit
-
-### Build
-
-- [ ] Original brand, responsive navigation, homepage, categories and tool discovery.
-- [ ] Image compression with measured target-size result.
-- [ ] Image resize/format conversion and downloadable output.
-- [ ] Image-to-PDF or PDF merge if dependencies can be bundled reliably.
-- [ ] Word/character count and text cleanup.
-- [ ] Password and Wi-Fi QR generation.
-- [ ] File input validation, progress, success, error and reset states.
-- [ ] Explain local processing accurately; clean up object URLs/buffers.
-- [ ] Privacy, terms, about, contact, acknowledgements, SEO metadata, sitemap and robots.
-
-### Verify
-
-- [ ] Browser functional and visual checks recorded in `BROWSER_QA_CHECKLIST.md`.
-- [ ] Test files include large image, unsupported type, tiny image and already-under-target image.
-- [ ] QR scans and file downloads are verified, not only rendered.
-- [ ] Mobile touch controls, responsive layout and browser console/network checked.
-
-## FormReady
-
-### Build
-
-- [ ] Original India-focused brand with a clear independent-service disclaimer.
-- [ ] Custom image mode: upload, inspect dimensions/size, resize, compress and download.
-- [ ] Exact KB targets, measured output, format and dimension validation.
-- [ ] Photo/signature task selection and usable mobile upload flow.
-- [ ] Preset data separated from UI; no guessed exam requirements.
-- [ ] Only source-verified presets may carry a verified label.
-- [ ] Clear/reset removes file previews and in-memory object URLs.
-- [ ] Privacy, terms, about, contact, acknowledgements, SEO metadata, sitemap and robots.
-
-### Verify
-
-- [ ] Browser functional and visual checks recorded in `BROWSER_QA_CHECKLIST.md`.
-- [ ] Test portrait, landscape, transparent signature, rotated EXIF, oversized and unsupported images.
-- [ ] Verify actual output bytes, dimensions, format and download.
-- [ ] Verify file data never goes to a server or analytics payload.
-
-## Visibility and deployment
-
-- [ ] Complete `VISIBILITY_AND_DEPLOYMENT_CHECKLIST.md` for each property.
-- [ ] Check final host supports static routes, MIME types, redirects and HTTPS.
-- [ ] Public HTTPS URLs recorded here after publish: WorkKit: `pending`; QuickKit: `pending`; FormReady: `pending`.
-- [ ] Post-deploy smoke test performed on each public URL.
-- [ ] Sitemap submission status recorded; do not promise immediate indexing.
-- [ ] Monetization kept disabled until ad network approval; empty ad slots must not resemble tool controls.
-
-## Decisions and evidence log
-
-| Date | Product | Decision or check | Evidence / notes |
+| Product | Public HTTPS site | Cloudflare Pages project | Live checks |
 |---|---|---|---|
-| 2026-10-30 | All | Workspace currently contains the master specification and reference notes, no app scaffold. | Initial directory inventory |
-| 2026-10-30 | All | Repomix created a ClockMath source pack; remote archive downloads were too slow to finish other packs in this pass. | See `reference-notes/README.md` |
+| WorkKit | https://workkit-hours-tools.pages.dev | workkit-hours-tools | Passed |
+| QuickKit | https://quickkit-browser-tools.pages.dev | quickkit-browser-tools | Passed |
+| FormReady | https://formready-photo-tools.pages.dev | formready-photo-tools | Passed |
+
+## Completed
+
+- [x] Read the project pack and recorded repo research in `reference-notes/`.
+- [x] Used Repomix to inspect ClockMath and adapted its small `toMinutes`, `isOvernight` and `clockMinutes` helper into WorkKit. Upstream commit, attribution and MIT notice are retained.
+- [x] Built three distinct, independently deployable static sites with Vite.
+- [x] Added responsive navigation, working tool pages, privacy/terms/about/contact and open-source acknowledgements.
+- [x] Added origin-matched canonical tags, social metadata, `robots.txt` and `sitemap.xml` to each deployed static bundle.
+- [x] Kept file processing in the browser; production requests show no app feature uploads. Cloudflare's first-party browser challenge issues a separate security POST.
+- [x] Published all three independent Cloudflare Pages sites; the earlier Sites releases remain as fallback URLs.
+- [x] Ran production browser smoke checks: all 12 Pages routes returned HTTP 200; canonical tags, sitemap and robots files worked; a representative interactive flow passed for each product.
+- [x] Ran the full local Playwright sweep on 2026-10-30: 75 entries, 0 failures; tested all 12 main routes at 1440×900, 768×1024, 390×844 and 320×740.
+- [x] Ran a separate 28-check Chromium editor workflow covering annotation and page-management interactions, PDF export, desktop/mobile layout and local-only file handling.
+- [x] Captured final UI screenshots in `qa-results/screenshots-polished/` and production screenshots in `qa-results/production/`.
+
+## Product scope shipped
+
+### WorkKit
+
+- [x] Add shifts, breaks, overnight work, weekly hours, decimal hours, regular/overtime split and estimated gross pay.
+- [x] Keep a local timesheet draft and export CSV.
+- [x] Provide separate overtime and hourly-to-salary tools.
+- [x] Validate identical shift times instead of silently treating them as a full day.
+- [ ] Add linked prefill from one calculator page to another; the weekly overtime split is already shown on the time-card page.
+- [ ] Add named time sheets, sharing, timezone conversion and DST-specific calculations if users need them.
+
+### QuickKit
+
+- [x] Compress images against a measured KB limit, merge PDFs, count/clean text, generate passwords, and make Wi-Fi QR codes.
+- [x] Add a local PDF editor with text, highlight, rectangle, image/signature annotations, page previews, page reorder/delete, zoom and PDF download. Browser smoke passes 28 checks; see `qa-results/pdf-editor/results.json`.
+- [x] Published the PDF editor at https://quickkit-browser-tools.pages.dev/pdf-editor.html; its live 28-check workflow passed.
+- [x] Lazy-load the larger PDF and QR libraries.
+- [ ] Add image-to-PDF, PDF split, more conversion formats and advanced batch tools only after user demand and mobile-memory checks.
+
+### FormReady
+
+- [x] Upload, crop, resize, compress and measure a photo/signature against user-entered requirements; download and reset.
+- [x] Convert custom millimeter/inch dimensions to pixels at a chosen DPI; rotate left/right and reset the crop.
+- [x] Clear stale generated output when requirements change, restrict input to JPG/PNG/WebP under 20 MB, and explain the 5,000 px per-side canvas limit.
+- [x] Keep the preset data empty rather than inventing application rules; explain the independent-service limitation.
+- [ ] Add a preset only after saving an official current source URL and verifying its dimensions, format and file-size requirements.
+
+### WorkKit
+
+- [x] Show total work time as both decimal hours and hours/minutes; suppress partial totals when any entered shift is invalid.
+- [x] Add browser print / Save as PDF for complete timesheets, alongside CSV export.
+- [x] Add USD, INR, GBP, EUR, CAD, AUD and AED formatting in all WorkKit pay calculators; currency selection does not convert rates.
+- [ ] Add biweekly periods, 5/7-day templates and extra break entries only after a separate calculation and mobile UX review.
+
+### Competitor review
+
+- [x] Review public workflows and third-party traffic estimates for calculator.net, QuickBooks Time Card Calculator, TimeCardCentral, ResizePixel and ImResizer.
+- [x] Record feature takeaways and originality boundaries in `reference-notes/workkit-formready-competitor-review.md`.
+
+## Launch follow-ups
+
+- [ ] Configure an operator-owned support email or form; Contact pages currently say that a direct support contact is not configured.
+- [ ] Optionally connect a custom domain after choosing and registering it; free Pages hostnames are live now. See `HOSTING_MIGRATION.md`.
+- [ ] Verify ownership in Google Search Console and Bing Webmaster Tools, then submit each sitemap.
+- [ ] Review crawl/index status after launch; indexing and ranking are not immediate or guaranteed.
+- [ ] Configure privacy-safe analytics only after selecting a provider and confirming consent/disclosure needs. No analytics is enabled now.
+- [ ] Apply for an ad network only after useful traffic/content exists; ad code is not enabled and approval/revenue are not guaranteed.
+- [ ] Add an original social preview image; title and description metadata are present, but no `og:image` is configured.
+- [ ] Complete keyboard, assistive technology, touch-gesture, storage-failure and image edge-case checks listed in `BROWSER_QA_CHECKLIST.md`.
+
+## Evidence and limits
+
+- Browser pass/fail details: `qa-results/browser-qa-results.json` and `qa-results/production-smoke-results.json`.
+- Repeatable browser scripts: `scripts/browser-qa.mjs` and `scripts/production-smoke.mjs`.
+- Design direction and remaining product decisions: `DESIGN.md` and `PRODUCT.md`.
+- Temporary research artifacts and exact source analysis: `reference-notes/README.md`.
+- Local production builds use Vite. The current static apps have no account system, database or server-side file processing.
+- Traffic, indexing speed, ad approval and earnings depend on external services and user demand.

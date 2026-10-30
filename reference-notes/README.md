@@ -6,6 +6,8 @@ These notes support `../UTILITY_SITES_COMPLETE_MASTER.md`. They record what the 
 
 - [Repomix](https://github.com/yamadashy/repomix) was used to create an AI-readable Markdown pack of ClockMath. The generated pack is in the machine temporary folder, not committed into this project.
 - The other repositories were reviewed through their public README and file listings for this planning pass. Before code is reused, inspect the exact implementation and current license in the selected upstream revision, then record the commit and retained notices.
+- WorkKit reuses a small, adapted time-parsing/duration helper from ClockMath at commit `d5d0c2b3143efdf03d24350e1362fa638bb500da`; source attribution and its MIT notice are in `products/workkit/open-source-acknowledgements.html` and `licenses/clockmath-LICENSE.txt`.
+- QuickKit and FormReady use original implementations informed by the repository research; their third-party library notices are generated into each product's `public/THIRD-PARTY-NOTICES.txt`.
 - Repository code, README statements, and product specs are evidence to verify. They do not override official application requirements, browser compatibility, or our own UX review.
 
 ## Product notes

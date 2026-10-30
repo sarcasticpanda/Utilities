@@ -12,10 +12,10 @@ const base = {
 };
 const viewports = [{ name: 'desktop', width: 1440, height: 900 }, { name: 'tablet', width: 768, height: 1024 }, { name: 'mobile', width: 390, height: 844 }, { name: 'narrow-mobile', width: 320, height: 740 }];
 const rootDir = fileURLToPath(new URL('..', import.meta.url));
-const outDir = resolve(rootDir, 'qa-results', 'screenshots');
+const outDir = resolve(rootDir, 'qa-results', 'screenshots-polished');
 await mkdir(outDir, { recursive: true });
 const browser = await chromium.launch({ headless: true });
-const results = { generatedAt: new Date().toISOString(), browser: 'Chromium via Playwright', products: {}, errors: [] };
+const results = { generatedAt: new Date().toISOString(), browser: `Chromium ${browser.version()}`, products: {}, errors: [] };
 const allObservedRequests = [];
 const pdfBytes = [];
 for (let i = 0; i < 2; i++) {
@@ -78,7 +78,7 @@ async function setImage(page, selector, { width = 640, height = 480, type = 'ima
 
 for (const [product, paths] of Object.entries({
   workkit: ['', 'time-card-calculator.html', 'overtime-calculator.html', 'salary-converter.html'],
-  quickkit: ['', 'image-compressor.html', 'text-tools.html', 'wifi-qr.html', 'pdf-merge.html'],
+  quickkit: ['', 'image-compressor.html', 'text-tools.html', 'wifi-qr.html', 'pdf-editor.html', 'pdf-merge.html'],
   formready: ['', 'image-preparer.html']
 })) for (const path of paths) await checkLayout(product, path);
 
@@ -97,20 +97,50 @@ for (const [product, paths] of Object.entries({
   const totals = await page.locator('#total-hours').innerText();
   const pay = await page.locator('#gross-pay').innerText();
   await assert('WorkKit overnight shift plus break totals 15.5h and $310', totals === '15.50' && pay === '$310.00', `actual ${totals} hours, ${pay}`);
+  await assert('WorkKit also displays total in hours and minutes', await page.locator('#hours-minutes').innerText() === '15h 30m', await page.locator('#hours-minutes').innerText());
+  await page.locator('#currency').selectOption('INR');
+  await assert('WorkKit formats estimates in Indian rupees without converting the entered rate', await page.locator('#gross-pay').innerText() === '₹310.00' && await page.locator('#currency-symbol').innerText() === '₹', await page.locator('#gross-pay').innerText());
   await page.reload();
-  await assert('WorkKit local draft restores shifts and rate', await page.locator('#shift-list .shift-row').count() === 2 && await page.locator('#hourly-rate').inputValue() === '20', 'stored draft reload');
+  await assert('WorkKit local draft restores shifts, rate and currency', await page.locator('#shift-list .shift-row').count() === 2 && await page.locator('#hourly-rate').inputValue() === '20' && await page.locator('#currency').inputValue() === 'INR', 'stored draft reload');
   const downloadPromise = page.waitForEvent('download'); await page.locator('#export-csv').click(); const download = await downloadPromise;
   await assert('WorkKit CSV download', download.suggestedFilename() === 'workkit-timesheet.csv', download.suggestedFilename());
   await page.locator('#clear-shifts').click();
   await page.locator('#shift-list').locator('.shift-start').first().fill('08:00');
   await page.locator('#shift-list').locator('.shift-end').first().fill('08:00');
   await assert('WorkKit equal start/end shows a clear validation message', await page.locator('#form-message').innerText() === 'Start and end times cannot match. Change one time so the shift length is clear.', await page.locator('#form-message').innerText());
+  await assert('WorkKit hides partial totals while a shift is invalid', await page.locator('#total-hours').innerText() === '—', await page.locator('#total-hours').innerText());
+  await page.locator('.shift-start').first().fill('08:00'); await page.locator('.shift-end').first().fill('16:00');
+  await page.evaluate(() => { window.__printCalled = false; window.print = () => { window.__printCalled = true; }; });
+  await page.locator('#print-timesheet').click();
+  const printCalled = await page.evaluate(() => window.__printCalled);
+  await assert('WorkKit print/save PDF action opens browser print flow', printCalled, printCalled ? 'window.print was called' : 'window.print was not called');
+  await page.locator('#clear-shifts').click();
+  await page.locator('.shift-day').first().selectOption('Sunday');
+  await page.locator('.shift-start').first().fill('22:00'); await page.locator('.shift-end').first().fill('06:00');
+  await page.locator('#add-shift').click();
+  await page.locator('.shift-day').nth(1).selectOption('Monday');
+  await page.locator('.shift-start').nth(1).fill('04:00'); await page.locator('.shift-end').nth(1).fill('08:00');
+  await page.locator('#calculate').click();
+  const overlapMessage = await page.locator('#form-message').innerText();
+  await assert('WorkKit rejects shifts overlapping across the week boundary', overlapMessage.includes('Shifts overlap') && await page.locator('#total-hours').innerText() === '—', overlapMessage);
+  await page.locator('#clear-shifts').click();
+  for (let i = 0; i < 14; i++) await page.locator('#add-shift').click();
+  await assert('WorkKit can hold fifteen weekly shift rows', await page.locator('#shift-list .shift-row').count() === 15, `rows ${await page.locator('#shift-list .shift-row').count()}`);
+  await page.reload();
+  await assert('WorkKit restores all fifteen weekly shift rows', await page.locator('#shift-list .shift-row').count() === 15, `rows ${await page.locator('#shift-list .shift-row').count()}`);
   await page.close();
   const ot = await pageFor('workkit', 'overtime-calculator.html', { width: 390, height: 844 });
   await ot.page.locator('#ot-hours').fill('45'); await ot.page.locator('#ot-rate').fill('20'); await ot.page.locator('#overtime-form button[type=submit]').click();
   const overtimePay = await ot.page.locator('#ot-pay').innerText();
   await assert('WorkKit 45h overtime example', overtimePay === '$950.00', overtimePay);
+  await ot.page.locator('#currency').selectOption('INR');
+  await assert('WorkKit overtime estimate supports INR formatting', await ot.page.locator('#ot-pay').innerText() === '₹950.00', await ot.page.locator('#ot-pay').innerText());
   await ot.page.close();
+  const salary = await pageFor('workkit', 'salary-converter.html', { width: 390, height: 844 });
+  await salary.page.locator('#salary-rate').fill('20'); await salary.page.locator('#salary-form button[type=submit]').click();
+  await salary.page.locator('#currency').selectOption('INR');
+  await assert('WorkKit salary conversion supports INR formatting', await salary.page.locator('#annual-pay').innerText() === '₹41,600.00', await salary.page.locator('#annual-pay').innerText());
+  await salary.page.close();
 }
 
 // QuickKit: image compression, text handling, QR payload and valid multi-PDF merge.
@@ -152,7 +182,23 @@ for (const [product, paths] of Object.entries({
 {
   const { page } = await pageFor('formready', 'image-preparer.html', { width: 1440, height: 900 });
   await setImage(page, '#form-image'); await page.locator('.cropper-container').waitFor();
-  await page.locator('#target-width').fill('120'); await page.locator('#target-height').fill('140'); await page.locator('#max-kb').fill('100');
+  await assert('FormReady rotate and reset crop controls appear', await page.locator('#rotate-left').isVisible() && await page.locator('#rotate-right').isVisible() && await page.locator('#reset-crop').isVisible(), 'crop actions missing');
+  await page.locator('#rotate-left').click(); await page.locator('#reset-crop').click();
+  await page.locator('#target-dpi').fill('1300');
+  await page.locator('#target-width').fill('1'); await page.locator('#target-height').fill('1');
+  await page.locator('#prepare-image').click();
+  const dpiMessage = await page.locator('#prepare-message').innerText();
+  await assert('FormReady enforces its maximum print resolution', dpiMessage.includes('1 and 1,200 DPI'), dpiMessage);
+  await page.locator('#target-dpi').fill('300');
+  await page.locator('#target-unit').selectOption('px'); await page.locator('#target-width').fill('120'); await page.locator('#target-height').fill(''); await page.locator('#max-kb').fill('500');
+  await page.locator('#prepare-image').click(); await page.locator('#prepare-result .validation-result').waitFor();
+  const singleDimension = await page.locator('#prepare-result .result-details').innerText();
+  await assert('FormReady preserves aspect ratio when only width is specified', /120 × 90px/.test(singleDimension), singleDimension);
+  await page.locator('#target-unit').selectOption('mm'); await page.locator('#target-width').fill('35'); await page.locator('#target-height').fill('45'); await page.locator('#target-dpi').fill('300'); await page.locator('#max-kb').fill('500');
+  await page.locator('#prepare-image').click(); await page.locator('#prepare-result .validation-result').waitFor();
+  const physicalChecks = await page.locator('.checks').innerText();
+  await assert('FormReady converts physical dimensions to pixels at the requested DPI', physicalChecks.includes('413 × 531px'), physicalChecks);
+  await page.locator('#target-unit').selectOption('px'); await page.locator('#target-width').fill('120'); await page.locator('#target-height').fill('140'); await page.locator('#max-kb').fill('100');
   await page.locator('#prepare-image').click(); await page.locator('#prepare-result .validation-result').waitFor();
   const badge = (await page.locator('.ready-badge').innerText()).toLowerCase();
   const checks = await page.locator('.checks').innerText();
@@ -166,6 +212,8 @@ for (const [product, paths] of Object.entries({
 
 // Confirm no first-party image/PDF submission is made. Browser requests include local development assets and Google Fonts.
 results.observedRequests = allObservedRequests;
+const unexpectedRequests = allObservedRequests.filter((r) => r.method !== 'GET' && !r.url.startsWith('data:') && !r.url.startsWith('blob:'));
+if (unexpectedRequests.length) results.errors.push(`Unexpected non-GET browser requests: ${JSON.stringify(unexpectedRequests)}`);
 for (const [name, record] of Object.entries(results.products)) {
   if (!record?.requests) continue;
   const posts = record.requests.filter((r) => r.method !== 'GET' && !r.url.startsWith('data:'));

@@ -1,0 +1,620 @@
+{
+  "generatedAt": "2026-10-30T12:06:03.864Z",
+  "browser": "Chromium 156.0.8078.4",
+  "sites": {
+    "workkit": {
+      "origin": "https://workkit-hours-tools.pages.dev",
+      "pages": [
+        {
+          "route": "/",
+          "status": 200,
+          "title": "Free Time Card and Work Pay Calculators | WorkKit",
+          "h1": "Make work hours add up.",
+          "canonical": "https://workkit-hours-tools.pages.dev/",
+          "scrollWidth": 1440,
+          "width": 1440,
+          "errors": [],
+          "canonicalMatches": true
+        },
+        {
+          "route": "/time-card-calculator.html",
+          "status": 200,
+          "title": "Time Card Calculator: Hours, Breaks and Pay | WorkKit",
+          "h1": "Time card calculator",
+          "canonical": "https://workkit-hours-tools.pages.dev/time-card-calculator.html",
+          "scrollWidth": 1440,
+          "width": 1440,
+          "errors": [],
+          "canonicalMatches": true
+        },
+        {
+          "route": "/overtime-calculator.html",
+          "status": 200,
+          "title": "Overtime Pay Calculator: Weekly Hours and Pay | WorkKit",
+          "h1": "Overtime calculator",
+          "canonical": "https://workkit-hours-tools.pages.dev/overtime-calculator.html",
+          "scrollWidth": 1440,
+          "width": 1440,
+          "errors": [],
+          "canonicalMatches": true
+        },
+        {
+          "route": "/salary-converter.html",
+          "status": 200,
+          "title": "Hourly to Salary Calculator: Annual Gross Pay | WorkKit",
+          "h1": "Hourly to salary converter",
+          "canonical": "https://workkit-hours-tools.pages.dev/salary-converter.html",
+          "scrollWidth": 1440,
+          "width": 1440,
+          "errors": [],
+          "canonicalMatches": true
+        }
+      ],
+      "robots": {
+        "status": 200,
+        "body": "User-agent: *\nAllow: /\nSitemap: https://workkit-hours-tools.pages.dev/sitemap.xml\n"
+      },
+      "sitemap": {
+        "status": 200,
+        "urls": [
+          "https://workkit-hours-tools.pages.dev/",
+          "https://workkit-hours-tools.pages.dev/time-card-calculator.html",
+          "https://workkit-hours-tools.pages.dev/overtime-calculator.html",
+          "https://workkit-hours-tools.pages.dev/salary-converter.html"
+        ]
+      },
+      "interaction": {
+        "pay": "$950.00"
+      },
+      "overlapInteraction": {
+        "message": "Shifts overlap. Adjust the times so the same minutes are not counted twice.",
+        "total": "—"
+      }
+    },
+    "quickkit": {
+      "origin": "https://quickkit-browser-tools.pages.dev",
+      "pages": [
+        {
+          "route": "/",
+          "status": 200,
+          "title": "Free PDF Editor, PDF Merger and Image Tools | QuickKit",
+          "h1": "Get the little things out of your way.",
+          "canonical": "https://quickkit-browser-tools.pages.dev/",
+          "scrollWidth": 1440,
+          "width": 1440,
+          "errors": [],
+          "canonicalMatches": true
+        },
+        {
+          "route": "/image-compressor.html",
+          "status": 200,
+          "title": "Image Compressor to KB — QuickKit",
+          "h1": "Compress image to KB",
+          "canonical": "https://quickkit-browser-tools.pages.dev/image-compressor.html",
+          "scrollWidth": 1440,
+          "width": 1440,
+          "errors": [],
+          "canonicalMatches": true
+        },
+        {
+          "route": "/pdf-editor.html",
+          "status": 200,
+          "title": "Online PDF Editor: Add Text, Sign and Reorder Pages | QuickKit",
+          "h1": "Edit a PDF, right here",
+          "canonical": "https://quickkit-browser-tools.pages.dev/pdf-editor.html",
+          "scrollWidth": 1440,
+          "width": 1440,
+          "errors": [],
+          "canonicalMatches": true
+        },
+        {
+          "route": "/pdf-merge.html",
+          "status": 200,
+          "title": "Merge PDF Files — QuickKit",
+          "h1": "Merge PDF files",
+          "canonical": "https://quickkit-browser-tools.pages.dev/pdf-merge.html",
+          "scrollWidth": 1440,
+          "width": 1440,
+          "errors": [],
+          "canonicalMatches": true
+        },
+        {
+          "route": "/text-tools.html",
+          "status": 200,
+          "title": "Word Counter and Text Cleaner — QuickKit",
+          "h1": "Word counter and text cleaner",
+          "canonical": "https://quickkit-browser-tools.pages.dev/text-tools.html",
+          "scrollWidth": 1440,
+          "width": 1440,
+          "errors": [],
+          "canonicalMatches": true
+        },
+        {
+          "route": "/wifi-qr.html",
+          "status": 200,
+          "title": "Wi-Fi QR Code Generator — QuickKit",
+          "h1": "Wi-Fi QR code generator",
+          "canonical": "https://quickkit-browser-tools.pages.dev/wifi-qr.html",
+          "scrollWidth": 1440,
+          "width": 1440,
+          "errors": [],
+          "canonicalMatches": true
+        }
+      ],
+      "robots": {
+        "status": 200,
+        "body": "User-agent: *\nAllow: /\nSitemap: https://quickkit-browser-tools.pages.dev/sitemap.xml\n"
+      },
+      "sitemap": {
+        "status": 200,
+        "urls": [
+          "https://quickkit-browser-tools.pages.dev/",
+          "https://quickkit-browser-tools.pages.dev/image-compressor.html",
+          "https://quickkit-browser-tools.pages.dev/pdf-editor.html",
+          "https://quickkit-browser-tools.pages.dev/pdf-merge.html",
+          "https://quickkit-browser-tools.pages.dev/text-tools.html",
+          "https://quickkit-browser-tools.pages.dev/wifi-qr.html"
+        ]
+      },
+      "interaction": {
+        "cleaned": "one two"
+      },
+      "pdfEditorInteraction": {
+        "placed": 1,
+        "pages": 1,
+        "filename": "production-check-edited.pdf"
+      }
+    },
+    "formready": {
+      "origin": "https://formready-photo-tools.pages.dev",
+      "pages": [
+        {
+          "route": "/",
+          "status": 200,
+          "title": "Photo and Signature Resizer for Forms | FormReady",
+          "h1": "Get your photo or signature ready.",
+          "canonical": "https://formready-photo-tools.pages.dev/",
+          "scrollWidth": 1440,
+          "width": 1440,
+          "errors": [],
+          "canonicalMatches": true
+        },
+        {
+          "route": "/image-preparer.html",
+          "status": 200,
+          "title": "Photo Resizer: Exact Pixels, mm and KB | FormReady",
+          "h1": "Photo and signature resizer",
+          "canonical": "https://formready-photo-tools.pages.dev/image-preparer.html",
+          "scrollWidth": 1440,
+          "width": 1440,
+          "errors": [],
+          "canonicalMatches": true
+        }
+      ],
+      "robots": {
+        "status": 200,
+        "body": "User-agent: *\nAllow: /\nSitemap: https://formready-photo-tools.pages.dev/sitemap.xml\n"
+      },
+      "sitemap": {
+        "status": 200,
+        "urls": [
+          "https://formready-photo-tools.pages.dev/",
+          "https://formready-photo-tools.pages.dev/image-preparer.html"
+        ]
+      },
+      "interaction": {
+        "state": "READY TO REVIEW",
+        "checks": "PASS\nFormat\nJPEG\nPASS\nDimensions\n120 × 140px\nPASS\nFile size\n2.0 KB"
+      }
+    }
+  },
+  "errors": [],
+  "requests": [
+    {
+      "site": "workkit",
+      "method": "GET",
+      "url": "https://workkit-hours-tools.pages.dev/"
+    },
+    {
+      "site": "workkit",
+      "method": "GET",
+      "url": "https://workkit-hours-tools.pages.dev/assets/app-BfJgoS0C.js"
+    },
+    {
+      "site": "workkit",
+      "method": "GET",
+      "url": "https://workkit-hours-tools.pages.dev/assets/styles-DnfvafAB.css"
+    },
+    {
+      "site": "workkit",
+      "method": "GET",
+      "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
+    },
+    {
+      "site": "workkit",
+      "method": "GET",
+      "url": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2"
+    },
+    {
+      "site": "workkit",
+      "method": "GET",
+      "url": "https://workkit-hours-tools.pages.dev/time-card-calculator.html"
+    },
+    {
+      "site": "workkit",
+      "method": "GET",
+      "url": "https://workkit-hours-tools.pages.dev/time-card-calculator"
+    },
+    {
+      "site": "workkit",
+      "method": "GET",
+      "url": "https://workkit-hours-tools.pages.dev/assets/app-BfJgoS0C.js"
+    },
+    {
+      "site": "workkit",
+      "method": "GET",
+      "url": "https://workkit-hours-tools.pages.dev/assets/styles-DnfvafAB.css"
+    },
+    {
+      "site": "workkit",
+      "method": "GET",
+      "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
+    },
+    {
+      "site": "workkit",
+      "method": "GET",
+      "url": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2"
+    },
+    {
+      "site": "workkit",
+      "method": "GET",
+      "url": "https://workkit-hours-tools.pages.dev/overtime-calculator.html"
+    },
+    {
+      "site": "workkit",
+      "method": "GET",
+      "url": "https://workkit-hours-tools.pages.dev/overtime-calculator"
+    },
+    {
+      "site": "workkit",
+      "method": "GET",
+      "url": "https://workkit-hours-tools.pages.dev/assets/app-BfJgoS0C.js"
+    },
+    {
+      "site": "workkit",
+      "method": "GET",
+      "url": "https://workkit-hours-tools.pages.dev/assets/styles-DnfvafAB.css"
+    },
+    {
+      "site": "workkit",
+      "method": "GET",
+      "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
+    },
+    {
+      "site": "workkit",
+      "method": "GET",
+      "url": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2"
+    },
+    {
+      "site": "workkit",
+      "method": "GET",
+      "url": "https://workkit-hours-tools.pages.dev/salary-converter.html"
+    },
+    {
+      "site": "workkit",
+      "method": "GET",
+      "url": "https://workkit-hours-tools.pages.dev/salary-converter"
+    },
+    {
+      "site": "workkit",
+      "method": "GET",
+      "url": "https://workkit-hours-tools.pages.dev/assets/app-BfJgoS0C.js"
+    },
+    {
+      "site": "workkit",
+      "method": "GET",
+      "url": "https://workkit-hours-tools.pages.dev/assets/styles-DnfvafAB.css"
+    },
+    {
+      "site": "workkit",
+      "method": "GET",
+      "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
+    },
+    {
+      "site": "workkit",
+      "method": "GET",
+      "url": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2"
+    },
+    {
+      "site": "quickkit",
+      "method": "GET",
+      "url": "https://quickkit-browser-tools.pages.dev/"
+    },
+    {
+      "site": "quickkit",
+      "method": "GET",
+      "url": "https://quickkit-browser-tools.pages.dev/assets/modulepreload-polyfill-B5Qt9EMX.js"
+    },
+    {
+      "site": "quickkit",
+      "method": "GET",
+      "url": "https://quickkit-browser-tools.pages.dev/assets/app-TOTloAVY.js"
+    },
+    {
+      "site": "quickkit",
+      "method": "GET",
+      "url": "https://quickkit-browser-tools.pages.dev/assets/styles-qOJqZkOM.css"
+    },
+    {
+      "site": "quickkit",
+      "method": "GET",
+      "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
+    },
+    {
+      "site": "quickkit",
+      "method": "GET",
+      "url": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2"
+    },
+    {
+      "site": "quickkit",
+      "method": "GET",
+      "url": "https://quickkit-browser-tools.pages.dev/image-compressor.html"
+    },
+    {
+      "site": "quickkit",
+      "method": "GET",
+      "url": "https://quickkit-browser-tools.pages.dev/image-compressor"
+    },
+    {
+      "site": "quickkit",
+      "method": "GET",
+      "url": "https://quickkit-browser-tools.pages.dev/assets/modulepreload-polyfill-B5Qt9EMX.js"
+    },
+    {
+      "site": "quickkit",
+      "method": "GET",
+      "url": "https://quickkit-browser-tools.pages.dev/assets/app-TOTloAVY.js"
+    },
+    {
+      "site": "quickkit",
+      "method": "GET",
+      "url": "https://quickkit-browser-tools.pages.dev/assets/styles-qOJqZkOM.css"
+    },
+    {
+      "site": "quickkit",
+      "method": "GET",
+      "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
+    },
+    {
+      "site": "quickkit",
+      "method": "GET",
+      "url": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2"
+    },
+    {
+      "site": "quickkit",
+      "method": "GET",
+      "url": "https://quickkit-browser-tools.pages.dev/pdf-editor.html"
+    },
+    {
+      "site": "quickkit",
+      "method": "GET",
+      "url": "https://quickkit-browser-tools.pages.dev/pdf-editor"
+    },
+    {
+      "site": "quickkit",
+      "method": "GET",
+      "url": "https://quickkit-browser-tools.pages.dev/assets/pdf-editor-GqvsnwBz.js"
+    },
+    {
+      "site": "quickkit",
+      "method": "GET",
+      "url": "https://quickkit-browser-tools.pages.dev/assets/modulepreload-polyfill-B5Qt9EMX.js"
+    },
+    {
+      "site": "quickkit",
+      "method": "GET",
+      "url": "https://quickkit-browser-tools.pages.dev/assets/_commonjsHelpers-CqkleIqs.js"
+    },
+    {
+      "site": "quickkit",
+      "method": "GET",
+      "url": "https://quickkit-browser-tools.pages.dev/assets/index-CfA9Roq9.js"
+    },
+    {
+      "site": "quickkit",
+      "method": "GET",
+      "url": "https://quickkit-browser-tools.pages.dev/assets/pdf-editor-B7pJUPpx.css"
+    },
+    {
+      "site": "quickkit",
+      "method": "GET",
+      "url": "https://quickkit-browser-tools.pages.dev/assets/styles-qOJqZkOM.css"
+    },
+    {
+      "site": "quickkit",
+      "method": "GET",
+      "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
+    },
+    {
+      "site": "quickkit",
+      "method": "GET",
+      "url": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2"
+    },
+    {
+      "site": "quickkit",
+      "method": "GET",
+      "url": "https://quickkit-browser-tools.pages.dev/pdf-merge.html"
+    },
+    {
+      "site": "quickkit",
+      "method": "GET",
+      "url": "https://quickkit-browser-tools.pages.dev/pdf-merge"
+    },
+    {
+      "site": "quickkit",
+      "method": "GET",
+      "url": "https://quickkit-browser-tools.pages.dev/assets/modulepreload-polyfill-B5Qt9EMX.js"
+    },
+    {
+      "site": "quickkit",
+      "method": "GET",
+      "url": "https://quickkit-browser-tools.pages.dev/assets/app-TOTloAVY.js"
+    },
+    {
+      "site": "quickkit",
+      "method": "GET",
+      "url": "https://quickkit-browser-tools.pages.dev/assets/styles-qOJqZkOM.css"
+    },
+    {
+      "site": "quickkit",
+      "method": "GET",
+      "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
+    },
+    {
+      "site": "quickkit",
+      "method": "GET",
+      "url": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2"
+    },
+    {
+      "site": "quickkit",
+      "method": "GET",
+      "url": "https://quickkit-browser-tools.pages.dev/text-tools.html"
+    },
+    {
+      "site": "quickkit",
+      "method": "GET",
+      "url": "https://quickkit-browser-tools.pages.dev/text-tools"
+    },
+    {
+      "site": "quickkit",
+      "method": "GET",
+      "url": "https://quickkit-browser-tools.pages.dev/assets/modulepreload-polyfill-B5Qt9EMX.js"
+    },
+    {
+      "site": "quickkit",
+      "method": "GET",
+      "url": "https://quickkit-browser-tools.pages.dev/assets/app-TOTloAVY.js"
+    },
+    {
+      "site": "quickkit",
+      "method": "GET",
+      "url": "https://quickkit-browser-tools.pages.dev/assets/styles-qOJqZkOM.css"
+    },
+    {
+      "site": "quickkit",
+      "method": "GET",
+      "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
+    },
+    {
+      "site": "quickkit",
+      "method": "GET",
+      "url": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2"
+    },
+    {
+      "site": "quickkit",
+      "method": "GET",
+      "url": "https://quickkit-browser-tools.pages.dev/wifi-qr.html"
+    },
+    {
+      "site": "quickkit",
+      "method": "GET",
+      "url": "https://quickkit-browser-tools.pages.dev/wifi-qr"
+    },
+    {
+      "site": "quickkit",
+      "method": "GET",
+      "url": "https://quickkit-browser-tools.pages.dev/assets/modulepreload-polyfill-B5Qt9EMX.js"
+    },
+    {
+      "site": "quickkit",
+      "method": "GET",
+      "url": "https://quickkit-browser-tools.pages.dev/assets/app-TOTloAVY.js"
+    },
+    {
+      "site": "quickkit",
+      "method": "GET",
+      "url": "https://quickkit-browser-tools.pages.dev/assets/styles-qOJqZkOM.css"
+    },
+    {
+      "site": "quickkit",
+      "method": "GET",
+      "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
+    },
+    {
+      "site": "quickkit",
+      "method": "GET",
+      "url": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2"
+    },
+    {
+      "site": "formready",
+      "method": "GET",
+      "url": "https://formready-photo-tools.pages.dev/"
+    },
+    {
+      "site": "formready",
+      "method": "GET",
+      "url": "https://formready-photo-tools.pages.dev/assets/app-g0M8F8W6.js"
+    },
+    {
+      "site": "formready",
+      "method": "GET",
+      "url": "https://formready-photo-tools.pages.dev/assets/app-T1vcRZ2R.css"
+    },
+    {
+      "site": "formready",
+      "method": "GET",
+      "url": "https://formready-photo-tools.pages.dev/assets/styles-jMuBxUt0.css"
+    },
+    {
+      "site": "formready",
+      "method": "GET",
+      "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
+    },
+    {
+      "site": "formready",
+      "method": "GET",
+      "url": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2"
+    },
+    {
+      "site": "formready",
+      "method": "GET",
+      "url": "https://formready-photo-tools.pages.dev/image-preparer.html"
+    },
+    {
+      "site": "formready",
+      "method": "GET",
+      "url": "https://formready-photo-tools.pages.dev/image-preparer"
+    },
+    {
+      "site": "formready",
+      "method": "GET",
+      "url": "https://formready-photo-tools.pages.dev/assets/app-g0M8F8W6.js"
+    },
+    {
+      "site": "formready",
+      "method": "GET",
+      "url": "https://formready-photo-tools.pages.dev/assets/app-T1vcRZ2R.css"
+    },
+    {
+      "site": "formready",
+      "method": "GET",
+      "url": "https://formready-photo-tools.pages.dev/assets/styles-jMuBxUt0.css"
+    },
+    {
+      "site": "formready",
+      "method": "GET",
+      "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
+    },
+    {
+      "site": "formready",
+      "method": "GET",
+      "url": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2"
+    }
+  ],
+  "cloudflareSecurityChallengeRequests": 0,
+  "summary": {
+    "pages": 12,
+    "failures": 0,
+    "errors": []
+  }
+}

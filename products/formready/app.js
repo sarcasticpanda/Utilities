@@ -15,23 +15,38 @@ if (document.body.dataset.page === 'prepare') {
   const result = document.querySelector('#prepare-result');
   const message = document.querySelector('#prepare-message');
   const cropStage = document.querySelector('#crop-stage');
+  const cropActions = document.querySelector('#crop-actions');
   const cropSource = document.querySelector('#crop-source');
+  const maxSourcePixels = 30_000_000;
   let file = null, sourceUrl = null, outputUrl = null, mode = 'photo', cropper = null;
+  const unit = () => document.querySelector('#target-unit')?.value || 'px';
+  const dpi = () => Math.max(1, Number(document.querySelector('#target-dpi')?.value) || 300);
+  const pixels = (value) => Math.round(value * (unit() === 'mm' ? dpi() / 25.4 : unit() === 'in' ? dpi() : 1));
+  const clearResult = () => { if (outputUrl) URL.revokeObjectURL(outputUrl); outputUrl = null; result.innerHTML = '<div class="result-placeholder"><span class="placeholder-icon">IMG</span><b>Your file check appears here</b><span>Choose an image to begin.</span></div>'; };
   const prettyBytes = (bytes) => bytes < 1024 ? `${bytes} B` : `${(bytes / 1024).toFixed(1)} KB`;
   const updateAspect = () => {
-    const width = Number(document.querySelector('#target-width').value);
-    const height = Number(document.querySelector('#target-height').value);
+    const width = pixels(Number(document.querySelector('#target-width').value));
+    const height = pixels(Number(document.querySelector('#target-height').value));
     cropper?.setAspectRatio(width > 0 && height > 0 ? width / height : NaN);
   };
-  const revoke = () => { if (cropper) cropper.destroy(); cropper = null; cropStage.hidden = true; if (sourceUrl) URL.revokeObjectURL(sourceUrl); if (outputUrl) URL.revokeObjectURL(outputUrl); sourceUrl = outputUrl = null; };
+  const revoke = () => { if (cropper) cropper.destroy(); cropper = null; cropStage.hidden = true; if (cropActions) cropActions.hidden = true; if (sourceUrl) URL.revokeObjectURL(sourceUrl); sourceUrl = null; clearResult(); };
   document.querySelector('#target-width').addEventListener('input', updateAspect);
   document.querySelector('#target-height').addEventListener('input', updateAspect);
+  document.querySelector('#target-unit')?.addEventListener('change', updateAspect);
+  document.querySelector('#target-dpi')?.addEventListener('input', updateAspect);
+  document.querySelector('#rotate-left')?.addEventListener('click', () => cropper?.rotate(-90));
+  document.querySelector('#rotate-right')?.addEventListener('click', () => cropper?.rotate(90));
+  document.querySelector('#reset-crop')?.addEventListener('click', () => { cropper?.reset(); updateAspect(); });
+  document.querySelectorAll('#target-width,#target-height,#target-unit,#target-dpi,#max-kb,#form-format').forEach((control) => control.addEventListener('input', clearResult));
   document.querySelectorAll('[data-mode]').forEach((tab) => tab.addEventListener('click', () => {
     document.querySelectorAll('[data-mode]').forEach((t) => t.classList.toggle('active', t === tab));
+    document.querySelectorAll('[data-mode]').forEach((t) => t.setAttribute('aria-pressed', String(t === tab)));
     mode = tab.dataset.mode;
+    clearResult();
     document.querySelector('#target-width').value = '';
     document.querySelector('#target-height').value = '';
-    document.querySelector('.tool-intro .eyebrow').textContent = mode === 'photo' ? 'Enter your photo requirements' : mode === 'signature' ? 'Enter your signature requirements' : 'Enter custom image requirements';
+    const eyebrow = document.querySelector('.tool-intro .eyebrow');
+    if (eyebrow) eyebrow.textContent = mode === 'photo' ? 'Enter your photo requirements' : mode === 'signature' ? 'Enter your signature requirements' : 'Enter custom image requirements';
     location.hash = mode;
   }));
   const formatChecks = (blobType, desiredType, w, h, targetW, targetH, maxKB, size) => [
@@ -43,11 +58,17 @@ if (document.body.dataset.page === 'prepare') {
   input.addEventListener('change', () => {
     revoke(); file = input.files?.[0] || null; message.textContent = '';
     if (!file) { info.textContent = 'No image selected'; button.disabled = true; return; }
-    if (!file.type.startsWith('image/')) { file = null; input.value = ''; info.textContent = 'No image selected'; message.textContent = 'Choose a JPG, PNG or WebP image.'; button.disabled = true; return; }
+    if (!['image/jpeg', 'image/png', 'image/webp'].includes(file.type)) { file = null; input.value = ''; info.textContent = 'No image selected'; message.textContent = 'Choose a JPG, PNG or WebP image.'; button.disabled = true; return; }
+    if (file.size > 20 * 1024 * 1024) { file = null; input.value = ''; info.textContent = 'No image selected'; message.textContent = 'Choose an image smaller than 20 MB.'; button.disabled = true; return; }
     sourceUrl = URL.createObjectURL(file); button.disabled = false;
-    cropSource.src = sourceUrl; cropStage.hidden = false;
+    cropSource.src = sourceUrl; cropStage.hidden = false; if (cropActions) cropActions.hidden = false;
     cropSource.onload = () => {
       info.textContent = `${cropSource.naturalWidth} × ${cropSource.naturalHeight}px · ${prettyBytes(file.size)}`;
+      if (cropSource.naturalWidth * cropSource.naturalHeight > maxSourcePixels) {
+        message.textContent = 'This image has more than 30 megapixels. Choose a smaller image to avoid using too much device memory.';
+        file = null; input.value = ''; button.disabled = true; revoke(); info.textContent = 'No image selected';
+        return;
+      }
       cropper = new Cropper(cropSource, { viewMode: 1, dragMode: 'move', autoCropArea: .88, responsive: true, restore: false, background: false, aspectRatio: NaN, checkOrientation: true });
       updateAspect();
     };
@@ -55,16 +76,23 @@ if (document.body.dataset.page === 'prepare') {
   });
   button.addEventListener('click', async () => {
     if (!file || !sourceUrl) return;
-    const targetW = Number(document.querySelector('#target-width').value) || null;
-    const targetH = Number(document.querySelector('#target-height').value) || null;
+    const targetW = document.querySelector('#target-width').value ? pixels(Number(document.querySelector('#target-width').value)) : null;
+    const targetH = document.querySelector('#target-height').value ? pixels(Number(document.querySelector('#target-height').value)) : null;
     const maxKB = Number(document.querySelector('#max-kb').value);
     const type = document.querySelector('#form-format').value;
-    if ((targetW && targetW < 1) || (targetH && targetH < 1) || !Number.isFinite(maxKB) || maxKB < 1) { message.textContent = 'Enter positive pixel dimensions and a maximum size of at least 1 KB.'; return; }
+    const rawW = Number(document.querySelector('#target-width').value);
+    const rawH = Number(document.querySelector('#target-height').value);
+    const rawDpi = Number(document.querySelector('#target-dpi')?.value || 300);
+    if ((rawW && (!Number.isFinite(rawW) || rawW < 1)) || (rawH && (!Number.isFinite(rawH) || rawH < 1)) || (targetW !== null && targetW < 1) || (targetH !== null && targetH < 1) || !Number.isFinite(maxKB) || maxKB < 1) { message.textContent = 'Enter positive dimensions that convert to at least 1 pixel, and a maximum size of at least 1 KB.'; return; }
+    if (!Number.isFinite(rawDpi) || rawDpi < 1 || rawDpi > 1200) { message.textContent = 'Enter a print resolution between 1 and 1,200 DPI.'; return; }
+    if ((targetW && targetW > 5000) || (targetH && targetH > 5000)) { message.textContent = 'This browser tool supports output dimensions up to 5,000 pixels per side.'; return; }
     button.disabled = true; button.textContent = 'Preparing…'; message.textContent = 'Your image is processing on this device.';
     try {
       const image = new Image(); image.src = sourceUrl; await image.decode();
       const croppedCanvas = cropper?.getCroppedCanvas({ fillColor: type === 'image/jpeg' ? '#fff' : undefined }) || (() => { const canvas = document.createElement('canvas'); canvas.width = image.naturalWidth; canvas.height = image.naturalHeight; canvas.getContext('2d').drawImage(image, 0, 0); return canvas; })();
       let width = targetW || croppedCanvas.width, height = targetH || croppedCanvas.height;
+      if (targetW && !targetH) height = Math.max(1, Math.round(croppedCanvas.height * targetW / croppedCanvas.width));
+      if (targetH && !targetW) width = Math.max(1, Math.round(croppedCanvas.width * targetH / croppedCanvas.height));
       const shrink = Math.min(1, 5000 / Math.max(width, height)); width = Math.max(1, Math.round(width * shrink)); height = Math.max(1, Math.round(height * shrink));
       let blob = null;
       for (let pass = 0; pass < 10; pass++) {

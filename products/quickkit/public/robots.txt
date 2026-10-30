@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://quickkit-browser-tools.pages.dev/sitemap.xml

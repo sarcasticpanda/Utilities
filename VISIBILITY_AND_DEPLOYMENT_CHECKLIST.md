@@ -1,51 +1,58 @@
-# Visibility and Deployment Checklist
+# Visibility and deployment checklist
 
-Use one copy of the checks per site's canonical domain. Search visibility is a long-running outcome; this checklist tracks controllable setup and meaningful content, not rankings.
+Search visibility is a long-running outcome. This log tracks the parts we can verify and the external setup that still needs the site owner's accounts or details.
 
 ## Product and content
 
-- [ ] One main audience and search intent are clear for the homepage.
-- [ ] Every indexable tool page has a working tool and original explanation.
-- [ ] Page title, description, H1 and canonical URL are unique and accurate.
-- [ ] Examples, FAQs and limitations answer real user questions.
-- [ ] Internal links help users move to the next related tool.
-- [ ] No mass-generated near-duplicate keyword pages or unsupported claims.
-- [ ] Privacy, terms, about, contact and open-source acknowledgements are available.
-- [ ] FormReady presets are sourced from official instructions; unsupported requirements are not presented as facts.
+- [x] Each homepage states its primary use and links to working tools.
+- [x] Tool pages have original explanatory copy and the tool near the top of the page.
+- [x] Page titles, descriptions, H1s and canonical URLs are present and match the live host.
+- [x] Privacy, terms, about, contact and open-source acknowledgements are available.
+- [x] FormReady has no unverified preset claims and explains that it is independent.
+- [ ] Contact pages still need an operator-owned email address or feedback channel.
 
 ## Technical discoverability
 
-- [ ] HTTPS and preferred hostname resolve consistently.
-- [ ] `robots.txt` permits intended public pages and references sitemap.
-- [ ] Sitemap includes canonical pages only and returns HTTP 200.
-- [ ] Canonical tags and metadata match the deployed host.
-- [ ] No accidental `noindex`, broken links, missing assets or unintended 404s.
-- [ ] Social preview metadata and image are present.
-- [ ] Static page text is crawlable without completing a client-side interaction.
-- [ ] Page speed and Core Web Vitals reviewed on mobile; large libraries are deferred where possible.
+- [x] All three Cloudflare Pages sites resolve over HTTPS and are public.
+- [x] `robots.txt` permits public pages and links to the matching sitemap.
+- [x] Each sitemap includes its homepage and working tool pages; all three return HTTP 200.
+- [x] Canonical tags and social title/description metadata match each deployed origin.
+- [x] Core page text is static and readable without completing a client-side interaction.
+- [ ] Social preview image (`og:image`) is not configured yet.
+- [ ] Mobile Core Web Vitals and real-user performance are not measured yet.
+- [ ] Search Console/Bing ownership verification and sitemap submission are not done.
 
 ## Publish and follow-up
 
-- [ ] Production build/preview passes.
-- [ ] Public homepage and core tool URLs open over HTTPS.
-- [ ] Post-deploy browser smoke test completed and recorded in `BROWSER_QA_CHECKLIST.md`.
-- [ ] Verify property in Google Search Console when account access is available.
-- [ ] Submit sitemap in Search Console and Bing Webmaster Tools when account access is available.
-- [ ] Check indexing/crawl errors after launch; record dates and URLs.
-- [ ] Monitor queries, locations and pages before expanding content.
+- [x] Production builds completed for all products.
+- [x] Previous Sites version 3 passed its 11-route live smoke test; the current Pages release passed all 12 routes below.
+- [x] Production tool interactions passed for one representative flow per product.
+- [ ] Verify indexing and crawl reports after Search Console/Bing access is connected.
+- [ ] Monitor search terms, regions and landing pages before adding more content.
 
 ## Monetization readiness
 
-- [ ] No advertisement is styled or positioned like upload, calculate, continue, or download.
-- [ ] Ad containers reserve space to avoid layout shifts and are disabled until approved.
-- [ ] Affiliate links, if any, are relevant and disclosed.
-- [ ] No ad clicks, impression reloads or other manufactured engagement.
-- [ ] Track ad review status separately; approval and revenue are not guaranteed by publication.
+- [x] No ads are enabled or styled like an upload, calculate or download action.
+- [x] No affiliate links are present.
+- [ ] Select and disclose an analytics provider before adding privacy-safe event measurement.
+- [ ] Apply for an ad network after content, contact details and traffic are ready; approval and earnings are not guaranteed by publication.
 
 ## Deployment log
 
-| Product | Host | Public URL | Build revision | Sitemap URL | Smoke check | Status |
-|---|---|---|---|---|---|---|
-| WorkKit | pending | pending | pending | pending | pending | Not deployed |
-| QuickKit | pending | pending | pending | pending | pending | Not deployed |
-| FormReady | pending | pending | pending | pending | pending | Not deployed |
+| Product | Host | Public URL | Sitemap | Live smoke | Status |
+|---|---|---|---|---|---|
+| WorkKit | Cloudflare Pages | https://workkit-hours-tools.pages.dev | [sitemap.xml](https://workkit-hours-tools.pages.dev/sitemap.xml) | Passed | Public |
+| QuickKit | Cloudflare Pages | https://quickkit-browser-tools.pages.dev | [sitemap.xml](https://quickkit-browser-tools.pages.dev/sitemap.xml) | Passed | Public |
+| FormReady | Cloudflare Pages | https://formready-photo-tools.pages.dev | [sitemap.xml](https://formready-photo-tools.pages.dev/sitemap.xml) | Passed | Public |
+
+Custom domains are not connected. Traffic, ranking, immediate indexing, ad approval and income depend on external services and user demand.
+
+## Cloudflare Pages launch — 30 October 2026
+
+- [x] Cloudflare account was authorized and verified; profile cloudflare-pages-launch deployed all three projects.
+- [x] QuickKit, WorkKit and FormReady production builds deployed to their free pages.dev hosts.
+- [x] Local Chromium QA passed 75 checks with 0 failures.
+- [x] QuickKit PDF editor passed 28 checks locally and on the live Pages host.
+- [x] Production browser smoke passed 12 routes and representative flows with 0 failures.
+- [x] No application files are uploaded by the browser tools; file processing stays local.
+- [ ] Domain registration and custom DNS are optional, separate and still pending. No purchase has been made.

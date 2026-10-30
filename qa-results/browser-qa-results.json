@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-10-30T09:29:02.848Z",
-  "browser": "Chromium via Playwright",
+  "generatedAt": "2026-10-30T12:02:42.428Z",
+  "browser": "Chromium 156.0.8078.4",
   "products": {
     "workkit/index.html@desktop": {
       "layout": {
         "width": 1440,
         "scrollWidth": 1440,
-        "title": "WorkKit — Work hours, pay and overtime calculators",
+        "title": "Free Time Card and Work Pay Calculators | WorkKit",
         "h1": "Make work hours add up.",
         "visibleButtons": 0
       },
@@ -19,23 +19,15 @@
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4173/@vite/client"
+          "url": "http://127.0.0.1:4173/assets/app-BfJgoS0C.js"
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4173/styles.css"
-        },
-        {
-          "method": "GET",
-          "url": "http://127.0.0.1:4173/app.js"
+          "url": "http://127.0.0.1:4173/assets/styles-DnfvafAB.css"
         },
         {
           "method": "GET",
           "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
-        },
-        {
-          "method": "GET",
-          "url": "http://127.0.0.1:4173/@fs/C:/Users/Lunar%20Panda/OneDrive/Documentos/ChatGPT/Utilities/node_modules/vite/dist/client/env.mjs"
         },
         {
           "method": "GET",
@@ -47,7 +39,7 @@
       "layout": {
         "width": 768,
         "scrollWidth": 768,
-        "title": "WorkKit — Work hours, pay and overtime calculators",
+        "title": "Free Time Card and Work Pay Calculators | WorkKit",
         "h1": "Make work hours add up.",
         "visibleButtons": 0
       },
@@ -60,23 +52,15 @@
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4173/@vite/client"
+          "url": "http://127.0.0.1:4173/assets/app-BfJgoS0C.js"
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4173/styles.css"
-        },
-        {
-          "method": "GET",
-          "url": "http://127.0.0.1:4173/app.js"
+          "url": "http://127.0.0.1:4173/assets/styles-DnfvafAB.css"
         },
         {
           "method": "GET",
           "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
-        },
-        {
-          "method": "GET",
-          "url": "http://127.0.0.1:4173/@fs/C:/Users/Lunar%20Panda/OneDrive/Documentos/ChatGPT/Utilities/node_modules/vite/dist/client/env.mjs"
         },
         {
           "method": "GET",
@@ -88,7 +72,7 @@
       "layout": {
         "width": 390,
         "scrollWidth": 390,
-        "title": "WorkKit — Work hours, pay and overtime calculators",
+        "title": "Free Time Card and Work Pay Calculators | WorkKit",
         "h1": "Make work hours add up.",
         "visibleButtons": 0
       },
@@ -101,23 +85,15 @@
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4173/@vite/client"
+          "url": "http://127.0.0.1:4173/assets/app-BfJgoS0C.js"
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4173/styles.css"
-        },
-        {
-          "method": "GET",
-          "url": "http://127.0.0.1:4173/app.js"
+          "url": "http://127.0.0.1:4173/assets/styles-DnfvafAB.css"
         },
         {
           "method": "GET",
           "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
-        },
-        {
-          "method": "GET",
-          "url": "http://127.0.0.1:4173/@fs/C:/Users/Lunar%20Panda/OneDrive/Documentos/ChatGPT/Utilities/node_modules/vite/dist/client/env.mjs"
         },
         {
           "method": "GET",
@@ -129,7 +105,7 @@
       "layout": {
         "width": 320,
         "scrollWidth": 320,
-        "title": "WorkKit — Work hours, pay and overtime calculators",
+        "title": "Free Time Card and Work Pay Calculators | WorkKit",
         "h1": "Make work hours add up.",
         "visibleButtons": 0
       },
@@ -142,23 +118,15 @@
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4173/@vite/client"
+          "url": "http://127.0.0.1:4173/assets/app-BfJgoS0C.js"
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4173/styles.css"
-        },
-        {
-          "method": "GET",
-          "url": "http://127.0.0.1:4173/app.js"
+          "url": "http://127.0.0.1:4173/assets/styles-DnfvafAB.css"
         },
         {
           "method": "GET",
           "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
-        },
-        {
-          "method": "GET",
-          "url": "http://127.0.0.1:4173/@fs/C:/Users/Lunar%20Panda/OneDrive/Documentos/ChatGPT/Utilities/node_modules/vite/dist/client/env.mjs"
         },
         {
           "method": "GET",
@@ -170,9 +138,9 @@
       "layout": {
         "width": 1440,
         "scrollWidth": 1440,
-        "title": "Time Card Calculator — WorkKit",
+        "title": "Time Card Calculator: Hours, Breaks and Pay | WorkKit",
         "h1": "Time card calculator",
-        "visibleButtons": 5
+        "visibleButtons": 6
       },
       "noOverflow": true,
       "consoleErrors": [],
@@ -183,23 +151,15 @@
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4173/@vite/client"
+          "url": "http://127.0.0.1:4173/assets/app-BfJgoS0C.js"
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4173/styles.css"
-        },
-        {
-          "method": "GET",
-          "url": "http://127.0.0.1:4173/app.js"
+          "url": "http://127.0.0.1:4173/assets/styles-DnfvafAB.css"
         },
         {
           "method": "GET",
           "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
-        },
-        {
-          "method": "GET",
-          "url": "http://127.0.0.1:4173/@fs/C:/Users/Lunar%20Panda/OneDrive/Documentos/ChatGPT/Utilities/node_modules/vite/dist/client/env.mjs"
         },
         {
           "method": "GET",
@@ -211,9 +171,9 @@
       "layout": {
         "width": 768,
         "scrollWidth": 768,
-        "title": "Time Card Calculator — WorkKit",
+        "title": "Time Card Calculator: Hours, Breaks and Pay | WorkKit",
         "h1": "Time card calculator",
-        "visibleButtons": 5
+        "visibleButtons": 6
       },
       "noOverflow": true,
       "consoleErrors": [],
@@ -224,23 +184,15 @@
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4173/@vite/client"
+          "url": "http://127.0.0.1:4173/assets/app-BfJgoS0C.js"
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4173/styles.css"
-        },
-        {
-          "method": "GET",
-          "url": "http://127.0.0.1:4173/app.js"
+          "url": "http://127.0.0.1:4173/assets/styles-DnfvafAB.css"
         },
         {
           "method": "GET",
           "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
-        },
-        {
-          "method": "GET",
-          "url": "http://127.0.0.1:4173/@fs/C:/Users/Lunar%20Panda/OneDrive/Documentos/ChatGPT/Utilities/node_modules/vite/dist/client/env.mjs"
         },
         {
           "method": "GET",
@@ -252,9 +204,9 @@
       "layout": {
         "width": 390,
         "scrollWidth": 390,
-        "title": "Time Card Calculator — WorkKit",
+        "title": "Time Card Calculator: Hours, Breaks and Pay | WorkKit",
         "h1": "Time card calculator",
-        "visibleButtons": 5
+        "visibleButtons": 6
       },
       "noOverflow": true,
       "consoleErrors": [],
@@ -265,23 +217,15 @@
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4173/@vite/client"
+          "url": "http://127.0.0.1:4173/assets/app-BfJgoS0C.js"
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4173/styles.css"
-        },
-        {
-          "method": "GET",
-          "url": "http://127.0.0.1:4173/app.js"
+          "url": "http://127.0.0.1:4173/assets/styles-DnfvafAB.css"
         },
         {
           "method": "GET",
           "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
-        },
-        {
-          "method": "GET",
-          "url": "http://127.0.0.1:4173/@fs/C:/Users/Lunar%20Panda/OneDrive/Documentos/ChatGPT/Utilities/node_modules/vite/dist/client/env.mjs"
         },
         {
           "method": "GET",
@@ -293,9 +237,9 @@
       "layout": {
         "width": 320,
         "scrollWidth": 320,
-        "title": "Time Card Calculator — WorkKit",
+        "title": "Time Card Calculator: Hours, Breaks and Pay | WorkKit",
         "h1": "Time card calculator",
-        "visibleButtons": 5
+        "visibleButtons": 6
       },
       "noOverflow": true,
       "consoleErrors": [],
@@ -306,23 +250,15 @@
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4173/@vite/client"
+          "url": "http://127.0.0.1:4173/assets/app-BfJgoS0C.js"
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4173/styles.css"
-        },
-        {
-          "method": "GET",
-          "url": "http://127.0.0.1:4173/app.js"
+          "url": "http://127.0.0.1:4173/assets/styles-DnfvafAB.css"
         },
         {
           "method": "GET",
           "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
-        },
-        {
-          "method": "GET",
-          "url": "http://127.0.0.1:4173/@fs/C:/Users/Lunar%20Panda/OneDrive/Documentos/ChatGPT/Utilities/node_modules/vite/dist/client/env.mjs"
         },
         {
           "method": "GET",
@@ -334,7 +270,7 @@
       "layout": {
         "width": 1440,
         "scrollWidth": 1440,
-        "title": "Overtime Calculator — WorkKit",
+        "title": "Overtime Pay Calculator: Weekly Hours and Pay | WorkKit",
         "h1": "Overtime calculator",
         "visibleButtons": 1
       },
@@ -347,23 +283,15 @@
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4173/@vite/client"
+          "url": "http://127.0.0.1:4173/assets/app-BfJgoS0C.js"
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4173/styles.css"
-        },
-        {
-          "method": "GET",
-          "url": "http://127.0.0.1:4173/app.js"
+          "url": "http://127.0.0.1:4173/assets/styles-DnfvafAB.css"
         },
         {
           "method": "GET",
           "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
-        },
-        {
-          "method": "GET",
-          "url": "http://127.0.0.1:4173/@fs/C:/Users/Lunar%20Panda/OneDrive/Documentos/ChatGPT/Utilities/node_modules/vite/dist/client/env.mjs"
         },
         {
           "method": "GET",
@@ -375,7 +303,7 @@
       "layout": {
         "width": 768,
         "scrollWidth": 768,
-        "title": "Overtime Calculator — WorkKit",
+        "title": "Overtime Pay Calculator: Weekly Hours and Pay | WorkKit",
         "h1": "Overtime calculator",
         "visibleButtons": 1
       },
@@ -388,23 +316,15 @@
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4173/@vite/client"
+          "url": "http://127.0.0.1:4173/assets/app-BfJgoS0C.js"
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4173/styles.css"
-        },
-        {
-          "method": "GET",
-          "url": "http://127.0.0.1:4173/app.js"
+          "url": "http://127.0.0.1:4173/assets/styles-DnfvafAB.css"
         },
         {
           "method": "GET",
           "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
-        },
-        {
-          "method": "GET",
-          "url": "http://127.0.0.1:4173/@fs/C:/Users/Lunar%20Panda/OneDrive/Documentos/ChatGPT/Utilities/node_modules/vite/dist/client/env.mjs"
         },
         {
           "method": "GET",
@@ -416,7 +336,7 @@
       "layout": {
         "width": 390,
         "scrollWidth": 390,
-        "title": "Overtime Calculator — WorkKit",
+        "title": "Overtime Pay Calculator: Weekly Hours and Pay | WorkKit",
         "h1": "Overtime calculator",
         "visibleButtons": 1
       },
@@ -429,23 +349,15 @@
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4173/@vite/client"
+          "url": "http://127.0.0.1:4173/assets/app-BfJgoS0C.js"
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4173/styles.css"
-        },
-        {
-          "method": "GET",
-          "url": "http://127.0.0.1:4173/app.js"
+          "url": "http://127.0.0.1:4173/assets/styles-DnfvafAB.css"
         },
         {
           "method": "GET",
           "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
-        },
-        {
-          "method": "GET",
-          "url": "http://127.0.0.1:4173/@fs/C:/Users/Lunar%20Panda/OneDrive/Documentos/ChatGPT/Utilities/node_modules/vite/dist/client/env.mjs"
         },
         {
           "method": "GET",
@@ -457,7 +369,7 @@
       "layout": {
         "width": 320,
         "scrollWidth": 320,
-        "title": "Overtime Calculator — WorkKit",
+        "title": "Overtime Pay Calculator: Weekly Hours and Pay | WorkKit",
         "h1": "Overtime calculator",
         "visibleButtons": 1
       },
@@ -470,23 +382,15 @@
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4173/@vite/client"
+          "url": "http://127.0.0.1:4173/assets/app-BfJgoS0C.js"
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4173/styles.css"
-        },
-        {
-          "method": "GET",
-          "url": "http://127.0.0.1:4173/app.js"
+          "url": "http://127.0.0.1:4173/assets/styles-DnfvafAB.css"
         },
         {
           "method": "GET",
           "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
-        },
-        {
-          "method": "GET",
-          "url": "http://127.0.0.1:4173/@fs/C:/Users/Lunar%20Panda/OneDrive/Documentos/ChatGPT/Utilities/node_modules/vite/dist/client/env.mjs"
         },
         {
           "method": "GET",
@@ -498,7 +402,7 @@
       "layout": {
         "width": 1440,
         "scrollWidth": 1440,
-        "title": "Hourly to Salary Converter — WorkKit",
+        "title": "Hourly to Salary Calculator: Annual Gross Pay | WorkKit",
         "h1": "Hourly to salary converter",
         "visibleButtons": 1
       },
@@ -511,15 +415,11 @@
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4173/@vite/client"
+          "url": "http://127.0.0.1:4173/assets/app-BfJgoS0C.js"
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4173/styles.css"
-        },
-        {
-          "method": "GET",
-          "url": "http://127.0.0.1:4173/app.js"
+          "url": "http://127.0.0.1:4173/assets/styles-DnfvafAB.css"
         },
         {
           "method": "GET",
@@ -527,11 +427,7 @@
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4173/@fs/C:/Users/Lunar%20Panda/OneDrive/Documentos/ChatGPT/Utilities/node_modules/vite/dist/client/env.mjs"
-        },
-        {
-          "method": "GET",
-          "url": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2"
+          "url": "https://fonts.gstatic.com/l/font?kit=QGYFz_MVcBeNP4NjuGObqx1XmO1I4TC1aYqc4vi0GKDIIyHlBNBZBFQ&skey=bafc0b239d492b2c&v=v15"
         }
       ]
     },
@@ -539,7 +435,7 @@
       "layout": {
         "width": 768,
         "scrollWidth": 768,
-        "title": "Hourly to Salary Converter — WorkKit",
+        "title": "Hourly to Salary Calculator: Annual Gross Pay | WorkKit",
         "h1": "Hourly to salary converter",
         "visibleButtons": 1
       },
@@ -552,23 +448,15 @@
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4173/@vite/client"
+          "url": "http://127.0.0.1:4173/assets/app-BfJgoS0C.js"
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4173/styles.css"
-        },
-        {
-          "method": "GET",
-          "url": "http://127.0.0.1:4173/app.js"
+          "url": "http://127.0.0.1:4173/assets/styles-DnfvafAB.css"
         },
         {
           "method": "GET",
           "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
-        },
-        {
-          "method": "GET",
-          "url": "http://127.0.0.1:4173/@fs/C:/Users/Lunar%20Panda/OneDrive/Documentos/ChatGPT/Utilities/node_modules/vite/dist/client/env.mjs"
         },
         {
           "method": "GET",
@@ -580,7 +468,7 @@
       "layout": {
         "width": 390,
         "scrollWidth": 390,
-        "title": "Hourly to Salary Converter — WorkKit",
+        "title": "Hourly to Salary Calculator: Annual Gross Pay | WorkKit",
         "h1": "Hourly to salary converter",
         "visibleButtons": 1
       },
@@ -593,23 +481,15 @@
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4173/@vite/client"
+          "url": "http://127.0.0.1:4173/assets/app-BfJgoS0C.js"
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4173/styles.css"
-        },
-        {
-          "method": "GET",
-          "url": "http://127.0.0.1:4173/app.js"
+          "url": "http://127.0.0.1:4173/assets/styles-DnfvafAB.css"
         },
         {
           "method": "GET",
           "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
-        },
-        {
-          "method": "GET",
-          "url": "http://127.0.0.1:4173/@fs/C:/Users/Lunar%20Panda/OneDrive/Documentos/ChatGPT/Utilities/node_modules/vite/dist/client/env.mjs"
         },
         {
           "method": "GET",
@@ -621,7 +501,7 @@
       "layout": {
         "width": 320,
         "scrollWidth": 320,
-        "title": "Hourly to Salary Converter — WorkKit",
+        "title": "Hourly to Salary Calculator: Annual Gross Pay | WorkKit",
         "h1": "Hourly to salary converter",
         "visibleButtons": 1
       },
@@ -634,23 +514,15 @@
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4173/@vite/client"
+          "url": "http://127.0.0.1:4173/assets/app-BfJgoS0C.js"
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4173/styles.css"
-        },
-        {
-          "method": "GET",
-          "url": "http://127.0.0.1:4173/app.js"
+          "url": "http://127.0.0.1:4173/assets/styles-DnfvafAB.css"
         },
         {
           "method": "GET",
           "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
-        },
-        {
-          "method": "GET",
-          "url": "http://127.0.0.1:4173/@fs/C:/Users/Lunar%20Panda/OneDrive/Documentos/ChatGPT/Utilities/node_modules/vite/dist/client/env.mjs"
         },
         {
           "method": "GET",
@@ -662,7 +534,7 @@
       "layout": {
         "width": 1440,
         "scrollWidth": 1440,
-        "title": "QuickKit — Small tasks, sorted",
+        "title": "Free PDF Editor, PDF Merger and Image Tools | QuickKit",
         "h1": "Get the little things out of your way.",
         "visibleButtons": 0
       },
@@ -675,23 +547,19 @@
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4174/@vite/client"
+          "url": "http://127.0.0.1:4174/assets/modulepreload-polyfill-B5Qt9EMX.js"
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4174/styles.css"
+          "url": "http://127.0.0.1:4174/assets/app-TOTloAVY.js"
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4174/app.js?t=1793352483101"
+          "url": "http://127.0.0.1:4174/assets/styles-qOJqZkOM.css"
         },
         {
           "method": "GET",
           "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
-        },
-        {
-          "method": "GET",
-          "url": "http://127.0.0.1:4174/@fs/C:/Users/Lunar%20Panda/OneDrive/Documentos/ChatGPT/Utilities/node_modules/vite/dist/client/env.mjs"
         },
         {
           "method": "GET",
@@ -703,7 +571,7 @@
       "layout": {
         "width": 768,
         "scrollWidth": 768,
-        "title": "QuickKit — Small tasks, sorted",
+        "title": "Free PDF Editor, PDF Merger and Image Tools | QuickKit",
         "h1": "Get the little things out of your way.",
         "visibleButtons": 0
       },
@@ -716,23 +584,19 @@
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4174/@vite/client"
+          "url": "http://127.0.0.1:4174/assets/modulepreload-polyfill-B5Qt9EMX.js"
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4174/styles.css"
+          "url": "http://127.0.0.1:4174/assets/app-TOTloAVY.js"
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4174/app.js?t=1793352483101"
+          "url": "http://127.0.0.1:4174/assets/styles-qOJqZkOM.css"
         },
         {
           "method": "GET",
           "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
-        },
-        {
-          "method": "GET",
-          "url": "http://127.0.0.1:4174/@fs/C:/Users/Lunar%20Panda/OneDrive/Documentos/ChatGPT/Utilities/node_modules/vite/dist/client/env.mjs"
         },
         {
           "method": "GET",
@@ -744,7 +608,7 @@
       "layout": {
         "width": 390,
         "scrollWidth": 390,
-        "title": "QuickKit — Small tasks, sorted",
+        "title": "Free PDF Editor, PDF Merger and Image Tools | QuickKit",
         "h1": "Get the little things out of your way.",
         "visibleButtons": 0
       },
@@ -757,23 +621,19 @@
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4174/@vite/client"
+          "url": "http://127.0.0.1:4174/assets/modulepreload-polyfill-B5Qt9EMX.js"
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4174/styles.css"
+          "url": "http://127.0.0.1:4174/assets/app-TOTloAVY.js"
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4174/app.js?t=1793352483101"
+          "url": "http://127.0.0.1:4174/assets/styles-qOJqZkOM.css"
         },
         {
           "method": "GET",
           "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
-        },
-        {
-          "method": "GET",
-          "url": "http://127.0.0.1:4174/@fs/C:/Users/Lunar%20Panda/OneDrive/Documentos/ChatGPT/Utilities/node_modules/vite/dist/client/env.mjs"
         },
         {
           "method": "GET",
@@ -785,7 +645,7 @@
       "layout": {
         "width": 320,
         "scrollWidth": 320,
-        "title": "QuickKit — Small tasks, sorted",
+        "title": "Free PDF Editor, PDF Merger and Image Tools | QuickKit",
         "h1": "Get the little things out of your way.",
         "visibleButtons": 0
       },
@@ -798,23 +658,19 @@
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4174/@vite/client"
+          "url": "http://127.0.0.1:4174/assets/modulepreload-polyfill-B5Qt9EMX.js"
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4174/styles.css"
+          "url": "http://127.0.0.1:4174/assets/app-TOTloAVY.js"
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4174/app.js?t=1793352483101"
+          "url": "http://127.0.0.1:4174/assets/styles-qOJqZkOM.css"
         },
         {
           "method": "GET",
           "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
-        },
-        {
-          "method": "GET",
-          "url": "http://127.0.0.1:4174/@fs/C:/Users/Lunar%20Panda/OneDrive/Documentos/ChatGPT/Utilities/node_modules/vite/dist/client/env.mjs"
         },
         {
           "method": "GET",
@@ -839,23 +695,19 @@
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4174/@vite/client"
+          "url": "http://127.0.0.1:4174/assets/modulepreload-polyfill-B5Qt9EMX.js"
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4174/styles.css"
+          "url": "http://127.0.0.1:4174/assets/app-TOTloAVY.js"
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4174/app.js?t=1793352483101"
+          "url": "http://127.0.0.1:4174/assets/styles-qOJqZkOM.css"
         },
         {
           "method": "GET",
           "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
-        },
-        {
-          "method": "GET",
-          "url": "http://127.0.0.1:4174/@fs/C:/Users/Lunar%20Panda/OneDrive/Documentos/ChatGPT/Utilities/node_modules/vite/dist/client/env.mjs"
         },
         {
           "method": "GET",
@@ -880,23 +732,19 @@
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4174/@vite/client"
+          "url": "http://127.0.0.1:4174/assets/modulepreload-polyfill-B5Qt9EMX.js"
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4174/styles.css"
+          "url": "http://127.0.0.1:4174/assets/app-TOTloAVY.js"
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4174/app.js?t=1793352483101"
+          "url": "http://127.0.0.1:4174/assets/styles-qOJqZkOM.css"
         },
         {
           "method": "GET",
           "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
-        },
-        {
-          "method": "GET",
-          "url": "http://127.0.0.1:4174/@fs/C:/Users/Lunar%20Panda/OneDrive/Documentos/ChatGPT/Utilities/node_modules/vite/dist/client/env.mjs"
         },
         {
           "method": "GET",
@@ -921,23 +769,19 @@
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4174/@vite/client"
+          "url": "http://127.0.0.1:4174/assets/modulepreload-polyfill-B5Qt9EMX.js"
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4174/styles.css"
+          "url": "http://127.0.0.1:4174/assets/app-TOTloAVY.js"
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4174/app.js?t=1793352483101"
+          "url": "http://127.0.0.1:4174/assets/styles-qOJqZkOM.css"
         },
         {
           "method": "GET",
           "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
-        },
-        {
-          "method": "GET",
-          "url": "http://127.0.0.1:4174/@fs/C:/Users/Lunar%20Panda/OneDrive/Documentos/ChatGPT/Utilities/node_modules/vite/dist/client/env.mjs"
         },
         {
           "method": "GET",
@@ -962,23 +806,19 @@
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4174/@vite/client"
+          "url": "http://127.0.0.1:4174/assets/modulepreload-polyfill-B5Qt9EMX.js"
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4174/styles.css"
+          "url": "http://127.0.0.1:4174/assets/app-TOTloAVY.js"
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4174/app.js?t=1793352483101"
+          "url": "http://127.0.0.1:4174/assets/styles-qOJqZkOM.css"
         },
         {
           "method": "GET",
           "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
-        },
-        {
-          "method": "GET",
-          "url": "http://127.0.0.1:4174/@fs/C:/Users/Lunar%20Panda/OneDrive/Documentos/ChatGPT/Utilities/node_modules/vite/dist/client/env.mjs"
         },
         {
           "method": "GET",
@@ -1003,23 +843,19 @@
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4174/@vite/client"
+          "url": "http://127.0.0.1:4174/assets/modulepreload-polyfill-B5Qt9EMX.js"
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4174/styles.css"
+          "url": "http://127.0.0.1:4174/assets/app-TOTloAVY.js"
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4174/app.js?t=1793352483101"
+          "url": "http://127.0.0.1:4174/assets/styles-qOJqZkOM.css"
         },
         {
           "method": "GET",
           "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
-        },
-        {
-          "method": "GET",
-          "url": "http://127.0.0.1:4174/@fs/C:/Users/Lunar%20Panda/OneDrive/Documentos/ChatGPT/Utilities/node_modules/vite/dist/client/env.mjs"
         },
         {
           "method": "GET",
@@ -1044,23 +880,19 @@
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4174/@vite/client"
+          "url": "http://127.0.0.1:4174/assets/modulepreload-polyfill-B5Qt9EMX.js"
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4174/styles.css"
+          "url": "http://127.0.0.1:4174/assets/app-TOTloAVY.js"
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4174/app.js?t=1793352483101"
+          "url": "http://127.0.0.1:4174/assets/styles-qOJqZkOM.css"
         },
         {
           "method": "GET",
           "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
-        },
-        {
-          "method": "GET",
-          "url": "http://127.0.0.1:4174/@fs/C:/Users/Lunar%20Panda/OneDrive/Documentos/ChatGPT/Utilities/node_modules/vite/dist/client/env.mjs"
         },
         {
           "method": "GET",
@@ -1085,23 +917,19 @@
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4174/@vite/client"
+          "url": "http://127.0.0.1:4174/assets/modulepreload-polyfill-B5Qt9EMX.js"
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4174/styles.css"
+          "url": "http://127.0.0.1:4174/assets/app-TOTloAVY.js"
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4174/app.js?t=1793352483101"
+          "url": "http://127.0.0.1:4174/assets/styles-qOJqZkOM.css"
         },
         {
           "method": "GET",
           "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
-        },
-        {
-          "method": "GET",
-          "url": "http://127.0.0.1:4174/@fs/C:/Users/Lunar%20Panda/OneDrive/Documentos/ChatGPT/Utilities/node_modules/vite/dist/client/env.mjs"
         },
         {
           "method": "GET",
@@ -1126,23 +954,19 @@
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4174/@vite/client"
+          "url": "http://127.0.0.1:4174/assets/modulepreload-polyfill-B5Qt9EMX.js"
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4174/styles.css"
+          "url": "http://127.0.0.1:4174/assets/app-TOTloAVY.js"
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4174/app.js?t=1793352483101"
+          "url": "http://127.0.0.1:4174/assets/styles-qOJqZkOM.css"
         },
         {
           "method": "GET",
           "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
-        },
-        {
-          "method": "GET",
-          "url": "http://127.0.0.1:4174/@fs/C:/Users/Lunar%20Panda/OneDrive/Documentos/ChatGPT/Utilities/node_modules/vite/dist/client/env.mjs"
         },
         {
           "method": "GET",
@@ -1167,23 +991,19 @@
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4174/@vite/client"
+          "url": "http://127.0.0.1:4174/assets/modulepreload-polyfill-B5Qt9EMX.js"
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4174/styles.css"
+          "url": "http://127.0.0.1:4174/assets/app-TOTloAVY.js"
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4174/app.js?t=1793352483101"
+          "url": "http://127.0.0.1:4174/assets/styles-qOJqZkOM.css"
         },
         {
           "method": "GET",
           "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
-        },
-        {
-          "method": "GET",
-          "url": "http://127.0.0.1:4174/@fs/C:/Users/Lunar%20Panda/OneDrive/Documentos/ChatGPT/Utilities/node_modules/vite/dist/client/env.mjs"
         },
         {
           "method": "GET",
@@ -1208,23 +1028,19 @@
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4174/@vite/client"
+          "url": "http://127.0.0.1:4174/assets/modulepreload-polyfill-B5Qt9EMX.js"
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4174/styles.css"
+          "url": "http://127.0.0.1:4174/assets/app-TOTloAVY.js"
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4174/app.js?t=1793352483101"
+          "url": "http://127.0.0.1:4174/assets/styles-qOJqZkOM.css"
         },
         {
           "method": "GET",
           "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
-        },
-        {
-          "method": "GET",
-          "url": "http://127.0.0.1:4174/@fs/C:/Users/Lunar%20Panda/OneDrive/Documentos/ChatGPT/Utilities/node_modules/vite/dist/client/env.mjs"
         },
         {
           "method": "GET",
@@ -1249,23 +1065,19 @@
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4174/@vite/client"
+          "url": "http://127.0.0.1:4174/assets/modulepreload-polyfill-B5Qt9EMX.js"
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4174/styles.css"
+          "url": "http://127.0.0.1:4174/assets/app-TOTloAVY.js"
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4174/app.js?t=1793352483101"
+          "url": "http://127.0.0.1:4174/assets/styles-qOJqZkOM.css"
         },
         {
           "method": "GET",
           "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
-        },
-        {
-          "method": "GET",
-          "url": "http://127.0.0.1:4174/@fs/C:/Users/Lunar%20Panda/OneDrive/Documentos/ChatGPT/Utilities/node_modules/vite/dist/client/env.mjs"
         },
         {
           "method": "GET",
@@ -1290,15 +1102,15 @@
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4174/@vite/client"
+          "url": "http://127.0.0.1:4174/assets/modulepreload-polyfill-B5Qt9EMX.js"
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4174/styles.css"
+          "url": "http://127.0.0.1:4174/assets/app-TOTloAVY.js"
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4174/app.js?t=1793352483101"
+          "url": "http://127.0.0.1:4174/assets/styles-qOJqZkOM.css"
         },
         {
           "method": "GET",
@@ -1306,7 +1118,199 @@
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4174/@fs/C:/Users/Lunar%20Panda/OneDrive/Documentos/ChatGPT/Utilities/node_modules/vite/dist/client/env.mjs"
+          "url": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2"
+        }
+      ]
+    },
+    "quickkit/pdf-editor.html@desktop": {
+      "layout": {
+        "width": 1440,
+        "scrollWidth": 1440,
+        "title": "Online PDF Editor: Add Text, Sign and Reorder Pages | QuickKit",
+        "h1": "Edit a PDF, right here",
+        "visibleButtons": 0
+      },
+      "noOverflow": true,
+      "consoleErrors": [],
+      "requests": [
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4174/pdf-editor.html"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4174/assets/pdf-editor-GqvsnwBz.js"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4174/assets/modulepreload-polyfill-B5Qt9EMX.js"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4174/assets/_commonjsHelpers-CqkleIqs.js"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4174/assets/index-CfA9Roq9.js"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4174/assets/pdf-editor-B7pJUPpx.css"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4174/assets/styles-qOJqZkOM.css"
+        },
+        {
+          "method": "GET",
+          "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
+        },
+        {
+          "method": "GET",
+          "url": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2"
+        }
+      ]
+    },
+    "quickkit/pdf-editor.html@tablet": {
+      "layout": {
+        "width": 768,
+        "scrollWidth": 768,
+        "title": "Online PDF Editor: Add Text, Sign and Reorder Pages | QuickKit",
+        "h1": "Edit a PDF, right here",
+        "visibleButtons": 0
+      },
+      "noOverflow": true,
+      "consoleErrors": [],
+      "requests": [
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4174/pdf-editor.html"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4174/assets/pdf-editor-GqvsnwBz.js"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4174/assets/modulepreload-polyfill-B5Qt9EMX.js"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4174/assets/_commonjsHelpers-CqkleIqs.js"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4174/assets/index-CfA9Roq9.js"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4174/assets/pdf-editor-B7pJUPpx.css"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4174/assets/styles-qOJqZkOM.css"
+        },
+        {
+          "method": "GET",
+          "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
+        },
+        {
+          "method": "GET",
+          "url": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2"
+        }
+      ]
+    },
+    "quickkit/pdf-editor.html@mobile": {
+      "layout": {
+        "width": 390,
+        "scrollWidth": 390,
+        "title": "Online PDF Editor: Add Text, Sign and Reorder Pages | QuickKit",
+        "h1": "Edit a PDF, right here",
+        "visibleButtons": 0
+      },
+      "noOverflow": true,
+      "consoleErrors": [],
+      "requests": [
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4174/pdf-editor.html"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4174/assets/pdf-editor-GqvsnwBz.js"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4174/assets/modulepreload-polyfill-B5Qt9EMX.js"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4174/assets/_commonjsHelpers-CqkleIqs.js"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4174/assets/index-CfA9Roq9.js"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4174/assets/pdf-editor-B7pJUPpx.css"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4174/assets/styles-qOJqZkOM.css"
+        },
+        {
+          "method": "GET",
+          "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
+        },
+        {
+          "method": "GET",
+          "url": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2"
+        }
+      ]
+    },
+    "quickkit/pdf-editor.html@narrow-mobile": {
+      "layout": {
+        "width": 320,
+        "scrollWidth": 320,
+        "title": "Online PDF Editor: Add Text, Sign and Reorder Pages | QuickKit",
+        "h1": "Edit a PDF, right here",
+        "visibleButtons": 0
+      },
+      "noOverflow": true,
+      "consoleErrors": [],
+      "requests": [
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4174/pdf-editor.html"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4174/assets/pdf-editor-GqvsnwBz.js"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4174/assets/modulepreload-polyfill-B5Qt9EMX.js"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4174/assets/_commonjsHelpers-CqkleIqs.js"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4174/assets/index-CfA9Roq9.js"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4174/assets/pdf-editor-B7pJUPpx.css"
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:4174/assets/styles-qOJqZkOM.css"
+        },
+        {
+          "method": "GET",
+          "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
         },
         {
           "method": "GET",
@@ -1331,23 +1335,19 @@
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4174/@vite/client"
+          "url": "http://127.0.0.1:4174/assets/modulepreload-polyfill-B5Qt9EMX.js"
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4174/styles.css"
+          "url": "http://127.0.0.1:4174/assets/app-TOTloAVY.js"
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4174/app.js?t=1793352483101"
+          "url": "http://127.0.0.1:4174/assets/styles-qOJqZkOM.css"
         },
         {
           "method": "GET",
           "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
-        },
-        {
-          "method": "GET",
-          "url": "http://127.0.0.1:4174/@fs/C:/Users/Lunar%20Panda/OneDrive/Documentos/ChatGPT/Utilities/node_modules/vite/dist/client/env.mjs"
         },
         {
           "method": "GET",
@@ -1372,23 +1372,19 @@
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4174/@vite/client"
+          "url": "http://127.0.0.1:4174/assets/modulepreload-polyfill-B5Qt9EMX.js"
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4174/styles.css"
+          "url": "http://127.0.0.1:4174/assets/app-TOTloAVY.js"
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4174/app.js?t=1793352483101"
+          "url": "http://127.0.0.1:4174/assets/styles-qOJqZkOM.css"
         },
         {
           "method": "GET",
           "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
-        },
-        {
-          "method": "GET",
-          "url": "http://127.0.0.1:4174/@fs/C:/Users/Lunar%20Panda/OneDrive/Documentos/ChatGPT/Utilities/node_modules/vite/dist/client/env.mjs"
         },
         {
           "method": "GET",
@@ -1413,23 +1409,19 @@
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4174/@vite/client"
+          "url": "http://127.0.0.1:4174/assets/modulepreload-polyfill-B5Qt9EMX.js"
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4174/styles.css"
+          "url": "http://127.0.0.1:4174/assets/app-TOTloAVY.js"
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4174/app.js?t=1793352483101"
+          "url": "http://127.0.0.1:4174/assets/styles-qOJqZkOM.css"
         },
         {
           "method": "GET",
           "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
-        },
-        {
-          "method": "GET",
-          "url": "http://127.0.0.1:4174/@fs/C:/Users/Lunar%20Panda/OneDrive/Documentos/ChatGPT/Utilities/node_modules/vite/dist/client/env.mjs"
         },
         {
           "method": "GET",
@@ -1454,23 +1446,19 @@
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4174/@vite/client"
+          "url": "http://127.0.0.1:4174/assets/modulepreload-polyfill-B5Qt9EMX.js"
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4174/styles.css"
+          "url": "http://127.0.0.1:4174/assets/app-TOTloAVY.js"
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4174/app.js?t=1793352483101"
+          "url": "http://127.0.0.1:4174/assets/styles-qOJqZkOM.css"
         },
         {
           "method": "GET",
           "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
-        },
-        {
-          "method": "GET",
-          "url": "http://127.0.0.1:4174/@fs/C:/Users/Lunar%20Panda/OneDrive/Documentos/ChatGPT/Utilities/node_modules/vite/dist/client/env.mjs"
         },
         {
           "method": "GET",
@@ -1482,7 +1470,7 @@
       "layout": {
         "width": 1440,
         "scrollWidth": 1440,
-        "title": "FormReady — Prepare your application photo or signature",
+        "title": "Photo and Signature Resizer for Forms | FormReady",
         "h1": "Get your photo or signature ready.",
         "visibleButtons": 0
       },
@@ -1495,31 +1483,19 @@
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4175/@vite/client"
+          "url": "http://127.0.0.1:4175/assets/app-g0M8F8W6.js"
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4175/styles.css"
+          "url": "http://127.0.0.1:4175/assets/app-T1vcRZ2R.css"
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4175/app.js"
+          "url": "http://127.0.0.1:4175/assets/styles-jMuBxUt0.css"
         },
         {
           "method": "GET",
           "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
-        },
-        {
-          "method": "GET",
-          "url": "http://127.0.0.1:4175/@fs/C:/Users/Lunar%20Panda/OneDrive/Documentos/ChatGPT/Utilities/node_modules/vite/dist/client/env.mjs"
-        },
-        {
-          "method": "GET",
-          "url": "http://127.0.0.1:4175/@fs/C:/Users/Lunar%20Panda/OneDrive/Documentos/ChatGPT/Utilities/node_modules/.vite/deps/cropperjs.js?v=eaee0db8"
-        },
-        {
-          "method": "GET",
-          "url": "http://127.0.0.1:4175/@fs/C:/Users/Lunar%20Panda/OneDrive/Documentos/ChatGPT/Utilities/node_modules/cropperjs/dist/cropper.css"
         },
         {
           "method": "GET",
@@ -1531,7 +1507,7 @@
       "layout": {
         "width": 768,
         "scrollWidth": 768,
-        "title": "FormReady — Prepare your application photo or signature",
+        "title": "Photo and Signature Resizer for Forms | FormReady",
         "h1": "Get your photo or signature ready.",
         "visibleButtons": 0
       },
@@ -1544,31 +1520,19 @@
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4175/@vite/client"
+          "url": "http://127.0.0.1:4175/assets/app-g0M8F8W6.js"
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4175/styles.css"
+          "url": "http://127.0.0.1:4175/assets/app-T1vcRZ2R.css"
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4175/app.js"
+          "url": "http://127.0.0.1:4175/assets/styles-jMuBxUt0.css"
         },
         {
           "method": "GET",
           "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
-        },
-        {
-          "method": "GET",
-          "url": "http://127.0.0.1:4175/@fs/C:/Users/Lunar%20Panda/OneDrive/Documentos/ChatGPT/Utilities/node_modules/vite/dist/client/env.mjs"
-        },
-        {
-          "method": "GET",
-          "url": "http://127.0.0.1:4175/@fs/C:/Users/Lunar%20Panda/OneDrive/Documentos/ChatGPT/Utilities/node_modules/.vite/deps/cropperjs.js?v=eaee0db8"
-        },
-        {
-          "method": "GET",
-          "url": "http://127.0.0.1:4175/@fs/C:/Users/Lunar%20Panda/OneDrive/Documentos/ChatGPT/Utilities/node_modules/cropperjs/dist/cropper.css"
         },
         {
           "method": "GET",
@@ -1580,7 +1544,7 @@
       "layout": {
         "width": 390,
         "scrollWidth": 390,
-        "title": "FormReady — Prepare your application photo or signature",
+        "title": "Photo and Signature Resizer for Forms | FormReady",
         "h1": "Get your photo or signature ready.",
         "visibleButtons": 0
       },
@@ -1593,31 +1557,19 @@
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4175/@vite/client"
+          "url": "http://127.0.0.1:4175/assets/app-g0M8F8W6.js"
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4175/styles.css"
+          "url": "http://127.0.0.1:4175/assets/app-T1vcRZ2R.css"
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4175/app.js"
+          "url": "http://127.0.0.1:4175/assets/styles-jMuBxUt0.css"
         },
         {
           "method": "GET",
           "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
-        },
-        {
-          "method": "GET",
-          "url": "http://127.0.0.1:4175/@fs/C:/Users/Lunar%20Panda/OneDrive/Documentos/ChatGPT/Utilities/node_modules/vite/dist/client/env.mjs"
-        },
-        {
-          "method": "GET",
-          "url": "http://127.0.0.1:4175/@fs/C:/Users/Lunar%20Panda/OneDrive/Documentos/ChatGPT/Utilities/node_modules/.vite/deps/cropperjs.js?v=eaee0db8"
-        },
-        {
-          "method": "GET",
-          "url": "http://127.0.0.1:4175/@fs/C:/Users/Lunar%20Panda/OneDrive/Documentos/ChatGPT/Utilities/node_modules/cropperjs/dist/cropper.css"
         },
         {
           "method": "GET",
@@ -1629,7 +1581,7 @@
       "layout": {
         "width": 320,
         "scrollWidth": 320,
-        "title": "FormReady — Prepare your application photo or signature",
+        "title": "Photo and Signature Resizer for Forms | FormReady",
         "h1": "Get your photo or signature ready.",
         "visibleButtons": 0
       },
@@ -1642,31 +1594,19 @@
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4175/@vite/client"
+          "url": "http://127.0.0.1:4175/assets/app-g0M8F8W6.js"
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4175/styles.css"
+          "url": "http://127.0.0.1:4175/assets/app-T1vcRZ2R.css"
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4175/app.js"
+          "url": "http://127.0.0.1:4175/assets/styles-jMuBxUt0.css"
         },
         {
           "method": "GET",
           "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
-        },
-        {
-          "method": "GET",
-          "url": "http://127.0.0.1:4175/@fs/C:/Users/Lunar%20Panda/OneDrive/Documentos/ChatGPT/Utilities/node_modules/.vite/deps/cropperjs.js?v=eaee0db8"
-        },
-        {
-          "method": "GET",
-          "url": "http://127.0.0.1:4175/@fs/C:/Users/Lunar%20Panda/OneDrive/Documentos/ChatGPT/Utilities/node_modules/cropperjs/dist/cropper.css"
-        },
-        {
-          "method": "GET",
-          "url": "http://127.0.0.1:4175/@fs/C:/Users/Lunar%20Panda/OneDrive/Documentos/ChatGPT/Utilities/node_modules/vite/dist/client/env.mjs"
         },
         {
           "method": "GET",
@@ -1678,9 +1618,9 @@
       "layout": {
         "width": 1440,
         "scrollWidth": 1440,
-        "title": "Photo and Signature Resizer — FormReady",
+        "title": "Photo Resizer: Exact Pixels, mm and KB | FormReady",
         "h1": "Photo and signature resizer",
-        "visibleButtons": 5
+        "visibleButtons": 8
       },
       "noOverflow": true,
       "consoleErrors": [],
@@ -1691,31 +1631,19 @@
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4175/@vite/client"
+          "url": "http://127.0.0.1:4175/assets/app-g0M8F8W6.js"
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4175/styles.css"
+          "url": "http://127.0.0.1:4175/assets/app-T1vcRZ2R.css"
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4175/app.js"
+          "url": "http://127.0.0.1:4175/assets/styles-jMuBxUt0.css"
         },
         {
           "method": "GET",
           "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
-        },
-        {
-          "method": "GET",
-          "url": "http://127.0.0.1:4175/@fs/C:/Users/Lunar%20Panda/OneDrive/Documentos/ChatGPT/Utilities/node_modules/vite/dist/client/env.mjs"
-        },
-        {
-          "method": "GET",
-          "url": "http://127.0.0.1:4175/@fs/C:/Users/Lunar%20Panda/OneDrive/Documentos/ChatGPT/Utilities/node_modules/.vite/deps/cropperjs.js?v=eaee0db8"
-        },
-        {
-          "method": "GET",
-          "url": "http://127.0.0.1:4175/@fs/C:/Users/Lunar%20Panda/OneDrive/Documentos/ChatGPT/Utilities/node_modules/cropperjs/dist/cropper.css"
         },
         {
           "method": "GET",
@@ -1727,9 +1655,9 @@
       "layout": {
         "width": 768,
         "scrollWidth": 768,
-        "title": "Photo and Signature Resizer — FormReady",
+        "title": "Photo Resizer: Exact Pixels, mm and KB | FormReady",
         "h1": "Photo and signature resizer",
-        "visibleButtons": 5
+        "visibleButtons": 8
       },
       "noOverflow": true,
       "consoleErrors": [],
@@ -1740,31 +1668,19 @@
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4175/@vite/client"
+          "url": "http://127.0.0.1:4175/assets/app-g0M8F8W6.js"
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4175/styles.css"
+          "url": "http://127.0.0.1:4175/assets/app-T1vcRZ2R.css"
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4175/app.js"
+          "url": "http://127.0.0.1:4175/assets/styles-jMuBxUt0.css"
         },
         {
           "method": "GET",
           "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
-        },
-        {
-          "method": "GET",
-          "url": "http://127.0.0.1:4175/@fs/C:/Users/Lunar%20Panda/OneDrive/Documentos/ChatGPT/Utilities/node_modules/vite/dist/client/env.mjs"
-        },
-        {
-          "method": "GET",
-          "url": "http://127.0.0.1:4175/@fs/C:/Users/Lunar%20Panda/OneDrive/Documentos/ChatGPT/Utilities/node_modules/.vite/deps/cropperjs.js?v=eaee0db8"
-        },
-        {
-          "method": "GET",
-          "url": "http://127.0.0.1:4175/@fs/C:/Users/Lunar%20Panda/OneDrive/Documentos/ChatGPT/Utilities/node_modules/cropperjs/dist/cropper.css"
         },
         {
           "method": "GET",
@@ -1776,9 +1692,9 @@
       "layout": {
         "width": 390,
         "scrollWidth": 390,
-        "title": "Photo and Signature Resizer — FormReady",
+        "title": "Photo Resizer: Exact Pixels, mm and KB | FormReady",
         "h1": "Photo and signature resizer",
-        "visibleButtons": 5
+        "visibleButtons": 8
       },
       "noOverflow": true,
       "consoleErrors": [],
@@ -1789,31 +1705,19 @@
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4175/@vite/client"
+          "url": "http://127.0.0.1:4175/assets/app-g0M8F8W6.js"
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4175/styles.css"
+          "url": "http://127.0.0.1:4175/assets/app-T1vcRZ2R.css"
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4175/app.js"
+          "url": "http://127.0.0.1:4175/assets/styles-jMuBxUt0.css"
         },
         {
           "method": "GET",
           "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
-        },
-        {
-          "method": "GET",
-          "url": "http://127.0.0.1:4175/@fs/C:/Users/Lunar%20Panda/OneDrive/Documentos/ChatGPT/Utilities/node_modules/vite/dist/client/env.mjs"
-        },
-        {
-          "method": "GET",
-          "url": "http://127.0.0.1:4175/@fs/C:/Users/Lunar%20Panda/OneDrive/Documentos/ChatGPT/Utilities/node_modules/.vite/deps/cropperjs.js?v=eaee0db8"
-        },
-        {
-          "method": "GET",
-          "url": "http://127.0.0.1:4175/@fs/C:/Users/Lunar%20Panda/OneDrive/Documentos/ChatGPT/Utilities/node_modules/cropperjs/dist/cropper.css"
         },
         {
           "method": "GET",
@@ -1825,9 +1729,9 @@
       "layout": {
         "width": 320,
         "scrollWidth": 320,
-        "title": "Photo and Signature Resizer — FormReady",
+        "title": "Photo Resizer: Exact Pixels, mm and KB | FormReady",
         "h1": "Photo and signature resizer",
-        "visibleButtons": 5
+        "visibleButtons": 8
       },
       "noOverflow": true,
       "consoleErrors": [],
@@ -1838,31 +1742,19 @@
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4175/@vite/client"
+          "url": "http://127.0.0.1:4175/assets/app-g0M8F8W6.js"
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4175/styles.css"
+          "url": "http://127.0.0.1:4175/assets/app-T1vcRZ2R.css"
         },
         {
           "method": "GET",
-          "url": "http://127.0.0.1:4175/app.js"
+          "url": "http://127.0.0.1:4175/assets/styles-jMuBxUt0.css"
         },
         {
           "method": "GET",
           "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
-        },
-        {
-          "method": "GET",
-          "url": "http://127.0.0.1:4175/@fs/C:/Users/Lunar%20Panda/OneDrive/Documentos/ChatGPT/Utilities/node_modules/.vite/deps/cropperjs.js?v=eaee0db8"
-        },
-        {
-          "method": "GET",
-          "url": "http://127.0.0.1:4175/@fs/C:/Users/Lunar%20Panda/OneDrive/Documentos/ChatGPT/Utilities/node_modules/cropperjs/dist/cropper.css"
-        },
-        {
-          "method": "GET",
-          "url": "http://127.0.0.1:4175/@fs/C:/Users/Lunar%20Panda/OneDrive/Documentos/ChatGPT/Utilities/node_modules/vite/dist/client/env.mjs"
         },
         {
           "method": "GET",
@@ -1874,7 +1766,15 @@
       "pass": true,
       "details": "actual 15.50 hours, $310.00"
     },
-    "WorkKit local draft restores shifts and rate": {
+    "WorkKit also displays total in hours and minutes": {
+      "pass": true,
+      "details": "15h 30m"
+    },
+    "WorkKit formats estimates in Indian rupees without converting the entered rate": {
+      "pass": true,
+      "details": "₹310.00"
+    },
+    "WorkKit local draft restores shifts, rate and currency": {
       "pass": true,
       "details": "stored draft reload"
     },
@@ -1882,13 +1782,41 @@
       "pass": true,
       "details": "workkit-timesheet.csv"
     },
-    "WorkKit equal start/end is treated as a 24h shift only with explicit entry": {
+    "WorkKit equal start/end shows a clear validation message": {
       "pass": true,
-      "details": "24.00"
+      "details": "Start and end times cannot match. Change one time so the shift length is clear."
+    },
+    "WorkKit hides partial totals while a shift is invalid": {
+      "pass": true,
+      "details": "—"
+    },
+    "WorkKit print/save PDF action opens browser print flow": {
+      "pass": true,
+      "details": "window.print was called"
+    },
+    "WorkKit rejects shifts overlapping across the week boundary": {
+      "pass": true,
+      "details": "Shifts overlap. Adjust the times so the same minutes are not counted twice."
+    },
+    "WorkKit can hold fifteen weekly shift rows": {
+      "pass": true,
+      "details": "rows 15"
+    },
+    "WorkKit restores all fifteen weekly shift rows": {
+      "pass": true,
+      "details": "rows 15"
     },
     "WorkKit 45h overtime example": {
       "pass": true,
       "details": "$950.00"
+    },
+    "WorkKit overtime estimate supports INR formatting": {
+      "pass": true,
+      "details": "₹950.00"
+    },
+    "WorkKit salary conversion supports INR formatting": {
+      "pass": true,
+      "details": "₹41,600.00"
     },
     "QuickKit image compression outputs measured result and download": {
       "pass": true,
@@ -1914,6 +1842,22 @@
       "pass": true,
       "details": "pages: 2"
     },
+    "FormReady rotate and reset crop controls appear": {
+      "pass": true,
+      "details": "crop actions missing"
+    },
+    "FormReady enforces its maximum print resolution": {
+      "pass": true,
+      "details": "Enter a print resolution between 1 and 1,200 DPI."
+    },
+    "FormReady preserves aspect ratio when only width is specified": {
+      "pass": true,
+      "details": "Original: 20.4 KB · Result: 8.7 KB · 120 × 90px"
+    },
+    "FormReady converts physical dimensions to pixels at the requested DPI": {
+      "pass": true,
+      "details": "PASS\nFormat\nJPEG\nPASS\nDimensions\n413 × 531px\nPASS\nFile size\n87.2 KB"
+    },
     "FormReady exact dimensions and size check": {
       "pass": true,
       "details": "ready to review; PASS\nFormat\nJPEG\nPASS\nDimensions\n120 × 140px\nPASS\nFile size\n6.9 KB"
@@ -1928,8 +1872,1434 @@
     }
   },
   "errors": [],
+  "observedRequests": [
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/app-BfJgoS0C.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/styles-DnfvafAB.css"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/app-BfJgoS0C.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/styles-DnfvafAB.css"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/app-BfJgoS0C.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/styles-DnfvafAB.css"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/app-BfJgoS0C.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/styles-DnfvafAB.css"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/time-card-calculator.html"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/app-BfJgoS0C.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/styles-DnfvafAB.css"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/time-card-calculator.html"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/app-BfJgoS0C.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/styles-DnfvafAB.css"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/time-card-calculator.html"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/app-BfJgoS0C.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/styles-DnfvafAB.css"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/time-card-calculator.html"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/app-BfJgoS0C.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/styles-DnfvafAB.css"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/overtime-calculator.html"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/app-BfJgoS0C.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/styles-DnfvafAB.css"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/overtime-calculator.html"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/app-BfJgoS0C.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/styles-DnfvafAB.css"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/overtime-calculator.html"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/app-BfJgoS0C.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/styles-DnfvafAB.css"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/overtime-calculator.html"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/app-BfJgoS0C.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/styles-DnfvafAB.css"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/salary-converter.html"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/app-BfJgoS0C.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/styles-DnfvafAB.css"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.gstatic.com/l/font?kit=QGYFz_MVcBeNP4NjuGObqx1XmO1I4TC1aYqc4vi0GKDIIyHlBNBZBFQ&skey=bafc0b239d492b2c&v=v15"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/salary-converter.html"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/app-BfJgoS0C.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/styles-DnfvafAB.css"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/salary-converter.html"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/app-BfJgoS0C.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/styles-DnfvafAB.css"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/salary-converter.html"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/app-BfJgoS0C.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/styles-DnfvafAB.css"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4174/"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4174/assets/modulepreload-polyfill-B5Qt9EMX.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4174/assets/app-TOTloAVY.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4174/assets/styles-qOJqZkOM.css"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4174/"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4174/assets/modulepreload-polyfill-B5Qt9EMX.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4174/assets/app-TOTloAVY.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4174/assets/styles-qOJqZkOM.css"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4174/"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4174/assets/modulepreload-polyfill-B5Qt9EMX.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4174/assets/app-TOTloAVY.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4174/assets/styles-qOJqZkOM.css"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4174/"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4174/assets/modulepreload-polyfill-B5Qt9EMX.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4174/assets/app-TOTloAVY.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4174/assets/styles-qOJqZkOM.css"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4174/image-compressor.html"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4174/assets/modulepreload-polyfill-B5Qt9EMX.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4174/assets/app-TOTloAVY.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4174/assets/styles-qOJqZkOM.css"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4174/image-compressor.html"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4174/assets/modulepreload-polyfill-B5Qt9EMX.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4174/assets/app-TOTloAVY.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4174/assets/styles-qOJqZkOM.css"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4174/image-compressor.html"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4174/assets/modulepreload-polyfill-B5Qt9EMX.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4174/assets/app-TOTloAVY.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4174/assets/styles-qOJqZkOM.css"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4174/image-compressor.html"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4174/assets/modulepreload-polyfill-B5Qt9EMX.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4174/assets/app-TOTloAVY.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4174/assets/styles-qOJqZkOM.css"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4174/text-tools.html"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4174/assets/modulepreload-polyfill-B5Qt9EMX.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4174/assets/app-TOTloAVY.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4174/assets/styles-qOJqZkOM.css"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4174/text-tools.html"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4174/assets/modulepreload-polyfill-B5Qt9EMX.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4174/assets/app-TOTloAVY.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4174/assets/styles-qOJqZkOM.css"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4174/text-tools.html"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4174/assets/modulepreload-polyfill-B5Qt9EMX.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4174/assets/app-TOTloAVY.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4174/assets/styles-qOJqZkOM.css"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4174/text-tools.html"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4174/assets/modulepreload-polyfill-B5Qt9EMX.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4174/assets/app-TOTloAVY.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4174/assets/styles-qOJqZkOM.css"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4174/wifi-qr.html"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4174/assets/modulepreload-polyfill-B5Qt9EMX.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4174/assets/app-TOTloAVY.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4174/assets/styles-qOJqZkOM.css"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4174/wifi-qr.html"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4174/assets/modulepreload-polyfill-B5Qt9EMX.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4174/assets/app-TOTloAVY.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4174/assets/styles-qOJqZkOM.css"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4174/wifi-qr.html"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4174/assets/modulepreload-polyfill-B5Qt9EMX.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4174/assets/app-TOTloAVY.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4174/assets/styles-qOJqZkOM.css"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4174/wifi-qr.html"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4174/assets/modulepreload-polyfill-B5Qt9EMX.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4174/assets/app-TOTloAVY.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4174/assets/styles-qOJqZkOM.css"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4174/pdf-editor.html"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4174/assets/pdf-editor-GqvsnwBz.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4174/assets/modulepreload-polyfill-B5Qt9EMX.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4174/assets/_commonjsHelpers-CqkleIqs.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4174/assets/index-CfA9Roq9.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4174/assets/pdf-editor-B7pJUPpx.css"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4174/assets/styles-qOJqZkOM.css"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4174/pdf-editor.html"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4174/assets/pdf-editor-GqvsnwBz.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4174/assets/modulepreload-polyfill-B5Qt9EMX.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4174/assets/_commonjsHelpers-CqkleIqs.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4174/assets/index-CfA9Roq9.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4174/assets/pdf-editor-B7pJUPpx.css"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4174/assets/styles-qOJqZkOM.css"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4174/pdf-editor.html"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4174/assets/pdf-editor-GqvsnwBz.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4174/assets/modulepreload-polyfill-B5Qt9EMX.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4174/assets/_commonjsHelpers-CqkleIqs.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4174/assets/index-CfA9Roq9.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4174/assets/pdf-editor-B7pJUPpx.css"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4174/assets/styles-qOJqZkOM.css"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4174/pdf-editor.html"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4174/assets/pdf-editor-GqvsnwBz.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4174/assets/modulepreload-polyfill-B5Qt9EMX.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4174/assets/_commonjsHelpers-CqkleIqs.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4174/assets/index-CfA9Roq9.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4174/assets/pdf-editor-B7pJUPpx.css"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4174/assets/styles-qOJqZkOM.css"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4174/pdf-merge.html"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4174/assets/modulepreload-polyfill-B5Qt9EMX.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4174/assets/app-TOTloAVY.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4174/assets/styles-qOJqZkOM.css"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4174/pdf-merge.html"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4174/assets/modulepreload-polyfill-B5Qt9EMX.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4174/assets/app-TOTloAVY.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4174/assets/styles-qOJqZkOM.css"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4174/pdf-merge.html"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4174/assets/modulepreload-polyfill-B5Qt9EMX.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4174/assets/app-TOTloAVY.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4174/assets/styles-qOJqZkOM.css"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4174/pdf-merge.html"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4174/assets/modulepreload-polyfill-B5Qt9EMX.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4174/assets/app-TOTloAVY.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4174/assets/styles-qOJqZkOM.css"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4175/"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4175/assets/app-g0M8F8W6.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4175/assets/app-T1vcRZ2R.css"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4175/assets/styles-jMuBxUt0.css"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4175/"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4175/assets/app-g0M8F8W6.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4175/assets/app-T1vcRZ2R.css"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4175/assets/styles-jMuBxUt0.css"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4175/"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4175/assets/app-g0M8F8W6.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4175/assets/app-T1vcRZ2R.css"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4175/assets/styles-jMuBxUt0.css"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4175/"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4175/assets/app-g0M8F8W6.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4175/assets/app-T1vcRZ2R.css"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4175/assets/styles-jMuBxUt0.css"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4175/image-preparer.html"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4175/assets/app-g0M8F8W6.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4175/assets/app-T1vcRZ2R.css"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4175/assets/styles-jMuBxUt0.css"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4175/image-preparer.html"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4175/assets/app-g0M8F8W6.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4175/assets/app-T1vcRZ2R.css"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4175/assets/styles-jMuBxUt0.css"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4175/image-preparer.html"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4175/assets/app-g0M8F8W6.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4175/assets/app-T1vcRZ2R.css"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4175/assets/styles-jMuBxUt0.css"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4175/image-preparer.html"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4175/assets/app-g0M8F8W6.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4175/assets/app-T1vcRZ2R.css"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4175/assets/styles-jMuBxUt0.css"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/time-card-calculator.html"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/app-BfJgoS0C.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/styles-DnfvafAB.css"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJuktqQ4E.woff2"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/time-card-calculator.html"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/app-BfJgoS0C.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/styles-DnfvafAB.css"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJuktqQ4E.woff2"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/time-card-calculator.html"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/app-BfJgoS0C.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/styles-DnfvafAB.css"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJuktqQ4E.woff2"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/overtime-calculator.html"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/app-BfJgoS0C.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/styles-DnfvafAB.css"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJuktqQ4E.woff2"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/salary-converter.html"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/app-BfJgoS0C.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4173/assets/styles-DnfvafAB.css"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJuktqQ4E.woff2"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4174/image-compressor.html"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4174/assets/modulepreload-polyfill-B5Qt9EMX.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4174/assets/app-TOTloAVY.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4174/assets/styles-qOJqZkOM.css"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2"
+    },
+    {
+      "method": "GET",
+      "url": "blob:http://127.0.0.1:4174/3f886910-6543-4def-ae1a-13829be7b665"
+    },
+    {
+      "method": "GET",
+      "url": "blob:http://127.0.0.1:4174/524d9955-f53d-447e-b291-1230d911ac8e"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4174/text-tools.html"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4174/assets/modulepreload-polyfill-B5Qt9EMX.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4174/assets/app-TOTloAVY.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4174/assets/styles-qOJqZkOM.css"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4174/wifi-qr.html"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4174/assets/modulepreload-polyfill-B5Qt9EMX.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4174/assets/app-TOTloAVY.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4174/assets/styles-qOJqZkOM.css"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4174/assets/browser-CujOq0-h.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4174/assets/_commonjsHelpers-CqkleIqs.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4174/pdf-merge.html"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4174/assets/modulepreload-polyfill-B5Qt9EMX.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4174/assets/app-TOTloAVY.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4174/assets/styles-qOJqZkOM.css"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4174/assets/index-CfA9Roq9.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4174/assets/_commonjsHelpers-CqkleIqs.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4175/image-preparer.html"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4175/assets/app-g0M8F8W6.js"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4175/assets/app-T1vcRZ2R.css"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4175/assets/styles-jMuBxUt0.css"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2"
+    },
+    {
+      "method": "GET",
+      "url": "blob:http://127.0.0.1:4175/c3d67d47-3398-487c-85b4-61f2529a588c"
+    },
+    {
+      "method": "GET",
+      "url": "blob:http://127.0.0.1:4175/c3d67d47-3398-487c-85b4-61f2529a588c"
+    },
+    {
+      "method": "GET",
+      "url": "blob:http://127.0.0.1:4175/c3d67d47-3398-487c-85b4-61f2529a588c"
+    },
+    {
+      "method": "GET",
+      "url": "blob:http://127.0.0.1:4175/52a6bb8c-de14-4da8-a047-2d8e62487c7e"
+    },
+    {
+      "method": "GET",
+      "url": "blob:http://127.0.0.1:4175/eb256e2d-988a-4bba-a38e-9bcbc0e64765"
+    },
+    {
+      "method": "GET",
+      "url": "blob:http://127.0.0.1:4175/415d33e8-7c61-4a13-a77d-7d2df13ecfa6"
+    }
+  ],
   "summary": {
-    "total": 58,
+    "total": 75,
     "failures": 0,
     "errors": []
   }

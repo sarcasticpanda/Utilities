@@ -3,7 +3,8 @@
 ## Upstream
 
 - Repository: https://github.com/clockmath/clockmath
-- Stated license: MIT (verify the current `LICENSE` before copying code).
+- Inspected upstream revision: `d5d0c2b3143efdf03d24350e1362fa638bb500da` (2026-10-30).
+- License: MIT; the `LICENSE` at that exact revision was checked and its full notice is retained in `../licenses/clockmath-LICENSE.txt`.
 - Stack described by its README: Next.js App Router, React, TypeScript, Tailwind, static export, and a Cloudflare Pages worker for selected APIs.
 - Repomix pack: generated from the public repository with the repository README, app routes, components, hooks and libraries included.
 
@@ -29,6 +30,12 @@ The `components/TimesheetTool.tsx` implementation confirms several helpful patte
 - Preserve overnight shifts, breaks, 12/24-hour preferences, local saving, CSV export, and mobile-friendly time entry in the first WorkKit milestone.
 - Avoid importing ClockMath's visual identity, station/split-flap components, page copy, articles, analytics setup, or Cloudflare worker wholesale. WorkKit needs its own visual system and simpler deployment choice.
 - If implementing share links, never put sensitive payroll details in analytics; consider showing the user exactly what the link contains.
+
+## Adaptation record
+
+WorkKit's `products/workkit/time.js` adapts `toMinutes`, `isOvernight` and `clockMinutes` from upstream `lib/timesheet.ts`. The user interface, validation, pay breakdown, local draft, CSV export, styling and product copy are independently implemented. The upstream helper treats equal start and end as zero elapsed minutes; WorkKit adds a user-facing validation error for that ambiguous input.
+
+The original interface, branding, product copy, article content, analytics and backend are not copied. This implementation is intentionally narrow and does not inherit ClockMath's timezone or DST-specific behavior.
 
 ## Risks to review
 

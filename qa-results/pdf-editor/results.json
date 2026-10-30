@@ -1,0 +1,147 @@
+{
+  "generatedAt": "2026-10-30T12:02:04.917Z",
+  "browser": "156.0.8078.4",
+  "checks": [
+    {
+      "name": "Editor route loads",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Editor upload view fits desktop width",
+      "pass": true,
+      "detail": "{\"width\":1440,\"scrollWidth\":1440}"
+    },
+    {
+      "name": "Unsupported file type shows a clear message",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "PDF opens with 3 pages and page canvas",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Bad replacement file reports an error and keeps the current document",
+      "pass": true,
+      "detail": "This PDF could not be opened. It may be damaged, encrypted or use an unsupported feature."
+    },
+    {
+      "name": "Keyboard can place text at the page center",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Keyboard arrow keys can move a selected annotation",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Text annotation can be placed and edited",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Added text can be dragged to a new position",
+      "pass": true,
+      "detail": "495,665 → 540,687"
+    },
+    {
+      "name": "Highlight annotation can be placed",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Rectangle annotation can be placed",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Selected annotation can be removed",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Undo restores the last removed annotation",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Image annotation can be placed",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Drawn signature can be added to the PDF",
+      "pass": true,
+      "detail": "ink pixels: 1635"
+    },
+    {
+      "name": "Typed signature offers a keyboard-accessible signing path",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Page can be reordered",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Page can be deleted without removing the last page",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "No horizontal overflow on desktop",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Edited PDF downloads and is readable",
+      "pass": true,
+      "detail": "pages: 2, bytes: 22217"
+    },
+    {
+      "name": "Export preserves page order and original text; new text is embedded as an image",
+      "pass": true,
+      "detail": "Original page two  Sample text for local annotation testing. | Original page one  Sample text for local annotation testing."
+    },
+    {
+      "name": "The final remaining page cannot be deleted",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Rotated pages clearly block annotations instead of exporting misplaced content",
+      "pass": true,
+      "detail": "Editing rotated pages is not supported. You can still reorder or delete this page, or open an unrotated copy.; annotations 0"
+    },
+    {
+      "name": "PDF editor rejects documents over its page limit with a clear message",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Loaded editor fits mobile width without clipping",
+      "pass": true,
+      "detail": "{\"width\":390,\"scrollWidth\":390,\"rects\":[{\"selector\":\".pdf-editor-topbar\",\"left\":17,\"right\":373,\"top\":255,\"bottom\":321,\"width\":356,\"height\":66},{\"selector\":\".pdf-toolbar\",\"left\":17,\"right\":373,\"top\":321,\"bottom\":442,\"width\":356,\"height\":121},{\"selector\":\".pdf-page-rail\",\"left\":17,\"right\":373,\"top\":504,\"bottom\":642,\"width\":356,\"height\":138},{\"selector\":\".pdf-viewer-toolbar\",\"left\":17,\"right\":373,\"top\":642,\"bottom\":684,\"width\":356,\"height\":42},{\"selector\":\".pdf-page-stage\",\"left\":38,\"right\":352,\"top\":696,\"bottom\":1114,\"width\":314,\"height\":419},{\"selector\":\".pdf-top-actions\",\"left\":180,\"right\":363,\"top\":265,\"bottom\":301,\"width\":183,\"height\":36}]}"
+    },
+    {
+      "name": "Essential editing and download controls are visible on mobile",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Editor fits a narrow 320px phone viewport",
+      "pass": true,
+      "detail": "{\"width\":320,\"scrollWidth\":320,\"toolbar\":{\"left\":17,\"right\":303},\"download\":{\"left\":199.921875,\"right\":293}}"
+    },
+    {
+      "name": "PDF file processing makes no upload requests",
+      "pass": true,
+      "detail": "[]"
+    }
+  ],
+  "errors": []
+}

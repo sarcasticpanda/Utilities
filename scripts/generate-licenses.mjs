@@ -7,10 +7,14 @@ const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const lock = JSON.parse(await readFile(path.join(root, 'package-lock.json'), 'utf8'));
 const products = {
   workkit: ['gsap'],
-  quickkit: ['gsap', 'pdf-lib', 'qrcode'],
+  quickkit: ['gsap', 'pdf-lib', 'pdfjs-dist', 'qrcode'],
   formready: ['gsap', 'cropperjs']
 };
-const disclaimer = 'Third-party notices for libraries bundled into this site. The sites are independent implementations; the open-source repositories in reference-notes were studied for product research and their code was not copied.\n\n';
+const productNotes = {
+  workkit: 'ClockMath attribution: the toMinutes, isOvernight and clockMinutes helper logic in time.js is adapted from lib/timesheet.ts at https://github.com/clockmath/clockmath/tree/d5d0c2b3143efdf03d24350e1362fa638bb500da. The source is distributed under the MIT License; its full notice follows.\n\n',
+  quickkit: 'The reference repositories in reference-notes were studied for product research; no code from those repositories is included in QuickKit.\n\n',
+  formready: 'The reference repositories in reference-notes were studied for product research; no code from those repositories is included in FormReady.\n\n'
+};
 
 for (const [product, roots] of Object.entries(products)) {
   const visited = new Set();
@@ -34,7 +38,9 @@ for (const [product, roots] of Object.entries(products)) {
     for (const child of Object.keys(entry.dependencies || {})) await visit(child, key);
   };
   for (const name of roots) await visit(name);
-  const body = disclaimer + entries.map((entry) => `================================================================================\n${entry.name} ${entry.version}\nLicense: ${entry.license || 'see package metadata'}\n================================================================================\n${entry.licenseText || 'The package does not include a standard license file. See its package metadata and source distribution.'}\n`).join('\n');
+  const gsapNote = 'GSAP is provided under the Standard “No Charge” License. Its terms permit commercial use subject to stated restrictions; see https://gsap.com/community/standard-license/.\n\n';
+  const clockMathLicense = product === 'workkit' ? `\n================================================================================\nClockMath time calculation helpers (adapted)\nSource: https://github.com/clockmath/clockmath/tree/d5d0c2b3143efdf03d24350e1362fa638bb500da\n================================================================================\n${await readFile(path.join(root, 'licenses', 'clockmath-LICENSE.txt'), 'utf8')}\n` : '';
+  const body = 'Third-party notices for code bundled into this site.\n\n' + productNotes[product] + gsapNote + entries.map((entry) => `================================================================================\n${entry.name} ${entry.version}\nLicense: ${entry.license || 'see package metadata'}\n================================================================================\n${entry.licenseText || 'The package does not include a standard license file. See its package metadata and source distribution.'}\n`).join('\n') + clockMathLicense;
   const publicDir = path.join(root, 'products', product, 'public');
   await mkdir(publicDir, { recursive: true });
   await writeFile(path.join(publicDir, 'THIRD-PARTY-NOTICES.txt'), body);

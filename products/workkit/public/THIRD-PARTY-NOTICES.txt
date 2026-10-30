@@ -1,7 +1,37 @@
-Third-party notices for libraries bundled into this site. The sites are independent implementations; the open-source repositories in reference-notes were studied for product research and their code was not copied.
+Third-party notices for code bundled into this site.
+
+ClockMath attribution: the toMinutes, isOvernight and clockMinutes helper logic in time.js is adapted from lib/timesheet.ts at https://github.com/clockmath/clockmath/tree/d5d0c2b3143efdf03d24350e1362fa638bb500da. The source is distributed under the MIT License; its full notice follows.
+
+GSAP is provided under the Standard “No Charge” License. Its terms permit commercial use subject to stated restrictions; see https://gsap.com/community/standard-license/.
 
 ================================================================================
 gsap 3.15.0
 License: Standard 'no charge' license: https://gsap.com/standard-license.
 ================================================================================
 The package does not include a standard license file. See its package metadata and source distribution.
+
+================================================================================
+ClockMath time calculation helpers (adapted)
+Source: https://github.com/clockmath/clockmath/tree/d5d0c2b3143efdf03d24350e1362fa638bb500da
+================================================================================
+MIT License
+
+Copyright (c) 2026 ClockMath
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.

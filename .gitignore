@@ -6,3 +6,6 @@ playwright-report/
 test-results/
 .DS_Store
 Thumbs.db
+
+# Local deployment archives
+site-archives/
