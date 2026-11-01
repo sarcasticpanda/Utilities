@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="preload" href="/fonts/outfit-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <meta name="description" content="Search for a place, set a GPS point on a map, or use device location. Add coordinates and a time stamp to a photo in your browser.">
+  <meta name="theme-color" content="#f3f6fb">
+  <title>Geo Tag Photo Online — Add GPS Location to JPEG | QuickKit</title>
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/geo-photo.css">
+  <link rel="canonical" href="https://quickkit-browser-tools.pages.dev/geo-photo.html">
+  <meta property="og:title" content="Geo Tag a Photo Online | QuickKit">
+  <meta property="og:description" content="Search a place, set its map pin and confirm GPS coordinates before creating a geo-tagged photo. Your photo stays on your device.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://quickkit-browser-tools.pages.dev/geo-photo.html">
+  <meta property="og:image" content="https://quickkit-browser-tools.pages.dev/og-image.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=3">
+</head>
+<body data-page="geo-photo">
+  <header class="site-header">
+    <a class="brand" href="./"><span class="brand-mark">q</span><span>quickkit</span></a>
+    <nav aria-label="Main navigation"><a href="image-compressor.html">Images</a><a href="pdf-editor.html">PDF</a><a href="video-tools.html">Video</a><a href="text-tools.html">Text</a></nav>
+    <a class="header-action" href="#geo-workbench">Open geo photo tool <span aria-hidden="true">↓</span></a>
+  </header>
+  <main class="tool-page wrap geo-page">
+    <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="./">Home</a><span aria-hidden="true">/</span><span>Geo tag photo</span></nav>
+    <section class="tool-intro geo-intro">
+      <p class="eyebrow">Location stays in your hands</p>
+      <h1>Put a place on your photo.</h1>
+      <p class="lede">Search for a place, set its map pin and check the coordinates and local time before adding GPS details to your photo.</p>
+    </section>
+    <section class="geo-workbench" id="geo-workbench" aria-label="Geo tag a photo">
+      <div class="geo-controls">
+        <label class="geo-dropzone" id="geo-dropzone" for="geo-file">
+          <span class="geo-upload-mark" aria-hidden="true">＋</span>
+          <strong id="geo-upload-title">Choose a photo or drop it here</strong>
+          <span>JPG, PNG or WebP · up to 30 MB and 24 megapixels</span>
+          <input id="geo-file" type="file" accept="image/jpeg,image/png,image/webp,.jpg,.jpeg,.png,.webp" aria-label="Choose a photo">
+        </label>
+        <div class="geo-fields">
+          <div class="geo-section-heading"><div><h2>Choose the location</h2><p>Use this phone's location or enter coordinates yourself.</p></div></div>
+          <button class="button button-quiet" id="geo-use-current" type="button">Use current location</button>
+          <p class="geo-privacy">Your browser asks before sharing location. QuickKit also sends those coordinates to OpenStreetMap for a nearby place name. Accuracy depends on the device; if it can’t get a fix, choose a point on the map or enter coordinates.</p>
+          <div class="geo-coordinate-grid">
+            <label>Latitude<input id="geo-latitude" inputmode="decimal" type="number" step="any" min="-90" max="90" placeholder="e.g. 26.8467"></label>
+            <label>Longitude<input id="geo-longitude" inputmode="decimal" type="number" step="any" min="-180" max="180" placeholder="e.g. 80.9462"></label>
+          </div>
+          <div class="geo-map-actions">
+            <button class="button button-quiet" id="geo-map-open" type="button" aria-expanded="false" aria-controls="geo-map-panel">Choose coordinates on map</button>
+            <a class="button button-quiet" id="geo-open-google-map" href="https://www.google.com/maps" target="_blank" rel="noopener noreferrer" hidden>Open this point in Google Maps</a>
+          </div>
+          <section class="geo-map-panel" id="geo-map-panel" hidden aria-label="Map location picker">
+            <p>Search a place, tap the exact point or drag the pin to fine-tune coordinates.</p>
+            <div class="geo-map-search">
+              <div class="geo-map-search-controls">
+                <label class="geo-place-field">Find a place<input id="geo-place-query" type="search" maxlength="120" placeholder="e.g. Raintree Park, city" autocomplete="off"></label>
+                <button class="button button-primary" id="geo-place-search" type="button">Search map</button>
+              </div>
+              <p class="geo-map-search-status" id="geo-map-search-status" role="status" aria-live="polite">Search is sent to OpenStreetMap only when you press Search map.</p>
+              <ol class="geo-map-results" id="geo-map-results" aria-label="Place search results" hidden></ol>
+            </div>
+            <div id="geo-map" class="geo-map" role="application" aria-label="Map; click to select photo coordinates"></div>
+            <small>Map and place names © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">OpenStreetMap contributors</a>. Map tiles show the area you view. A place search sends your query to OpenStreetMap. Use current location and Find place name send exact coordinates for nearby place labels when pressed. Google Maps gets coordinates only if you open its link.</small>
+            <button class="button button-quiet" id="geo-map-close" type="button">Close map</button>
+          </section>
+          <label class="geo-place-field">Place label <span>optional</span><input id="geo-place" type="text" maxlength="70" placeholder="e.g. Lucknow, India"></label>
+          <button class="button button-quiet geo-reverse-lookup" id="geo-reverse-lookup" type="button" disabled>Find place name from these coordinates</button>
+          <p class="geo-place-status" id="geo-place-status" role="status" aria-live="polite">Enter coordinates or pick a place on the map first.</p>
+          <p class="geo-location-status" id="geo-location-status" role="status" aria-live="polite">Add coordinates to continue. A location is never guessed.</p>
+          <div class="geo-stamp-settings">
+            <label class="check-option"><input id="geo-print-stamp" type="checkbox" checked><span><b>Print a GPS map card on the photo</b><small>Includes a real nearby map, place, coordinates and capture time. OpenStreetMap tiles load only when you make the photo.</small></span></label>
+            <label class="geo-place-field">Stamp date and time <span>device local time</span><input id="geo-date" type="datetime-local"></label>
+          <label class="geo-place-field">Stamp position<select id="geo-position"><option value="bottom-left">Bottom left</option><option value="bottom-right">Bottom right</option><option value="top-left">Top left</option><option value="top-right">Top right</option></select></label>
+          </div>
+          <button class="button button-primary geo-create" id="geo-create" type="button" disabled>Make geo-tagged photo</button>
+          <button class="button button-plain geo-clear" id="geo-clear" type="button">Start over</button>
+          <p class="geo-status" id="geo-status" role="status" aria-live="polite">Choose a photo and add its location.</p>
+        </div>
+      </div>
+      <section class="geo-preview-panel" aria-label="Photo preview">
+        <div class="geo-preview-header"><div><h2>Preview</h2><p id="geo-preview-caption">Your selected photo appears here.</p></div><span class="geo-preview-badge" id="geo-preview-badge">No photo yet</span></div>
+        <div class="geo-capture-actions">
+          <button class="button button-primary" id="geo-camera-open" type="button"><svg class="geo-camera-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none"><path d="M4 7.5h3l1.5-2h7l1.5 2h3A1.5 1.5 0 0 1 21.5 9v9A1.5 1.5 0 0 1 20 19.5H4A1.5 1.5 0 0 1 2.5 18V9A1.5 1.5 0 0 1 4 7.5Z" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="13" r="3.5" stroke="currentColor" stroke-width="1.8"/></svg><span>Use camera</span></button>
+          <span>Open a live preview, then capture a photo. Your browser asks first.</span>
+        </div>
+        <p class="geo-camera-status" id="geo-camera-status" role="status" aria-live="polite">Camera is off. Choose Use camera to show the live preview.</p>
+        <section class="geo-camera-panel" id="geo-camera-panel" aria-label="Camera capture" hidden>
+          <video id="geo-camera-video" autoplay muted playsinline aria-label="Live camera preview"></video>
+          <div class="geo-camera-controls">
+            <label class="geo-camera-device-field">Camera<select id="geo-camera-device" aria-label="Select camera"></select></label>
+            <button class="button button-quiet" id="geo-camera-flip" type="button" aria-label="Switch between front and rear cameras">Switch camera</button>
+            <button class="button button-primary" id="geo-camera-capture" type="button" disabled>Capture photo</button>
+            <button class="button button-primary" id="geo-camera-tag-location" type="button" disabled>Capture &amp; tag current location</button>
+            <button class="button button-quiet" id="geo-camera-close" type="button">Close camera</button>
+          </div>
+          <p class="geo-privacy">Capture &amp; tag asks for your current location and sends its coordinates to OpenStreetMap for a nearby place name. Map-card tile requests also show the approximate area. Your photo stays on this device.</p>
+        </section>
+        <div class="geo-preview-frame" id="geo-preview-frame">
+          <img id="geo-preview-image" alt="Photo preview" hidden>
+          <div class="geo-preview-empty" id="geo-preview-empty"><span aria-hidden="true">IMG</span><strong>Photo preview</strong><small>After export, check the image and confirm the saved GPS metadata before downloading.</small></div>
+          <div class="geo-stamp-preview" id="geo-stamp-preview" hidden><div class="geo-stamp-map-placeholder" id="geo-stamp-map-placeholder" aria-hidden="true">MAP</div><img id="geo-stamp-map-preview" alt="OpenStreetMap around the tagged location" hidden><div class="geo-stamp-copy"><strong id="geo-stamp-place">Place name</strong><span id="geo-stamp-locality" hidden></span><span id="geo-stamp-address">Latitude · Longitude</span><span id="geo-stamp-date">Date and time</span><small id="geo-stamp-credit">Captured with QuickKit Geo Tag · © OpenStreetMap contributors</small></div></div>
+        </div>
+        <div class="geo-result" id="geo-result" hidden>
+          <div><strong>Your geo-tagged JPEG is ready</strong><span id="geo-result-details"></span></div>
+          <a class="button button-primary" id="geo-download" download="quickkit-geo-tagged.jpg">Download photo</a>
+        </div>
+        <p class="geo-output-note"><b>What gets saved:</b> GPS latitude and longitude plus the selected date in JPEG EXIF metadata. The printed map card is optional and contains an OpenStreetMap inset with attribution. Output is re-encoded as JPEG; other camera metadata may not be preserved. Exact GPS metadata can reveal someone's location; share carefully.</p>
+      </section>
+    </section>
+    <section class="below-tool geo-guide" data-reveal>
+      <h2>How this works</h2>
+      <p>Choose a saved photo or capture one with your device camera. Camera access starts only after you press the camera button and stops after capture or when closed. Provide coordinates with browser location, map selection, place search or manual entry. Photos stay in this browser. Opening the map loads its visible tiles from OpenStreetMap. Creating a printed map card requests four nearby tiles and reveals the approximate area. A place search sends the typed query only when you press Search. Use current location looks up a nearby place label from GPS coordinates; Find place name looks up coordinates you entered. These actions send exact coordinates to OpenStreetMap when pressed. “Open this point in Google Maps” sends the coordinates to Google Maps in a new tab.</p>
+      <p>This tool embeds coordinates as metadata. It does not verify that a photo was actually taken at that location. The location stamp can be turned off while GPS metadata remains in the JPEG.</p>
+    </section>
+  </main>
+  <footer class="site-footer wrap"><a class="brand" href="./"><span class="brand-mark">q</span><span>quickkit</span></a><p>Small tasks, sorted.</p><div><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="about.html">About</a><a href="contact.html">Contact</a><a href="open-source-acknowledgements.html">Open-source</a></div></footer>
+  <script type="module" src="/app.js"></script>
+  <script type="module" src="/geo-photo.js"></script>
+</body>
+</html>

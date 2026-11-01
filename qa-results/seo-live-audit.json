@@ -1,0 +1,399 @@
+{
+  "date": "2026-11-01",
+  "sitemapUrls": 19,
+  "crawledRoutes": 34,
+  "failures": [],
+  "sites": [
+    {
+      "name": "QuickKit",
+      "origin": "https://quickkit-browser-tools.pages.dev",
+      "robotsStatus": 200,
+      "sitemapStatus": 200,
+      "sitemapUrls": 11,
+      "robotsHasSitemap": true,
+      "ogImage": {
+        "status": 200,
+        "contentType": "image/png",
+        "width": 1200,
+        "height": 630
+      },
+      "hasPublicFeedback": true,
+      "pages": [
+        {
+          "path": "/",
+          "inSitemap": true,
+          "status": 200,
+          "title": "Free PDF, Word and Image Tools | QuickKit",
+          "canonical": "https://quickkit-browser-tools.pages.dev/",
+          "hasDescription": true,
+          "ogImage": "https://quickkit-browser-tools.pages.dev/og-image.png",
+          "noindex": false
+        },
+        {
+          "path": "/image-to-pdf.html",
+          "inSitemap": true,
+          "status": 200,
+          "title": "JPG to PDF Converter — Crop and Arrange Images | QuickKit",
+          "canonical": "https://quickkit-browser-tools.pages.dev/image-to-pdf.html",
+          "hasDescription": true,
+          "ogImage": "https://quickkit-browser-tools.pages.dev/og-image.png",
+          "noindex": false
+        },
+        {
+          "path": "/image-compressor.html",
+          "inSitemap": true,
+          "status": 200,
+          "title": "Image Compressor to KB — QuickKit",
+          "canonical": "https://quickkit-browser-tools.pages.dev/image-compressor.html",
+          "hasDescription": true,
+          "ogImage": "https://quickkit-browser-tools.pages.dev/og-image.png",
+          "noindex": false
+        },
+        {
+          "path": "/video-tools.html",
+          "inSitemap": true,
+          "status": 200,
+          "title": "Video Editor, Joiner and Soundtrack Mixer | QuickKit",
+          "canonical": "https://quickkit-browser-tools.pages.dev/video-tools.html",
+          "hasDescription": true,
+          "ogImage": "https://quickkit-browser-tools.pages.dev/og-image.png",
+          "noindex": false
+        },
+        {
+          "path": "/geo-photo.html",
+          "inSitemap": true,
+          "status": 200,
+          "title": "Geo Tag Photo Online — Add GPS Location to JPEG | QuickKit",
+          "canonical": "https://quickkit-browser-tools.pages.dev/geo-photo.html",
+          "hasDescription": true,
+          "ogImage": "https://quickkit-browser-tools.pages.dev/og-image.png",
+          "noindex": false
+        },
+        {
+          "path": "/pdf-editor.html",
+          "inSitemap": true,
+          "status": 200,
+          "title": "PDF Editor with OCR — Add Text, Redact and Sign | QuickKit",
+          "canonical": "https://quickkit-browser-tools.pages.dev/pdf-editor.html",
+          "hasDescription": true,
+          "ogImage": "https://quickkit-browser-tools.pages.dev/og-image.png",
+          "noindex": false
+        },
+        {
+          "path": "/document-converter.html",
+          "inSitemap": true,
+          "status": 200,
+          "title": "DOCX to PDF and PDF to Word | QuickKit",
+          "canonical": "https://quickkit-browser-tools.pages.dev/document-converter.html",
+          "hasDescription": true,
+          "ogImage": "https://quickkit-browser-tools.pages.dev/og-image.png",
+          "noindex": false
+        },
+        {
+          "path": "/pdf-merge.html",
+          "inSitemap": true,
+          "status": 200,
+          "title": "Merge PDF Files — QuickKit",
+          "canonical": "https://quickkit-browser-tools.pages.dev/pdf-merge.html",
+          "hasDescription": true,
+          "ogImage": "https://quickkit-browser-tools.pages.dev/og-image.png",
+          "noindex": false
+        },
+        {
+          "path": "/text-tools.html",
+          "inSitemap": true,
+          "status": 200,
+          "title": "Word Counter and Text Cleaner — QuickKit",
+          "canonical": "https://quickkit-browser-tools.pages.dev/text-tools.html",
+          "hasDescription": true,
+          "ogImage": "https://quickkit-browser-tools.pages.dev/og-image.png",
+          "noindex": false
+        },
+        {
+          "path": "/wifi-qr.html",
+          "inSitemap": true,
+          "status": 200,
+          "title": "Wi-Fi QR Code Generator — QuickKit",
+          "canonical": "https://quickkit-browser-tools.pages.dev/wifi-qr.html",
+          "hasDescription": true,
+          "ogImage": "https://quickkit-browser-tools.pages.dev/og-image.png",
+          "noindex": false
+        },
+        {
+          "path": "/pdf-text-and-ocr-guide.html",
+          "inSitemap": true,
+          "status": 200,
+          "title": "PDF Text Editing vs OCR: A Practical Guide | QuickKit",
+          "canonical": "https://quickkit-browser-tools.pages.dev/pdf-text-and-ocr-guide.html",
+          "hasDescription": true,
+          "ogImage": "https://quickkit-browser-tools.pages.dev/og-image.png",
+          "noindex": false
+        },
+        {
+          "path": "/privacy.html",
+          "inSitemap": false,
+          "status": 200,
+          "title": "Privacy — QuickKit",
+          "canonical": "https://quickkit-browser-tools.pages.dev/privacy.html",
+          "hasDescription": true,
+          "ogImage": "https://quickkit-browser-tools.pages.dev/og-image.png",
+          "noindex": false
+        },
+        {
+          "path": "/terms.html",
+          "inSitemap": false,
+          "status": 200,
+          "title": "Terms — QuickKit",
+          "canonical": "https://quickkit-browser-tools.pages.dev/terms.html",
+          "hasDescription": true,
+          "ogImage": "https://quickkit-browser-tools.pages.dev/og-image.png",
+          "noindex": false
+        },
+        {
+          "path": "/about.html",
+          "inSitemap": false,
+          "status": 200,
+          "title": "About QuickKit — QuickKit",
+          "canonical": "https://quickkit-browser-tools.pages.dev/about.html",
+          "hasDescription": true,
+          "ogImage": "https://quickkit-browser-tools.pages.dev/og-image.png",
+          "noindex": false
+        },
+        {
+          "path": "/contact.html",
+          "inSitemap": false,
+          "status": 200,
+          "title": "Contact — QuickKit",
+          "canonical": "https://quickkit-browser-tools.pages.dev/contact.html",
+          "hasDescription": true,
+          "ogImage": "https://quickkit-browser-tools.pages.dev/og-image.png",
+          "noindex": false
+        },
+        {
+          "path": "/open-source-acknowledgements.html",
+          "inSitemap": false,
+          "status": 200,
+          "title": "Open-source acknowledgements — QuickKit",
+          "canonical": "https://quickkit-browser-tools.pages.dev/open-source-acknowledgements.html",
+          "hasDescription": true,
+          "ogImage": "https://quickkit-browser-tools.pages.dev/og-image.png",
+          "noindex": false
+        }
+      ]
+    },
+    {
+      "name": "WorkKit",
+      "origin": "https://workkit-hours-tools.pages.dev",
+      "robotsStatus": 200,
+      "sitemapStatus": 200,
+      "sitemapUrls": 5,
+      "robotsHasSitemap": true,
+      "ogImage": {
+        "status": 200,
+        "contentType": "image/png",
+        "width": 1200,
+        "height": 630
+      },
+      "hasPublicFeedback": true,
+      "pages": [
+        {
+          "path": "/",
+          "inSitemap": true,
+          "status": 200,
+          "title": "Free Time Card and Work Pay Calculators | WorkKit",
+          "canonical": "https://workkit-hours-tools.pages.dev/",
+          "hasDescription": true,
+          "ogImage": "https://workkit-hours-tools.pages.dev/og-image.png",
+          "noindex": false
+        },
+        {
+          "path": "/time-card-calculator.html",
+          "inSitemap": true,
+          "status": 200,
+          "title": "Time Card Calculator: Hours, Breaks and Pay | WorkKit",
+          "canonical": "https://workkit-hours-tools.pages.dev/time-card-calculator.html",
+          "hasDescription": true,
+          "ogImage": "https://workkit-hours-tools.pages.dev/og-image.png",
+          "noindex": false
+        },
+        {
+          "path": "/overtime-calculator.html",
+          "inSitemap": true,
+          "status": 200,
+          "title": "Overtime Pay Calculator and Currency Converter | WorkKit",
+          "canonical": "https://workkit-hours-tools.pages.dev/overtime-calculator.html",
+          "hasDescription": true,
+          "ogImage": "https://workkit-hours-tools.pages.dev/og-image.png",
+          "noindex": false
+        },
+        {
+          "path": "/salary-converter.html",
+          "inSitemap": true,
+          "status": 200,
+          "title": "Hourly to Salary Calculator: Annual Gross Pay | WorkKit",
+          "canonical": "https://workkit-hours-tools.pages.dev/salary-converter.html",
+          "hasDescription": true,
+          "ogImage": "https://workkit-hours-tools.pages.dev/og-image.png",
+          "noindex": false
+        },
+        {
+          "path": "/time-card-and-overtime-guide.html",
+          "inSitemap": true,
+          "status": 200,
+          "title": "How to Calculate Work Hours, Breaks and Overtime | WorkKit",
+          "canonical": "https://workkit-hours-tools.pages.dev/time-card-and-overtime-guide.html",
+          "hasDescription": true,
+          "ogImage": "https://workkit-hours-tools.pages.dev/og-image.png",
+          "noindex": false
+        },
+        {
+          "path": "/privacy.html",
+          "inSitemap": false,
+          "status": 200,
+          "title": "Privacy — WorkKit",
+          "canonical": "https://workkit-hours-tools.pages.dev/privacy.html",
+          "hasDescription": true,
+          "ogImage": "https://workkit-hours-tools.pages.dev/og-image.png",
+          "noindex": false
+        },
+        {
+          "path": "/terms.html",
+          "inSitemap": false,
+          "status": 200,
+          "title": "Terms — WorkKit",
+          "canonical": "https://workkit-hours-tools.pages.dev/terms.html",
+          "hasDescription": true,
+          "ogImage": "https://workkit-hours-tools.pages.dev/og-image.png",
+          "noindex": false
+        },
+        {
+          "path": "/about.html",
+          "inSitemap": false,
+          "status": 200,
+          "title": "About WorkKit — WorkKit",
+          "canonical": "https://workkit-hours-tools.pages.dev/about.html",
+          "hasDescription": true,
+          "ogImage": "https://workkit-hours-tools.pages.dev/og-image.png",
+          "noindex": false
+        },
+        {
+          "path": "/contact.html",
+          "inSitemap": false,
+          "status": 200,
+          "title": "Contact — WorkKit",
+          "canonical": "https://workkit-hours-tools.pages.dev/contact.html",
+          "hasDescription": true,
+          "ogImage": "https://workkit-hours-tools.pages.dev/og-image.png",
+          "noindex": false
+        },
+        {
+          "path": "/open-source-acknowledgements.html",
+          "inSitemap": false,
+          "status": 200,
+          "title": "Open-source acknowledgements — WorkKit",
+          "canonical": "https://workkit-hours-tools.pages.dev/open-source-acknowledgements.html",
+          "hasDescription": true,
+          "ogImage": "https://workkit-hours-tools.pages.dev/og-image.png",
+          "noindex": false
+        }
+      ]
+    },
+    {
+      "name": "FormReady",
+      "origin": "https://formready-photo-tools.pages.dev",
+      "robotsStatus": 200,
+      "sitemapStatus": 200,
+      "sitemapUrls": 3,
+      "robotsHasSitemap": true,
+      "ogImage": {
+        "status": 200,
+        "contentType": "image/png",
+        "width": 1200,
+        "height": 630
+      },
+      "hasPublicFeedback": true,
+      "pages": [
+        {
+          "path": "/",
+          "inSitemap": true,
+          "status": 200,
+          "title": "Photo and Signature Resizer for Forms | FormReady",
+          "canonical": "https://formready-photo-tools.pages.dev/",
+          "hasDescription": true,
+          "ogImage": "https://formready-photo-tools.pages.dev/og-image.png",
+          "noindex": false
+        },
+        {
+          "path": "/image-preparer.html",
+          "inSitemap": true,
+          "status": 200,
+          "title": "Exam Photo and Signature Resizer | FormReady",
+          "canonical": "https://formready-photo-tools.pages.dev/image-preparer.html",
+          "hasDescription": true,
+          "ogImage": "https://formready-photo-tools.pages.dev/og-image.png",
+          "noindex": false
+        },
+        {
+          "path": "/photo-signature-file-size-guide.html",
+          "inSitemap": true,
+          "status": 200,
+          "title": "Photo &amp; Signature Resizer for Forms | FormReady",
+          "canonical": "https://formready-photo-tools.pages.dev/photo-signature-file-size-guide.html",
+          "hasDescription": true,
+          "ogImage": "https://formready-photo-tools.pages.dev/og-image.png",
+          "noindex": false
+        },
+        {
+          "path": "/privacy.html",
+          "inSitemap": false,
+          "status": 200,
+          "title": "Privacy — FormReady",
+          "canonical": "https://formready-photo-tools.pages.dev/privacy.html",
+          "hasDescription": true,
+          "ogImage": "https://formready-photo-tools.pages.dev/og-image.png",
+          "noindex": false
+        },
+        {
+          "path": "/terms.html",
+          "inSitemap": false,
+          "status": 200,
+          "title": "Terms — FormReady",
+          "canonical": "https://formready-photo-tools.pages.dev/terms.html",
+          "hasDescription": true,
+          "ogImage": "https://formready-photo-tools.pages.dev/og-image.png",
+          "noindex": false
+        },
+        {
+          "path": "/about.html",
+          "inSitemap": false,
+          "status": 200,
+          "title": "About FormReady — FormReady",
+          "canonical": "https://formready-photo-tools.pages.dev/about.html",
+          "hasDescription": true,
+          "ogImage": "https://formready-photo-tools.pages.dev/og-image.png",
+          "noindex": false
+        },
+        {
+          "path": "/contact.html",
+          "inSitemap": false,
+          "status": 200,
+          "title": "Contact — FormReady",
+          "canonical": "https://formready-photo-tools.pages.dev/contact.html",
+          "hasDescription": true,
+          "ogImage": "https://formready-photo-tools.pages.dev/og-image.png",
+          "noindex": false
+        },
+        {
+          "path": "/open-source-acknowledgements.html",
+          "inSitemap": false,
+          "status": 200,
+          "title": "Open-source acknowledgements — FormReady",
+          "canonical": "https://formready-photo-tools.pages.dev/open-source-acknowledgements.html",
+          "hasDescription": true,
+          "ogImage": "https://formready-photo-tools.pages.dev/og-image.png",
+          "noindex": false
+        }
+      ]
+    }
+  ]
+}

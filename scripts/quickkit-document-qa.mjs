@@ -77,7 +77,9 @@ try {
   await page.goto(`${origin}/pdf-editor.html`, { waitUntil: 'domcontentloaded' });
   await page.locator('#pdf-source').setInputFiles({ name: 'selectable-sample.pdf', mimeType: 'application/pdf', buffer: pdfFixture });
   await page.locator('#pdf-workspace').waitFor({ state: 'visible' });
+  check('PDF extraction panel stays hidden until extraction is requested', await page.locator('#pdf-extract-panel').isHidden() && await page.locator('#pdf-extracted-text').isHidden().catch(() => true));
   await page.locator('#extract-pdf-text').click();
+  check('PDF extraction panel opens when the extraction action starts', await page.locator('#pdf-extract-panel').isVisible());
   await page.waitForFunction(() => document.querySelector('#pdf-extracted-text').value.includes('Page two text is preserved.'));
   const extracted = await page.locator('#pdf-extracted-text').inputValue();
   check('PDF editor extracts text from every page including split text operations', extracted.includes('Split text fragments survive extraction.') && extracted.includes('Page two text is preserved.'), extracted);
@@ -95,8 +97,52 @@ try {
   await page.goto(`${origin}/document-converter.html`, { waitUntil: 'domcontentloaded' });
   await page.locator('#pdf-source').setInputFiles({ name: 'image-only-sample.pdf', mimeType: 'application/pdf', buffer: scannedPdfFixture });
   await page.locator('#convert-pdf-docx').click();
-  await page.waitForFunction(() => document.querySelector('#pdf-status').textContent.includes('PDF to Word failed'));
-  check('Image-only PDF fails clearly instead of producing a blank Word document', /No selectable text was found/.test(await page.locator('#pdf-status').innerText()), await page.locator('#pdf-status').innerText());
+  await page.waitForFunction(() => document.querySelector('#pdf-ocr-review').hidden === false || document.querySelector('#pdf-status').textContent.startsWith('OCR stopped'), null, { timeout: 120000 });
+  check('Image-only PDF reaches editable OCR review instead of stopping at text extraction', await page.locator('#pdf-ocr-review').isVisible(), await page.locator('#pdf-status').innerText());
+  await page.locator('#pdf-ocr-review-list textarea').fill('');
+  await page.locator('#create-reviewed-docx').click();
+  check('Blank OCR review is refused instead of creating an empty Word document', /No text was found/.test(await page.locator('#pdf-status').innerText()), await page.locator('#pdf-status').innerText());
+
+  const scanImageBytes = Buffer.from(await page.evaluate(async () => {
+    const canvas = document.createElement('canvas'); canvas.width = 1400; canvas.height = 500;
+    const context = canvas.getContext('2d'); context.fillStyle = '#fff'; context.fillRect(0, 0, canvas.width, canvas.height);
+    context.fillStyle = '#111'; context.font = 'bold 64px Arial'; context.fillText('QUICKKIT OCR TEST 741', 80, 190);
+    context.font = '40px Arial'; context.fillText('Review this scanned page before export.', 80, 300);
+    return new Uint8Array(await (await new Promise((resolve) => canvas.toBlob(resolve, 'image/png'))).arrayBuffer());
+  }));
+  const mixedScanDoc = await PDFDocument.create();
+  const scanImage = await mixedScanDoc.embedPng(scanImageBytes);
+  const scannedPage = mixedScanDoc.addPage([700, 250]); scannedPage.drawImage(scanImage, { x: 0, y: 0, width: 700, height: 250 });
+  const nativePage = mixedScanDoc.addPage([612, 792]); nativePage.drawText('Native text page stays in the same Word export.', { x: 48, y: 720, size: 14, font: await mixedScanDoc.embedFont(StandardFonts.Helvetica) });
+  const mixedScanFixture = Buffer.from(await mixedScanDoc.save());
+  await page.locator('#pdf-source').setInputFiles({ name: 'mixed-scanned-sample.pdf', mimeType: 'application/pdf', buffer: mixedScanFixture });
+  await page.locator('#convert-pdf-docx').click();
+  await page.locator('#cancel-pdf-ocr').waitFor({ state: 'visible' });
+  await page.locator('#cancel-pdf-ocr').click();
+  await page.waitForFunction(() => document.querySelector('#pdf-status').textContent.startsWith('OCR cancelled'));
+  check('Cancel scan stops OCR cleanly and restores the converter', await page.locator('#cancel-pdf-ocr').isHidden() && await page.locator('#convert-pdf-docx').isEnabled(), await page.locator('#pdf-status').innerText());
+  await page.locator('#pdf-source').setInputFiles({ name: 'mixed-scanned-sample.pdf', mimeType: 'application/pdf', buffer: mixedScanFixture });
+  await page.locator('#convert-pdf-docx').click();
+  await page.waitForFunction(() => document.querySelector('#pdf-ocr-review').hidden === false || document.querySelector('#pdf-status').textContent.startsWith('OCR stopped'), null, { timeout: 120000 });
+  const recognizedSample = await page.locator('#pdf-ocr-review-list textarea').inputValue().catch(() => '');
+  check('Browser OCR recognizes a generated image-only page with a known numeric marker', /741/u.test(recognizedSample), `recognizedChars=${recognizedSample.length}; ${await page.locator('#pdf-status').innerText()}`);
+  check('Mixed PDF keeps its native text page while scanned text is reviewed', await page.locator('#pdf-ocr-review-list textarea').count() === 1 && await page.locator('#pdf-ocr-review-list label').innerText() === 'Scanned page 1');
+  await page.screenshot({ path: path.join(fixtureDir, 'ocr-review-desktop.png'), fullPage: true });
+  await page.setViewportSize({ width: 390, height: 844 });
+  const ocrMobileFit = await page.evaluate(() => ({ viewport: document.documentElement.clientWidth, scroll: document.documentElement.scrollWidth, review: (() => { const rect = document.querySelector('#pdf-ocr-review').getBoundingClientRect(); return { left: rect.left, right: rect.right }; })() }));
+  check('OCR review fits a 390px phone viewport without horizontal overflow', ocrMobileFit.scroll <= ocrMobileFit.viewport + 1 && ocrMobileFit.review.left >= 0 && ocrMobileFit.review.right <= 391, JSON.stringify(ocrMobileFit));
+  await page.locator('#pdf-ocr-review').scrollIntoViewIfNeeded();
+  await page.screenshot({ path: path.join(fixtureDir, 'ocr-review-mobile.png'), fullPage: false });
+  await page.setViewportSize({ width: 1440, height: 1000 });
+  await page.locator('#pdf-ocr-review-list textarea').fill('OCR reviewed text: 741');
+  await page.locator('#create-reviewed-docx').click();
+  await page.locator('#pdf-result .download-link').waitFor();
+  const reviewedWordDownload = page.waitForEvent('download');
+  await page.locator('#pdf-result .download-link').click();
+  const reviewedWord = await reviewedWordDownload;
+  const reviewedWordPath = path.join(fixtureDir, 'reviewed-ocr-conversion.docx'); await reviewedWord.saveAs(reviewedWordPath);
+  const reviewedText = (await mammoth.extractRawText({ buffer: await readFile(reviewedWordPath) })).value;
+  check('Reviewed OCR and native page text both survive the DOCX export and reopen', reviewedText.includes('OCR reviewed text: 741') && reviewedText.includes('Native text page stays in the same Word export.'), reviewedText.replace(/\s+/gu, ' ').trim());
 
   await page.goto(`${origin}/image-to-pdf.html`, { waitUntil: 'domcontentloaded' });
   const imageBytes = await page.evaluate(async () => {
@@ -106,20 +152,43 @@ try {
     return Array.from(new Uint8Array(await blob.arrayBuffer()));
   });
   const imageBuffer = Buffer.from(imageBytes);
-  await page.locator('#image-files').setInputFiles({ name: 'two-color-sample.png', mimeType: 'image/png', buffer: imageBuffer });
-  await page.locator('#image-gallery li').waitFor();
+  await page.locator('#image-files').setInputFiles([
+    { name: 'two-color-sample.png', mimeType: 'image/png', buffer: imageBuffer },
+    { name: 'two-color-second.png', mimeType: 'image/png', buffer: imageBuffer }
+  ]);
+  await page.locator('#image-gallery li').first().waitFor();
+  check('Multiple photos load for one multi-page PDF', await page.locator('#image-gallery li').count() === 2);
+  const photoNamesBeforeDrag = await page.locator('#image-gallery .gallery-file-name').evaluateAll((nodes) => nodes.map((node) => node.childNodes[0].textContent.trim()));
+  await page.locator('#image-gallery li').first().dragTo(page.locator('#image-gallery li').last());
+  const photoNamesAfterDrag = await page.locator('#image-gallery .gallery-file-name').evaluateAll((nodes) => nodes.map((node) => node.childNodes[0].textContent.trim()));
+  check('Image gallery drag changes the final page order', photoNamesBeforeDrag.join(',') !== photoNamesAfterDrag.join(',') && photoNamesAfterDrag.at(-1) === photoNamesBeforeDrag[0], `${photoNamesBeforeDrag.join(',')} → ${photoNamesAfterDrag.join(',')}`);
+  await page.locator('#deselect-all').click();
+  check('Deselect all excludes every photo and disables PDF creation', await page.locator('#image-gallery input[type=checkbox]:checked').count() === 0 && await page.locator('#convert-images').isDisabled());
+  await page.locator('#select-all').click();
+  check('Select all includes every photo again', await page.locator('#image-gallery input[type=checkbox]:checked').count() === 2);
   await page.locator('#image-filter').selectOption('grayscale');
   const previewFilter = await page.locator('.cropper-canvas img').first().evaluate((image) => getComputedStyle(image).filter);
   check('Image filter visibly updates the crop preview before Apply', previewFilter.includes('grayscale(1)'), previewFilter);
   await page.locator('#apply-edit').click();
-  await page.waitForFunction(() => document.querySelector('#image-gallery img')?.src.startsWith('blob:') && document.querySelector('#image-gallery li .gallery-file-meta')?.textContent.includes('edited'));
-  const editedPixel = await page.locator('#image-gallery li img').first().evaluate(async (image) => {
+  await page.waitForFunction(() => [...document.querySelectorAll('#image-gallery li')].some((item) => item.querySelector('.gallery-file-meta')?.textContent.includes('edited')));
+  const editedPixel = await page.locator('#image-gallery li').filter({ hasText: 'two-color-sample.png' }).locator('img').evaluate(async (image) => {
     await image.decode(); const canvas = document.createElement('canvas'); canvas.width = canvas.height = 1;
     const context = canvas.getContext('2d', { willReadFrequently: true }); context.drawImage(image, 0, 0, 1, 1);
     const [r, g, b] = context.getImageData(0, 0, 1, 1).data;
     return { r, g, b, difference: Math.max(r, g, b) - Math.min(r, g, b) };
   });
   check('Applied grayscale filter changes the edited output image pixels', editedPixel.difference <= 3, JSON.stringify(editedPixel));
+  await page.locator('#apply-filter-all').click();
+  await page.waitForFunction(() => document.querySelector('#image-pdf-message').textContent.includes('Applied the same filter'));
+  const bulkFilterPixels = await page.locator('#image-gallery li img').evaluateAll(async (images) => Promise.all(images.map(async (image) => {
+    await image.decode(); const canvas = document.createElement('canvas'); canvas.width = canvas.height = 1;
+    const context = canvas.getContext('2d', { willReadFrequently: true }); context.drawImage(image, 0, 0, 1, 1);
+    const [r, g, b] = context.getImageData(0, 0, 1, 1).data;
+    return Math.max(r, g, b) - Math.min(r, g, b);
+  })));
+  check('Apply same filter updates every image output', bulkFilterPixels.length === 2 && bulkFilterPixels.every((difference) => difference <= 3), JSON.stringify(bulkFilterPixels));
+  await page.locator('#page-margin').selectOption('20');
+  await page.locator('#page-orientation').selectOption('landscape');
   await page.locator('#convert-images').click();
   await page.locator('#image-pdf-result .download-link').waitFor();
   const imagePdfPromise = page.waitForEvent('download');
@@ -127,17 +196,22 @@ try {
   const imagePdfDownload = await imagePdfPromise;
   const exportedPdfPath = path.join(fixtureDir, 'filtered-image.pdf'); await imagePdfDownload.saveAs(exportedPdfPath);
   const exportedPdf = await PDFCheck.load(await readFile(exportedPdfPath));
-  check('Image-to-PDF export contains one page with the selected landscape orientation', exportedPdf.getPageCount() === 1 && exportedPdf.getPage(0).getWidth() > exportedPdf.getPage(0).getHeight(), `pages=${exportedPdf.getPageCount()}`);
+  check('Image-to-PDF export contains two ordered pages with the selected landscape orientation', exportedPdf.getPageCount() === 2 && exportedPdf.getPages().every((pdfPage) => pdfPage.getWidth() > pdfPage.getHeight()), `pages=${exportedPdf.getPageCount()}`);
   await page.goto(`${origin}/pdf-editor.html`, { waitUntil: 'domcontentloaded' });
   await page.locator('#pdf-source').setInputFiles({ name: 'filtered-image.pdf', mimeType: 'application/pdf', buffer: await readFile(exportedPdfPath) });
   await page.locator('#pdf-workspace').waitFor({ state: 'visible' });
   await page.locator('#pdf-page-stage canvas').waitFor({ state: 'visible' });
   const renderedChannels = await page.locator('#pdf-page-stage canvas').first().evaluate((canvas) => {
     const ctx = canvas.getContext('2d', { willReadFrequently: true });
-    const { data } = ctx.getImageData(Math.floor(canvas.width / 2), Math.floor(canvas.height / 2), 1, 1);
-    return { r: data[0], g: data[1], b: data[2], difference: Math.max(data[0], data[1], data[2]) - Math.min(data[0], data[1], data[2]) };
+    const center = ctx.getImageData(Math.floor(canvas.width / 2) + 15, Math.floor(canvas.height / 2), 1, 1).data;
+    const edge = ctx.getImageData(Math.floor(canvas.width / 2), 5, 1, 1).data;
+    return { r: center[0], g: center[1], b: center[2], difference: Math.max(center[0], center[1], center[2]) - Math.min(center[0], center[1], center[2]), edge: [...edge] };
   });
-  check('Exported PDF renders with the grayscale filter applied', renderedChannels.difference <= 3, JSON.stringify(renderedChannels));
+  check('Exported PDF renders with the grayscale filter and a visible 20 mm margin', renderedChannels.difference <= 3 && renderedChannels.edge.every((channel) => channel > 245), JSON.stringify(renderedChannels));
+  await page.locator('#page-next').click();
+  await page.waitForFunction(() => document.querySelector('#page-indicator')?.textContent === 'Page 2 of 2');
+  const secondPageEdge = await page.locator('#pdf-page-stage canvas').first().evaluate((canvas) => [...canvas.getContext('2d', { willReadFrequently: true }).getImageData(Math.floor(canvas.width / 2), 5, 1, 1).data]);
+  check('Global margin is applied to every selected photo page', secondPageEdge.every((channel) => channel > 245), JSON.stringify(secondPageEdge));
 
   await page.goto(`${origin}/document-converter.html`, { waitUntil: 'domcontentloaded' });
   for (const width of [390, 320]) {

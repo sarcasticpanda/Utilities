@@ -134,6 +134,38 @@ function* tokenizeContent(bytes) {
   }
 }
 
+function showGapIsSafe(bytes, previousEnd, nextStart) {
+  const gap = String.fromCharCode(...bytes.subarray(previousEnd, nextStart));
+  return /^(?:\s|%[^\r\n]*(?:\r?\n|$))*$/u.test(gap);
+}
+
+function showGapIsHorizontalTextMove(bytes, previousEnd, nextStart) {
+  const tokens = [...tokenizeContent(bytes.subarray(previousEnd, nextStart))];
+  return tokens.length === 3 && tokens[0].type === 'number' && tokens[1].type === 'number' &&
+    tokens[2].type === 'word' && tokens[2].value === 'Td' && Math.abs(tokens[1].value) <= 0.05;
+}
+
+function canJoinAdjacentTextShows(previous, next, profile) {
+  if (!profile?.supported || previous.invalid || next.invalid || !sameTextStyle(previous, next) ||
+      previous.textRenderingMode !== 0 || previous.horizontalScale !== 100 || previous.characterSpacing !== 0 || previous.wordSpacing !== 0 ||
+      !Array.isArray(previous.position) || !Array.isArray(next.position) || !Number.isFinite(previous.fontSize)) return false;
+  const [a, b] = previous.position;
+  const deltaX = next.position[4] - previous.position[4];
+  const deltaY = next.position[5] - previous.position[5];
+  const basisLength = Math.hypot(a, b);
+  if (!basisLength) return false;
+  const alongBaseline = ((deltaX * a) + (deltaY * b)) / basisLength;
+  const acrossBaseline = Math.abs((deltaX * -b) + (deltaY * a)) / basisLength;
+  const tolerance = Math.max(0.45, previous.fontSize * 0.04);
+  return alongBaseline > 0 && alongBaseline <= previous.fontSize * 1.8 && acrossBaseline <= tolerance;
+}
+
+function sameTextStyle(left, right) {
+  return left.fontName === right.fontName && left.fontSize === right.fontSize &&
+    left.textRenderingMode === right.textRenderingMode && left.horizontalScale === right.horizontalScale &&
+    left.characterSpacing === right.characterSpacing && left.wordSpacing === right.wordSpacing;
+}
+
 function parseTextObjects(streamBytes) {
   const tokens = [...tokenizeContent(streamBytes)];
   const stack = [];
@@ -145,6 +177,14 @@ function parseTextObjects(streamBytes) {
   let horizontalScale = 100;
   let characterSpacing = 0;
   let wordSpacing = 0;
+  let textMatrix = [1, 0, 0, 1, 0, 0];
+  let textLineMatrix = [1, 0, 0, 1, 0, 0];
+  let leading = 0;
+  const moveTextLine = (tx, ty) => {
+    const [a, b, c, d, e, f] = textLineMatrix;
+    textLineMatrix = [a, b, c, d, e + (tx * a) + (ty * c), f + (tx * b) + (ty * d)];
+    textMatrix = [...textLineMatrix];
+  };
   for (const token of tokens) {
     if (token.type !== 'word' || ['true', 'false', 'null'].includes(token.value)) { stack.push(token); continue; }
     const operator = token.value;
@@ -152,9 +192,27 @@ function parseTextObjects(streamBytes) {
     if (operator === 'BT') {
       if (block) throw new PdfTextEditError('This page has a nested text object and cannot be checked safely.', 'malformed');
       block = { fontName: currentFont, fontSize: currentFontSize, shows: [], unsupported: null, textRenderingMode, horizontalScale, characterSpacing, wordSpacing };
+      textMatrix = [1, 0, 0, 1, 0, 0]; textLineMatrix = [1, 0, 0, 1, 0, 0];
     } else if (operator === 'ET') {
       if (block) blocks.push(block);
       block = null;
+    } else if (operator === 'Tm') {
+      const values = stack.slice(-6);
+      if (values.length === 6 && values.every((value) => value?.type === 'number')) {
+        textMatrix = values.map((value) => value.value);
+        textLineMatrix = [...textMatrix];
+      }
+    } else if (operator === 'Td' || operator === 'TD') {
+      const x = stack.at(-2); const y = stack.at(-1);
+      if (x?.type === 'number' && y?.type === 'number') {
+        moveTextLine(x.value, y.value);
+        if (operator === 'TD') leading = -y.value;
+      }
+    } else if (operator === 'TL') {
+      const value = stack.at(-1);
+      if (value?.type === 'number') leading = value.value;
+    } else if (operator === 'T*') {
+      moveTextLine(0, -leading);
     } else if (operator === 'Tf') {
       const fontOperand = stack.at(-2);
       if (fontOperand?.type === 'name') currentFont = fontOperand.value;
@@ -179,9 +237,28 @@ function parseTextObjects(streamBytes) {
       if (block) block.wordSpacing = wordSpacing;
     } else if (operator === 'Tj') {
       const operand = stack.at(-1);
-      if (block) block.shows.push(operand?.type === 'string' ? { ...operand, operatorEnd: token.end } : { invalid: true });
-    } else if (operator === 'TJ' || operator === "'" || operator === '"') {
-      if (block) { block.shows.push({ invalid: true }); block.unsupported = 'Text is split across several drawing operations; this first version edits one text run at a time.'; }
+      if (block) {
+        const state = { fontName: block.fontName, fontSize: block.fontSize, textRenderingMode: block.textRenderingMode, horizontalScale: block.horizontalScale, characterSpacing: block.characterSpacing, wordSpacing: block.wordSpacing };
+        block.shows.push(operand?.type === 'string' ? { ...operand, ...state, position: [...textMatrix], operatorStart: operand.start, operatorEnd: token.end, adjustment: 0 } : { ...state, invalid: true });
+      }
+    } else if (operator === 'TJ') {
+      const operand = stack.at(-1);
+      if (block && operand?.type === 'array') {
+        const inner = streamBytes.subarray(operand.start + 1, operand.end - 1);
+        const parts = [...tokenizeContent(inner)];
+        const textBytes = [];
+        let adjustment = 0;
+        let valid = true;
+        for (const part of parts) {
+          if (part.type === 'string') textBytes.push(...part.bytes);
+          else if (part.type === 'number') adjustment += part.value;
+          else valid = false;
+        }
+        const state = { fontName: block.fontName, fontSize: block.fontSize, textRenderingMode: block.textRenderingMode, horizontalScale: block.horizontalScale, characterSpacing: block.characterSpacing, wordSpacing: block.wordSpacing };
+        block.shows.push(valid ? { type: 'string', bytes: Uint8Array.from(textBytes), ...state, position: [...textMatrix], operatorStart: operand.start, operatorEnd: token.end, adjustment } : { ...state, invalid: true });
+      } else if (block) block.shows.push({ fontName: block.fontName, fontSize: block.fontSize, invalid: true });
+    } else if (operator === "'" || operator === '"') {
+      if (block) block.shows.push({ invalid: true });
     }
     stack.length = 0;
   }
@@ -189,17 +266,190 @@ function parseTextObjects(streamBytes) {
   return blocks;
 }
 
-function normalizeFont(fontValue, objects) {
+function decodeUtf16BeHex(hex) {
+  if (!hex || hex.length % 4 !== 0) return null;
+  const units = [];
+  for (let index = 0; index < hex.length; index += 4) units.push(Number.parseInt(hex.slice(index, index + 4), 16));
+  try { return String.fromCharCode(...units); } catch { return null; }
+}
+
+function parseToUnicodeCMap(bytes) {
+  let source = '';
+  for (let offset = 0; offset < bytes.length; offset += 0x8000) source += String.fromCharCode(...bytes.subarray(offset, offset + 0x8000));
+  const codeToUnicode = new Map();
+  const add = (sourceHex, targetHex) => {
+    if (!sourceHex || sourceHex.length % 2 || sourceHex.length > 4) return;
+    const unicode = decodeUtf16BeHex(targetHex);
+    if (unicode !== null) codeToUnicode.set(Number.parseInt(sourceHex, 16), unicode);
+  };
+  for (const block of source.matchAll(/\d+\s+beginbfchar([\s\S]*?)endbfchar/gu)) {
+    for (const pair of block[1].matchAll(/<([0-9A-Fa-f]+)>\s*<([0-9A-Fa-f]+)>/gu)) add(pair[1], pair[2]);
+  }
+  for (const block of source.matchAll(/\d+\s+beginbfrange([\s\S]*?)endbfrange/gu)) {
+    const linePattern = /<([0-9A-Fa-f]+)>\s*<([0-9A-Fa-f]+)>\s*(<([0-9A-Fa-f]+)>|\[([^\]]*)\])/gu;
+    for (const range of block[1].matchAll(linePattern)) {
+      const first = Number.parseInt(range[1], 16);
+      const last = Number.parseInt(range[2], 16);
+      if (last < first || last - first > 4096) continue;
+      if (range[5] !== undefined) {
+        const targets = [...range[5].matchAll(/<([0-9A-Fa-f]+)>/gu)].map((match) => match[1]);
+        for (let offset = 0; offset <= last - first && offset < targets.length; offset++) add((first + offset).toString(16).padStart(range[1].length, '0'), targets[offset]);
+      } else {
+        const targetHex = range[4];
+        if (!targetHex || targetHex.length % 4) continue;
+        const startValue = BigInt(`0x${targetHex}`);
+        for (let offset = 0; offset <= last - first; offset++) {
+          const nextHex = (startValue + BigInt(offset)).toString(16).padStart(targetHex.length, '0');
+          add((first + offset).toString(16).padStart(range[1].length, '0'), nextHex);
+        }
+      }
+    }
+  }
+  return codeToUnicode;
+}
+
+function createUnicodeReverseMap(codeToUnicode) {
+  const unicodeToCodes = new Map();
+  for (const [code, unicode] of codeToUnicode) {
+    if (!unicode) continue;
+    if (!unicodeToCodes.has(unicode)) unicodeToCodes.set(unicode, []);
+    unicodeToCodes.get(unicode).push(code);
+  }
+  for (const codes of unicodeToCodes.values()) codes.sort((left, right) => left - right);
+  return unicodeToCodes;
+}
+
+function decodeMappedBytes(bytes, profile) {
+  let text = '';
+  for (const code of bytes) {
+    const unicode = profile.codeToUnicode.get(code);
+    if (unicode === undefined) return null;
+    text += unicode;
+  }
+  return text;
+}
+
+function decodeIdentityHBytes(bytes, profile) {
+  if (bytes.length % 2) return null;
+  let text = '';
+  for (let index = 0; index < bytes.length; index += 2) {
+    const cid = (bytes[index] << 8) | bytes[index + 1];
+    const unicode = profile.codeToUnicode.get(cid);
+    if (unicode === undefined) return null;
+    text += unicode;
+  }
+  return text;
+}
+
+function encodeMappedText(text, profile) {
+  if (!text) return { bytes: new Uint8Array(), glyphWidths: [], textGlyphs: [] };
+  const characters = Array.from(text);
+  const mappings = [...profile.unicodeToCodes.keys()].sort((left, right) => Array.from(right).length - Array.from(left).length || right.length - left.length);
+  const bytes = [];
+  const glyphWidths = [];
+  const textGlyphs = [];
+  for (let index = 0; index < characters.length;) {
+    let match = null;
+    for (const unicode of mappings) {
+      const units = Array.from(unicode);
+      if (units.length && characters.slice(index, index + units.length).join('') === unicode) { match = unicode; break; }
+    }
+    if (match === null) return null;
+    const code = profile.unicodeToCodes.get(match)?.[0];
+    const width = profile.widthByCode.get(code) ?? profile.defaultWidth;
+    if (code === undefined || width === undefined) return null;
+    if (profile.kind === 'type0-identity-h') bytes.push((code >> 8) & 0xff, code & 0xff);
+    else bytes.push(code);
+    glyphWidths.push(width);
+    textGlyphs.push(match);
+    index += Array.from(match).length;
+  }
+  return { bytes: Uint8Array.from(bytes), glyphWidths, textGlyphs };
+}
+
+function parseCidWidths(value) {
+  const widths = new Map();
+  if (!Array.isArray(value)) return widths;
+  for (let index = 0; index < value.length;) {
+    const first = Number(value[index++]);
+    if (!Number.isInteger(first) || first < 0 || first > 0xffff || index >= value.length) return null;
+    const next = value[index++];
+    if (Array.isArray(next)) {
+      next.forEach((rawWidth, offset) => {
+        const width = Number(rawWidth);
+        if (Number.isFinite(width) && width >= 0 && first + offset <= 0xffff) widths.set(first + offset, width);
+      });
+    } else {
+      const last = Number(next);
+      const rawWidth = value[index++];
+      const width = Number(rawWidth);
+      if (!Number.isInteger(last) || last < first || last > 0xffff || !Number.isFinite(width) || width < 0) return null;
+      for (let cid = first; cid <= last; cid++) widths.set(cid, width);
+    }
+  }
+  return widths;
+}
+
+async function getFontProfile(fontValue, objects, qpdf, bytes, cache) {
+  const ref = refId(fontValue);
+  const cacheKey = ref || (typeof fontValue === 'string' ? fontValue : JSON.stringify(fontValue));
+  if (cache.has(cacheKey)) return cache.get(cacheKey);
   const font = resolve(fontValue, objects);
   if (!font || typeof font !== 'object') return { supported: false, reason: 'The page font resources could not be read.' };
   const baseFont = String(font['/BaseFont'] || '').replace(/^\//u, '');
-  if (font['/Subtype'] !== '/Type1' || font['/FontDescriptor'] || !standardFonts.has(baseFont)) {
-    return { supported: false, reason: 'This line uses an embedded or non-standard font. The editor will not substitute a different font.' };
+  if (font['/Subtype'] === '/Type1' && !font['/FontDescriptor'] && standardFonts.has(baseFont) && font['/Encoding'] === '/WinAnsiEncoding') {
+    const profile = { supported: true, kind: 'standard', baseFont };
+    cache.set(cacheKey, profile);
+    return profile;
   }
-  if (font['/Encoding'] !== '/WinAnsiEncoding') {
-    return { supported: false, reason: 'This line does not use a supported WinAnsi font encoding.' };
+  const widths = resolve(font['/Widths'], objects);
+  if (font['/Subtype'] === '/Type1' && font['/FontDescriptor'] && refId(font['/ToUnicode']) && Array.isArray(widths) && Number.isInteger(font['/FirstChar'])) {
+    const cmapRef = parseStreamRef(font['/ToUnicode']);
+    if (!cmapRef) return { supported: false, reason: 'The embedded font has no usable Unicode map.' };
+    const cmapBytes = await qpdfStream(qpdf, bytes, cmapRef.objectNumber);
+    if (cmapBytes.byteLength > 2 * 1024 * 1024) return { supported: false, reason: 'The embedded font Unicode map is larger than the safe editing limit.' };
+    const codeToUnicode = parseToUnicodeCMap(cmapBytes);
+    if (!codeToUnicode.size || [...codeToUnicode.keys()].some((code) => code > 255)) return { supported: false, reason: 'This embedded Type 1 font uses a Unicode map the editor cannot safely encode.' };
+    const widthByCode = new Map();
+    widths.forEach((width, index) => {
+      const value = Number(width);
+      if (Number.isFinite(value) && value > 0) widthByCode.set(font['/FirstChar'] + index, value);
+    });
+    if (!widthByCode.size) return { supported: false, reason: 'The embedded font does not provide measurable glyph widths.' };
+    const profile = { supported: true, kind: 'simple-cmap', baseFont, codeToUnicode, unicodeToCodes: createUnicodeReverseMap(codeToUnicode), widthByCode };
+    cache.set(cacheKey, profile);
+    return profile;
   }
-  return { supported: true, baseFont };
+  if (font['/Subtype'] === '/Type0' && font['/Encoding'] === '/Identity-H' && refId(font['/ToUnicode'])) {
+    const descendants = resolve(font['/DescendantFonts'], objects);
+    const descendant = Array.isArray(descendants) ? resolve(descendants[0], objects) : null;
+    const descriptor = descendant && resolve(descendant['/FontDescriptor'], objects);
+    const cidWidths = descendant && parseCidWidths(resolve(descendant['/W'], objects));
+    const defaultWidth = Number(descendant?.['/DW'] ?? 1000);
+    if (descendant?.['/Subtype'] !== '/CIDFontType2' || !descriptor || !('/FontFile2' in descriptor) || !cidWidths || !Number.isFinite(defaultWidth) || defaultWidth < 0) {
+      return { supported: false, reason: 'This Identity-H font does not provide a supported embedded CID font and measurable widths.' };
+    }
+    const cmapRef = parseStreamRef(font['/ToUnicode']);
+    if (!cmapRef) return { supported: false, reason: 'The Identity-H font has no usable Unicode map.' };
+    const cmapBytes = await qpdfStream(qpdf, bytes, cmapRef.objectNumber);
+    if (cmapBytes.byteLength > 2 * 1024 * 1024) return { supported: false, reason: 'The Identity-H font Unicode map is larger than the safe editing limit.' };
+    const codeToUnicode = parseToUnicodeCMap(cmapBytes);
+    if (!codeToUnicode.size || [...codeToUnicode.keys()].some((code) => code > 0xffff)) {
+      return { supported: false, reason: 'This Identity-H font uses a Unicode map the editor cannot safely encode.' };
+    }
+    const profile = {
+      supported: true,
+      kind: 'type0-identity-h',
+      baseFont,
+      codeToUnicode,
+      unicodeToCodes: createUnicodeReverseMap(codeToUnicode),
+      widthByCode: cidWidths,
+      defaultWidth
+    };
+    cache.set(cacheKey, profile);
+    return profile;
+  }
+  return { supported: false, reason: 'This font encoding cannot be changed safely in this browser.' };
 }
 
 function measureStandardText(text, baseFont) {
@@ -218,6 +468,38 @@ function measureStandardText(text, baseFont) {
     if (next) total += font.getXAxisKerningForPair(name, next) || 0;
   });
   return total;
+}
+
+function measureMappedBytes(bytes, profile) {
+  let width = 0;
+  for (const code of bytes) {
+    const glyphWidth = profile.widthByCode.get(code);
+    if (!Number.isFinite(glyphWidth)) return null;
+    width += glyphWidth;
+  }
+  return width;
+}
+
+function measureTextWithProfile(text, profile) {
+  if (profile.kind === 'standard') return measureStandardText(text, profile.baseFont);
+  const encoded = encodeMappedText(text, profile);
+  return encoded ? encoded.glyphWidths.reduce((sum, width) => sum + width, 0) : null;
+}
+
+export function canEncodePdfText(text, profile) {
+  if (typeof text !== 'string' || /[\r\n]/u.test(text) || !profile?.supported) return false;
+  if (profile.kind === 'standard' && /[^\x20-\x7e]/u.test(text)) return false;
+  return measureTextWithProfile(text, profile) !== null;
+}
+
+function encodePdfRun(text, profile, adjustment = 0) {
+  if (profile.kind === 'standard') return encodeLiteralAscii(text, adjustment);
+  const encoded = encodeMappedText(text, profile);
+  if (!encoded) throw new PdfTextEditError('The embedded PDF font does not contain every replacement character.', 'encoding');
+  const hex = [...encoded.bytes].map((value) => value.toString(16).padStart(2, '0')).join('').toUpperCase();
+  if (!hex) return `[${adjustment.toFixed(3)}] TJ`;
+  const textHex = `<${hex}>`;
+  return Math.abs(adjustment) < 0.5 ? `${textHex} Tj` : `[${textHex} ${adjustment.toFixed(3)}] TJ`;
 }
 
 function getPageResources(pageObject, objects) {
@@ -296,6 +578,7 @@ async function analyzePage(bytes, pageIndex, qpdf, json) {
   const candidates = [];
   const unavailable = [];
   const streamCache = new Map();
+  const fontProfileCache = new Map();
   const streamUseCounts = new Map();
   contentRefs.forEach((ref) => { const normalized = refId(ref); if (normalized) streamUseCounts.set(normalized, (streamUseCounts.get(normalized) || 0) + 1); });
 
@@ -309,44 +592,59 @@ async function analyzePage(bytes, pageIndex, qpdf, json) {
     for (let blockIndex = 0; blockIndex < blocks.length; blockIndex++) {
       const block = blocks[blockIndex];
       if (!block.shows.length) continue;
-      const show = block.shows[0];
-      if (block.shows.length !== 1 || show.invalid || block.unsupported) {
-        unavailable.push({ text: show?.bytes ? textDecoder.decode(show.bytes) : '', reason: block.unsupported || 'This text object contains more than one text-drawing operation.' });
-        continue;
+      const groups = [];
+      for (const run of block.shows) {
+        const previous = groups.at(-1)?.runs.at(-1);
+        let canJoin = previous && !run.invalid && !previous.invalid && sameTextStyle(previous, run) && showGapIsSafe(content, previous.operatorEnd, run.operatorStart);
+        if (!canJoin && previous && !run.invalid && !previous.invalid && sameTextStyle(previous, run) && showGapIsHorizontalTextMove(content, previous.operatorEnd, run.operatorStart)) {
+          const fontResource = fonts?.[previous.fontName];
+          const font = fontResource ? await getFontProfile(fontResource, objects, qpdf, bytes, fontProfileCache) : null;
+          canJoin = canJoinAdjacentTextShows(previous, run, font);
+        }
+        if (canJoin) groups.at(-1).runs.push(run);
+        else groups.push({ runs: [run] });
       }
-      const text = stringBytesToAscii(show.bytes);
-      if (text === null || !text.trim()) {
-        unavailable.push({ reason: 'This line uses characters outside the safe printable-ASCII subset.' });
-        continue;
+      for (const group of groups) {
+        const runs = group.runs;
+        const allTextBytes = Uint8Array.from(runs.flatMap((run) => run.bytes ? [...run.bytes] : []));
+        const show = runs[0];
+        const fontResource = show.fontName && fonts?.[show.fontName];
+        const font = fontResource ? await getFontProfile(fontResource, objects, qpdf, bytes, fontProfileCache) : { supported: false, reason: 'The page font could not be resolved.' };
+        const decodeText = font.kind === 'simple-cmap' ? decodeMappedBytes : font.kind === 'type0-identity-h' ? decodeIdentityHBytes : stringBytesToAscii;
+        const text = font.supported ? decodeText(allTextBytes, font) : null;
+        if (runs.some((run) => run.invalid)) { unavailable.push({ text: text ?? '', reason: 'This text-drawing operation uses an unsupported PDF string format.' }); continue; }
+        if (!font.supported) { unavailable.push({ text: text ?? '', reason: font.reason }); continue; }
+        if (text === null || !text.trim()) { unavailable.push({ reason: font.kind === 'simple-cmap' ? 'This text contains glyphs missing from the embedded font Unicode map.' : 'This text uses characters outside the safe printable-ASCII subset.' }); continue; }
+        if (show.textRenderingMode !== 0 || show.horizontalScale !== 100 || show.characterSpacing !== 0 || show.wordSpacing !== 0) {
+          unavailable.push({ text, reason: 'This text run uses a text-rendering effect or custom spacing that is not supported yet.' }); continue;
+        }
+        if (!Number.isFinite(show.fontSize) || show.fontSize <= 0) { unavailable.push({ text, reason: 'The original font size could not be confirmed.' }); continue; }
+        if (json.pages.some((page, index) => index !== pageIndex && page.contents?.includes(stream.normalized))) {
+          unavailable.push({ text, reason: 'This content stream is shared by multiple pages, so changing it could alter another page.' }); continue;
+        }
+        let widthUnits = 0;
+        for (const run of runs) {
+          const runText = decodeText(run.bytes, font);
+          const runWidth = runText === null ? null : measureTextWithProfile(runText, font);
+          if (runWidth === null) { widthUnits = null; break; }
+          widthUnits += runWidth - run.adjustment;
+        }
+        if (widthUnits === null || widthUnits <= 0) { unavailable.push({ text, reason: 'The selected font cannot measure this text run safely.' }); continue; }
+        candidates.push({
+          id: `p${pageIndex}-${stream.normalized.replaceAll(' ', '-')}-${runs[0].operatorStart}`,
+          pageIndex,
+          streamRef: stream.normalized,
+          streamObjectNumber: stream.objectNumber,
+          operatorStart: runs[0].operatorStart,
+          operatorEnd: runs.at(-1).operatorEnd,
+          originalText: text,
+          fontName: font.baseFont,
+          fontResourceName: show.fontName,
+          fontProfile: font,
+          widthUnits,
+          fontSize: show.fontSize
+        });
       }
-      if (block.textRenderingMode !== 0 || block.horizontalScale !== 100 || block.characterSpacing !== 0 || block.wordSpacing !== 0) {
-        unavailable.push({ text, reason: 'This line uses a text-rendering effect or custom spacing that is not supported yet.' });
-        continue;
-      }
-      const fontResource = block.fontName && fonts?.[block.fontName];
-      if (!fontResource) { unavailable.push({ text, reason: 'The page font could not be resolved.' }); continue; }
-      const font = normalizeFont(fontResource, objects);
-      if (!font.supported) { unavailable.push({ text, reason: font.reason }); continue; }
-      if (!Number.isFinite(block.fontSize) || block.fontSize <= 0) { unavailable.push({ text, reason: 'The original font size could not be confirmed.' }); continue; }
-      if (json.pages.some((page, index) => index !== pageIndex && page.contents?.includes(stream.normalized))) {
-        unavailable.push({ text, reason: 'This content stream is shared by multiple pages, so changing it could alter another page.' });
-        continue;
-      }
-      const widthUnits = measureStandardText(text, font.baseFont);
-      if (widthUnits === null) { unavailable.push({ text, reason: 'The selected font cannot encode every character in this line.' }); continue; }
-      candidates.push({
-        id: `p${pageIndex}-${stream.normalized.replaceAll(' ', '-')}-${show.start}`,
-        pageIndex,
-        streamRef: stream.normalized,
-        streamObjectNumber: stream.objectNumber,
-        operatorStart: show.start,
-        operatorEnd: show.operatorEnd,
-        originalText: text,
-        fontName: font.baseFont,
-        fontResourceName: block.fontName,
-        widthUnits,
-        fontSize: block.fontSize
-      });
     }
   }
   return { pageIndex, pageRef, candidates, unavailable, pageCount: pages.length };
@@ -357,9 +655,10 @@ export async function scanEditablePdfPage(bytes, pageIndex, qpdf) {
   return analyzePage(bytes, pageIndex, qpdf, json);
 }
 
-function encodeLiteralAscii(text) {
+function encodeLiteralAscii(text, adjustment = 0) {
   if (typeof text !== 'string' || /[^\x20-\x7e]/u.test(text)) throw new PdfTextEditError('Use one line of printable English characters for this font. Line breaks and non-ASCII characters are not supported in this first version.', 'encoding');
-  return `(${text.replaceAll('\\', '\\\\').replaceAll('(', '\\(').replaceAll(')', '\\)')}) Tj`;
+  const literal = `(${text.replaceAll('\\', '\\\\').replaceAll('(', '\\(').replaceAll(')', '\\)')})`;
+  return Math.abs(adjustment) < 0.5 ? `${literal} Tj` : `[${literal} ${adjustment.toFixed(3)}] TJ`;
 }
 
 function replaceByteRange(source, start, end, replacement) {
@@ -396,8 +695,9 @@ export async function applyEditablePdfText(bytes, edits, qpdf) {
   for (const edit of edits) {
     const text = parseEditText(edit);
     const candidate = analysisByPage.get(edit.pageIndex).candidates.find((item) => item.id === edit.id);
-    if (!candidate || candidate.originalText !== edit.originalText) throw new PdfTextEditError('The selected line no longer matches the PDF. Re-scan it before exporting.', 'stale');
-    const nextWidth = measureStandardText(text, candidate.fontName);
+    if (!candidate) throw new PdfTextEditError('The selected text run could not be found in the source PDF. Re-scan the page before exporting.', 'stale');
+    if (candidate.originalText !== edit.originalText) throw new PdfTextEditError('The selected text run changed in the source PDF. Re-scan the page before exporting.', 'stale');
+    const nextWidth = measureTextWithProfile(text, candidate.fontProfile);
     if (nextWidth === null) throw new PdfTextEditError('The selected font cannot encode every character in the replacement.', 'encoding');
     if (nextWidth > candidate.widthUnits + 0.5) throw new PdfTextEditError('That replacement is wider than the original line. Shorten it to keep it from colliding with nearby content.', 'width');
     if (!streamEdits.has(candidate.streamRef)) {
@@ -406,7 +706,7 @@ export async function applyEditablePdfText(bytes, edits, qpdf) {
       streamEdits.set(candidate.streamRef, { objectNumber: parsed.objectNumber, stream, ranges: [] });
     }
     const entry = streamEdits.get(candidate.streamRef);
-    entry.ranges.push({ start: candidate.operatorStart, end: candidate.operatorEnd, text });
+    entry.ranges.push({ start: candidate.operatorStart, end: candidate.operatorEnd, text, profile: candidate.fontProfile, adjustment: nextWidth - candidate.widthUnits });
     changedTexts.push({ ...edit, text });
   }
   const updateObjects = {};
@@ -414,7 +714,7 @@ export async function applyEditablePdfText(bytes, edits, qpdf) {
     let updated = entry.stream;
     const ranges = [...entry.ranges].sort((left, right) => right.start - left.start);
     for (const range of ranges) {
-      const replacement = textEncoder.encode(encodeLiteralAscii(range.text));
+      const replacement = textEncoder.encode(encodePdfRun(range.text, range.profile, range.adjustment));
       updated = replaceByteRange(updated, range.start, range.end, replacement);
     }
     updateObjects[`obj:${streamRef}`] = { stream: { dict: {}, data: base64(updated) } };

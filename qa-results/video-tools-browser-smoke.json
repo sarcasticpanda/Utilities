@@ -1,0 +1,193 @@
+{
+  "date": "2026-11-01",
+  "browser": "Playwright chromium",
+  "origin": "https://quickkit-browser-tools.pages.dev",
+  "checks": [
+    {
+      "name": "video route and controls load",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "starts with compression selected",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "generated audio source context is running",
+      "pass": true,
+      "detail": "running"
+    },
+    {
+      "name": "generated short audio/video source clips",
+      "pass": true,
+      "detail": "33464 B and 34504 B"
+    },
+    {
+      "name": "generated source clips have distinct visual markers",
+      "pass": true,
+      "detail": "A 205,96,67 · B 56,116,184"
+    },
+    {
+      "name": "source metadata is read",
+      "pass": true,
+      "detail": "33 KB · 320 × 180 · 0:03"
+    },
+    {
+      "name": "timeline workspace appears when a clip loads",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "timeline stays docked at the bottom like an editing workspace",
+      "pass": true,
+      "detail": "{\"position\":\"fixed\",\"bottom\":988,\"viewport\":1000,\"tracks\":1}"
+    },
+    {
+      "name": "filmstrip trim handles drag to precise in/out times and sync to the preview",
+      "pass": true,
+      "detail": "{\"start\":\"0.50\",\"end\":\"2.50\",\"duration\":\"3.157\",\"filmstripFrames\":8,\"previewTime\":1.2,\"summary\":\"0:00.50–0:02.50 · 2.00 s selected\",\"trimRail\":{\"x\":249,\"y\":880,\"width\":1004,\"height\":66},\"endHandle\":{\"x\":1241,\"y\":873,\"width\":20,\"height\":80},\"pointer\":[{\"target\":\"BUTTON\",\"part\":\"end\",\"x\":1252},{\"target\":\"BUTTON\",\"part\":\"start\",\"x\":251}]}"
+    },
+    {
+      "name": "keyboard trim handles provide fine nudging and an exact accessible value",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "use full video resets both range handles and exact time fields",
+      "pass": true,
+      "detail": "0.00–3.16 / 3.157"
+    },
+    {
+      "name": "exact keep-from and keep-to inputs update the timeline summary",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "split at playhead creates two editable timeline sections",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "compression creates playable export with audio",
+      "pass": true,
+      "detail": "59356 B · 3.23 s · audio tracks 1, decoded 13847 B"
+    },
+    {
+      "name": "compressed export reopens in the tool",
+      "pass": true,
+      "detail": "58 KB · 320 × 180 · 0:03"
+    },
+    {
+      "name": "square crop preview and export become available",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "square crop exports square pixels and removes the outside-frame marker",
+      "pass": true,
+      "detail": "180 × 180 · corner 217,94,62"
+    },
+    {
+      "name": "cropped export reopens with square dimensions",
+      "pass": true,
+      "detail": "57 KB · 180 × 180 · 0:03"
+    },
+    {
+      "name": "trim creates playable clip with audio and selected duration",
+      "pass": true,
+      "detail": "1.22 s · audio tracks 1, decoded 19820 B"
+    },
+    {
+      "name": "trimmed export reopens and reports duration",
+      "pass": true,
+      "detail": "23 KB · 180 × 180 · 0:01"
+    },
+    {
+      "name": "join accepts two ordered files",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "join creates playable file with audio and combined duration",
+      "pass": true,
+      "detail": "6.40 s · audio tracks 1, decoded 15548 B"
+    },
+    {
+      "name": "joined video frames follow the selected clip order",
+      "pass": true,
+      "detail": "first {\"pixel\":[217,94,64],\"requestedTime\":0.4,\"currentTime\":0.4,\"duration\":6.4} · second {\"pixel\":[47,117,189],\"requestedTime\":3.7,\"currentTime\":3.7,\"duration\":6.4}"
+    },
+    {
+      "name": "reordering changes the actual exported sequence",
+      "pass": true,
+      "detail": "first {\"pixel\":[47,117,187],\"requestedTime\":0.4,\"currentTime\":0.4,\"duration\":6.314667} · second {\"pixel\":[217,94,64],\"requestedTime\":3.6573335,\"currentTime\":3.657333,\"duration\":6.314667}"
+    },
+    {
+      "name": "joined export reopens in the tool",
+      "pass": true,
+      "detail": "121 KB · 320 × 180 · 0:06"
+    },
+    {
+      "name": "same-file middle cut joins retained sections with audio",
+      "pass": true,
+      "detail": "2.13 s · audio tracks 1, decoded 19418 B"
+    },
+    {
+      "name": "remove-range action creates before and after sections",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "remove-range export keeps both sides and omits the selected middle",
+      "pass": true,
+      "detail": "2.13 s · Unwanted section removed"
+    },
+    {
+      "name": "multiple soundtrack tracks decode locally",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "timeline reflects chosen soundtrack positions",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "soundtrack placement and source trims reach the exported audio",
+      "pass": true,
+      "detail": "6.36 s · 523 Hz 0.0004 → 0.2901 · 880 Hz 0.0000 → 0.2029 · original 440 Hz 0.0840"
+    },
+    {
+      "name": "original audio volume control changes the exported mix",
+      "pass": true,
+      "detail": "original 0.0840 → 0.0000 · soundtrack 0.2902 · {\"keep\":true,\"volume\":\"0\",\"status\":\"Export complete. Preview the result, then download it.\"}"
+    },
+    {
+      "name": "original-audio mute disables its level slider",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "mixed export reopens with audio and video metadata",
+      "pass": true,
+      "detail": "120 KB · 320 × 180 · 0:06"
+    },
+    {
+      "name": "mobile viewport has no horizontal page overflow",
+      "pass": true,
+      "detail": "390px / 390px"
+    },
+    {
+      "name": "320px phone viewport has no horizontal page overflow",
+      "pass": true,
+      "detail": "320px / 320px"
+    },
+    {
+      "name": "no browser runtime or console errors",
+      "pass": true,
+      "detail": ""
+    }
+  ],
+  "errors": []
+}

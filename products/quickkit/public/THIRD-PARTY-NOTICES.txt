@@ -761,3 +761,30 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+
+================================================================================
+mediabunny 1.65.0
+License: Mozilla Public License 2.0 (MPL-2.0)
+The license text is available at /LICENSE-MEDIABUNNY.txt and https://www.mozilla.org/en-US/MPL/2.0/.
+================================================================================
+
+================================================================================
+Outfit Latin typeface
+Copyright 2021 The Outfit Project Authors. Licensed under SIL Open Font License 1.1. Full license: /fonts/OFL.txt
+Source: https://github.com/Outfitio/Outfit-Fonts
+================================================================================
+
+================================================================================
+piexifjs 1.0.6
+License: MIT
+Copyright (c) 2014, 2015 hMatoba (https://github.com/hMatoba/piexifjs)
+Complete license text: /LICENSE-PIEXIFJS.txt
+================================================================================
+
+================================================================================
+Leaflet 1.9.4
+License: BSD 2-Clause
+Complete license text: /LICENSE-LEAFLET.txt
+Map tiles: OpenStreetMap contributors, subject to the OpenStreetMap tile usage policy.
+================================================================================

@@ -18,9 +18,9 @@ Search visibility is a long-running outcome. This log tracks the parts we can ve
 - [x] Each sitemap includes its homepage and working tool pages; all three return HTTP 200.
 - [x] Canonical tags and social title/description metadata match each deployed origin.
 - [x] Core page text is static and readable without completing a client-side interaction.
-- [ ] Social preview image (`og:image`) is not configured yet.
+- [x] Social preview images (`og:image`) are configured on all three sites.
 - [ ] Mobile Core Web Vitals and real-user performance are not measured yet.
-- [ ] Search Console/Bing ownership verification and sitemap submission are not done.
+- [x] Google Search Console ownership was verified for WorkKit and FormReady; sitemaps are published. Recheck fetch/index reports after Google recrawls.
 
 ## Publish and follow-up
 
@@ -44,6 +44,12 @@ Search visibility is a long-running outcome. This log tracks the parts we can ve
 | WorkKit | Cloudflare Pages | https://workkit-hours-tools.pages.dev | [sitemap.xml](https://workkit-hours-tools.pages.dev/sitemap.xml) | Passed | Public |
 | QuickKit | Cloudflare Pages | https://quickkit-browser-tools.pages.dev | [sitemap.xml](https://quickkit-browser-tools.pages.dev/sitemap.xml) | Passed | Public |
 | FormReady | Cloudflare Pages | https://formready-photo-tools.pages.dev | [sitemap.xml](https://formready-photo-tools.pages.dev/sitemap.xml) | Passed | Public |
+
+## Latest publish — 2 November 2026
+
+- QuickKit, WorkKit and FormReady were rebuilt and deployed directly to their existing Cloudflare Pages projects.
+- Production verification passed: cross-site browser QA 92/92, QuickKit video editor 37/37, multi-range trim 9/9, FormReady Exam Form Kit 19/19, and the technical SEO crawl 19 sitemap URLs / 34 linked routes / 0 failures.
+- Cloudflare Pages is not connected to GitHub. The GitHub push records the source and docs but does not trigger a deployment; future production updates must be deployed to Cloudflare separately unless Git integration is configured.
 
 Custom domains are not connected. Traffic, ranking, immediate indexing, ad approval and income depend on external services and user demand.
 

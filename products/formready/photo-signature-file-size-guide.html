@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><link rel="preload" href="/fonts/outfit-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <meta name="description" content="Resize an application photo or signature to the pixel dimensions and KB range in your current notice. Crop, compress and check the saved image in your browser.">
+  <meta name="theme-color" content="#f8f5f1">
+  <title>Photo &amp; Signature Resizer for Forms | FormReady</title>
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="canonical" href="https://formready-photo-tools.pages.dev/photo-signature-file-size-guide.html">
+  <meta property="og:title" content="Photo &amp; Signature Resizer for Forms | FormReady">
+  <meta property="og:description" content="A careful workflow for official dimensions, crop ratio, image quality and file-size limits.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://formready-photo-tools.pages.dev/photo-signature-file-size-guide.html">
+  <meta property="og:image" content="https://formready-photo-tools.pages.dev/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="FormReady tools and guides">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://formready-photo-tools.pages.dev/og-image.png">
+</head>
+<body>
+  <header class="site-header"><a class="brand" href="./"><span class="brand-icon">F</span><span>FormReady</span></a><nav aria-label="Main navigation"><a href="image-preparer.html">Prepare an image</a><a href="./#how">How it works</a></nav><a class="header-action" href="image-preparer.html">Start here</a></header>
+  <main class="wrap tool-page">
+    <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="./">Home</a><span aria-hidden="true">/</span><span>Photo and signature guide</span></nav>
+    <article class="below-tool">
+      <p class="eyebrow">Image preparation help</p>
+      <h1>Resize a photo or signature for an online form</h1>
+      <p>Application portals can check image dimensions, format and file size independently. Start with the current instructions for the exact form you are submitting, then enter those limits in the image preparer.</p>
+
+      <h2>Find the exact requirements first</h2>
+      <p>Write down the required format, width and height, any minimum or maximum file size, and any crop or background rules. Requirements vary by organization and application cycle. A rule from an older notice or another exam may not match the form in front of you.</p>
+      <p>FormReady is an independent utility. It does not receive official portal rules or certify that a file will be accepted. Do not treat a preset or an example from another site as current instructions.</p>
+
+      <h2>Match dimensions and crop ratio</h2>
+      <p>If the portal gives pixel dimensions, use those values directly. If it gives a physical size and a dots-per-inch value, a basic conversion is:</p>
+      <p><strong>pixels = millimetres ÷ 25.4 × DPI</strong></p>
+      <p>For example, 25.4 mm at 300 DPI corresponds to 300 pixels. Use that calculation only when the instructions specify both physical size and DPI; a portal that checks pixels may not care about print metadata.</p>
+      <p>Set the crop to the same width-to-height ratio as the target image. Resizing a square crop into a tall portrait can stretch the image or cut off important areas. Inspect the final crop before saving.</p>
+
+      <h2>Meet the file-size limit without guessing</h2>
+      <p>Pixel dimensions and file size are separate checks. JPEG quality and image detail affect how many kilobytes a file uses, so the same dimensions can produce different file sizes. Reduce quality gradually, then check the measured output against the portal’s minimum and maximum rather than assuming that “smaller” is always better.</p>
+      <p>Use the requested format. Changing a filename extension does not convert an image. If the portal accepts only JPEG, make sure the downloaded file is actually JPEG.</p>
+
+      <h2>Review the saved image</h2>
+      <ol>
+        <li>Compare the downloaded dimensions, format and measured file size with the current official requirements.</li>
+        <li>Open the result and check that the face or signature is clear and not stretched.</li>
+        <li>Keep the original image so you can retry with a different crop or quality setting.</li>
+        <li>Upload the result to the official portal and follow its own validation messages.</li>
+      </ol>
+      <p>The image is processed in your browser and is not uploaded to FormReady. That protects the local workflow, but only the application portal can decide whether a submitted file meets its rules.</p>
+      <h2>Common photo and signature resize questions</h2>
+      <h3>Can I resize a photo to a required KB range?</h3>
+      <p>Yes. Enter both the minimum and maximum file size from your current instructions. FormReady searches JPEG quality settings and checks the exported bytes. Some images cannot reach a requested range at fixed dimensions; when that happens, the checker reports that it needs attention instead of padding the file or claiming success.</p>
+      <h3>How do I make a signature image with a white background?</h3>
+      <p>Upload a clear scan, choose Signature, and turn on Clean signature background. It whitens light paper and increases contrast for darker ink. Inspect the result carefully because thin strokes, coloured ink or uneven lighting may need a different scan or manual editing.</p>
+      <h3>Are exam presets current, and does a green check mean accepted?</h3>
+      <p>Requirements change by exam and application cycle. Presets show their official source and cycle; entries marked historical are only a reference. Enter the current notice values if a preset does not match. A pass means the measured file properties match the values entered; it does not verify identity, image clarity, signature authenticity or portal acceptance.</p>
+      <h3>Should I add my name and date to a photo?</h3>
+      <p>Only when the instructions for the application you are submitting explicitly ask for it. The name and date strip is optional and starts off.</p>
+      <p><a class="button button-dark" href="image-preparer.html">Prepare a photo or signature</a></p>
+    </article>
+  </main>
+  <footer class="site-footer wrap"><a class="brand" href="./"><span class="brand-icon">F</span><span>FormReady</span></a><div><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="about.html">About</a><a href="contact.html">Contact</a><a href="open-source-acknowledgements.html">Open-source</a></div></footer>
+</body>
+</html>

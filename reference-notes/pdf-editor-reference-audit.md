@@ -1,29 +1,41 @@
 # PDF editor reference audit
 
-Reviewed the publicly visible workflows on 2026-10-30:
+Reviewed public product pages and open-source project documentation on 2026-10-30. This is a behavior and engineering-pattern review; no private APIs, credentials, intercepted traffic, or competitor source code were used.
 
-- Sejda PDF editor: <https://www.sejda.com/pdf-editor>
-- iLovePDF PDF editor: <https://www.ilovepdf.com/edit-pdf>
+## Product references
 
-## Observed product patterns
+| Reference | What was observed | What QuickKit uses as a product reference |
+|---|---|---|
+| [Sejda PDF editor](https://www.sejda.com/pdf-editor) | Select existing PDF text for editing; add text/images/shapes/links; fill forms; annotate; manage files and download. | Clear separation between selecting existing content and adding new annotations. QuickKit implements only the supported content-stream subset and its own page rail/annotation tools. |
+| [iLovePDF Edit PDF](https://www.ilovepdf.com/edit-pdf) | Add text, shapes, comments/highlights and images, then download. | Keep the first-run workflow focused and controls familiar. The public description is not evidence of arbitrary original-text editing. |
+| [iLovePDF JPG to PDF](https://www.ilovepdf.com/jpg_to_pdf) | Choose/arrange images and set page output before conversion. | Photo queue, page order, page-wide settings and an explicit create/download step. QuickKit adds crop/filter controls suited to this app. |
 
-| Area | Sejda | iLovePDF | QuickKit decision |
-|---|---|---|---|
-| Start | Upload, drop, or start blank; optional cloud/web input | Choose or drop a PDF; Drive/Dropbox affordances | Local file picker and drag-and-drop only; no third-party account prompts |
-| Additions | Text, links, images, shapes, annotations and form controls | Text, shapes, comments/highlights and images | Text, highlight, rectangle, image and drawn signature |
-| Page/document workflow | Full-featured editor within a much larger PDF tool catalog | Focused edit, review items, download | One PDF at a time; clear page rail, reorder/delete, zoom, download; keep merge separately linked |
-| Privacy | Reference indicates temporary service-side document handling | Upload/progress-based workflow | Keep selected files in-browser and communicate the limitation plainly |
-| Scope boundary | Existing-text edits and form authoring appear in its catalog | Its public feature copy promises added content | QuickKit's v1 adds overlay annotations and does not claim arbitrary original text replacement or fillable-form authoring |
+## Open-source engineering references
 
-## Implementation notes
+| Repository | License / fit | Useful findings and decision |
+|---|---|---|
+| [AryanBV/pdf-edit-engine](https://github.com/AryanBV/pdf-edit-engine) | MIT project; Python/pikepdf/fonttools/pdfminer stack, so not a drop-in for static browser Pages. | Its docs describe position-aware matching across split content-stream operators, width/kerning checks, font-subset handling and fidelity reports. Used as a design reference for recognizing consecutive text runs and retaining their advance; QuickKit's parser and tests are independently written and much narrower. |
+| [storytold/pdfcraft](https://github.com/storytold/pdfcraft) | Rust/wasm-capable project; alpha and explicitly still has limits in existing-text editing. | Documentation illustrates font-aware editing and conservative refusal of ambiguous edits. Too large and immature to replace this site's current editor in this fix. |
+| [QrCommunication/gigapdf-lib](https://github.com/QrCommunication/gigapdf-lib) | PolyForm Noncommercial 1.0.0. | Has a browser-WASM SDK but its license is incompatible with an ad-funded commercial service without another license, so it was not adopted. |
+| [QrCommunication/gigapdf](https://github.com/QrCommunication/gigapdf) | AGPLv3 full-stack project. | Useful as a self-hosted product reference, but not a lightweight static Pages dependency. No code imported. |
 
-- Findings come from public product pages and visible UI text; no private API, credentials, or traffic interception was used.
-- Repomix is a repository packer, not a third-party web reverse-engineering tool. No Sejda/iLovePDF source or branding was copied.
-- QuickKit uses the existing `pdf-lib` package for export and Mozilla `pdfjs-dist` for local rendering. The app loads no PDF processing endpoint.
-- The editor uses a focused toolbar, lazy page thumbnails, one active-page canvas and a contextual item inspector. This keeps the task flow compact on phones.
-- Password-protected files, rewriting arbitrary existing text, form-field creation, OCR and cloud-drive imports remain out of scope; the interface says so where relevant.
-- The loaded editor caps an individual PDF at 100 MB and an inserted image at 20 MB; mobile memory varies by device. The app should be evaluated with larger real documents before removing those limits.
+## What was reverse engineered—and what was not
 
-## Browser test inventory
+- The **user-visible workflow and feature boundaries** were analyzed from public product pages and docs.
+- The **PDF text encoding pattern** was studied from public documentation: text may be split into separate `Tj` operations or represented in a `TJ` array; replacing it safely requires preserving text advance and refusing runs where positioning or styling changes between pieces.
+- No competitor source code, private API, branding, or assets were copied. No upstream engine was cloned or integrated in this implementation. Therefore this should not be described as a code reverse-engineering port.
+- QuickKit's browser-side parser supports standard Type 1/WinAnsi text, embedded Type1 subset fonts with usable ToUnicode maps, and embedded Type0/CIDFontType2 fonts using Identity-H plus a usable ToUnicode map and CID widths. It groups same-style adjacent `Tj`/`TJ` runs and same-baseline character-by-character text shows, measures glyph advances, refuses missing replacement glyphs or wider text, and adjusts the final `TJ` advance. Owner-supplied PDFs were used for private verification; other font encodings, custom CMaps, vertical text and unusual transforms remain outside the verified scope.
 
-See `../scripts/pdf-editor-smoke.mjs`, `../qa-results/pdf-editor/results.json`, and `../BROWSER_QA_CHECKLIST.md` for cases and local Chromium evidence.
+## QuickKit implementation choices and limits
+
+- `pdfjs-dist` renders and extracts selectable text; `pdf-lib` handles existing document and annotation export; `pdfstudio`'s qpdf WebAssembly package applies safe source-stream changes locally.
+- OCR uses Tesseract.js for scanned pages. OCR recognition is separate from native PDF text extraction and cannot restore the original font program or layout.
+- Direct source-text editing refuses scanned text, unsupported font encodings, glyphs absent from a subset font, style/position changes within a run, and replacements wider than the original. OCR replacement is a visual mask plus new text overlay, distinct from direct source-text editing.
+- “Apply same filter to all photos” reuses the active photo's filter and brightness/contrast. Page size, orientation and margin apply to each selected image page. Photo and PDF thumbnail lists support drag reorder; accessible arrow buttons remain available.
+- The PDF extract panel stays closed until the user clicks **Extract text**. This avoids displaying an empty result box that appears to be a failed extraction.
+
+## Browser verification
+
+- PDF editor checks: `scripts/pdf-editor-smoke.mjs`.
+- Document/image/PDF extraction checks: `scripts/quickkit-document-qa.mjs`.
+- Build and browser test evidence: see `BROWSER_QA_CHECKLIST.md`, `IMPLEMENTATION_TRACKER.md`, and generated `qa-results/` reports.

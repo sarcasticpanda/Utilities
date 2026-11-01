@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><link rel="preload" href="/fonts/outfit-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <meta name="description" content="Edit and join video clips, cut unwanted sections, add and position soundtrack audio, and export locally in your browser.">
+  <meta name="theme-color" content="#f3f6fb">
+  <title>Video Editor, Joiner and Soundtrack Mixer | QuickKit</title>
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/video-tools.css">
+  <link rel="canonical" href="https://quickkit-browser-tools.pages.dev/video-tools.html">
+  <meta property="og:title" content="Video Editor, Joiner and Soundtrack Mixer | QuickKit">
+  <meta property="og:description" content="Join video clips, cut sections, and position soundtrack audio in your browser. Files stay on your device.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://quickkit-browser-tools.pages.dev/video-tools.html">
+  <meta property="og:image" content="https://quickkit-browser-tools.pages.dev/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="QuickKit tools and guides">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=3">
+  <meta name="twitter:image" content="https://quickkit-browser-tools.pages.dev/og-image.png">
+</head>
+<body data-page="video-tools">
+  <header class="site-header">
+    <a class="brand" href="./"><span class="brand-mark">q</span><span>quickkit</span></a>
+    <nav aria-label="Main navigation"><a href="image-compressor.html">Images</a><a href="pdf-editor.html">PDF</a><a href="video-tools.html" aria-current="page">Video</a><a href="geo-photo.html">Geo photo</a><a href="text-tools.html">Text</a></nav>
+    <a class="header-action" href="#video-workbench">Open video tools <span aria-hidden="true">↓</span></a>
+  </header>
+
+  <main class="tool-page wrap video-page">
+    <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="./">Home</a><span aria-hidden="true">/</span><span>Video tools</span></nav>
+    <section class="tool-intro video-intro">
+      <p class="eyebrow">Private video tools</p>
+      <h1>Shape your video and sound.</h1>
+      <p class="lede">Trim or join video sections, place soundtrack audio where it belongs, and preview the exported result. Processing stays in this browser.</p>
+    </section>
+
+    <section class="video-workbench" id="video-workbench" aria-label="Video tools">
+      <div class="video-tabs" role="tablist" aria-label="Choose a video task">
+        <button type="button" role="tab" id="video-tab-compress" aria-selected="true" aria-controls="video-panel-compress" data-mode="compress">Compress</button>
+        <button type="button" role="tab" id="video-tab-trim" aria-selected="false" aria-controls="video-panel-trim" data-mode="trim">Trim</button>
+        <button type="button" role="tab" id="video-tab-crop" aria-selected="false" aria-controls="video-panel-crop" data-mode="crop">Crop</button>
+        <button type="button" role="tab" id="video-tab-join" aria-selected="false" aria-controls="video-panel-join" data-mode="join">Edit and join</button>
+      </div>
+
+      <div class="video-layout">
+        <section class="video-settings" aria-label="Choose files and settings">
+          <label class="video-dropzone" id="video-dropzone" for="video-files">
+            <span class="video-drop-icon" aria-hidden="true">▶</span>
+            <strong id="video-upload-title">Choose a video or drop it here</strong>
+            <span id="video-upload-hint">MP4, MOV, M4V or WebM · up to 150 MB</span>
+            <input id="video-files" type="file" accept="video/mp4,video/quicktime,video/webm,video/x-m4v,.mp4,.mov,.m4v,.webm" aria-label="Choose video files">
+          </label>
+
+          <div class="video-file-summary" id="video-file-summary" hidden>
+            <strong id="video-file-name"></strong>
+            <span id="video-file-details"></span>
+            <button type="button" class="video-text-button" id="video-clear">Remove</button>
+          </div>
+
+          <div class="video-mode-panel" id="video-panel-compress" role="tabpanel" aria-labelledby="video-tab-compress">
+            <label class="video-field">Output size
+              <select id="video-resolution">
+                <option value="original">Keep original resolution</option>
+                <option value="1080">Up to 1080p</option>
+                <option value="720" selected>Up to 720p</option>
+                <option value="480">Up to 480p</option>
+              </select>
+            </label>
+            <label class="video-field">Quality
+              <select id="video-quality">
+                <option value="high">Higher quality</option>
+                <option value="medium" selected>Balanced</option>
+                <option value="low">Smaller file</option>
+              </select>
+            </label>
+            <p class="video-help">The final size depends on the video and your browser. We’ll show the measured result before download.</p>
+            <button type="button" class="button button-primary video-run" id="video-run-compress" disabled>Compress video</button>
+          </div>
+
+          <div class="video-mode-panel" id="video-panel-trim" role="tabpanel" aria-labelledby="video-tab-trim" hidden>
+            <div class="video-trim-action" role="group" aria-label="Choose what to do with selected ranges">
+              <button type="button" id="video-trim-keep" aria-pressed="true">Keep selected parts</button>
+              <button type="button" id="video-trim-remove" aria-pressed="false">Remove selected parts</button>
+            </div>
+              <p class="video-help" id="video-trim-intent-help">Saved ranges are joined in order. Switch to “Remove selected parts” to cut those ranges from the original video.</p>
+            <div class="video-time-fields">
+                <label class="video-field">Range start (seconds)
+                <input id="video-trim-start" type="number" min="0" step="0.01" value="0" inputmode="decimal">
+              </label>
+                <label class="video-field">Range end (seconds)
+                <input id="video-trim-end" type="number" min="0" step="0.01" value="0" inputmode="decimal">
+              </label>
+            </div>
+            <p class="video-help" id="video-trim-guidance">Drag the yellow handles or type exact times. Add a range for each part, then preview the result.</p>
+            <div class="video-trim-section-actions"><button type="button" class="video-text-button" id="video-add-trim-range" disabled>Save this range</button><button type="button" class="video-text-button" id="video-clear-trim-ranges" disabled>Clear ranges</button></div>
+            <ol class="video-trim-segments" id="video-trim-segments" aria-label="Selected video ranges" hidden></ol>
+            <button type="button" class="button button-secondary video-run" id="video-preview-trim-ranges" disabled hidden>Preview selected parts</button>
+            <button type="button" class="button button-primary video-run" id="video-run-trim" disabled>Export trimmed clip</button>
+            <div class="video-cut-box">
+              <strong>Remove one section</strong>
+              <p class="video-help">For several cuts, choose Remove selected parts, save each unwanted range, then preview the remaining video.</p>
+              <button type="button" class="button button-secondary video-run" id="video-run-remove-range" disabled>Remove this range</button>
+            </div>
+          </div>
+
+          <div class="video-mode-panel" id="video-panel-crop" role="tabpanel" aria-labelledby="video-tab-crop" hidden>
+            <label class="video-field">Crop shape
+              <select id="video-crop-ratio">
+                <option value="original">Keep original frame</option>
+                <option value="1.7777777778">Widescreen · 16:9</option>
+                <option value="1.3333333333">Classic · 4:3</option>
+                <option value="1">Square · 1:1</option>
+                <option value="0.5625">Portrait · 9:16</option>
+              </select>
+            </label>
+            <label class="video-field">Move crop left or right <output id="video-crop-x-value">50%</output>
+              <input id="video-crop-x" type="range" min="0" max="100" step="1" value="50">
+            </label>
+            <label class="video-field">Move crop up or down <output id="video-crop-y-value">50%</output>
+              <input id="video-crop-y" type="range" min="0" max="100" step="1" value="50">
+            </label>
+            <p class="video-help" id="video-crop-summary">Choose a video to preview its crop.</p>
+            <button type="button" class="button button-primary video-run" id="video-run-crop" disabled>Crop and export video</button>
+          </div>
+
+          <div class="video-mode-panel" id="video-panel-join" role="tabpanel" aria-labelledby="video-tab-join" hidden>
+            <div class="video-list-heading"><div><strong>Video timeline</strong><span>Reorder clips or add multiple sections from one video.</span></div><button type="button" class="video-text-button" id="video-add-segment" disabled>+ Add section</button></div>
+            <ol class="video-segments" id="video-segments" aria-label="Clip and section order"></ol>
+            <p class="video-help">Each row is one section to keep. Use two sections from the same video to cut out a middle part. Clips are re-encoded to a shared size and format.</p>
+            <section class="soundtrack-editor" aria-labelledby="soundtrack-title">
+              <div class="video-list-heading"><div><strong id="soundtrack-title">Soundtracks</strong><span>Add audio files and choose their source section and placement.</span></div></div>
+              <label class="soundtrack-dropzone" id="soundtrack-dropzone" for="soundtrack-files">
+                <strong>Choose audio or drop it here</strong><span>MP3, WAV, AAC, M4A, OGG or WebM audio · up to 3 tracks</span>
+                <input id="soundtrack-files" type="file" accept="audio/*,.mp3,.wav,.aac,.m4a,.ogg,.opus,.flac,.webm" multiple>
+              </label>
+              <label class="check-option soundtrack-original"><input id="keep-original-audio" type="checkbox" checked><span><b>Keep original video sound</b><small>Mix it with added soundtracks.</small></span></label>
+              <label class="video-field soundtrack-original-volume">Original sound volume <output id="original-volume-value">100%</output>
+                <input id="original-volume" type="range" min="0" max="200" step="1" value="100">
+              </label>
+              <ol class="soundtrack-list" id="soundtrack-list" aria-label="Soundtrack tracks"></ol>
+              <p class="video-help">Audio is mixed into the final video. “Start on video” places a track on the joined timeline; “Use audio from” trims the source recording. For memory safety, soundtrack mixes are limited to 4 minutes on desktop and 2 minutes on narrow screens. Preview the export before downloading.</p>
+            </section>
+            <button type="button" class="button button-primary video-run" id="video-run-join" disabled>Join selected clips</button>
+          </div>
+
+          <div class="video-progress" id="video-progress-panel" hidden>
+            <div class="video-progress-heading"><strong id="video-progress-label">Preparing video</strong><output id="video-progress-value">0%</output></div>
+            <progress id="video-progress" max="100" value="0">0%</progress>
+            <button type="button" class="video-text-button" id="video-cancel">Cancel processing</button>
+          </div>
+          <p class="video-status" id="video-status" role="status" aria-live="polite">Choose a video to begin. Files stay on your device.</p>
+          <p class="video-private-note"><span aria-hidden="true">✓</span> Video processing stays on this device</p>
+        </section>
+
+        <section class="video-preview-panel" aria-label="Video preview and result">
+          <div class="video-preview-heading"><strong id="video-preview-title">Preview</strong><span id="video-preview-meta">Your video appears here</span></div>
+          <div class="video-frame">
+            <video id="video-preview" controls playsinline preload="metadata" hidden></video>
+            <div class="video-empty" id="video-empty"><span aria-hidden="true">▶</span><strong>Preview your video here</strong><small>Choose a video to see its duration and dimensions.</small></div>
+          </div>
+          <div class="video-result" id="video-result" hidden>
+            <div><strong id="video-result-title">Your video is ready</strong><span id="video-result-details"></span></div>
+            <a class="button button-primary" id="video-download" download>Download video</a>
+          </div>
+          <p class="video-support-note">This browser checks whether it can read and export the selected video. Some formats and very large files may not work on every device.</p>
+        </section>
+      </div>
+    </section>
+    <section class="video-editor-dock" id="video-editor-dock" aria-label="Video timeline editor" hidden>
+        <div class="video-editor-dock-heading"><div><strong>Timeline editor</strong><span>Scrub the preview, split at the playhead, or drag the trim handles.</span></div><div class="video-transport"><button type="button" class="video-text-button" id="video-playback-toggle" disabled>Play</button><output id="video-timecode">0:00 / 0:00</output><button type="button" class="video-text-button" id="video-split-at-playhead" disabled>Split at playhead</button></div></div>
+        <label class="video-editor-scrub" for="video-scrub"><span>Preview</span><input id="video-scrub" type="range" min="0" max="0" step="0.1" value="0" disabled><output id="video-scrub-time">0:00</output></label>
+          <div class="video-trim-ranges" id="video-trim-ranges" hidden><div><strong>Active range</strong><output id="video-trim-range-summary">0:00–0:00 · 0:00 selected</output></div><button type="button" class="video-text-button" id="video-reset-trim" disabled>Use full video</button></div>
+        <div class="video-timeline" id="video-timeline" aria-label="Video and soundtrack timeline"></div>
+        <p class="video-timeline-note">On Trim, adjust the in and out handles then choose whether to keep or remove that interval. On Edit and join, each row is one kept section; audio rows show where each soundtrack starts.</p>
+    </section>
+
+    <section class="below-tool video-explainer" data-reveal>
+      <h2>What to expect</h2>
+      <p>QuickKit uses codecs available in your browser. A trim, crop, join or compression re-encodes the video and may reduce quality. Supported input formats depend on the codec inside the file, not just its filename. The tool will show an error if this browser cannot process it.</p>
+      <p>Use <strong>Trim</strong> to keep a time range or remove one; use <strong>Crop</strong> to frame the video as widescreen, classic, square or portrait. In <strong>Edit and join</strong>, reorder clips, add sections from the same source, and place soundtrack files along the joined timeline.</p>
+    </section>
+  </main>
+
+  <footer class="site-footer wrap"><a class="brand" href="./"><span class="brand-mark">q</span><span>quickkit</span></a><p>Small tasks, sorted.</p><div><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="about.html">About</a><a href="contact.html">Contact</a><a href="open-source-acknowledgements.html">Open-source</a></div></footer>
+  <script type="module" src="/app.js"></script>
+  <script type="module" src="/video-tools.js"></script>
+</body>
+</html>

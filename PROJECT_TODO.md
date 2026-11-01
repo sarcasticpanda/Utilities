@@ -4,10 +4,11 @@ All three sites are live on Cloudflare Pages, and QuickKit’s PDF editor is liv
 
 ## Before the next public update
 
-- [ ] Add the site operator's support email or owned feedback form to all Contact pages.
-- [ ] Complete the remaining keyboard, touch, screen-reader and file-edge-case checks in the browser checklist.
-- [ ] Verify search properties and submit the three live sitemaps when the owner is ready to connect Search Console/Bing.
-- [ ] Add an `og:image` when a suitable brand preview image is ready.
+- [x] Publish the QuickKit multi-range video trim update; stable production full video suite passed 37/37 and focused multi-range suite passed 9/9.
+- [ ] Recheck Search Console sitemap fetch status and inspect indexed URLs/impressions after Google recrawls. Current live robots/sitemap and metadata audit passed, but this does not prove indexing.
+- [ ] Complete the remaining keyboard, touch, screen-reader, low-memory mobile and file-edge-case checks in `BROWSER_QA_CHECKLIST.md`.
+- [x] Add original Open Graph images and practical, internally linked guides across all three sites.
+- [ ] Re-run a fresh Lighthouse/CrUX review after the current deployments; the recorded Lighthouse numbers are from 2026-10-31.
 
 ## Growth and monetization work
 
@@ -27,7 +28,14 @@ All three sites are live on Cloudflare Pages, and QuickKit’s PDF editor is liv
 - [x] QuickKit: verify image-to-PDF gallery include/exclude, drag order, crop/rotation/filter, margins, orientation and downloadable page order in browser QA.
 - [x] WorkKit: add dated reference-rate conversion to overtime; verify math, source/target currency-only API requests, same-currency handling and refresh.
 - [ ] QuickKit: add PDF splitting and additional conversion formats after defining fidelity requirements and mobile memory limits.
-- [ ] FormReady: add user-defined local presets next; add official photo presets only after recording and verifying current official requirements.
+- [x] FormReady: implement the Exam Form Kit with source-linked, cycle-labeled presets, custom rules, crop/rotate, JPEG size-range search, signature cleanup, optional stamp and measurable checker. Production QA passed 19/19; current preset cycles are historical, so newer rules must be source-verified before replacing them.
+- [x] QuickKit: add up to three soundtrack tracks with independent source trims, output placement, volume and original-audio controls; verify the mixed output with known audio tones in Chromium and Firefox.
+- [x] QuickKit: add a local GPS photo tool with manual/current location, optional visible stamp and GPS EXIF read-back verification; test signed coordinates and stamp on/off.
+- [x] QuickKit: deploy the soundtrack editor and geo-photo routes; stable production passed 24/24 video checks and 14/14 geo-photo checks. The latest immutable deployment is in `IMPLEMENTATION_TRACKER.md`.
+- [x] QuickKit: implement multiple saved trim ranges on one video, keep/remove mode, draggable saved range handles, overlap checks, and preview/export; stable production Chromium checks passed 37/37 full video and 9/9 focused range tests.
+- [ ] QuickKit: rework the Q mark to read clearly as a document/tools brand, and add a real feedback form after deciding where feedback should be stored; never display fabricated star ratings.
+- [ ] QuickKit: diagnose brand/domain discoverability and Search Console coverage, then improve SEO using measurable query and index data. Search position and AdSense approval are not guaranteed.
+- [ ] After the core tools are stable, evaluate a separate social-media utility site with official/authorized access only; do not build it into QuickKit.
 
 ## Release facts
 
@@ -36,5 +44,14 @@ All three sites are live on Cloudflare Pages, and QuickKit’s PDF editor is liv
 - [x] All three builds passed; earlier responsive Chromium sweep passed 79 checks with 0 failures; latest PDF editor passed 40/40 and document/filter workflow passed 15/15 against production. Full cross-site production smoke passed 14 routes with 0 failures, including the converter.
 - [x] Publish the document-converter release after visible-browser checks; 15 document/filter checks and 40 PDF-editor checks passed against the production URL.
 - [x] Final screenshots and machine-readable QA evidence are in `qa-results/`.
+
+## Current release QA — 2026-11-01
+
+- [x] Full live multi-site regression: 92/92 after correcting a test selector ambiguity introduced by the new FormReady checker copy.
+- [x] QuickKit PDF editor 62/62; document conversion/OCR/image-to-PDF 29/29; owner-supplied PDF OCR/DOCX reopen and direct-text edit/delete exports passed. Private-file evidence is kept locally.
+- [x] QuickKit video editor/soundtrack mixer 24/24; geo-photo EXIF writer 14/14; final SEO live crawl 19 sitemap URLs / 34 internal routes / 0 failures.
+- [x] FormReady Exam Form Kit 19/19 on `https://f6f99981.formready-photo-tools.pages.dev`; new visible browser tab inspected.
+- [x] SEO guide browser checks 16/16; live crawl 18 sitemap URLs and 33 linked routes, 0 failures.
+- [ ] Search Console must be rechecked for indexing/impressions; the site cannot promise a top-10 position, AdSense approval or revenue.
 
 Search traffic, indexing speed, ad approval and revenue are external outcomes, not promises of a same-day launch.

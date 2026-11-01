@@ -1,11 +1,11 @@
 import { chromium } from 'playwright';
-import { PDFDocument, StandardFonts, degrees, rgb } from 'pdf-lib';
+import { PDFDocument, PDFName, PDFRawStream, StandardFonts, degrees, rgb } from 'pdf-lib';
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
 
 const root = process.cwd();
 const quickKitOrigin = process.env.QUICKKIT_ORIGIN || 'http://127.0.0.1:4174';
-const outputDir = resolve(root, 'qa-results', process.env.QUICKKIT_ORIGIN ? 'pdf-editor-production' : 'pdf-editor');
+const outputDir = resolve(root, 'qa-results', process.env.QA_OUTPUT_DIR || (process.env.QUICKKIT_ORIGIN ? 'pdf-editor-production' : 'pdf-editor'));
 await mkdir(outputDir, { recursive: true });
 const browser = await chromium.launch({ headless: true });
 const errors = [];
@@ -17,7 +17,7 @@ const requests = [];
 desktop.on('request', (request) => requests.push({ method: request.method(), url: request.url() }));
 
 function check(name, pass, detail = '') {
-  console.log(`${pass ? 'PASS' : 'FAIL'} ${name}`);
+  console.log(`${pass ? 'PASS' : 'FAIL'} ${name}${!pass && detail ? ` — ${detail}` : ''}`);
   checks.push({ name, pass: Boolean(pass), detail });
   if (!pass) errors.push(`${name}: ${detail || 'failed'}`);
 }
@@ -51,6 +51,12 @@ await desktop.locator('#pdf-workspace').waitFor({ state: 'visible' });
 await desktop.locator('.pdf-page-list canvas').first().waitFor();
 await desktop.waitForFunction(() => document.querySelector('#pdf-page-stage canvas')?.width > 0);
 check('PDF opens with 3 pages and page canvas', (await desktop.locator('#rail-count').innerText()) === '3' && await desktop.locator('#pdf-page-stage canvas').count() === 1);
+const initialThumbOrder = await desktop.locator('.pdf-page-list li .pdf-thumb-button').evaluateAll((buttons) => buttons.map((button) => button.dataset.originalPage));
+await desktop.locator('.pdf-page-list li').first().dragTo(desktop.locator('.pdf-page-list li').last());
+const draggedThumbOrder = await desktop.locator('.pdf-page-list li .pdf-thumb-button').evaluateAll((buttons) => buttons.map((button) => button.dataset.originalPage));
+check('PDF thumbnail drag changes the actual page order', initialThumbOrder.join(',') !== draggedThumbOrder.join(',') && draggedThumbOrder.at(-1) === initialThumbOrder[0], `${initialThumbOrder.join(',')} → ${draggedThumbOrder.join(',')}`);
+await desktop.locator('#undo-edit').click();
+check('Undo restores the page order after thumbnail drag', (await desktop.locator('.pdf-page-list li .pdf-thumb-button').evaluateAll((buttons) => buttons.map((button) => button.dataset.originalPage))).join(',') === initialThumbOrder.join(','));
 await desktop.locator('#replace-pdf').click();
 await desktop.locator('#pdf-source').setInputFiles({ name: 'damaged.pdf', mimeType: 'application/pdf', buffer: Buffer.from('%PDF-not-a-real-file') });
 await desktop.waitForFunction(() => document.querySelector('#pdf-editor-status')?.innerText.includes('could not be opened'));
@@ -112,10 +118,73 @@ const ink = await desktop.locator('#signature-canvas').evaluate((canvas) => {
 await desktop.locator('#place-signature').click();
 await desktop.locator('.pdf-overlay-signature').waitFor({ state: 'attached' });
 check('Drawn signature can be added to the PDF', ink > 100 && await desktop.locator('.pdf-overlay-signature').count() === 1, `ink pixels: ${ink}`);
+check('Signature has visible move, resize and color controls', await desktop.locator('#width-setting').isVisible() && await desktop.locator('#height-setting').isVisible() && await desktop.locator('#color-setting').isVisible() && await desktop.locator('#inspector-help').innerText().then((text) => text.includes('Drag the signature')));
+await desktop.locator('.pdf-overlay-signature').scrollIntoViewIfNeeded();
+const signatureBeforeDrag = await desktop.locator('.pdf-overlay-signature').boundingBox();
+await desktop.mouse.move(signatureBeforeDrag.x + signatureBeforeDrag.width / 2, signatureBeforeDrag.y + signatureBeforeDrag.height / 2);
+await desktop.mouse.down();
+await desktop.mouse.move(signatureBeforeDrag.x + signatureBeforeDrag.width / 2 + 42, signatureBeforeDrag.y + signatureBeforeDrag.height / 2 + 23, { steps: 6 });
+await desktop.mouse.up();
+const signatureAfterDrag = await desktop.locator('.pdf-overlay-signature').boundingBox();
+check('Signature can be dragged to a new position', Math.abs(signatureAfterDrag.x - signatureBeforeDrag.x) > 20 && Math.abs(signatureAfterDrag.y - signatureBeforeDrag.y) > 10, `${signatureBeforeDrag.x},${signatureBeforeDrag.y} → ${signatureAfterDrag.x},${signatureAfterDrag.y}`);
+const signatureWidthBefore = signatureAfterDrag.width;
+await desktop.locator('#item-width').evaluate((input) => { input.value = '42'; input.dispatchEvent(new Event('input', { bubbles: true })); });
+check('Signature width slider resizes the placed signature', (await desktop.locator('.pdf-overlay-signature').boundingBox()).width > signatureWidthBefore * 1.2);
+const signatureHandleBefore = await desktop.locator('.pdf-overlay-signature .pdf-signature-resize-handle').boundingBox();
+await desktop.mouse.move(signatureHandleBefore.x + 4, signatureHandleBefore.y + 4); await desktop.mouse.down();
+await desktop.mouse.move(signatureHandleBefore.x + 28, signatureHandleBefore.y + 18, { steps: 4 }); await desktop.mouse.up();
+const signatureAfterHandleResize = await desktop.locator('.pdf-overlay-signature').boundingBox();
+check('Signature corner handle resizes the mark on the page', signatureAfterHandleResize.width > signatureWidthBefore * 1.3);
+await desktop.locator('#item-color').evaluate((input) => { input.value = '#d12b56'; input.dispatchEvent(new Event('input', { bubbles: true })); });
+await desktop.waitForFunction(() => {
+  const image = document.querySelector('.pdf-overlay-signature img');
+  if (!image?.complete || !image.naturalWidth) return false;
+  const canvas = document.createElement('canvas'); canvas.width = image.naturalWidth; canvas.height = image.naturalHeight;
+  const context = canvas.getContext('2d', { willReadFrequently: true }); context.drawImage(image, 0, 0);
+  const pixels = context.getImageData(0, 0, canvas.width, canvas.height).data;
+  for (let i = 0; i < pixels.length; i += 4) if (pixels[i + 3] > 200 && pixels[i] > 160 && pixels[i + 1] < 80 && pixels[i + 2] > 50) return true;
+  return false;
+});
+check('Signature color picker recolors the actual transparent signature pixels', true);
+check('Signature remove action has a visible delete icon', await desktop.locator('#remove-item svg').isVisible());
+await desktop.locator('#remove-item').click();
+check('Placed signature can be removed with the inspector action', await desktop.locator('.pdf-overlay-signature').count() === 0);
+await desktop.locator('#undo-edit').click();
+check('Undo restores the removed signature and its edits', await desktop.locator('.pdf-overlay-signature').count() === 1);
 await desktop.locator('[data-tool="signature"]').click();
 await desktop.locator('#typed-signature').fill('தமிழ் signature');
 await desktop.locator('#place-typed-signature').click();
 check('Typed signature offers a keyboard-accessible signing path', await desktop.locator('.pdf-overlay-text').filter({ hasText: 'தமிழ் signature' }).count() === 1);
+await desktop.locator('button.pdf-tool[data-tool="redact"]').click();
+check('Redaction tool uses clear customer wording', (await desktop.locator('button.pdf-tool[data-tool="redact"]').innerText()) === 'Black out' && (await desktop.locator('#pdf-tool-hint').innerText()).includes('black them out'));
+await desktop.locator('#pdf-page-stage').scrollIntoViewIfNeeded();
+const pageStageBox = await desktop.locator('#pdf-page-stage').boundingBox();
+await desktop.mouse.move(pageStageBox.x + 170, pageStageBox.y + 360); await desktop.mouse.down();
+await desktop.mouse.move(pageStageBox.x + 265, pageStageBox.y + 404, { steps: 5 }); await desktop.mouse.up();
+check('Blackout area explains what download does', (await desktop.locator('#inspector-title').innerText()) === 'Blackout area' && (await desktop.locator('#inspector-help').innerText()).includes('cannot be selected or copied'), await desktop.locator('#inspector-help').innerText());
+const blackoutControls = await desktop.evaluate(() => ({ textHidden: document.querySelector('#text-setting').hidden, colorLabel: document.querySelector('#item-color-label').textContent, resizeVisible: getComputedStyle(document.querySelector('.pdf-overlay-redact .pdf-signature-resize-handle')).display !== 'none' }));
+check('Blackout inspector shows only relevant settings and a resize handle', blackoutControls.textHidden && blackoutControls.colorLabel === 'Blackout color' && blackoutControls.resizeVisible, JSON.stringify(blackoutControls));
+const blackoutWidthBefore = (await desktop.locator('.pdf-overlay-redact').boundingBox()).width;
+await desktop.locator('#item-width').evaluate((input) => { input.value = '42'; input.dispatchEvent(new Event('input', { bubbles: true })); });
+await desktop.locator('#item-color').evaluate((input) => { input.value = '#d12b56'; input.dispatchEvent(new Event('input', { bubbles: true })); });
+const blackoutAppearance = await desktop.locator('.pdf-overlay-redact').evaluate((element) => ({ width: element.getBoundingClientRect().width, color: getComputedStyle(element).backgroundColor }));
+check('Blackout width and color controls change the visible mask', blackoutAppearance.width > blackoutWidthBefore * 1.2 && blackoutAppearance.color === 'rgb(209, 43, 86)', JSON.stringify({ before: blackoutWidthBefore, ...blackoutAppearance }));
+await desktop.locator('#remove-item').click();
+await desktop.locator('button.pdf-tool[data-tool="shape"]').click();
+await desktop.locator('#pdf-page-stage').focus();
+await desktop.keyboard.press('Enter');
+await desktop.locator('.pdf-overlay-shape').waitFor({ state: 'attached' });
+const shapeControlsVisible = await desktop.locator('#shape-type-setting').isVisible() && await desktop.locator('#shape-border-color-setting').isVisible() && await desktop.locator('#shape-border-width-setting').isVisible();
+check('Shape inspector exposes type, fill and border controls', shapeControlsVisible, `selected=${await desktop.locator('#inspector-title').innerText()}`);
+await desktop.locator('#item-shape-type').selectOption('ellipse');
+await desktop.locator('#item-shape-transparent').uncheck();
+await desktop.locator('#item-shape-fill').evaluate((input) => { input.value = '#35aa66'; input.dispatchEvent(new Event('input', { bubbles: true })); });
+await desktop.locator('#item-shape-opacity').evaluate((input) => { input.value = '52'; input.dispatchEvent(new Event('input', { bubbles: true })); });
+await desktop.locator('#item-shape-border-color').evaluate((input) => { input.value = '#d12b56'; input.dispatchEvent(new Event('input', { bubbles: true })); });
+await desktop.locator('#item-shape-border-width').evaluate((input) => { input.value = '5'; input.dispatchEvent(new Event('input', { bubbles: true })); });
+const shapeAppearance = await desktop.locator('.pdf-overlay-shape').evaluate((element) => ({ oval: element.classList.contains('shape-ellipse'), fill: getComputedStyle(element).backgroundColor, border: getComputedStyle(element).borderColor, width: getComputedStyle(element).borderWidth }));
+check('Shape controls apply oval type, fill opacity, border color and thickness', shapeAppearance.oval && shapeAppearance.fill.includes('53, 170, 102') && shapeAppearance.border === 'rgb(209, 43, 86)' && shapeAppearance.width === '5px', JSON.stringify(shapeAppearance));
+await desktop.locator('#remove-item').click();
 
 await desktop.locator('#page-move-down').click();
 check('Page can be reordered', (await desktop.locator('#page-indicator').innerText()) === 'Page 2 of 3');
@@ -134,6 +203,23 @@ const output = await PDFDocument.load(resultBytes);
 check('Edited PDF downloads and is readable', output.getPageCount() === 2 && resultBytes.subarray(0, 5).toString() === '%PDF-', `pages: ${output.getPageCount()}, bytes: ${resultBytes.length}`);
 const pdfjs = await import('pdfjs-dist/legacy/build/pdf.mjs');
 const outputForText = await pdfjs.getDocument({ data: new Uint8Array(resultBytes), standardFontDataUrl: `${resolve(root, 'node_modules/pdfjs-dist/standard_fonts')}/`, disableFontFace: true, isEvalSupported: false }).promise;
+const signatureCheckPage = await browser.newPage({ viewport: { width: 1440, height: 1000 }, reducedMotion: 'reduce' });
+await signatureCheckPage.goto(`${quickKitOrigin}/pdf-editor.html`, { waitUntil: 'networkidle' });
+await signatureCheckPage.locator('#pdf-source').setInputFiles({ name: 'signature-output.pdf', mimeType: 'application/pdf', buffer: Buffer.from(resultBytes) });
+await signatureCheckPage.waitForFunction(() => document.querySelector('#pdf-page-stage canvas')?.width > 0);
+await signatureCheckPage.locator('#page-next').click();
+await signatureCheckPage.waitForFunction(() => document.querySelector('#page-indicator')?.innerText === 'Page 2 of 2');
+const exportedSignature = await signatureCheckPage.locator('#pdf-page-stage canvas').evaluate((canvas) => {
+  const { data, width, height } = canvas.getContext('2d', { willReadFrequently: true }).getImageData(0, 0, canvas.width, canvas.height);
+  let count = 0; let left = width; let top = height; let right = 0; let bottom = 0;
+  for (let y = 0; y < height; y++) for (let x = 0; x < width; x++) {
+    const i = (y * width + x) * 4;
+    if (data[i] > 150 && data[i + 1] < 95 && data[i + 2] > 35 && data[i + 3] > 150) { count++; left = Math.min(left, x); top = Math.min(top, y); right = Math.max(right, x); bottom = Math.max(bottom, y); }
+  }
+  return { count, width: right - left + 1, height: bottom - top + 1 };
+});
+check('Downloaded PDF preserves the resized signature in its chosen ink color', exportedSignature.count > 100 && exportedSignature.width > 60 && exportedSignature.height > 15, JSON.stringify(exportedSignature));
+await signatureCheckPage.close();
 const orderText = [];
 for (let i = 1; i <= outputForText.numPages; i++) {
   const content = await (await outputForText.getPage(i)).getTextContent();
@@ -170,15 +256,36 @@ directEditPage.drawText('Keep this unchanged', { x: 45, y: 490, size: 12, font: 
 await desktop.locator('#replace-pdf').click();
 await desktop.locator('#pdf-source').setInputFiles({ name: 'source-text-edit.pdf', mimeType: 'application/pdf', buffer: Buffer.from(await directEditPdf.save()) });
 await desktop.waitForFunction(() => document.querySelector('#pdf-file-name')?.textContent === 'source-text-edit.pdf' && document.querySelector('#pdf-page-stage canvas')?.width > 0);
-await desktop.locator('#edit-source-text').click();
+if (await desktop.locator('#pdf-source-text-panel').isHidden()) await desktop.locator('#edit-source-text').click();
 await desktop.locator('#scan-source-text').click();
 await desktop.waitForFunction(() => document.querySelectorAll('#pdf-source-text-list .pdf-source-text-row').length === 3);
 check('Direct PDF text scan lists supported single-line source text', await desktop.locator('#pdf-source-text-list .pdf-source-text-row').count() === 3, await desktop.locator('#pdf-source-text-status').innerText());
+const onPageTextTarget = desktop.locator('.pdf-direct-text-target').filter({ hasText: 'Original searchable line' }).first();
+await onPageTextTarget.waitFor({ state: 'visible' });
+await onPageTextTarget.click();
+check('Clicking existing PDF text on the page opens an inline editor', await desktop.locator('.pdf-inline-text-editor input[aria-label="Replacement text"]').inputValue() === 'Original searchable line');
+const previewSignature = async () => desktop.locator('#pdf-page-stage canvas').evaluate((canvas) => {
+  const data = canvas.getContext('2d').getImageData(0, 0, canvas.width, canvas.height).data;
+  let value = 0; for (let index = 0; index < data.length; index += 97) value = (value + data[index] * (index % 251)) >>> 0;
+  return value;
+});
+const pageBeforeDirectEdit = await previewSignature();
+await desktop.locator('.pdf-inline-text-editor input[aria-label="Replacement text"]').fill('New searchable line');
+await desktop.locator('.pdf-inline-text-editor button[type="submit"]').click();
+check('On-page edit stages a real replacement', (await desktop.locator('#pdf-source-text-staged').innerText()).includes('1 direct text edit'));
+await desktop.waitForFunction(() => document.querySelector('#pdf-editor-status')?.innerText.includes('Text edit preview updated'));
+check('The PDF page preview visibly updates after an in-place edit', (await previewSignature()) !== pageBeforeDirectEdit);
 const replaceRow = desktop.locator('.pdf-source-text-row').filter({ hasText: 'Original searchable line' });
-await replaceRow.locator('input').fill('New searchable line');
-await replaceRow.getByRole('button', { name: 'Replace' }).click();
+check('The fallback text list reflects the on-page replacement', await replaceRow.locator('input').inputValue() === 'New searchable line');
+const pageAfterReplacement = await previewSignature();
 const deleteRow = desktop.locator('.pdf-source-text-row').filter({ hasText: 'Remove this exact text' });
-await deleteRow.getByRole('button', { name: 'Delete Remove this exact text' }).click();
+const deleteTarget = desktop.locator('.pdf-direct-text-target').filter({ hasText: 'Remove this exact text' }).first();
+await deleteTarget.waitFor({ state: 'visible' });
+await deleteTarget.click();
+await desktop.locator('.pdf-inline-text-editor button').filter({ hasText: 'Delete text' }).click();
+await desktop.waitForFunction(() => document.querySelector('#pdf-editor-status')?.innerText.includes('Text edit preview updated'));
+check('Delete text on the page removes it from the visible PDF preview', (await previewSignature()) !== pageAfterReplacement);
+check('The text list reflects the page deletion', await deleteRow.locator('input').inputValue() === '');
 check('Replacement and deletion are staged as source-text edits', (await desktop.locator('#pdf-source-text-staged').innerText()).includes('2 direct text edits'));
 const tooWideRow = desktop.locator('.pdf-source-text-row').filter({ hasText: 'Keep this unchanged' });
 await tooWideRow.locator('input').fill('This replacement is deliberately far wider than the source line');
@@ -207,6 +314,43 @@ const replacementLine = directEditItems.find((item) => item.str === 'New searcha
 check('Direct text replacement keeps its source page coordinates', Boolean(originalLine && replacementLine && originalLine.transform.every((value, index) => Math.abs(value - replacementLine.transform[index]) < 0.01)), `${JSON.stringify(originalLine?.transform)} → ${JSON.stringify(replacementLine?.transform)}`);
 await directSourceTask.destroy();
 await directEditOutputTask.destroy();
+
+const splitRunPdf = await PDFDocument.create();
+const splitRunFont = await splitRunPdf.embedFont(StandardFonts.Helvetica);
+const splitRunPage = splitRunPdf.addPage([480, 640]);
+splitRunPage.node.setFontDictionary(PDFName.of('F1'), splitRunFont.ref);
+const splitRunContent = [
+  'BT /F1 18 Tf 0 Tr 100 Tz 0 Tc 0 Tw 1 0 0 1 45 570 Tm (Original ) Tj (split line) Tj ET',
+  'BT /F1 18 Tf 0 Tr 100 Tz 0 Tc 0 Tw 1 0 0 1 45 530 Tm [(Original TJ ) -35 (line)] TJ ET'
+].join('\n');
+const splitRunStream = PDFRawStream.of(splitRunPdf.context.obj({}), new TextEncoder().encode(splitRunContent));
+splitRunPage.node.addContentStream(splitRunPdf.context.register(splitRunStream));
+const splitRunBytes = Buffer.from(await splitRunPdf.save());
+await desktop.locator('#replace-pdf').click();
+await desktop.locator('#pdf-source').setInputFiles({ name: 'split-runs.pdf', mimeType: 'application/pdf', buffer: splitRunBytes });
+await desktop.waitForFunction(() => document.querySelector('#pdf-file-name')?.textContent === 'split-runs.pdf' && document.querySelector('#pdf-page-stage canvas')?.width > 0);
+if (await desktop.locator('#pdf-source-text-panel').isHidden()) await desktop.locator('#edit-source-text').click();
+await desktop.locator('#scan-source-text').click();
+await desktop.waitForFunction(() => document.querySelector('#pdf-source-text-status')?.textContent.includes('directly editable'));
+const splitRunRows = desktop.locator('.pdf-source-text-row');
+const splitTjRow = splitRunRows.filter({ hasText: 'Original split line' });
+const arrayTjRow = splitRunRows.filter({ hasText: 'Original TJ line' });
+check('Direct editor recognizes adjacent same-style Tj runs and TJ arrays', await splitTjRow.count() === 1 && await arrayTjRow.count() === 1, await desktop.locator('#pdf-source-text-status').innerText());
+await desktop.waitForFunction(() => Number(document.querySelector('#pdf-source-text-status')?.dataset.directTargets) > 0);
+check('Adjacent source runs map to clickable text on the rendered page', await desktop.locator('.pdf-direct-text-target').count() > 0, `targets: ${await desktop.locator('.pdf-direct-text-target').count()}`);
+await splitTjRow.locator('input').fill('Short line');
+await splitTjRow.getByRole('button', { name: 'Replace' }).click();
+await arrayTjRow.locator('input').fill('TJ edit');
+await arrayTjRow.getByRole('button', { name: 'Replace' }).click();
+const splitRunDownloadWait = desktop.waitForEvent('download');
+await desktop.locator('#download-pdf').click();
+const splitRunDownload = await splitRunDownloadWait;
+const splitRunOutput = new Uint8Array(await readFile(await splitRunDownload.path()));
+const splitRunOutputTask = pdfjs.getDocument({ data: splitRunOutput, standardFontDataUrl: `${resolve(root, 'node_modules/pdfjs-dist/standard_fonts')}/`, disableFontFace: true, isEvalSupported: false });
+const splitRunOutputDoc = await splitRunOutputTask.promise;
+const splitRunText = (await (await splitRunOutputDoc.getPage(1)).getTextContent()).items.map((item) => item.str).join(' ');
+check('Export replaces split-run text without losing selectable text', splitRunText.includes('Short line') && splitRunText.includes('TJ edit') && !splitRunText.includes('Original split line') && !splitRunText.includes('Original TJ line'), splitRunText);
+await splitRunOutputTask.destroy();
 
 const onePage = await PDFDocument.create(); onePage.addPage([480, 640]);
 await desktop.locator('#replace-pdf').click();

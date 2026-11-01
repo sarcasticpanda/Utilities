@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><link rel="preload" href="/fonts/outfit-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <meta name="description" content="Learn how to tell selectable PDF text from a scanned page, when OCR helps, and how to review a text replacement or redaction before sharing.">
+  <meta name="theme-color" content="#f3f6fb">
+  <title>PDF Text Editing vs OCR: A Practical Guide | QuickKit</title>
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="canonical" href="https://quickkit-browser-tools.pages.dev/pdf-text-and-ocr-guide.html">
+  <meta property="og:title" content="PDF Text Editing vs OCR: A Practical Guide | QuickKit">
+  <meta property="og:description" content="Understand searchable PDF text, scanned pages, OCR review and the limits of in-place replacement.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://quickkit-browser-tools.pages.dev/pdf-text-and-ocr-guide.html">
+  <meta property="og:image" content="https://quickkit-browser-tools.pages.dev/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="QuickKit tools and guides">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=3">
+  <meta name="twitter:image" content="https://quickkit-browser-tools.pages.dev/og-image.png">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="./"><span class="brand-mark">q</span><span>quickkit</span></a>
+    <nav aria-label="Main navigation"><a href="pdf-editor.html">PDF editor</a><a href="document-converter.html">Convert PDF</a><a href="video-tools.html">Video</a></nav>
+    <a class="header-action" href="pdf-editor.html">Open PDF editor</a>
+  </header>
+  <main class="wrap tool-page">
+    <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="./">Home</a><span aria-hidden="true">/</span><span>PDF text and OCR guide</span></nav>
+    <article class="below-tool">
+      <p class="eyebrow">PDF help</p>
+      <h1>PDF text editing and OCR: what to check first</h1>
+      <p>A PDF can look like a page of text while storing that page in very different ways. Knowing which kind you have helps you choose a safe edit and check the result before you send it.</p>
+
+      <h2>Check whether the text is selectable</h2>
+      <p>Try selecting a word with your pointer or searching for a phrase. If the words can be selected and copied, the PDF probably contains a text layer. If the whole page selects like one picture, it may be a scan or a flattened export. Some files combine selectable text with scanned pages, so check each page you need to change.</p>
+
+      <h2>When in-place editing can work</h2>
+      <p>An in-place replacement needs the PDF to expose the text run, its character mapping and usable font information. QuickKit can group many same-style horizontal runs, including some PDFs that draw a line one character at a time. It may still refuse vertical text, custom font encodings, unusual transforms, or layouts whose runs cannot be grouped safely. Replacement characters must exist in the embedded font and the replacement must fit the original line.</p>
+      <p>QuickKit supports only text layouts it can safely map. Review the preview and compare the saved PDF with the original. If the editor reports a line as unsupported, adding a new text annotation is a different operation and does not rewrite the old text.</p>
+
+      <h2>When OCR is the right path</h2>
+      <p>OCR reads letters from page pixels and turns them into recognized text. It is useful for a scan, but recognition can confuse similar characters, miss punctuation or split a word. A recognized word is not proof that the page was read correctly. Check names, numbers, dates and other important details against the original image.</p>
+      <p>In QuickKit, OCR-assisted replacement places a cover over the selected scanned region and draws replacement text above it. It does not reconstruct the original scan underneath. Review the cover edges at normal zoom and at a closer zoom so nearby marks are not hidden and the old text is not visible.</p>
+
+      <h2>Redaction needs an export check</h2>
+      <p>Drawing a dark rectangle over sensitive content can leave the original characters inside the PDF. A proper redaction export removes or flattens affected page content so covered source text is not still selectable beneath the mark. Open the exported copy, inspect the page visually and search or copy text around the redacted area before sharing.</p>
+
+      <h2>Keep a safe working copy</h2>
+      <ol>
+        <li>Keep the original file unchanged and work on a duplicate.</li>
+        <li>Use direct editing only when the editor identifies a supported text line.</li>
+        <li>Use OCR for image-only pages, then review every recognized result.</li>
+        <li>Export and reopen the saved copy before relying on it.</li>
+      </ol>
+      <p>QuickKit processes the selected PDF in your browser. OCR downloads the recognition worker and language data when needed; the document itself is not sent to QuickKit. Avoid using sensitive documents on a shared device.</p>
+      <p><a class="button button-primary" href="pdf-editor.html">Open the PDF editor</a> <a class="subtle-link" href="document-converter.html">Convert PDF text and review OCR</a></p>
+    </article>
+  </main>
+  <footer class="site-footer wrap"><a class="brand" href="./"><span class="brand-mark">q</span><span>quickkit</span></a><p>Small tasks, sorted.</p><div><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="about.html">About</a><a href="contact.html">Contact</a><a href="open-source-acknowledgements.html">Open-source</a></div></footer>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title description">
+  <title id="title">QuickKit — PDF and image tools</title>
+  <desc id="description">A compact PDF and image tool workspace, on a clean blue-grey background.</desc>
+  <defs>
+    <linearGradient id="background" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f7f9fc"/><stop offset="1" stop-color="#e9f0f9"/></linearGradient>
+    <linearGradient id="paper" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#fff"/><stop offset="1" stop-color="#f8fafc"/></linearGradient>
+    <filter id="shadow" x="-.2" y="-.2" width="1.4" height="1.5"><feDropShadow dx="0" dy="18" stdDeviation="18" flood-color="#243955" flood-opacity=".14"/></filter>
+  </defs>
+  <rect width="1200" height="630" fill="url(#background)"/>
+  <circle cx="140" cy="72" r="190" fill="#dce8f8" opacity=".65"/>
+  <circle cx="1100" cy="590" r="270" fill="#e8ddd5" opacity=".55"/>
+  <path d="M48 46h1104v538H48z" fill="none" stroke="#d7e0eb" stroke-width="2"/>
+  <rect x="82" y="91" width="52" height="52" rx="15" fill="#2864b8"/>
+  <text x="108" y="129" text-anchor="middle" font-family="Arial,sans-serif" font-size="35" font-weight="700" fill="#fff">q</text>
+  <text x="151" y="128" font-family="Arial,sans-serif" font-size="28" font-weight="700" letter-spacing="-1.2" fill="#172536">quickkit</text>
+  <text x="82" y="268" font-family="Arial,sans-serif" font-size="60" font-weight="700" letter-spacing="-3" fill="#172536">PDF and image tools</text>
+  <text x="84" y="326" font-family="Arial,sans-serif" font-size="27" fill="#4f5d70">Edit, convert and prepare files in your browser.</text>
+  <rect x="83" y="378" width="197" height="46" rx="8" fill="#2864b8"/>
+  <text x="181" y="408" text-anchor="middle" font-family="Arial,sans-serif" font-size="17" font-weight="700" fill="#fff">PRIVATE BY DESIGN</text>
+  <g filter="url(#shadow)" transform="rotate(-8 815 330)">
+    <rect x="699" y="161" width="271" height="350" rx="16" fill="#fff" stroke="#dce4ed" stroke-width="2"/>
+    <rect x="726" y="190" width="75" height="40" rx="8" fill="#fae6d9"/>
+    <text x="764" y="216" text-anchor="middle" font-family="Arial,sans-serif" font-size="17" font-weight="700" fill="#a85531">PDF</text>
+    <path d="M727 261h215M727 283h168M727 329h212M727 351h192M727 397h205M727 419h151" stroke="#cad4e1" stroke-width="8" stroke-linecap="round"/>
+    <rect x="727" y="458" width="124" height="29" rx="6" fill="#e3edfb"/>
+    <text x="789" y="478" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" font-weight="700" fill="#2864b8">READY TO SAVE</text>
+  </g>
+  <g filter="url(#shadow)" transform="rotate(8 1010 360)">
+    <rect x="911" y="240" width="179" height="194" rx="17" fill="#fff" stroke="#dce4ed" stroke-width="2"/>
+    <rect x="933" y="261" width="135" height="101" rx="9" fill="#dce8f8"/>
+    <circle cx="1000" cy="299" r="21" fill="#2864b8" opacity=".82"/>
+    <path d="M959 350c8-27 23-39 42-39s34 12 42 39" fill="#2864b8" opacity=".82"/>
+    <path d="M935 389h117" stroke="#cdd7e3" stroke-width="7" stroke-linecap="round"/>
+    <path d="M935 407h74" stroke="#cdd7e3" stroke-width="7" stroke-linecap="round"/>
+  </g>
+</svg>

@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><link rel="preload" href="/fonts/outfit-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <meta name="description" content="A practical guide to adding shift hours, subtracting unpaid breaks, handling overnight times, estimating overtime and understanding pay totals.">
+  <meta name="theme-color" content="#f5f5f0">
+  <title>How to Calculate Work Hours, Breaks and Overtime | WorkKit</title>
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="canonical" href="https://workkit-hours-tools.pages.dev/time-card-and-overtime-guide.html">
+  <meta property="og:title" content="How to Calculate Work Hours, Breaks and Overtime | WorkKit">
+  <meta property="og:description" content="Add shifts across midnight, subtract unpaid breaks and estimate gross pay with clear examples.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://workkit-hours-tools.pages.dev/time-card-and-overtime-guide.html">
+  <meta property="og:image" content="https://workkit-hours-tools.pages.dev/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="WorkKit tools and guides">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://workkit-hours-tools.pages.dev/og-image.png">
+</head>
+<body>
+  <header class="site-header"><a class="brand" href="./"><span class="brand-mark">W</span><span>workkit<span class="brand-dot">.</span></span></a><nav aria-label="Main navigation"><a href="time-card-calculator.html">Time card</a><a href="overtime-calculator.html">Overtime</a><a href="salary-converter.html">Salary tools</a></nav><a class="header-cta" href="time-card-calculator.html">Open calculator</a></header>
+  <main class="wrap tool-page">
+    <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="./">Home</a><span aria-hidden="true">/</span><span>Work hours guide</span></nav>
+    <article class="below-tool">
+      <p class="eyebrow">Work hours help</p>
+      <h1>How to calculate work hours, breaks and overtime</h1>
+      <p>A useful time-card total starts with the time between each shift’s start and end, then subtracts unpaid breaks. Overnight shifts need a little care because the end time occurs on the following calendar day.</p>
+
+      <h2>Calculate one shift</h2>
+      <p>For a shift from 9:00 a.m. to 5:30 p.m., the elapsed time is 8 hours 30 minutes. If a 30-minute meal break is unpaid, the paid total is 8 hours. A paid break should not be subtracted from paid time.</p>
+      <p>For a shift from 10:00 p.m. to 6:00 a.m., the end is on the next day, so the elapsed duration is 8 hours. Enter the actual start and end times and let the time-card calculator handle the midnight boundary rather than subtracting the clock values as if they were on the same date.</p>
+
+      <h2>Add the week without rounding each shift</h2>
+      <p>Keep minutes until the final total. For example, 7 hours 45 minutes is 7.75 decimal hours, not 7.45. Adding decimal hours after rounding every shift can create a noticeable difference over a full week. WorkKit shows both hours and minutes and a decimal-hour total.</p>
+
+      <h2>Estimate overtime with the correct threshold</h2>
+      <p>An overtime estimate needs a threshold and a pay multiplier. If a user enters a 40-hour threshold and a 1.5× multiplier, a 46-hour week is split into 40 regular hours and 6 overtime hours for that estimate. Those inputs are examples, not universal legal rules.</p>
+      <p>Actual overtime treatment may depend on the worker’s location, classification, pay period, daily limits, collective agreement and employer policy. Confirm the applicable rule with an official government source or your employer before using a calculator result for payroll or a legal decision.</p>
+
+      <h2>Separate currency formatting from exchange conversion</h2>
+      <p>Choosing a currency symbol changes how the amount is displayed. It does not convert the amount using an exchange rate. To compare income in another currency, use a current exchange-rate source and record the date and rate separately.</p>
+
+      <h2>Use the result as an estimate</h2>
+      <p>WorkKit’s totals are gross estimates before tax, deductions or benefits. Check your saved shift entries, whether breaks are paid, and the overtime rule before sharing a result. The calculator does not submit timesheets or payroll data.</p>
+      <p><a class="button button-primary" href="time-card-calculator.html">Calculate a time card</a> <a class="subtle-link" href="overtime-calculator.html">Estimate overtime pay</a></p>
+    </article>
+  </main>
+  <footer class="site-footer wrap"><a class="brand" href="./"><span class="brand-mark">W</span><span>workkit<span class="brand-dot">.</span></span></a><p>Free work calculators for hours, pay and schedules.</p><div><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="about.html">About</a><a href="contact.html">Contact</a></div><small>Calculations are estimates. Confirm workplace rules with your employer.</small></footer>
+</body>
+</html>

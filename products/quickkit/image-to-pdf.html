@@ -2,13 +2,18 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><link rel="preload" href="/fonts/outfit-latin.woff2" as="font" type="font/woff2" crossorigin>
   <meta name="description" content="Convert JPG, PNG or WebP images to PDF for free. Select, crop, rotate, filter and reorder photos, then choose page size, orientation and margins.">
   <meta name="theme-color" content="#f3f6fb">
   <title>JPG to PDF Converter — Crop and Arrange Images | QuickKit</title>
   <link rel="stylesheet" href="/styles.css">
   <link rel="stylesheet" href="/image-to-pdf.css">
-<link rel="canonical" href="https://quickkit-browser-tools.pages.dev/image-to-pdf.html"><meta property="og:title" content="JPG to PDF Converter — Crop and Arrange Images | QuickKit"><meta property="og:description" content="Convert JPG, PNG or WebP images to PDF for free. Select, crop, rotate, filter and reorder photos, then choose page size, orientation and margins."><meta property="og:type" content="website"><meta property="og:url" content="https://quickkit-browser-tools.pages.dev/image-to-pdf.html"><meta name="twitter:card" content="summary">  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="canonical" href="https://quickkit-browser-tools.pages.dev/image-to-pdf.html"><meta property="og:title" content="JPG to PDF Converter — Crop and Arrange Images | QuickKit"><meta property="og:description" content="Convert JPG, PNG or WebP images to PDF for free. Select, crop, rotate, filter and reorder photos, then choose page size, orientation and margins."><meta property="og:type" content="website"><meta property="og:url" content="https://quickkit-browser-tools.pages.dev/image-to-pdf.html">
+  <meta property="og:image" content="https://quickkit-browser-tools.pages.dev/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="QuickKit tools and guides"><meta name="twitter:card" content="summary_large_image">  <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=3">
+  <meta name="twitter:image" content="https://quickkit-browser-tools.pages.dev/og-image.png">
 </head>
 <body data-page="image-to-pdf">
   <header class="site-header">
@@ -50,6 +55,7 @@
           <label class="range-control">Contrast <output id="contrast-value">100%</output><input id="contrast" type="range" min="70" max="140" value="100" disabled></label>
         </div>
         <div class="apply-edit-row"><p id="edit-status" role="status" aria-live="polite">Choose a photo to begin editing.</p><button type="button" class="button button-primary" id="apply-edit" disabled>Apply crop and filter</button></div>
+        <div class="apply-all-row"><p>Reuse the selected photo’s filter and brightness on every photo.</p><button type="button" class="button" id="apply-filter-all" disabled>Apply same filter to all photos</button></div>
 
         <div class="pdf-options">
           <div class="options-heading"><div><h2>PDF page settings</h2><p><span id="pdf-page-count">0 pages</span> · one selected photo per page</p></div></div>
@@ -58,7 +64,7 @@
             <label>Orientation<select id="page-orientation"><option value="auto">Auto per image</option><option value="portrait">Portrait</option><option value="landscape">Landscape</option></select></label>
             <label>Page margin<select id="page-margin"><option value="0">None</option><option value="5">5 mm</option><option value="10" selected>10 mm</option><option value="15">15 mm</option><option value="20">20 mm</option></select></label>
           </div>
-          <p class="page-settings-note">Photos are fitted inside each page without stretching. Choose “Fit to image” to keep each page close to its photo’s proportions.</p>
+          <p class="page-settings-note">Page size, orientation and margin apply to every selected photo/page. Photos are fitted without stretching. Choose “Fit to image” to keep each page close to its photo’s proportions.</p>
           <button type="button" class="button button-primary convert-button" id="convert-images" disabled>Create PDF</button>
           <button type="button" class="button button-plain clear-images" id="clear-images" disabled>Clear all images</button>
           <p class="privacy-copy"><span aria-hidden="true">✓</span> Photos are processed locally in your browser.</p>

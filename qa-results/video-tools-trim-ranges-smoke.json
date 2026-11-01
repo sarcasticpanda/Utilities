@@ -1,0 +1,54 @@
+{
+  "date": "2026-11-01T21:58:04.926Z",
+  "browser": "Playwright Chromium",
+  "origin": "https://quickkit-browser-tools.pages.dev",
+  "sourceDuration": 3.171,
+  "checks": [
+    {
+      "name": "first range saves and prompts for another",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "overlapping saved ranges are rejected with a clear message",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "two distinct ranges appear on timeline and in editable list",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "saved range handles can be dragged and update the time list",
+      "pass": true,
+      "detail": "0.40 seconds"
+    },
+    {
+      "name": "multi-range controls remain usable without overflow on a phone width",
+      "pass": true,
+      "detail": "{\"width\":390,\"viewport\":390,\"addButton\":120.734375}"
+    },
+    {
+      "name": "keep mode joins both parts into a playable downloadable preview",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "remove mode explains that selected parts become cuts",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "remove mode cuts both parts and previews the remaining video",
+      "pass": true,
+      "detail": "2.37s from 3.17s"
+    },
+    {
+      "name": "no browser runtime errors",
+      "pass": true,
+      "detail": ""
+    }
+  ],
+  "errors": []
+}

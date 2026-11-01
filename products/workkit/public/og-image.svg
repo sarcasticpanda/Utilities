@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title description">
+  <title id="title">WorkKit — Work hour and pay calculators</title>
+  <desc id="description">A weekly work-hour grid with shift, break and pay-estimate tools.</desc>
+  <defs>
+    <linearGradient id="background" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f3f5ed"/><stop offset="1" stop-color="#e5ece2"/></linearGradient>
+    <filter id="shadow" x="-.2" y="-.2" width="1.4" height="1.5"><feDropShadow dx="0" dy="18" stdDeviation="18" flood-color="#24352b" flood-opacity=".13"/></filter>
+  </defs>
+  <rect width="1200" height="630" fill="url(#background)"/>
+  <circle cx="1085" cy="44" r="238" fill="#d6e2d1" opacity=".72"/>
+  <circle cx="70" cy="604" r="210" fill="#e9dfd3" opacity=".64"/>
+  <path d="M48 46h1104v538H48z" fill="none" stroke="#d5dfd2" stroke-width="2"/>
+  <rect x="82" y="91" width="52" height="52" rx="15" fill="#26362b"/>
+  <text x="108" y="129" text-anchor="middle" font-family="Arial,sans-serif" font-size="34" font-weight="700" fill="#fff">W</text>
+  <text x="151" y="128" font-family="Arial,sans-serif" font-size="28" font-weight="700" letter-spacing="-1.2" fill="#26362b">workkit<tspan fill="#a86a4e">.</tspan></text>
+  <text x="82" y="264" font-family="Arial,sans-serif" font-size="50" font-weight="700" letter-spacing="-2.4" fill="#26362b">Make work hours add up.</text>
+  <text x="84" y="324" font-family="Arial,sans-serif" font-size="26" fill="#566357">Shifts, breaks, overtime and gross pay estimates.</text>
+  <g filter="url(#shadow)">
+    <rect x="671" y="374" width="411" height="117" rx="13" fill="#26362b"/>
+    <text x="700" y="410" font-family="Arial,sans-serif" font-size="15" font-weight="700" letter-spacing="1.6" fill="#c5d2c0">WEEKLY TOTAL</text>
+    <path d="M701 443h115M837 443h91M950 443h101" stroke="#839184" stroke-width="8" stroke-linecap="round"/>
+    <path d="M701 468h70M790 468h126M934 468h117" stroke="#627266" stroke-width="7" stroke-linecap="round"/>
+  </g>
+  <g filter="url(#shadow)" transform="rotate(-5 845 248)">
+    <rect x="670" y="157" width="414" height="204" rx="15" fill="#fff" stroke="#d7e0d5" stroke-width="2"/>
+    <text x="697" y="190" font-family="Arial,sans-serif" font-size="18" font-weight="700" fill="#26362b">Time card</text>
+    <text x="697" y="222" font-family="Arial,sans-serif" font-size="13" font-weight="700" fill="#677267">DAY</text>
+    <text x="818" y="222" font-family="Arial,sans-serif" font-size="13" font-weight="700" fill="#677267">SHIFT</text>
+    <text x="953" y="222" font-family="Arial,sans-serif" font-size="13" font-weight="700" fill="#677267">BREAK</text>
+    <path d="M696 237h355" stroke="#e2e8df" stroke-width="2"/>
+    <g fill="#748073" font-family="Arial,sans-serif" font-size="15">
+      <text x="697" y="266">Mon</text><text x="697" y="296">Tue</text><text x="697" y="326">Wed</text>
+    </g>
+    <g stroke="#d4ddd2" stroke-width="7" stroke-linecap="round">
+      <path d="M818 261h82M818 291h112M818 321h94"/><path d="M953 261h73M953 291h57M953 321h82"/>
+    </g>
+  </g>
+</svg>

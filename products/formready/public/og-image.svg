@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title description">
+  <title id="title">FormReady — Photo and signature resizer</title>
+  <desc id="description">A photo crop frame and measured file checks for preparing an image for an online form.</desc>
+  <defs>
+    <linearGradient id="background" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f8f5f1"/><stop offset="1" stop-color="#efe5dc"/></linearGradient>
+    <filter id="shadow" x="-.2" y="-.2" width="1.4" height="1.5"><feDropShadow dx="0" dy="18" stdDeviation="18" flood-color="#493c34" flood-opacity=".14"/></filter>
+  </defs>
+  <rect width="1200" height="630" fill="url(#background)"/>
+  <circle cx="1150" cy="600" r="270" fill="#e9d6c8" opacity=".62"/>
+  <circle cx="95" cy="48" r="190" fill="#e8eae2" opacity=".7"/>
+  <path d="M48 46h1104v538H48z" fill="none" stroke="#e3d8ce" stroke-width="2"/>
+  <rect x="82" y="91" width="52" height="52" rx="15" fill="#a94f37"/>
+  <text x="108" y="129" text-anchor="middle" font-family="Arial,sans-serif" font-size="34" font-weight="700" fill="#fff">F</text>
+  <text x="151" y="128" font-family="Arial,sans-serif" font-size="28" font-weight="700" letter-spacing="-1.2" fill="#252c2c">FormReady</text>
+  <text x="82" y="261" font-family="Arial,sans-serif" font-size="52" font-weight="700" letter-spacing="-2.5" fill="#252c2c">Photo &amp; signature prep</text>
+  <text x="84" y="319" font-family="Arial,sans-serif" font-size="26" fill="#5a605b">Set the pixels. Measure the file. Check the crop.</text>
+  <g filter="url(#shadow)" transform="rotate(-4 810 333)">
+    <rect x="689" y="155" width="289" height="355" rx="18" fill="#fff" stroke="#e3d8ce" stroke-width="2"/>
+    <rect x="716" y="181" width="235" height="258" rx="11" fill="#f2e9e0"/>
+    <path d="M738 202h27M738 202v27M929 202h-27M929 202v27M738 418h27M738 418v-27M929 418h-27M929 418v-27" fill="none" stroke="#a94f37" stroke-width="5" stroke-linecap="round"/>
+    <circle cx="833" cy="274" r="51" fill="#c98f70"/>
+    <path d="M756 417c14-76 41-111 77-111s63 35 77 111" fill="#a94f37"/>
+    <rect x="716" y="457" width="105" height="30" rx="7" fill="#f7e7df"/>
+    <text x="768" y="477" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" font-weight="700" fill="#923e2b">CROP</text>
+    <path d="M840 472h100" stroke="#d8d9d2" stroke-width="8" stroke-linecap="round"/>
+  </g>
+  <g filter="url(#shadow)" transform="rotate(5 1026 364)">
+    <rect x="958" y="280" width="145" height="154" rx="14" fill="#fff" stroke="#e3d8ce" stroke-width="2"/>
+    <text x="979" y="311" font-family="Arial,sans-serif" font-size="13" font-weight="700" letter-spacing="1" fill="#6d7069">CHECK</text>
+    <circle cx="982" cy="344" r="8" fill="#51805e"/><path d="m978 344 3 3 6-7" fill="none" stroke="#fff" stroke-width="2"/>
+    <path d="M1000 344h76" stroke="#cdd2c9" stroke-width="7" stroke-linecap="round"/>
+    <circle cx="982" cy="376" r="8" fill="#51805e"/><path d="m978 376 3 3 6-7" fill="none" stroke="#fff" stroke-width="2"/>
+    <path d="M1000 376h60" stroke="#cdd2c9" stroke-width="7" stroke-linecap="round"/>
+    <circle cx="982" cy="408" r="8" fill="#51805e"/><path d="m978 408 3 3 6-7" fill="none" stroke="#fff" stroke-width="2"/>
+    <path d="M1000 408h84" stroke="#cdd2c9" stroke-width="7" stroke-linecap="round"/>
+  </g>
+</svg>

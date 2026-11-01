@@ -18,6 +18,7 @@ const message = document.querySelector('#image-pdf-message');
 const countLabel = document.querySelector('#selection-count');
 const pageCountLabel = document.querySelector('#pdf-page-count');
 const convertButton = document.querySelector('#convert-images');
+const applyAllFiltersButton = document.querySelector('#apply-filter-all');
 const clearButton = document.querySelector('#clear-images');
 const result = document.querySelector('#image-pdf-result');
 const stage = document.querySelector('#crop-stage');
@@ -67,6 +68,7 @@ function updateCounts() {
   document.querySelector('#deselect-all').disabled = !selected;
   convertButton.disabled = !selected || dirty || generating;
   clearButton.disabled = !items.length || generating;
+  applyAllFiltersButton.disabled = !items.length || generating;
   cropControls.forEach((control) => { if (control) control.disabled = !activeItem() || generating; });
   document.querySelector('#apply-edit').disabled = !activeItem() || !dirty || generating;
   document.querySelector('#reset-image-edit').disabled = !activeItem() || generating;
@@ -206,18 +208,52 @@ async function applyEdit() {
   try {
     const cropped = cropper.getCroppedCanvas({ maxWidth: 6000, maxHeight: 6000, imageSmoothingEnabled: true, imageSmoothingQuality: 'high', fillColor: '#fff' });
     if (!cropped || cropped.width * cropped.height > 30_000_000) throw new Error('This crop is too large for a safe browser edit. Choose a smaller crop or image.');
+    const baseCanvas = document.createElement('canvas'); baseCanvas.width = cropped.width; baseCanvas.height = cropped.height;
+    baseCanvas.getContext('2d').drawImage(cropped, 0, 0);
+    const baseBlob = await encodeCanvas(baseCanvas);
     const canvas = document.createElement('canvas'); canvas.width = cropped.width; canvas.height = cropped.height;
-    const context = canvas.getContext('2d');
-    context.filter = filterString(item); context.drawImage(cropped, 0, 0);
+    const context = canvas.getContext('2d'); context.filter = filterString(item); context.drawImage(baseCanvas, 0, 0);
     const blob = await encodeCanvas(canvas);
     if (item.outputUrl) URL.revokeObjectURL(item.outputUrl);
-    item.outputBlob = blob; item.outputUrl = URL.createObjectURL(blob);
+    item.baseBlob = baseBlob; item.outputBlob = blob; item.outputUrl = URL.createObjectURL(blob);
     item.cropData = cropper.getData(true); item.rotation = cropper.getImageData().rotate;
     item.scaleX = cropper.getImageData().scaleX || 1;
     dirty = false; message.textContent = ''; setDirty(false); renderGallery();
+    return true;
   } catch (error) {
     message.textContent = error instanceof Error ? error.message : 'Could not apply these edits.';
+    return false;
   } finally { button.textContent = 'Apply crop and filter'; updateCounts(); }
+}
+async function applyCurrentFilterToAll() {
+  if (!items.length || generating) return;
+  if (dirty && !(await applyEdit())) return;
+  const active = activeItem(); if (!active) return;
+  const settings = { filter: active.filter, brightness: active.brightness, contrast: active.contrast };
+  const button = applyAllFiltersButton;
+  button.disabled = true; button.textContent = 'Applying…';
+  message.textContent = `Applying ${settings.filter === 'none' ? 'the current adjustments' : `the ${settings.filter} filter`} to ${items.length} photos…`;
+  const results = [];
+  try {
+    for (const item of items) {
+      const source = item.baseBlob || item.file;
+      const bitmap = await createImageBitmap(source);
+      const canvas = document.createElement('canvas'); canvas.width = bitmap.width; canvas.height = bitmap.height;
+      const context = canvas.getContext('2d');
+      context.filter = filterString(settings); context.drawImage(bitmap, 0, 0); bitmap.close();
+      results.push({ item, blob: await encodeCanvas(canvas) });
+    }
+    results.forEach(({ item, blob }) => {
+      if (item.outputUrl) URL.revokeObjectURL(item.outputUrl);
+      if (!item.baseBlob) item.baseBlob = item.file;
+      item.filter = settings.filter; item.brightness = settings.brightness; item.contrast = settings.contrast;
+      item.outputBlob = blob; item.outputUrl = URL.createObjectURL(blob);
+    });
+    dirty = false; invalidateResult(); renderGallery(); setDirty(false);
+    message.textContent = `Applied the same filter and adjustments to all ${items.length} photos.`;
+  } catch (error) {
+    message.textContent = error instanceof Error ? `Could not apply the filter to every photo. No photos were changed. ${error.message}` : 'Could not apply the filter to every photo. No photos were changed.';
+  } finally { button.textContent = 'Apply same filter to all photos'; updateCounts(); }
 }
 async function addFiles(files) {
   const additions = [...files]; if (!additions.length) return;
@@ -235,7 +271,7 @@ async function addFiles(files) {
     catch { message.textContent = `“${file.name}” could not be opened as an image.`; continue; }
     const pixels = bitmap.width * bitmap.height; bitmap.close();
     if (!pixels || pixels > MAX_PIXELS) { message.textContent = `“${file.name}” is too large to edit safely in a browser (maximum 30 megapixels).`; continue; }
-    accepted.push({ id: crypto.randomUUID(), file, selected: true, sourceUrl: URL.createObjectURL(file), outputUrl: null, outputBlob: null, cropData: null, rotation: 0, scaleX: 1, filter: 'none', brightness: 100, contrast: 100 });
+    accepted.push({ id: crypto.randomUUID(), file, selected: true, sourceUrl: URL.createObjectURL(file), outputUrl: null, outputBlob: null, baseBlob: null, cropData: null, rotation: 0, scaleX: 1, filter: 'none', brightness: 100, contrast: 100 });
   }
   if (!accepted.length) { updateCounts(); return; }
   items.push(...accepted); message.textContent = '';
@@ -320,7 +356,7 @@ document.querySelector('#reset-crop').addEventListener('click', () => { cropper?
 document.querySelector('#reset-image-edit').addEventListener('click', () => {
   const item = activeItem(); if (!item) return;
   if (item.outputUrl) URL.revokeObjectURL(item.outputUrl);
-  item.outputBlob = null; item.outputUrl = null; item.cropData = null; item.rotation = 0; item.scaleX = 1; item.filter = 'none'; item.brightness = 100; item.contrast = 100;
+  item.outputBlob = null; item.outputUrl = null; item.baseBlob = null; item.cropData = null; item.rotation = 0; item.scaleX = 1; item.filter = 'none'; item.brightness = 100; item.contrast = 100;
   document.querySelector('#image-filter').value = 'none'; document.querySelector('#brightness').value = '100'; document.querySelector('#contrast').value = '100';
   syncFilterControls(item); cropper?.reset(); dirty = false; invalidateResult(); message.textContent = ''; setDirty(false); renderGallery();
 });
@@ -328,6 +364,7 @@ document.querySelector('#image-filter').addEventListener('change', markFilterCha
 document.querySelector('#brightness').addEventListener('input', markFilterChanged);
 document.querySelector('#contrast').addEventListener('input', markFilterChanged);
 document.querySelector('#apply-edit').addEventListener('click', applyEdit);
+applyAllFiltersButton.addEventListener('click', applyCurrentFilterToAll);
 document.querySelector('#convert-images').addEventListener('click', convertImages);
 document.querySelector('#clear-images').addEventListener('click', () => {
   if (generating) return;

@@ -193,7 +193,7 @@ for (const [product, paths] of Object.entries({
   const liveFilterPreview = await imagePdf.page.locator('.cropper-canvas img').first().evaluate((image) => getComputedStyle(image).filter);
   await assert('QuickKit filter selection updates the visible crop preview immediately', liveFilterPreview.includes('grayscale(1)'), liveFilterPreview);
   await imagePdf.page.locator('#apply-edit').click();
-  await imagePdf.page.locator('#image-gallery li').first().waitFor();
+  await imagePdf.page.waitForFunction(() => document.querySelector('#edit-status')?.textContent === 'Edits applied to this photo.');
   const filteredPixels = await imagePdf.page.locator('#image-gallery li img').first().evaluate(async (image) => {
     await image.decode();
     const canvas = document.createElement('canvas'); canvas.width = canvas.height = 1;
@@ -260,7 +260,7 @@ for (const [product, paths] of Object.entries({
   await page.locator('#target-dpi').fill('300');
   await page.locator('#target-unit').selectOption('px'); await page.locator('#target-width').fill('120'); await page.locator('#target-height').fill(''); await page.locator('#max-kb').fill('500');
   await page.locator('#prepare-image').click(); await page.locator('#prepare-result .validation-result').waitFor();
-  const singleDimension = await page.locator('#prepare-result .result-details').innerText();
+  const singleDimension = await page.locator('#prepare-result .result-details').first().innerText();
   await assert('FormReady preserves aspect ratio when only width is specified', /120 × 90px/.test(singleDimension), singleDimension);
   await page.locator('#target-unit').selectOption('mm'); await page.locator('#target-width').fill('35'); await page.locator('#target-height').fill('45'); await page.locator('#target-dpi').fill('300'); await page.locator('#max-kb').fill('500');
   await page.locator('#prepare-image').click(); await page.locator('#prepare-result .validation-result').waitFor();

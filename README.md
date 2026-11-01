@@ -6,9 +6,9 @@ Three focused browser tools for everyday work: edit PDFs, track hours, and prepa
 
 | Product | What it does | Open |
 |---|---|---|
-| **QuickKit** | Photos to PDF, PDF annotations/OCR redaction, PDF merge, image compression, text tools and Wi-Fi QR codes | [quickkit-browser-tools.pages.dev](https://quickkit-browser-tools.pages.dev/) |
-| **WorkKit** | Time cards, overnight shifts, breaks, overtime and hourly-to-salary estimates | [workkit-hours-tools.pages.dev](https://workkit-hours-tools.pages.dev/) |
-| **FormReady** | Crop, resize, compress and measure a photo or signature for an application | [formready-photo-tools.pages.dev](https://formready-photo-tools.pages.dev/) |
+| **QuickKit** | PDF editing, conversion and OCR; photo-to-PDF, image tools, video editing and GPS-tagged photos | [quickkit-browser-tools.pages.dev](https://quickkit-browser-tools.pages.dev/) |
+| **WorkKit** | Weekly time cards, overnight shifts, breaks, overtime, pay estimates and dated currency conversion | [workkit-hours-tools.pages.dev](https://workkit-hours-tools.pages.dev/) |
+| **FormReady** | Exam and application photo/signature presets, crop, resize, compression and a requirements checker | [formready-photo-tools.pages.dev](https://formready-photo-tools.pages.dev/) |
 
 ## Product previews
 
@@ -16,7 +16,8 @@ Three focused browser tools for everyday work: edit PDFs, track hours, and prepa
 
 <p>Short mobile captures, shown as separate screen sections rather than one long page:</p>
 <p><a href="https://quickkit-browser-tools.pages.dev/"><img src="qa-results/readme-parts/quickkit-home-hero.png" alt="QuickKit home, mobile hero section" width="31%"></a> <a href="https://quickkit-browser-tools.pages.dev/#tools"><img src="qa-results/readme-parts/quickkit-home-tools.png" alt="QuickKit home, mobile tool cards" width="31%"></a> <a href="https://quickkit-browser-tools.pages.dev/image-to-pdf.html"><img src="qa-results/readme-parts/quickkit-image-to-pdf-gallery.png" alt="Images to PDF, mobile gallery section" width="31%"></a></p>
-<p><a href="https://quickkit-browser-tools.pages.dev/image-to-pdf.html"><img src="qa-results/readme-parts/quickkit-image-to-pdf-edit.png" alt="Images to PDF, mobile crop and editing section" width="31%"></a> <a href="https://quickkit-browser-tools.pages.dev/pdf-editor.html"><img src="qa-results/readme-parts/quickkit-pdf-editor-replace.png" alt="PDF editor, OCR text recognition and redaction on mobile" width="31%"></a></p>
+<p><a href="https://quickkit-browser-tools.pages.dev/image-to-pdf.html"><img src="qa-results/readme-parts/quickkit-image-to-pdf-edit.png" alt="Images to PDF, mobile crop and editing section" width="31%"></a></p>
+<p><a href="https://quickkit-browser-tools.pages.dev/video-tools.html"><img src="qa-results/readme-parts/quickkit-video-multi-trim.png" alt="QuickKit video trim tool with multiple saved ranges" width="72%"></a></p>
 
 ### WorkKit
 
@@ -53,7 +54,7 @@ Each Vite build is configured in `products/<product>/vite.config.js` and writes 
 
 ## Hosting and search
 
-The public sites use Cloudflare Pages `pages.dev` hostnames. No custom domain is currently connected. Google Search Console/Bing verification and search indexing are not represented as complete; indexing and rankings depend on search engines.
+The public sites use Cloudflare Pages `pages.dev` hostnames. No custom domain is currently connected. Google Search Console ownership is verified for WorkKit and FormReady and sitemap routes are published; actual indexing and rankings depend on search engines.
 
 No Google ads are currently served. AdSense requires the site owner to connect an account, verify the site, and receive approval. A public README or code change does not activate advertising.
 
