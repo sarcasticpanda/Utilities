@@ -124,7 +124,6 @@ function updateActions() {
   const hasVideo = selected.length > 0;
   $('#video-run-compress').disabled = !hasVideo || busy();
   $('#video-run-trim').disabled = !hasVideo || busy();
-  $('#video-run-remove-range').disabled = !hasVideo || busy();
   $('#video-add-trim-range').disabled = !hasVideo || busy();
   $('#video-clear-trim-ranges').disabled = !trimRanges.length || busy();
   $('#video-preview-trim-ranges').disabled = !trimRanges.length || busy();
@@ -370,7 +369,7 @@ function renderTrimRanges() {
     row.append(title, startLabel, endLabel, remove); list.append(row);
   });
   const add = $('#video-add-trim-range');
-  if (add) add.innerHTML = `<span aria-hidden="true">+</span> ${trimDraftActive ? (trimRanges.length ? 'Save this part' : 'Save first part') : 'Add another range'}`;
+  if (add) add.innerHTML = `<span aria-hidden="true">+</span> ${trimDraftActive ? (trimRanges.length ? 'Save this trim' : 'Save first trim') : 'Add another trim'}`;
   const savedCount = $('#video-trim-saved-count');
   if (savedCount) savedCount.textContent = trimRanges.length ? `${trimRanges.length} ${trimRanges.length === 1 ? 'part' : 'parts'} saved` : 'No parts saved yet';
   const previewButton = $('#video-preview-trim-ranges');
@@ -1008,26 +1007,6 @@ function handleCropPointerUp(event) {
   if (event.currentTarget.hasPointerCapture?.(event.pointerId)) event.currentTarget.releasePointerCapture(event.pointerId);
 }
 
-function removeSelectedRange() {
-  const item = selected[0];
-  if (!item) return;
-  const start = Number($('#video-trim-start').value);
-  const end = Number($('#video-trim-end').value);
-  if (!Number.isFinite(start) || !Number.isFinite(end) || start < 0 || end > item.duration || end - start < 0.15) {
-    setStatus('Enter a section of at least 0.15 seconds to remove, inside the video duration.', true); return;
-  }
-  const kept = [];
-  if (start >= 0.15) kept.push({ id: `segment-${++segmentCounter}`, itemId: item.id, start: 0, end: start });
-  if (item.duration - end >= 0.15) kept.push({ id: `segment-${++segmentCounter}`, itemId: item.id, start: end, end: item.duration });
-  if (!kept.length) { setStatus('That range covers the whole video. Leave at least 0.15 seconds to keep.', true); return; }
-  segments = kept;
-  queuedJoinTask = 'cut';
-  updateMode('join');
-  renderSegments();
-  setStatus(`Ready to remove ${formatDuration(start)}–${formatDuration(end)}. Check the kept sections, then export.`);
-  $('#video-run-join').focus();
-}
-
 async function runConversion(task) {
   const item = selected[0];
   if (!item) return;
@@ -1239,7 +1218,6 @@ fileInput.addEventListener('change', (event) => {
 $('#video-clear').addEventListener('click', clearFiles);
 $('#video-run-compress').addEventListener('click', () => runConversion('compress'));
 $('#video-run-trim').addEventListener('click', () => runConversion('trim'));
-$('#video-run-remove-range').addEventListener('click', removeSelectedRange);
 $('#video-run-crop').addEventListener('click', () => runConversion('crop'));
 $('#video-run-join').addEventListener('click', () => runJoin());
 $('#video-playback-toggle').addEventListener('click', async () => {
@@ -1292,8 +1270,8 @@ for (const [id, intent] of [['video-trim-keep', 'keep'], ['video-trim-remove', '
     $('#video-trim-keep').setAttribute('aria-pressed', String(intent === 'keep'));
     $('#video-trim-remove').setAttribute('aria-pressed', String(intent === 'remove'));
     $('#video-trim-intent-help').textContent = intent === 'keep'
-      ? 'Saved ranges are joined in order. Switch to “Remove selected parts” to cut those ranges from the original video.'
-      : 'Saved ranges will be cut out. The remaining parts before, between and after them are joined in order.';
+      ? 'Saved parts are joined in order.'
+      : 'Saved parts are cut out; the remaining video is joined.';
     renderTrimRanges();
     setStatus(intent === 'keep' ? 'Saved ranges are the parts that will remain in the export.' : 'Saved ranges are the parts that will be cut out of the export.');
   });

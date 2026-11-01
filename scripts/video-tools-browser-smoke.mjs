@@ -164,7 +164,7 @@ try {
   check('source metadata is read', sourceMetadata.includes('320 × 180') && sourceMetadata.includes('0:03'), sourceMetadata);
   check('compress keeps trim timeline out of the way', await page.locator('#video-editor-dock').isHidden());
   await page.locator('#video-tab-trim').click();
-  check('trim mode exposes plus, saved-part controls, export and synced timeline', await page.locator('#video-editor-dock').isVisible() && await page.locator('#video-add-trim-range').isVisible() && await page.locator('#video-add-trim-range').innerText().then((text) => text.includes('+')) && await page.locator('#video-run-trim').isVisible() && await page.locator('.timeline-playhead').count() === 1 && await page.locator('#video-timecode').innerText().then((text) => text.includes('0:03')));
+  check('trim keeps the plus beside Keep/Remove and the timeline dock shows export and synced preview', await page.locator('#video-editor-dock').isVisible() && await page.locator('#video-panel-trim #video-add-trim-range').isVisible() && await page.locator('#video-add-trim-range').innerText().then((text) => text.includes('+')) && await page.locator('#video-editor-dock #video-add-trim-range').count() === 0 && await page.locator('#video-run-trim').isVisible() && await page.locator('.timeline-playhead').count() === 1 && await page.locator('#video-timecode').innerText().then((text) => text.includes('0:03')));
   const dockLayout = await page.locator('#video-editor-dock').evaluate((element) => ({ position: getComputedStyle(element).position, bottom: element.getBoundingClientRect().bottom, viewport: window.innerHeight, tracks: element.querySelectorAll('.timeline-lane').length }));
   check('timeline stays docked at the bottom like an editing workspace', dockLayout.position === 'fixed' && dockLayout.bottom <= dockLayout.viewport && dockLayout.bottom >= dockLayout.viewport - 40 && dockLayout.tracks >= 1, JSON.stringify(dockLayout));
   await page.locator('#video-tab-crop').click();
@@ -304,15 +304,18 @@ try {
   check('same-file middle cut joins retained sections with audio', cut.playback && cut.duration >= 1.8 && cut.duration <= 2.3 && (cut.audioTrackCount > 0 || cut.decodedAudioBytes > 0), `${cut.duration.toFixed(2)} s · audio tracks ${cut.audioTrackCount}, decoded ${cut.decodedAudioBytes} B`);
 
   await page.locator('#video-tab-trim').click();
+  const cutSourceDuration = Number(await page.locator('#video-scrub').getAttribute('max'));
   await page.locator('#video-trim-start').fill('1.0');
   await page.locator('#video-trim-end').fill('2.0');
-  await page.locator('#video-run-remove-range').click();
-  check('remove-range action creates before and after sections', await page.locator('#video-tab-join').getAttribute('aria-selected') === 'true' && await page.locator('#video-segments > li').count() === 2 && (await page.locator('#video-status').innerText()).includes('Ready to remove'));
-  await page.locator('#video-run-join').click();
+  await page.locator('#video-add-trim-range').click();
+  await page.locator('#video-trim-remove').click();
+  check('remove mode reuses the saved trim range and has no duplicate single-cut control', await page.locator('#video-trim-segments > li').count() === 1 && await page.locator('#video-trim-remove').getAttribute('aria-pressed') === 'true' && await page.locator('#video-run-remove-range').count() === 0 && (await page.locator('#video-trim-intent-help').innerText()).includes('cut out'));
+  await page.locator('#video-run-trim').click();
   const removed = await waitForResult();
-  check('remove-range export keeps both sides and omits the selected middle', removed.playback && removed.duration >= 1.8 && removed.duration <= 2.3 && (await page.locator('#video-result-title').innerText()) === 'Unwanted section removed', `${removed.duration.toFixed(2)} s · ${await page.locator('#video-result-title').innerText()}`);
+  check('Remove selected parts exports the remaining video around the saved cut', removed.playback && Math.abs(removed.duration - (cutSourceDuration - 1)) < .55 && removed.width > 0 && removed.height > 0, `${removed.duration.toFixed(2)} s from ${cutSourceDuration.toFixed(2)} s`);
 
   await page.locator('#video-clear').click();
+  await page.locator('#video-tab-join').click();
   await page.locator('#video-files').setInputFiles([asFile(clipA), asFile(clipB)]);
   await page.waitForFunction(() => document.querySelectorAll('#video-segments > li').length === 2, null, { timeout: 20000 });
   const soundtrackA = makeWav('ambient-bed.wav', 523);

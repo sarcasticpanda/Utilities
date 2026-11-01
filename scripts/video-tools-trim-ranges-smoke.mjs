@@ -17,7 +17,7 @@ async function loadSource() {
   await page.locator('#video-tab-trim').click();
 }
 async function saveRange(start, end) {
-  if ((await page.locator('#video-add-trim-range').innerText()).includes('Add another')) await page.locator('#video-add-trim-range').click();
+  if ((await page.locator('#video-add-trim-range').innerText()).includes('Add another trim')) await page.locator('#video-add-trim-range').click();
   await page.locator('#video-trim-start').fill(start.toFixed(2));
   await page.locator('#video-trim-end').fill(end.toFixed(2));
   await page.locator('#video-add-trim-range').click();
@@ -56,21 +56,24 @@ try {
   }), 'base64');
   await loadSource();
   const sourceDuration = Number(await page.locator('#video-scrub').getAttribute('max'));
-  check('Trim exposes the plus action and export within its timeline dock', await page.locator('#video-editor-dock').isVisible() && await page.locator('#video-add-trim-range').isVisible() && (await page.locator('#video-add-trim-range').innerText()).includes('+') && await page.locator('#video-run-trim').isVisible());
+  const plusPlacement = await page.locator('#video-add-trim-range').evaluate((button) => { const panel = document.querySelector('#video-panel-trim').getBoundingClientRect(); const bounds = button.getBoundingClientRect(); return { inTrimPanel: bounds.top >= panel.top && bounds.bottom <= panel.bottom, inDock: Boolean(button.closest('#video-editor-dock')) }; });
+  check('Trim puts the plus action beside Keep/Remove while export stays in the timeline dock', await page.locator('#video-editor-dock').isVisible() && await page.locator('#video-panel-trim #video-add-trim-range').isVisible() && !plusPlacement.inDock && plusPlacement.inTrimPanel && (await page.locator('#video-add-trim-range').innerText()).includes('+') && await page.locator('#video-run-trim').isVisible(), JSON.stringify(plusPlacement));
   await saveRange(.30, .90);
-  check('first range saves, appears in the dock and offers another plus action', await page.locator('#video-trim-segments > li').count() === 1 && await page.locator('#video-trim-segments').isVisible() && (await page.locator('#video-add-trim-range').innerText()).includes('Add another'));
+  check('first range saves, appears in the list and offers another plus action', await page.locator('#video-trim-segments > li').count() === 1 && await page.locator('#video-trim-segments').isVisible() && (await page.locator('#video-add-trim-range').innerText()).includes('Add another trim'));
   await page.locator('#video-add-trim-range').click();
   await page.locator('#video-trim-start').fill('.50'); await page.locator('#video-trim-end').fill('.80');
   await page.locator('#video-add-trim-range').click();
   check('overlapping saved ranges are rejected with a clear message', await page.locator('#video-status').innerText().then((text) => text.includes('overlaps')) && await page.locator('#video-trim-segments > li').count() === 1);
   await saveRange(1.80, 2.40);
   check('two distinct ranges appear on timeline and in editable list', await page.locator('#video-trim-segments > li').count() === 2 && await page.locator('#video-timeline .timeline-trim-saved').count() === 2);
+  await page.evaluate(() => { window.__trimPointerTrace = []; for (const name of ['pointerdown', 'pointermove', 'pointerup']) document.addEventListener(name, (event) => window.__trimPointerTrace.push({ name, target: event.target.tagName, id: event.target.id, className: typeof event.target.className === 'string' ? event.target.className : '', rail: Boolean(event.target.closest?.('#video-timeline .timeline-rail')), part: event.target.closest?.('[data-trim-part]')?.dataset.trimPart || '', x: event.clientX, y: event.clientY }), true); });
   const rail = await page.locator('#video-timeline .timeline-rail').boundingBox();
   const firstStart = await page.locator('#video-timeline .timeline-trim-saved [data-trim-range-id] [data-trim-part="start"], #video-timeline .timeline-trim-saved[data-trim-range-id] [data-trim-part="start"]').first().boundingBox();
   await page.mouse.move(firstStart.x + firstStart.width / 2, firstStart.y + firstStart.height / 2); await page.mouse.down();
   await page.mouse.move(rail.x + rail.width * (.40 / sourceDuration), rail.y + rail.height / 2, { steps: 6 }); await page.mouse.up();
   const draggedStart = Number(await page.locator('#video-trim-segments input[aria-label="Part 1 start time in seconds"]').inputValue());
-  check('saved range handles can be dragged and update the time list', Math.abs(draggedStart - .40) < .08, `${draggedStart.toFixed(2)} seconds`);
+  const dragTrace = await page.evaluate(() => window.__trimPointerTrace);
+  check('saved range handles can be dragged and update the time list', Math.abs(draggedStart - .40) < .08, `${draggedStart.toFixed(2)} seconds · rail ${JSON.stringify(rail)} · handle ${JSON.stringify(firstStart)} · ${JSON.stringify(dragTrace)}`);
   await page.screenshot({ path: resolve('qa-results/readme-parts/quickkit-video-multi-trim.png') });
   await page.setViewportSize({ width: 390, height: 844 });
   await page.locator('#video-add-trim-range').scrollIntoViewIfNeeded();

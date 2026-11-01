@@ -1,16 +1,16 @@
 {
-  "date": "2026-11-01T22:17:44.813Z",
+  "date": "2026-11-01T22:57:57.523Z",
   "browser": "Playwright Chromium",
   "origin": "https://quickkit-browser-tools.pages.dev",
-  "sourceDuration": 3.169,
+  "sourceDuration": 3.16,
   "checks": [
     {
-      "name": "Trim exposes the plus action and export within its timeline dock",
+      "name": "Trim puts the plus action beside Keep/Remove while export stays in the timeline dock",
       "pass": true,
-      "detail": ""
+      "detail": "{\"inTrimPanel\":true,\"inDock\":false}"
     },
     {
-      "name": "first range saves, appears in the dock and offers another plus action",
+      "name": "first range saves, appears in the list and offers another plus action",
       "pass": true,
       "detail": ""
     },
@@ -27,12 +27,12 @@
     {
       "name": "saved range handles can be dragged and update the time list",
       "pass": true,
-      "detail": "0.40 seconds"
+      "detail": "0.40 seconds · rail {\"x\":249,\"y\":873.5,\"width\":1004,\"height\":66} · handle {\"x\":336.3125,\"y\":868.5,\"width\":20,\"height\":76} · [{\"name\":\"pointermove\",\"target\":\"BUTTON\",\"id\":\"\",\"className\":\"timeline-trim-handle\",\"rail\":true,\"part\":\"start\",\"x\":346.3125,\"y\":906.5},{\"name\":\"pointerdown\",\"target\":\"BUTTON\",\"id\":\"\",\"className\":\"timeline-trim-handle\",\"rail\":true,\"part\":\"start\",\"x\":346.3125,\"y\":906.5},{\"name\":\"pointermove\",\"target\":\"DIV\",\"id\":\"\",\"className\":\"timeline-rail\",\"rail\":true,\"part\":\"\",\"x\":351.2751770019531,\"y\":906.5},{\"name\":\"pointermove\",\"target\":\"DIV\",\"id\":\"\",\"className\":\"timeline-rail\",\"rail\":true,\"part\":\"\",\"x\":356.23785400390625,\"y\":906.5},{\"name\":\"pointermove\",\"target\":\"DIV\",\"id\":\"\",\"className\":\"timeline-rail\",\"rail\":true,\"part\":\"\",\"x\":361.2005615234375,\"y\":906.5},{\"name\":\"pointermove\",\"target\":\"DIV\",\"id\":\"\",\"className\":\"timeline-rail\",\"rail\":true,\"part\":\"\",\"x\":366.1632385253906,\"y\":906.5},{\"name\":\"pointermove\",\"target\":\"DIV\",\"id\":\"\",\"className\":\"timeline-rail\",\"rail\":true,\"part\":\"\",\"x\":371.12591552734375,\"y\":906.5},{\"name\":\"pointermove\",\"target\":\"DIV\",\"id\":\"\",\"className\":\"timeline-rail\",\"rail\":true,\"part\":\"\",\"x\":376.0885925292969,\"y\":906.5},{\"name\":\"pointerup\",\"target\":\"DIV\",\"id\":\"\",\"className\":\"timeline-rail\",\"rail\":true,\"part\":\"\",\"x\":376.0885925292969,\"y\":906.5}]"
     },
     {
       "name": "multi-range controls remain visible and usable without overflow on phone width",
       "pass": true,
-      "detail": "{\"width\":390,\"viewport\":390,\"addButton\":168,\"dockBottom\":837,\"dockTop\":398.125,\"viewportHeight\":844}"
+      "detail": "{\"width\":390,\"viewport\":390,\"addButton\":190.59375,\"dockBottom\":837,\"dockTop\":398.125,\"viewportHeight\":844}"
     },
     {
       "name": "keep mode joins both parts into a playable downloadable preview",
@@ -52,7 +52,7 @@
     {
       "name": "remove mode cuts both parts and previews the remaining video",
       "pass": true,
-      "detail": "2.37s from 3.17s"
+      "detail": "2.36s from 3.16s"
     },
     {
       "name": "no browser runtime errors",

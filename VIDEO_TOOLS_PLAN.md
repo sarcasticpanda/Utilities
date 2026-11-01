@@ -79,7 +79,8 @@ The current interface is `products/quickkit/video-tools.html`. It keeps source f
 - [x] Preview and download the assembled output using the existing local join/export engine; validate playable output duration for both keep and remove behavior.
 - [x] Reject overlapping selections with an understandable message; keep exact time fields and timeline selections in sync.
 - [x] Check the saved-range controls at 390px with no horizontal page overflow.
-- [x] Put saved ranges, exact time fields, the “+ Save/Add another part” action, preview and export together in the visible Trim dock so the fixed timeline no longer hides them.
+- [x] Put the visible “+ Save/Add another trim” action beside Keep/Remove in the Trim panel. Keep exact time fields, saved parts, clear, preview and export together in the timeline dock.
+- [x] Remove the separate one-off cut control so keeping or removing saved ranges stays in one simple flow.
 - [x] Keep the timeline dock out of Compress and Crop; show it only for Trim and Edit and join.
 - [x] Add a crop box drawn over the actual video frame, movable within the frame and resizable from four corners; implement zoom from 50% to 300% and keep preview coordinates stable while selecting.
 - [x] Verify the free-crop export uses the selected frame region and exact output dimensions, not a visual-only overlay.

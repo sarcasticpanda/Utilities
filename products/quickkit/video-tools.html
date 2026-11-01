@@ -84,12 +84,11 @@
               <button type="button" id="video-trim-keep" aria-pressed="true">Keep selected parts</button>
               <button type="button" id="video-trim-remove" aria-pressed="false">Remove selected parts</button>
             </div>
-              <p class="video-help" id="video-trim-intent-help">Saved ranges are joined in order. Switch to “Remove selected parts” to cut those ranges from the original video.</p>
-            <div class="video-cut-box">
-              <strong>Remove one section</strong>
-              <p class="video-help">For several cuts, choose Remove selected parts, save each unwanted range, then preview the remaining video.</p>
-              <button type="button" class="button button-secondary video-run" id="video-run-remove-range" disabled>Remove this range</button>
+            <div class="video-trim-add-row">
+              <button type="button" class="button button-primary video-trim-add-button" id="video-add-trim-range" disabled><span aria-hidden="true">+</span> Save first trim</button>
             </div>
+            <ol class="video-trim-segments" id="video-trim-segments" aria-label="Selected video ranges" hidden></ol>
+            <p class="video-help" id="video-trim-intent-help">Save each part with +. Choose Keep selected parts to join saved ranges, or Remove selected parts to cut them out.</p>
           </div>
 
           <div class="video-mode-panel" id="video-panel-crop" role="tabpanel" aria-labelledby="video-tab-crop" hidden>
@@ -174,14 +173,12 @@
               <div><strong>Active range</strong><output id="video-trim-range-summary">0:00–0:00 · 0:00 selected</output><span id="video-trim-saved-count">No parts saved</span></div>
               <button type="button" class="video-text-button" id="video-reset-trim" disabled>Use full video</button>
             </div>
-            <ol class="video-trim-segments" id="video-trim-segments" aria-label="Selected video ranges" hidden></ol>
             <div class="video-trim-workspace-controls">
               <div class="video-time-fields">
                 <label class="video-field">From (seconds)<input id="video-trim-start" type="number" min="0" step="0.01" value="0" inputmode="decimal"></label>
                 <label class="video-field">To (seconds)<input id="video-trim-end" type="number" min="0" step="0.01" value="0" inputmode="decimal"></label>
               </div>
               <div class="video-trim-section-actions">
-                <button type="button" class="button button-primary" id="video-add-trim-range" disabled><span aria-hidden="true">+</span> Save first part</button>
                 <button type="button" class="video-text-button" id="video-clear-trim-ranges" disabled>Clear ranges</button>
                 <button type="button" class="button button-secondary video-run" id="video-preview-trim-ranges" disabled hidden>Preview selected parts</button>
                 <button type="button" class="button button-primary video-run" id="video-run-trim" disabled>Export trimmed clip</button>

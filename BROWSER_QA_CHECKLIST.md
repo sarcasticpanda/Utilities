@@ -255,7 +255,8 @@ Owner-supplied files were exercised in a local production build so their content
 
 ## Trim and crop usability correction — 2026-11-02
 
-- [x] Fixed the covered Trim controls by placing exact time fields, saved parts, clear, preview and export in the dock. The visible plus action starts another adjustable range; five separate ranges save and show in the editable list.
+- [x] Put the visible plus action beside Keep/Remove in the Trim panel; keep exact time fields, saved parts, clear, preview and export in the dock. Five separate ranges save and show in the editable list.
+- [x] Remove the duplicate one-off cut box; Remove selected parts now cuts every saved range through the same Trim flow.
 - [x] Separate task UI: timeline dock is hidden in Compress and Crop, shown in Trim and Edit and join.
 - [x] Crop can draw, move and resize a freeform selection directly on the original frame. Zoom range is 50–300%; browser QA checks both directions, exact crop geometry and exported pixels/dimensions.
 - [x] Local production Chromium: full video suite **45/45**, focused multi-range suite **11/11**.
