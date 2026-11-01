@@ -21,7 +21,7 @@
     {
       "name": "generated short audio/video source clips",
       "pass": true,
-      "detail": "33464 B and 34504 B"
+      "detail": "33863 B and 33998 B"
     },
     {
       "name": "generated source clips have distinct visual markers",
@@ -34,7 +34,12 @@
       "detail": "33 KB · 320 × 180 · 0:03"
     },
     {
-      "name": "timeline workspace appears when a clip loads",
+      "name": "compress keeps trim timeline out of the way",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "trim mode exposes plus, saved-part controls, export and synced timeline",
       "pass": true,
       "detail": ""
     },
@@ -44,9 +49,14 @@
       "detail": "{\"position\":\"fixed\",\"bottom\":988,\"viewport\":1000,\"tracks\":1}"
     },
     {
+      "name": "crop uses its own frame selection instead of the trim timeline dock",
+      "pass": true,
+      "detail": ""
+    },
+    {
       "name": "filmstrip trim handles drag to precise in/out times and sync to the preview",
       "pass": true,
-      "detail": "{\"start\":\"0.50\",\"end\":\"2.50\",\"duration\":\"3.157\",\"filmstripFrames\":8,\"previewTime\":1.2,\"summary\":\"0:00.50–0:02.50 · 2.00 s selected\",\"trimRail\":{\"x\":249,\"y\":880,\"width\":1004,\"height\":66},\"endHandle\":{\"x\":1241,\"y\":873,\"width\":20,\"height\":80},\"pointer\":[{\"target\":\"BUTTON\",\"part\":\"end\",\"x\":1252},{\"target\":\"BUTTON\",\"part\":\"start\",\"x\":251}]}"
+      "detail": "{\"start\":\"0.50\",\"end\":\"2.50\",\"duration\":\"3.18\",\"filmstripFrames\":8,\"previewTime\":1.2,\"summary\":\"0:00.50–0:02.50 · 2.00 s selected\",\"trimRail\":{\"x\":249,\"y\":873.5,\"width\":1004,\"height\":66},\"endHandle\":{\"x\":1241,\"y\":866.5,\"width\":20,\"height\":80},\"pointer\":[{\"target\":\"BUTTON\",\"part\":\"end\",\"x\":1252},{\"target\":\"BUTTON\",\"part\":\"start\",\"x\":251}]}"
     },
     {
       "name": "keyboard trim handles provide fine nudging and an exact accessible value",
@@ -56,7 +66,7 @@
     {
       "name": "use full video resets both range handles and exact time fields",
       "pass": true,
-      "detail": "0.00–3.16 / 3.157"
+      "detail": "0.00–3.18 / 3.18"
     },
     {
       "name": "exact keep-from and keep-to inputs update the timeline summary",
@@ -71,12 +81,12 @@
     {
       "name": "compression creates playable export with audio",
       "pass": true,
-      "detail": "59356 B · 3.23 s · audio tracks 1, decoded 13847 B"
+      "detail": "60398 B · 3.27 s · audio tracks 1, decoded 14186 B"
     },
     {
       "name": "compressed export reopens in the tool",
       "pass": true,
-      "detail": "58 KB · 320 × 180 · 0:03"
+      "detail": "59 KB · 320 × 180 · 0:03"
     },
     {
       "name": "square crop preview and export become available",
@@ -86,22 +96,52 @@
     {
       "name": "square crop exports square pixels and removes the outside-frame marker",
       "pass": true,
-      "detail": "180 × 180 · corner 217,94,62"
+      "detail": "180 × 180 · corner 219,94,62"
     },
     {
       "name": "cropped export reopens with square dimensions",
       "pass": true,
-      "detail": "57 KB · 180 × 180 · 0:03"
+      "detail": "58 KB · 180 × 180 · 0:03"
+    },
+    {
+      "name": "free crop can be drawn over an exact frame area",
+      "pass": true,
+      "detail": "160 × 99 crop · export 160 × 98 · {\"left\":\"20%\",\"top\":\"20%\",\"width\":\"50%\",\"height\":\"55%\",\"overlay\":{\"x\":632.359375,\"y\":518.46875,\"width\":647,\"height\":363.9375,\"top\":518.46875,\"right\":1279.359375,\"bottom\":882.40625,\"left\":632.359375}} · [{\"name\":\"pointermove\",\"x\":761.7593994140625,\"y\":591.2562255859375,\"top\":518.46875,\"height\":363.9375},{\"name\":\"pointerdown\",\"x\":761.7593994140625,\"y\":591.2562255859375,\"top\":518.46875,\"height\":363.9375},{\"name\":\"pointermove\",\"x\":802.1968994140625,\"y\":616.2769775390625,\"top\":518.46875,\"height\":363.9375}] … [{\"name\":\"pointermove\",\"x\":1085.2593994140625,\"y\":791.421875,\"top\":518.46875,\"height\":363.9375},{\"name\":\"pointerup\",\"x\":1085.2593994140625,\"y\":791.421875,\"top\":518.46875,\"height\":363.9375}]"
+    },
+    {
+      "name": "dragging inside the crop box moves it without changing its size",
+      "pass": true,
+      "detail": "{\"left\":25,\"top\":25,\"width\":50,\"height\":55}"
+    },
+    {
+      "name": "corner handles resize the crop box to the new frame area",
+      "pass": true,
+      "detail": "192 × 108 crop · export 192 × 108"
+    },
+    {
+      "name": "zoom in narrows the selected frame and updates export dimensions",
+      "pass": true,
+      "detail": "128 × 72 crop · export 128 × 72"
+    },
+    {
+      "name": "zoom out expands the selected crop up to the full source frame",
+      "pass": true,
+      "detail": "320 × 180 crop · export 320 × 180"
+    },
+    {
+      "name": "free crop exports the moved and resized region with its measured dimensions",
+      "pass": true,
+      "detail": "192 × 108 · corner 167,103,102"
     },
     {
       "name": "trim creates playable clip with audio and selected duration",
       "pass": true,
-      "detail": "1.22 s · audio tracks 1, decoded 19820 B"
+      "detail": "1.22 s · audio tracks 1, decoded 19402 B"
     },
     {
       "name": "trimmed export reopens and reports duration",
       "pass": true,
-      "detail": "23 KB · 180 × 180 · 0:01"
+      "detail": "24 KB · 320 × 180 · 0:01"
     },
     {
       "name": "join accepts two ordered files",
@@ -111,27 +151,27 @@
     {
       "name": "join creates playable file with audio and combined duration",
       "pass": true,
-      "detail": "6.40 s · audio tracks 1, decoded 15548 B"
+      "detail": "6.38 s · audio tracks 1, decoded 15890 B"
     },
     {
       "name": "joined video frames follow the selected clip order",
       "pass": true,
-      "detail": "first {\"pixel\":[217,94,64],\"requestedTime\":0.4,\"currentTime\":0.4,\"duration\":6.4} · second {\"pixel\":[47,117,189],\"requestedTime\":3.7,\"currentTime\":3.7,\"duration\":6.4}"
+      "detail": "first {\"pixel\":[216,94,64],\"requestedTime\":0.4,\"currentTime\":0.4,\"duration\":6.378667} · second {\"pixel\":[47,117,189],\"requestedTime\":3.6893335,\"currentTime\":3.689333,\"duration\":6.378667}"
     },
     {
       "name": "reordering changes the actual exported sequence",
       "pass": true,
-      "detail": "first {\"pixel\":[47,117,187],\"requestedTime\":0.4,\"currentTime\":0.4,\"duration\":6.314667} · second {\"pixel\":[217,94,64],\"requestedTime\":3.6573335,\"currentTime\":3.657333,\"duration\":6.314667}"
+      "detail": "first {\"pixel\":[47,117,187],\"requestedTime\":0.4,\"currentTime\":0.4,\"duration\":6.336} · second {\"pixel\":[216,94,64],\"requestedTime\":3.668,\"currentTime\":3.668,\"duration\":6.336}"
     },
     {
       "name": "joined export reopens in the tool",
       "pass": true,
-      "detail": "121 KB · 320 × 180 · 0:06"
+      "detail": "120 KB · 320 × 180 · 0:06"
     },
     {
       "name": "same-file middle cut joins retained sections with audio",
       "pass": true,
-      "detail": "2.13 s · audio tracks 1, decoded 19418 B"
+      "detail": "2.20 s · audio tracks 1, decoded 15592 B"
     },
     {
       "name": "remove-range action creates before and after sections",
@@ -141,7 +181,7 @@
     {
       "name": "remove-range export keeps both sides and omits the selected middle",
       "pass": true,
-      "detail": "2.13 s · Unwanted section removed"
+      "detail": "2.20 s · Unwanted section removed"
     },
     {
       "name": "multiple soundtrack tracks decode locally",
@@ -156,7 +196,7 @@
     {
       "name": "soundtrack placement and source trims reach the exported audio",
       "pass": true,
-      "detail": "6.36 s · 523 Hz 0.0004 → 0.2901 · 880 Hz 0.0000 → 0.2029 · original 440 Hz 0.0840"
+      "detail": "6.34 s · 523 Hz 0.0004 → 0.2904 · 880 Hz 0.0000 → 0.2029 · original 440 Hz 0.0840"
     },
     {
       "name": "original audio volume control changes the exported mix",
@@ -171,7 +211,7 @@
     {
       "name": "mixed export reopens with audio and video metadata",
       "pass": true,
-      "detail": "120 KB · 320 × 180 · 0:06"
+      "detail": "119 KB · 320 × 180 · 0:06"
     },
     {
       "name": "mobile viewport has no horizontal page overflow",

@@ -252,3 +252,12 @@ Owner-supplied files were exercised in a local production build so their content
 - [x] Live technical SEO crawl checked **19 sitemap URLs and 34 linked routes** across the three sites with 0 failures.
 - [ ] Physical phone camera/GPS, Safari/iOS and low-memory or large-file behavior still require owner device checks. Browser automation cannot guarantee the behavior of every device or codec.
 - [ ] Search Console indexing/impressions, search ranking, AdSense approval and revenue remain external follow-up; the crawl is not proof of ranking or indexing.
+
+## Trim and crop usability correction — 2026-11-02
+
+- [x] Fixed the covered Trim controls by placing exact time fields, saved parts, clear, preview and export in the dock. The visible plus action starts another adjustable range; five separate ranges save and show in the editable list.
+- [x] Separate task UI: timeline dock is hidden in Compress and Crop, shown in Trim and Edit and join.
+- [x] Crop can draw, move and resize a freeform selection directly on the original frame. Zoom range is 50–300%; browser QA checks both directions, exact crop geometry and exported pixels/dimensions.
+- [x] Local production Chromium: full video suite **45/45**, focused multi-range suite **11/11**.
+- [x] Stable QuickKit production URL after deployment: full video suite **45/45**, focused multi-range suite **11/11**. Synthetic generated videos only; no supplied personal video was uploaded.
+- [ ] Real-device touch, Safari/iOS codec behavior, large files and constrained-memory performance still require owner checks.

@@ -1,6 +1,6 @@
 # QuickKit video tools plan
 
-Status: the multi-range trim workflow is deployed to QuickKit and verified against the stable production URL. The full video suite passed 37/37 and the focused multi-range suite passed 9/9, including dragging saved ranges, overlap rejection, phone-width layout, keep-mode output and remove-mode output. Playwright WebKit fallback/mobile checks pass; this WebKit build lacks WebCodecs, so Safari support remains unverified. Large-file, cancellation, codec-mix and real-device checks remain.
+Status: the updated trim and crop workflows are deployed to QuickKit and verified at the stable production URL. The full video suite passed 45/45 and the focused multi-range suite passed 11/11, including five saved ranges, mode-specific timeline visibility, free crop draw/move/resize, zoom in/out, exact output dimensions, keep/remove exports and phone-width layout. Playwright WebKit fallback/mobile checks pass; this WebKit build lacks WebCodecs, so Safari support remains unverified. Large-file, cancellation, codec-mix and real-device checks remain.
 
 ## Product goal
 
@@ -72,19 +72,31 @@ The current interface is `products/quickkit/video-tools.html`. It keeps source f
 - The expanded release is deployed to `https://quickkit-browser-tools.pages.dev/video-tools.html` (immutable build: `https://09059e89.quickkit-browser-tools.pages.dev/video-tools.html`). Stable production passed video **24/24** and geo-photo **14/14** after the last metadata-only redeployment. Live PDF/document and cross-site regression suites also passed **62/62**, **29/29**, and **92/92** against the same application code before that metadata-only change.
 - Live SEO crawl after the final deployment passed **19 sitemap URLs and 34 linked routes with 0 failures**; the report is `qa-results/seo-live-audit.json`.
 
-### Multi-range trim — 2026-11-02
+### Multi-range trim and direct crop workspace — 2026-11-02
 
 - [x] Save more than one non-overlapping range from a single source video; edit start/end times or drag each saved range's timeline handles.
 - [x] Let users choose whether saved ranges are the sections to keep or the sections to remove.
 - [x] Preview and download the assembled output using the existing local join/export engine; validate playable output duration for both keep and remove behavior.
 - [x] Reject overlapping selections with an understandable message; keep exact time fields and timeline selections in sync.
 - [x] Check the saved-range controls at 390px with no horizontal page overflow.
+- [x] Put saved ranges, exact time fields, the “+ Save/Add another part” action, preview and export together in the visible Trim dock so the fixed timeline no longer hides them.
+- [x] Keep the timeline dock out of Compress and Crop; show it only for Trim and Edit and join.
+- [x] Add a crop box drawn over the actual video frame, movable within the frame and resizable from four corners; implement zoom from 50% to 300% and keep preview coordinates stable while selecting.
+- [x] Verify the free-crop export uses the selected frame region and exact output dimensions, not a visual-only overlay.
+- [x] Test saving five non-overlapping ranges from one source and verify the saved count, editable list, keep/remove exports and mobile visibility.
 - [x] `npm run qa:video-tools` passed **37/37** in local Chromium after fixing the existing Join button's event-handler argument.
 - [x] `QUICKKIT_ORIGIN=http://127.0.0.1:4181 npm run qa:video-trim-ranges` passed **9/9** in local Chromium; the saved range drag, overlap rejection, mobile width, kept output (about 1.3 seconds) and removed output (about 2.4 seconds) were verified from a generated 3.19-second test clip.
 - [x] Rebuild and publish the multi-range release directly to Cloudflare Pages; stable production full video suite passed **37/37**, and the focused range suite passed **9/9**.
 - [x] `npm run qa:formready-exam-kit` passed **19/19** against the stable FormReady production URL; `npm run qa:seo-live` checked 19 sitemap URLs and 34 linked routes across all sites with 0 failures.
 - [x] Production build completed for WorkKit, QuickKit and FormReady before deployment.
 - [ ] Ask the owner to try range drawing and preview on a real phone; browser automation does not prove all touch hardware and codecs.
+
+### Trim and crop interaction follow-up — deployed 2026-11-02
+
+- [x] Full local production browser suite passed **45/45** in Chromium; focused multi-range suite passed **11/11**. Generated fixtures verified five separate saved parts, overlap rejection, draggable saved ranges, keep/remove output, exact free-crop draw/move/resize, zoom-in/zoom-out dimensions, export playback and no 390/320px overflow.
+- [x] QuickKit production build passed and was deployed directly to Cloudflare Pages. Fresh stable-URL runs passed **45/45** full video checks and **11/11** focused range checks.
+- [x] Visible browser check opened the stable QuickKit video tool and confirmed the published page loads with the task tabs.
+- [ ] Owner should try the controls with a real long video and touch device; browser fixtures do not establish performance for every codec/device.
 
 ### Remaining before release
 

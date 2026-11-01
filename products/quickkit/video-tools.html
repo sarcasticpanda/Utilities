@@ -85,19 +85,6 @@
               <button type="button" id="video-trim-remove" aria-pressed="false">Remove selected parts</button>
             </div>
               <p class="video-help" id="video-trim-intent-help">Saved ranges are joined in order. Switch to “Remove selected parts” to cut those ranges from the original video.</p>
-            <div class="video-time-fields">
-                <label class="video-field">Range start (seconds)
-                <input id="video-trim-start" type="number" min="0" step="0.01" value="0" inputmode="decimal">
-              </label>
-                <label class="video-field">Range end (seconds)
-                <input id="video-trim-end" type="number" min="0" step="0.01" value="0" inputmode="decimal">
-              </label>
-            </div>
-            <p class="video-help" id="video-trim-guidance">Drag the yellow handles or type exact times. Add a range for each part, then preview the result.</p>
-            <div class="video-trim-section-actions"><button type="button" class="video-text-button" id="video-add-trim-range" disabled>Save this range</button><button type="button" class="video-text-button" id="video-clear-trim-ranges" disabled>Clear ranges</button></div>
-            <ol class="video-trim-segments" id="video-trim-segments" aria-label="Selected video ranges" hidden></ol>
-            <button type="button" class="button button-secondary video-run" id="video-preview-trim-ranges" disabled hidden>Preview selected parts</button>
-            <button type="button" class="button button-primary video-run" id="video-run-trim" disabled>Export trimmed clip</button>
             <div class="video-cut-box">
               <strong>Remove one section</strong>
               <p class="video-help">For several cuts, choose Remove selected parts, save each unwanted range, then preview the remaining video.</p>
@@ -109,18 +96,21 @@
             <label class="video-field">Crop shape
               <select id="video-crop-ratio">
                 <option value="original">Keep original frame</option>
+                <option value="free">Free selection</option>
                 <option value="1.7777777778">Widescreen · 16:9</option>
                 <option value="1.3333333333">Classic · 4:3</option>
                 <option value="1">Square · 1:1</option>
                 <option value="0.5625">Portrait · 9:16</option>
               </select>
             </label>
-            <label class="video-field">Move crop left or right <output id="video-crop-x-value">50%</output>
-              <input id="video-crop-x" type="range" min="0" max="100" step="1" value="50">
-            </label>
-            <label class="video-field">Move crop up or down <output id="video-crop-y-value">50%</output>
-              <input id="video-crop-y" type="range" min="0" max="100" step="1" value="50">
-            </label>
+            <div class="video-crop-direct-controls">
+              <button type="button" class="video-text-button" id="video-crop-adjust" aria-pressed="false" disabled>Adjust crop area</button>
+              <label class="video-field">Zoom crop <output id="video-crop-zoom-value">100%</output>
+                <input id="video-crop-zoom" type="range" min="50" max="300" step="5" value="100" disabled>
+              </label>
+              <button type="button" class="video-text-button" id="video-crop-reset" disabled>Reset crop</button>
+            </div>
+            <p class="video-help" id="video-crop-help">Select Adjust crop area, then drag on the preview to draw a crop box. Drag inside it to reposition, or pull a corner to resize.</p>
             <p class="video-help" id="video-crop-summary">Choose a video to preview its crop.</p>
             <button type="button" class="button button-primary video-run" id="video-run-crop" disabled>Crop and export video</button>
           </div>
@@ -158,6 +148,14 @@
           <div class="video-preview-heading"><strong id="video-preview-title">Preview</strong><span id="video-preview-meta">Your video appears here</span></div>
           <div class="video-frame">
             <video id="video-preview" controls playsinline preload="metadata" hidden></video>
+            <div class="video-crop-overlay" id="video-crop-overlay" aria-label="Video crop selection" hidden>
+              <div class="video-crop-selection" id="video-crop-selection" aria-label="Selected crop area">
+                <button type="button" class="video-crop-handle" data-crop-handle="nw" aria-label="Resize crop from top left"></button>
+                <button type="button" class="video-crop-handle" data-crop-handle="ne" aria-label="Resize crop from top right"></button>
+                <button type="button" class="video-crop-handle" data-crop-handle="sw" aria-label="Resize crop from bottom left"></button>
+                <button type="button" class="video-crop-handle" data-crop-handle="se" aria-label="Resize crop from bottom right"></button>
+              </div>
+            </div>
             <div class="video-empty" id="video-empty"><span aria-hidden="true">▶</span><strong>Preview your video here</strong><small>Choose a video to see its duration and dimensions.</small></div>
           </div>
           <div class="video-result" id="video-result" hidden>
@@ -171,7 +169,26 @@
     <section class="video-editor-dock" id="video-editor-dock" aria-label="Video timeline editor" hidden>
         <div class="video-editor-dock-heading"><div><strong>Timeline editor</strong><span>Scrub the preview, split at the playhead, or drag the trim handles.</span></div><div class="video-transport"><button type="button" class="video-text-button" id="video-playback-toggle" disabled>Play</button><output id="video-timecode">0:00 / 0:00</output><button type="button" class="video-text-button" id="video-split-at-playhead" disabled>Split at playhead</button></div></div>
         <label class="video-editor-scrub" for="video-scrub"><span>Preview</span><input id="video-scrub" type="range" min="0" max="0" step="0.1" value="0" disabled><output id="video-scrub-time">0:00</output></label>
-          <div class="video-trim-ranges" id="video-trim-ranges" hidden><div><strong>Active range</strong><output id="video-trim-range-summary">0:00–0:00 · 0:00 selected</output></div><button type="button" class="video-text-button" id="video-reset-trim" disabled>Use full video</button></div>
+          <div class="video-trim-workspace" id="video-trim-ranges" hidden>
+            <div class="video-trim-ranges">
+              <div><strong>Active range</strong><output id="video-trim-range-summary">0:00–0:00 · 0:00 selected</output><span id="video-trim-saved-count">No parts saved</span></div>
+              <button type="button" class="video-text-button" id="video-reset-trim" disabled>Use full video</button>
+            </div>
+            <ol class="video-trim-segments" id="video-trim-segments" aria-label="Selected video ranges" hidden></ol>
+            <div class="video-trim-workspace-controls">
+              <div class="video-time-fields">
+                <label class="video-field">From (seconds)<input id="video-trim-start" type="number" min="0" step="0.01" value="0" inputmode="decimal"></label>
+                <label class="video-field">To (seconds)<input id="video-trim-end" type="number" min="0" step="0.01" value="0" inputmode="decimal"></label>
+              </div>
+              <div class="video-trim-section-actions">
+                <button type="button" class="button button-primary" id="video-add-trim-range" disabled><span aria-hidden="true">+</span> Save first part</button>
+                <button type="button" class="video-text-button" id="video-clear-trim-ranges" disabled>Clear ranges</button>
+                <button type="button" class="button button-secondary video-run" id="video-preview-trim-ranges" disabled hidden>Preview selected parts</button>
+                <button type="button" class="button button-primary video-run" id="video-run-trim" disabled>Export trimmed clip</button>
+              </div>
+              <p class="video-help" id="video-trim-guidance">Drag the yellow handles or set exact times, then save each part. Preview or export the kept parts or cuts.</p>
+            </div>
+          </div>
         <div class="video-timeline" id="video-timeline" aria-label="Video and soundtrack timeline"></div>
         <p class="video-timeline-note">On Trim, adjust the in and out handles then choose whether to keep or remove that interval. On Edit and join, each row is one kept section; audio rows show where each soundtrack starts.</p>
     </section>

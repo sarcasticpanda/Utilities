@@ -23,6 +23,10 @@ let queuedJoinTask = 'join';
 let mediaEnginePromise;
 const filmstripCache = new Map();
 let trimDrag = null;
+let cropBox = { x: 0, y: 0, width: 1, height: 1 };
+let lastCropRect = null;
+let cropSelectionEnabled = false;
+let cropDrag = null;
 const MAX_FILE_BYTES = 150 * 1024 * 1024;
 const MAX_TOTAL_DURATION = 10 * 60;
 const MAX_MIX_DURATION_DESKTOP = 240;
@@ -93,11 +97,7 @@ function updateMode(nextMode) {
     tab.tabIndex = active ? 0 : -1;
   });
   document.querySelectorAll('.video-mode-panel').forEach((panel) => { panel.hidden = panel.id !== `video-panel-${mode}`; });
-  if (mode !== 'crop') {
-    $('.video-frame').style.aspectRatio = '';
-    preview.style.objectFit = 'contain';
-    preview.style.objectPosition = '50% 50%';
-  } else updateCropPreview();
+  updateCropPreview();
   fileInput.multiple = mode === 'join';
   $('#video-upload-title').textContent = mode === 'join' ? 'Choose clips or drop them here' : 'Choose a video or drop it here';
   const limit = formatBytes(currentLimitBytes());
@@ -370,7 +370,9 @@ function renderTrimRanges() {
     row.append(title, startLabel, endLabel, remove); list.append(row);
   });
   const add = $('#video-add-trim-range');
-  if (add) add.textContent = trimDraftActive ? 'Save this range' : 'Add another range';
+  if (add) add.innerHTML = `<span aria-hidden="true">+</span> ${trimDraftActive ? (trimRanges.length ? 'Save this part' : 'Save first part') : 'Add another range'}`;
+  const savedCount = $('#video-trim-saved-count');
+  if (savedCount) savedCount.textContent = trimRanges.length ? `${trimRanges.length} ${trimRanges.length === 1 ? 'part' : 'parts'} saved` : 'No parts saved yet';
   const previewButton = $('#video-preview-trim-ranges');
   if (previewButton) { previewButton.hidden = trimRanges.length === 0; previewButton.textContent = trimIntent === 'keep' ? 'Preview kept parts' : 'Preview with cuts removed'; }
   const exportButton = $('#video-run-trim');
@@ -614,7 +616,7 @@ function updateTimelineControls() {
   const dock = $('#video-editor-dock');
   if (!dock) return;
   const ready = selected.length > 0;
-  dock.hidden = !ready;
+  dock.hidden = !ready || !['trim', 'join'].includes(mode);
   $('#video-trim-ranges').hidden = !ready || mode !== 'trim';
   $('#video-scrub').disabled = !ready;
   $('#video-playback-toggle').disabled = !ready;
@@ -863,15 +865,28 @@ function outputHeight(item) {
 function cropFor(item) {
   const requestedRatio = $('#video-crop-ratio').value;
   if (requestedRatio === 'original') return { left: 0, top: 0, width: item.width, height: item.height };
-  const ratio = Number(requestedRatio);
-  let width = item.width; let height = item.height;
-  if (width / height > ratio) width = height * ratio;
-  else height = width / ratio;
-  const x = Number($('#video-crop-x').value) / 100;
-  const y = Number($('#video-crop-y').value) / 100;
+  let width; let height; let centerX; let centerY;
+  if (requestedRatio === 'free') {
+    width = item.width * cropBox.width;
+    height = item.height * cropBox.height;
+    centerX = item.width * (cropBox.x + cropBox.width / 2);
+    centerY = item.height * (cropBox.y + cropBox.height / 2);
+  } else {
+    const ratio = Number(requestedRatio);
+    width = item.width; height = item.height;
+    if (width / height > ratio) width = height * ratio;
+    else height = width / ratio;
+    centerX = item.width / 2; centerY = item.height / 2;
+  }
+  const zoom = Number($('#video-crop-zoom')?.value || 100) / 100;
+  width /= zoom; height /= zoom;
+  width = Math.min(item.width, width);
+  height = Math.min(item.height, height);
+  centerX = clamp(centerX, width / 2, item.width - width / 2);
+  centerY = clamp(centerY, height / 2, item.height - height / 2);
   return {
-    left: Math.round((item.width - width) * x),
-    top: Math.round((item.height - height) * y),
+    left: Math.round(centerX - width / 2),
+    top: Math.round(centerY - height / 2),
     width: Math.max(2, Math.round(width)),
     height: Math.max(2, Math.round(height))
   };
@@ -880,24 +895,117 @@ function cropFor(item) {
 function updateCropPreview() {
   const item = selected[0];
   const ratioControl = $('#video-crop-ratio');
-  const xControl = $('#video-crop-x'); const yControl = $('#video-crop-y');
   if (!ratioControl) return;
   const isOriginal = ratioControl.value === 'original';
-  xControl.disabled = isOriginal || !item;
-  yControl.disabled = isOriginal || !item;
-  $('#video-crop-x-value').textContent = `${xControl.value}%`;
-  $('#video-crop-y-value').textContent = `${yControl.value}%`;
+  const adjust = $('#video-crop-adjust');
+  const zoomControl = $('#video-crop-zoom');
+  const cropOverlay = $('#video-crop-overlay');
+  adjust.disabled = isOriginal || !item;
+  zoomControl.disabled = isOriginal || !item;
+  $('#video-crop-reset').disabled = !item;
+  $('#video-crop-zoom-value').textContent = `${zoomControl.value}%`;
+  adjust.setAttribute('aria-pressed', String(cropSelectionEnabled));
+  adjust.textContent = cropSelectionEnabled ? 'Done adjusting' : 'Adjust crop area';
+  cropOverlay.hidden = !item || mode !== 'crop' || !cropSelectionEnabled || isOriginal;
   const frame = $('.video-frame');
-  if (!item) { $('#video-crop-summary').textContent = 'Choose a video to preview its crop.'; return; }
+  frame.classList.toggle('is-crop-mode', mode === 'crop' && Boolean(item));
+  if (!item) { $('#video-crop-summary').textContent = 'Choose a video to preview its crop.'; frame.style.aspectRatio = ''; preview.style.objectFit = 'contain'; return; }
+  if (mode !== 'crop') {
+    frame.style.aspectRatio = '';
+    frame.style.width = '';
+    frame.style.marginInline = '';
+    preview.style.objectFit = 'contain';
+    preview.style.objectPosition = '50% 50%';
+    return;
+  }
   const crop = cropFor(item);
-  const ratio = crop.width / crop.height;
-  frame.style.aspectRatio = String(ratio);
-  preview.style.objectFit = isOriginal ? 'contain' : 'cover';
-  preview.style.objectPosition = `${xControl.value}% ${yControl.value}%`;
+  const frameWidth = Math.min(frame.parentElement.clientWidth, 480 * item.width / item.height);
+  frame.style.width = `${frameWidth}px`;
+  frame.style.marginInline = 'auto';
+  frame.style.aspectRatio = `${item.width} / ${item.height}`;
+  preview.style.objectFit = 'fill';
+  preview.style.objectPosition = 'center';
+  const selection = $('#video-crop-selection');
+  const box = requestedCropBox(item, crop);
+  selection.style.left = `${box.x * 100}%`;
+  selection.style.top = `${box.y * 100}%`;
+  selection.style.width = `${box.width * 100}%`;
+  selection.style.height = `${box.height * 100}%`;
   const scale = Math.min(1, 1080 / Math.max(crop.width, crop.height));
   const outputWidth = Math.max(2, Math.floor(crop.width * scale / 2) * 2);
   const outputHeight = Math.max(2, Math.floor(crop.height * scale / 2) * 2);
   $('#video-crop-summary').textContent = `${crop.width} × ${crop.height} crop · export ${outputWidth} × ${outputHeight}`;
+  lastCropRect = crop;
+}
+
+function requestedCropBox(item, crop = cropFor(item)) {
+  return { x: crop.left / item.width, y: crop.top / item.height, width: crop.width / item.width, height: crop.height / item.height };
+}
+
+function cropPoint(event) {
+  const bounds = $('#video-crop-overlay').getBoundingClientRect();
+  return { x: clamp((event.clientX - bounds.left) / bounds.width, 0, 1), y: clamp((event.clientY - bounds.top) / bounds.height, 0, 1) };
+}
+
+function updateCropBoxFromDrag(point) {
+  if (!cropDrag) return;
+  const minSize = .04;
+  if (cropDrag.kind === 'move') {
+    cropBox.x = clamp(cropDrag.box.x + point.x - cropDrag.start.x, 0, 1 - cropBox.width);
+    cropBox.y = clamp(cropDrag.box.y + point.y - cropDrag.start.y, 0, 1 - cropBox.height);
+  } else {
+    const fixed = cropDrag.fixed;
+    const left = Math.min(fixed.x, point.x); const right = Math.max(fixed.x, point.x);
+    const top = Math.min(fixed.y, point.y); const bottom = Math.max(fixed.y, point.y);
+    cropBox = { x: left, y: top, width: Math.max(minSize, right - left), height: Math.max(minSize, bottom - top) };
+    cropBox.width = Math.min(cropBox.width, 1 - cropBox.x);
+    cropBox.height = Math.min(cropBox.height, 1 - cropBox.y);
+  }
+  $('#video-crop-ratio').value = 'free';
+  $('#video-crop-zoom').value = '100';
+  updateCropPreview();
+}
+
+function handleCropPointerDown(event) {
+  if (!cropSelectionEnabled || mode !== 'crop' || !selected[0]) return;
+  event.preventDefault();
+  releaseResult();
+  const item = selected[0];
+  if ($('#video-crop-ratio').value !== 'free') cropBox = requestedCropBox(item);
+  $('#video-crop-ratio').value = 'free';
+  $('#video-crop-zoom').value = '100';
+  const point = cropPoint(event);
+  const handle = event.target.closest('[data-crop-handle]')?.dataset.cropHandle;
+  if (handle) {
+    const opposite = { nw: 'se', ne: 'sw', sw: 'ne', se: 'nw' }[handle];
+    const fixed = {
+      nw: { x: cropBox.x + cropBox.width, y: cropBox.y + cropBox.height },
+      ne: { x: cropBox.x, y: cropBox.y + cropBox.height },
+      sw: { x: cropBox.x + cropBox.width, y: cropBox.y },
+      se: { x: cropBox.x, y: cropBox.y }
+    }[handle];
+    cropDrag = { kind: 'resize', start: point, fixed, handle, opposite };
+  } else if (point.x >= cropBox.x && point.x <= cropBox.x + cropBox.width && point.y >= cropBox.y && point.y <= cropBox.y + cropBox.height) {
+    cropDrag = { kind: 'move', start: point, box: { ...cropBox } };
+  } else {
+    cropDrag = { kind: 'draw', start: point, fixed: point };
+    cropBox = { x: point.x, y: point.y, width: .04, height: .04 };
+  }
+  event.currentTarget.setPointerCapture(event.pointerId);
+  updateCropPreview();
+}
+
+function handleCropPointerMove(event) {
+  if (!cropDrag) return;
+  updateCropBoxFromDrag(cropPoint(event));
+}
+
+function handleCropPointerUp(event) {
+  if (!cropDrag) return;
+  cropDrag = null;
+  updateCropPreview();
+  setStatus('Crop selection updated. The export will use this exact frame area.');
+  if (event.currentTarget.hasPointerCapture?.(event.pointerId)) event.currentTarget.releasePointerCapture(event.pointerId);
 }
 
 function removeSelectedRange() {
@@ -1193,9 +1301,27 @@ for (const [id, intent] of [['video-trim-keep', 'keep'], ['video-trim-remove', '
 $('#video-reset-trim').addEventListener('click', resetTrimRange);
 $('#video-resolution').addEventListener('change', () => releaseResult());
 $('#video-quality').addEventListener('change', () => releaseResult());
-$('#video-crop-ratio').addEventListener('change', () => { releaseResult(); updateCropPreview(); });
-$('#video-crop-x').addEventListener('input', () => { releaseResult(); updateCropPreview(); });
-$('#video-crop-y').addEventListener('input', () => { releaseResult(); updateCropPreview(); });
+$('#video-crop-ratio').addEventListener('change', () => {
+  if ($('#video-crop-ratio').value === 'free' && lastCropRect && selected[0]) cropBox = requestedCropBox(selected[0], lastCropRect);
+  if ($('#video-crop-ratio').value === 'original') { cropSelectionEnabled = false; $('#video-crop-zoom').value = '100'; }
+  else cropSelectionEnabled = false;
+  $('#video-crop-zoom').value = '100'; releaseResult(); updateCropPreview();
+});
+$('#video-crop-adjust').addEventListener('click', () => {
+  if (!selected[0] || $('#video-crop-ratio').value === 'original') return;
+  if ($('#video-crop-ratio').value !== 'free') cropBox = requestedCropBox(selected[0]);
+  cropSelectionEnabled = !cropSelectionEnabled; releaseResult(); updateCropPreview();
+});
+$('#video-crop-zoom').addEventListener('input', () => { releaseResult(); updateCropPreview(); });
+$('#video-crop-reset').addEventListener('click', () => {
+  cropBox = { x: 0, y: 0, width: 1, height: 1 };
+  cropSelectionEnabled = false; $('#video-crop-ratio').value = 'original'; $('#video-crop-zoom').value = '100'; releaseResult(); updateCropPreview();
+  setStatus('Crop reset to the full original frame.');
+});
+$('#video-crop-overlay').addEventListener('pointerdown', handleCropPointerDown);
+$('#video-crop-overlay').addEventListener('pointermove', handleCropPointerMove);
+$('#video-crop-overlay').addEventListener('pointerup', handleCropPointerUp);
+$('#video-crop-overlay').addEventListener('pointercancel', handleCropPointerUp);
 $('#video-dropzone').addEventListener('dragover', (event) => { event.preventDefault(); event.currentTarget.classList.add('is-dragging'); });
 $('#video-dropzone').addEventListener('dragleave', (event) => event.currentTarget.classList.remove('is-dragging'));
 $('#video-dropzone').addEventListener('drop', (event) => {

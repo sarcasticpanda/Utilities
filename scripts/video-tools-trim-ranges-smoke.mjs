@@ -56,8 +56,9 @@ try {
   }), 'base64');
   await loadSource();
   const sourceDuration = Number(await page.locator('#video-scrub').getAttribute('max'));
+  check('Trim exposes the plus action and export within its timeline dock', await page.locator('#video-editor-dock').isVisible() && await page.locator('#video-add-trim-range').isVisible() && (await page.locator('#video-add-trim-range').innerText()).includes('+') && await page.locator('#video-run-trim').isVisible());
   await saveRange(.30, .90);
-  check('first range saves and prompts for another', await page.locator('#video-trim-segments > li').count() === 1 && (await page.locator('#video-add-trim-range').innerText()).includes('Add another'));
+  check('first range saves, appears in the dock and offers another plus action', await page.locator('#video-trim-segments > li').count() === 1 && await page.locator('#video-trim-segments').isVisible() && (await page.locator('#video-add-trim-range').innerText()).includes('Add another'));
   await page.locator('#video-add-trim-range').click();
   await page.locator('#video-trim-start').fill('.50'); await page.locator('#video-trim-end').fill('.80');
   await page.locator('#video-add-trim-range').click();
@@ -73,11 +74,15 @@ try {
   await page.screenshot({ path: resolve('qa-results/readme-parts/quickkit-video-multi-trim.png') });
   await page.setViewportSize({ width: 390, height: 844 });
   await page.locator('#video-add-trim-range').scrollIntoViewIfNeeded();
-  const mobileTrim = await page.evaluate(() => ({ width: document.documentElement.scrollWidth, viewport: innerWidth, addButton: document.querySelector('#video-add-trim-range').getBoundingClientRect().width }));
-  check('multi-range controls remain usable without overflow on a phone width', mobileTrim.width === mobileTrim.viewport && mobileTrim.addButton > 0, JSON.stringify(mobileTrim));
+  const mobileTrim = await page.evaluate(() => ({ width: document.documentElement.scrollWidth, viewport: innerWidth, addButton: document.querySelector('#video-add-trim-range').getBoundingClientRect().width, dockBottom: document.querySelector('#video-editor-dock').getBoundingClientRect().bottom, dockTop: document.querySelector('#video-editor-dock').getBoundingClientRect().top, viewportHeight: innerHeight }));
+  check('multi-range controls remain visible and usable without overflow on phone width', mobileTrim.width === mobileTrim.viewport && mobileTrim.addButton > 0 && mobileTrim.dockBottom <= mobileTrim.viewportHeight && mobileTrim.dockTop < mobileTrim.dockBottom, JSON.stringify(mobileTrim));
   await page.setViewportSize({ width: 1440, height: 1000 });
   const keep = await exportRanges();
   check('keep mode joins both parts into a playable downloadable preview', Math.abs(keep.duration - 1.3) < .5 && keep.width > 0 && keep.height > 0 && Boolean(keep.download));
+
+  await loadSource();
+  for (const [start, end] of [[.15, .35], [.55, .8], [1.05, 1.3], [1.55, 1.8], [2.25, 2.6]]) await saveRange(start, end);
+  check('plus action saves five separate ranges in one source clip', await page.locator('#video-trim-segments > li').count() === 5 && (await page.locator('#video-trim-saved-count').innerText()).includes('5 parts'));
 
   await loadSource();
   await saveRange(.50, .90);

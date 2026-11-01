@@ -5,6 +5,7 @@ All three sites are live on Cloudflare Pages, and QuickKit’s PDF editor is liv
 ## Before the next public update
 
 - [x] Publish the QuickKit multi-range video trim update; stable production full video suite passed 37/37 and focused multi-range suite passed 9/9.
+- [x] Publish the Trim/Crop usability fix: visible plus action and saved list for five-plus parts, task-specific timeline visibility, freeform crop draw/move/resize, and zoom in/out. Stable production browser verification passed 45/45 full video and 11/11 focused range checks.
 - [ ] Recheck Search Console sitemap fetch status and inspect indexed URLs/impressions after Google recrawls. Current live robots/sitemap and metadata audit passed, but this does not prove indexing.
 - [ ] Complete the remaining keyboard, touch, screen-reader, low-memory mobile and file-edge-case checks in `BROWSER_QA_CHECKLIST.md`.
 - [x] Add original Open Graph images and practical, internally linked guides across all three sites.
