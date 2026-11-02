@@ -1,4 +1,5 @@
 import { clockMinutes } from './time.js';
+import { createDownloadFilenameControl } from '../shared/download-filename.js';
 
 const revealElements = document.querySelectorAll('[data-reveal]');
 if (revealElements.length && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
@@ -16,6 +17,8 @@ const number = (value, places = 2) => (Number.isFinite(value) ? value : 0).toFix
 const page = document.body.dataset.page;
 
 if (page === 'timecard') {
+  const timesheetFilename = createDownloadFilenameControl('workkit-timesheet.csv', { extensionHint: '.csv or .pdf' });
+  document.querySelector('.result-actions').prepend(timesheetFilename.element);
   const list = document.querySelector('#shift-list');
   const template = document.querySelector('#shift-template');
   const rate = document.querySelector('#hourly-rate');
@@ -140,12 +143,15 @@ if (page === 'timecard') {
     }), ['Total','','','',number(lastTotals.hours)], ['Estimated gross pay',money(lastTotals.gross)]];
     const csv = rows.map((r) => r.map((v) => `"${String(v).replaceAll('"','""')}"`).join(',')).join('\r\n');
     const url = URL.createObjectURL(new Blob([csv], { type: 'text/csv;charset=utf-8' }));
-    const a = Object.assign(document.createElement('a'), { href: url, download: 'workkit-timesheet.csv' }); a.click(); URL.revokeObjectURL(url);
+    const a = Object.assign(document.createElement('a'), { href: url, download: timesheetFilename.getFilename('csv') }); a.click(); URL.revokeObjectURL(url);
   });
   document.querySelector('#print-timesheet').addEventListener('click', () => {
     calculate();
     if (!lastTotals || !lastTotals.rows.some((row) => row.start && row.end)) { msg.textContent = msg.textContent || 'Add at least one complete shift before printing.'; return; }
+    const previousTitle = document.title;
+    document.title = timesheetFilename.getBaseName();
     window.print();
+    document.title = previousTitle;
   });
   restore(); updateCurrencyLabel();
 }

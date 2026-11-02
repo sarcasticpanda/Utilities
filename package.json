@@ -8,6 +8,7 @@
     "dev:quickkit": "vite --config products/quickkit/vite.config.js",
     "dev:formready": "vite --config products/formready/vite.config.js",
     "qa:pdf-editor": "node scripts/pdf-editor-smoke.mjs",
+    "qa:download-filenames": "node scripts/download-filename-smoke.mjs",
     "qa:quickkit-documents": "node scripts/quickkit-document-qa.mjs",
     "qa:video-tools": "node scripts/video-tools-browser-smoke.mjs",
     "qa:video-trim-ranges": "node scripts/video-tools-trim-ranges-smoke.mjs",

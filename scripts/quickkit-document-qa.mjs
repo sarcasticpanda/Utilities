@@ -53,6 +53,10 @@ try {
   await page.waitForFunction(() => !document.querySelector('#print-docx').disabled || document.querySelector('#docx-status').textContent.startsWith('Could not'));
   const docxPreview = await page.frameLocator('#docx-preview').locator('body').innerText().catch(() => '');
   check('DOCX upload produces an actual print preview with text', docxPreview.includes('DOCX to PDF keeps this selectable sentence.'), docxPreview.slice(0, 180));
+  const printName = page.locator('#docx-actions .download-filename-input');
+  check('DOCX to PDF exposes an editable suggested filename', await printName.isVisible() && await printName.inputValue() === 'converter-sample');
+  await printName.fill('renamed-conversion');
+  check('DOCX filename updates the browser print-to-PDF document title', await page.evaluate(() => document.querySelector('#docx-preview').contentDocument.title) === 'renamed-conversion');
   await page.evaluate(() => { window.__quickkitPrintCalled = false; document.querySelector('#docx-preview').contentWindow.print = () => { window.__quickkitPrintCalled = true; }; });
   await page.locator('#print-docx').click();
   check('DOCX print / Save as PDF action calls the browser print flow', await page.evaluate(() => window.__quickkitPrintCalled));
@@ -63,9 +67,13 @@ try {
   await page.waitForFunction(() => document.querySelector('#pdf-result .download-link') || document.querySelector('#pdf-status').textContent.startsWith('PDF to Word failed'), null, { timeout: 45000 });
   const conversionStatus = await page.locator('#pdf-status').innerText();
   if (await page.locator('#pdf-result .download-link').count()) {
+    const conversionName = page.locator('#pdf-result .download-filename-input');
+    check('PDF to DOCX result card mounts an editable filename', await conversionName.isVisible());
+    await conversionName.fill('renamed-word-export');
     const downloadPromise = page.waitForEvent('download');
     await page.locator('#pdf-result .download-link').click();
     const download = await downloadPromise;
+    check('PDF to DOCX uses the selected name and keeps the Word extension', download.suggestedFilename() === 'renamed-word-export.docx', download.suggestedFilename());
     const outputPath = path.join(fixtureDir, 'converted-sample.docx');
     await download.saveAs(outputPath);
     const rawText = await mammoth.extractRawText({ buffer: await readFile(outputPath) });
@@ -83,9 +91,17 @@ try {
   await page.waitForFunction(() => document.querySelector('#pdf-extracted-text').value.includes('Page two text is preserved.'));
   const extracted = await page.locator('#pdf-extracted-text').inputValue();
   check('PDF editor extracts text from every page including split text operations', extracted.includes('Split text fragments survive extraction.') && extracted.includes('Page two text is preserved.'), extracted);
+  const editorDocxName = page.locator('#pdf-extract-panel .download-filename-control input');
+  check('PDF editor extraction exposes an editable shared TXT/Word filename', await editorDocxName.isVisible());
+  await editorDocxName.fill('renamed-extracted-text');
+  const editorTextDownloadPromise = page.waitForEvent('download');
+  await page.locator('#download-pdf-text').click();
+  const editorTextDownload = await editorTextDownloadPromise;
+  check('PDF editor text export uses the chosen name and .txt extension', editorTextDownload.suggestedFilename() === 'renamed-extracted-text.txt', editorTextDownload.suggestedFilename());
   const editorDocxPromise = page.waitForEvent('download');
   await page.locator('#download-pdf-docx').click();
   const editorDocx = await editorDocxPromise;
+  check('PDF editor Word extraction uses the selected name', editorDocx.suggestedFilename() === 'renamed-extracted-text.docx', editorDocx.suggestedFilename());
   const editorDocxPath = path.join(fixtureDir, 'editor-extracted.docx');
   await editorDocx.saveAs(editorDocxPath);
   const editorWordText = (await mammoth.extractRawText({ buffer: await readFile(editorDocxPath) })).value;

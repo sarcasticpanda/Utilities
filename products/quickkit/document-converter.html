@@ -35,7 +35,7 @@
         <div class="converter-heading"><span class="converter-mark">DOCX → PDF</span><h2 id="docx-pdf-title">Word to PDF</h2><p>Preview your Word content, then use your browser’s print dialog to save it as a PDF.</p></div>
         <label class="document-dropzone" id="docx-dropzone" for="docx-source"><strong>Choose a Word document</strong><span>or drop a .docx file here · up to 30 MB</span><input id="docx-source" type="file" accept=".docx,application/vnd.openxmlformats-officedocument.wordprocessingml.document"></label>
         <p class="document-status" id="docx-status" role="status" aria-live="polite">The browser rebuilds the document from its text and common formatting. Review the preview before saving.</p>
-        <div class="docx-actions"><button type="button" class="button button-primary" id="print-docx" disabled>Print / Save as PDF</button><button type="button" class="button button-plain" id="clear-docx" disabled>Clear</button></div>
+        <div class="docx-actions" id="docx-actions"><button type="button" class="button button-primary" id="print-docx" disabled>Print / Save as PDF</button><button type="button" class="button button-plain" id="clear-docx" disabled>Clear</button></div>
         <iframe id="docx-preview" title="Print-ready Word document preview" sandbox="allow-same-origin allow-modals" hidden></iframe>
         <p class="document-limit">Complex columns, floating text, tracked changes and exact page layout may differ. In the print dialog, choose “Save as PDF.”</p>
       </section>

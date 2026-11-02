@@ -4,6 +4,7 @@ import mammoth from 'mammoth/mammoth.browser.js';
 import DOMPurify from 'dompurify';
 import { createDocxFromPdfPages } from './pdf-to-docx.js';
 import { extractPdfPagesText } from './pdf-text-extractor.js';
+import { bindDownloadFilename, createDownloadFilenameControl } from '../shared/download-filename.js';
 
 pdfjsLib.GlobalWorkerOptions.workerSrc = pdfWorkerUrl;
 
@@ -13,6 +14,12 @@ const pdfInput = $('#pdf-source');
 const docxDropzone = $('#docx-dropzone');
 const pdfDropzone = $('#pdf-dropzone');
 const docxFrame = $('#docx-preview');
+const printPdfName = createDownloadFilenameControl('converted-document.pdf');
+printPdfName.element.hidden = true;
+$('#docx-actions').prepend(printPdfName.element);
+printPdfName.input.addEventListener('input', () => {
+  if (docxFrame.contentDocument) docxFrame.contentDocument.title = printPdfName.getBaseName();
+});
 let docxFile = null;
 let docxHtml = '';
 let resultUrl = null;
@@ -21,7 +28,7 @@ function renderDocxPreview(content) {
   const safeHtml = DOMPurify.sanitize(content, { USE_PROFILES: { html: true } });
   return new Promise((resolve) => {
     docxFrame.addEventListener('load', resolve, { once: true });
-    docxFrame.srcdoc = `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Word document preview</title><style>
+    docxFrame.srcdoc = `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${printPdfName.getBaseName()}</title><style>
     *{box-sizing:border-box}body{max-width:820px;margin:0 auto;padding:38px 42px;background:#fff;color:#202938;font:11pt/1.45 Arial,Helvetica,sans-serif;overflow-wrap:anywhere}h1,h2,h3,h4{margin:1.2em 0 .5em;line-height:1.2}p{margin:.55em 0}ul,ol{padding-left:1.5em}table{width:100%;border-collapse:collapse;margin:12px 0}td,th{border:1px solid #9aa7b7;padding:5px 7px;vertical-align:top}img{max-width:100%;height:auto}blockquote{margin:12px 0;padding-left:13px;border-left:3px solid #c6d3e1;color:#526174}@page{margin:18mm}@media print{body{max-width:none;margin:0;padding:0;background:white;color:#111}a{color:inherit;text-decoration:none}tr,img{break-inside:avoid}}
     </style></head><body>${safeHtml}</body></html>`;
   });
@@ -44,6 +51,7 @@ async function prepareDocx(file) {
   if (!file.name.toLowerCase().endsWith('.docx')) { $('#docx-status').textContent = 'Choose a .docx Word file. Older .doc files are not supported.'; $('#print-docx').disabled = true; return; }
   if (file.size > 30 * 1024 * 1024) { $('#docx-status').textContent = 'This Word document is over the 30 MB limit. Choose a smaller file.'; $('#print-docx').disabled = true; return; }
   docxFile = file; docxHtml = '';
+  printPdfName.setFilename(`${safeDocxBaseName(file)}.pdf`);
   $('#docx-status').textContent = 'Reading the Word document and preparing a print preview…';
   $('#print-docx').disabled = true; $('#clear-docx').disabled = false;
   try {
@@ -52,6 +60,8 @@ async function prepareDocx(file) {
     docxHtml = value;
     await renderDocxPreview(value);
     docxFrame.hidden = false;
+    printPdfName.element.hidden = false;
+    if (docxFrame.contentDocument) docxFrame.contentDocument.title = printPdfName.getBaseName();
     $('#print-docx').disabled = false;
     $('#docx-status').textContent = messages.length
       ? `Preview ready with ${messages.length} layout note${messages.length === 1 ? '' : 's'}. Review it, then choose Save as PDF in the print dialog.`
@@ -71,6 +81,8 @@ $('#print-docx').addEventListener('click', () => {
 });
 $('#clear-docx').addEventListener('click', () => {
   docxFile = null; docxHtml = ''; docxInput.value = '';
+  printPdfName.setFilename('converted-document.pdf');
+  printPdfName.element.hidden = true;
   docxFrame.srcdoc = ''; docxFrame.hidden = true;
   $('#print-docx').disabled = true; $('#clear-docx').disabled = true;
   $('#docx-status').textContent = 'Choose a .docx file to make a print-ready preview.';
@@ -99,7 +111,7 @@ function resetPdfConversion() {
 }
 
 function safeDocxBaseName(file) {
-  return file.name.replace(/\.pdf$/iu, '').replace(/[^\p{L}\p{N}._-]+/gu, '-').slice(0, 100) || 'document';
+  return file.name.replace(/\.(?:pdf|docx)$/iu, '').replace(/[^\p{L}\p{N}._-]+/gu, '-').slice(0, 100) || 'document';
 }
 
 async function createWordDownload(file, pages) {
@@ -109,6 +121,7 @@ async function createWordDownload(file, pages) {
   cleanupPdfResult(); resultUrl = URL.createObjectURL(blob);
   const link = document.createElement('a'); link.className = 'download-link'; link.href = resultUrl;
   link.download = `${safeDocxBaseName(file)}-converted.docx`; link.textContent = 'Download editable Word file';
+  bindDownloadFilename(link, `${safeDocxBaseName(file)}-converted.docx`);
   $('#pdf-result').replaceChildren(link); $('#pdf-result').hidden = false;
   $('#pdf-status').textContent = `Created a Word document from ${lineCount} text lines on ${pages.filter((page) => page.lines.length).length} of ${pages.length} pages. Review its reading order and layout in Word.`;
 }

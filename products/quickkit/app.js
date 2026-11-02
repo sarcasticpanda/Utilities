@@ -1,3 +1,5 @@
+import { bindDownloadFilename } from '../shared/download-filename.js';
+
 const revealElements = document.querySelectorAll('[data-reveal]');
 if (revealElements.length && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
   const [{ gsap }, { ScrollTrigger }] = await Promise.all([import('gsap'), import('gsap/ScrollTrigger')]);
@@ -71,6 +73,7 @@ if (page === 'image') {
       const ext = type === 'image/jpeg' ? 'jpg' : type.split('/')[1];
       const status = best.size <= targetBytes ? `At or below ${targetInput.value} KB` : `Closest result; target ${targetInput.value} KB could not be reached`;
       result.innerHTML = `<div class="result-content"><img src="${resultUrl}" alt="Compressed image preview"><div class="result-meta"><span>${formatBytes(file.size)} original</span><span>${formatBytes(best.size)} result</span><span>${width} × ${height}px</span></div><strong>${status}</strong><a class="download-link" href="${resultUrl}" download="quickkit-image.${ext}">Download image</a></div>`;
+      bindDownloadFilename(result.querySelector('.download-link'), `quickkit-image.${ext}`);
       message.textContent = '';
     } catch (error) { message.textContent = error instanceof Error ? error.message : 'Image processing failed. Please try another file.'; }
     finally { button.disabled = !file; button.textContent = 'Compress image'; }
@@ -127,6 +130,7 @@ if (page === 'qr') {
       const canvas = document.createElement('canvas'); await QRCode.toCanvas(canvas, payload, { width: 230, margin: 2, errorCorrectionLevel: 'M', color: { dark: '#172536', light: '#ffffff' } });
       output.append(canvas);
       const link = document.createElement('a'); link.className = 'download-link'; link.download = 'quickkit-wifi-qr.png'; link.textContent = 'Download QR code'; link.href = canvas.toDataURL('image/png'); output.append(link);
+      bindDownloadFilename(link, 'quickkit-wifi-qr.png');
     } catch { output.textContent = 'Could not create this QR code. Check the network name and try again.'; }
   });
 }
@@ -175,6 +179,7 @@ if (page === 'pdf') {
       const label = Object.assign(document.createElement('strong'), { textContent: `${files.length} files merged` });
       const pages = Object.assign(document.createElement('span'), { textContent: `${merged.getPageCount()} pages · ${formatBytes(blob.size)}` });
       const link = Object.assign(document.createElement('a'), { className: 'download-link', href: url, download: 'quickkit-merged.pdf', textContent: 'Download merged PDF' });
+      bindDownloadFilename(link, 'quickkit-merged.pdf');
       content.append(label, pages, link); result.append(content); message.textContent = '';
       link.addEventListener('click', () => setTimeout(() => URL.revokeObjectURL(url), 10000), { once: true });
     } catch { message.textContent = 'Could not read one of these PDFs. Check that it is not damaged or password-protected.'; }

@@ -1,6 +1,9 @@
+import { bindDownloadFilename } from '../shared/download-filename.js';
+
 const $ = (selector) => document.querySelector(selector);
 const fileInput = $('#video-files');
 const preview = $('#video-preview');
+const videoFilename = bindDownloadFilename($('#video-download'), 'quickkit-video.mp4');
 const inputs = new Map();
 let mode = 'compress';
 let selected = [];
@@ -1059,7 +1062,7 @@ function showResult(blob, sourceName, extension, task, start, end, fullDuration)
   const baseName = sourceName.replace(/\.[^.]+$/u, '').replace(/[\\/:*?"<>|]+/gu, '-').slice(0, 90) || 'quickkit-video';
   const suffix = task === 'trim' ? '-trimmed' : task === 'crop' ? '-cropped' : task === 'compress' ? '-compressed' : task === 'cut' ? '-cut' : '-joined';
   $('#video-download').href = resultUrl;
-  $('#video-download').download = `${baseName}${suffix}.${extension}`;
+  videoFilename.setFilename(`${baseName}${suffix}.${extension}`);
   $('#video-result').hidden = false;
   const duration = task === 'trim' ? end - start : task === 'join' || task === 'cut' ? (fullDuration || segments.reduce((sum, segment) => sum + segment.end - segment.start, 0)) : fullDuration;
   const ratio = selected[0]?.file.size ? Math.round((1 - blob.size / selected[0].file.size) * 100) : 0;

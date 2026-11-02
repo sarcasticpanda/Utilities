@@ -1,6 +1,9 @@
+import { bindDownloadFilename } from '../shared/download-filename.js';
+
 const $ = (selector) => document.querySelector(selector);
 const fileInput = $('#geo-file');
 const imagePreview = $('#geo-preview-image');
+const geoFilename = bindDownloadFilename($('#geo-download'), 'photo-geo-tagged.jpg');
 let sourceFile = null;
 let sourceUrl = null;
 let resultUrl = null;
@@ -614,7 +617,7 @@ async function createGeoPhoto() {
     imagePreview.src = resultUrl;
     $('#geo-download').href = resultUrl;
     const baseName = sourceFile.name.replace(/\.[^.]+$/u, '').replace(/[\\/:*?"<>|]+/gu, '-').slice(0, 80) || 'photo';
-    $('#geo-download').download = `${baseName}-geo-tagged.jpg`;
+    geoFilename.setFilename(`${baseName}-geo-tagged.jpg`);
     $('#geo-result-details').textContent = `${blob.size < 1024 * 1024 ? `${Math.round(blob.size / 1024)} KB` : `${(blob.size / 1048576).toFixed(1)} MB`} · ${sourceDimensions.width} × ${sourceDimensions.height} px · GPS metadata verified`;
     $('#geo-result').hidden = false;
     $('#geo-preview-badge').textContent = 'GPS metadata verified';

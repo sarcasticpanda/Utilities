@@ -1,6 +1,7 @@
 import Cropper from 'cropperjs';
 import 'cropperjs/dist/cropper.css';
 import presetData from './data/presets.json';
+import { bindDownloadFilename } from '../shared/download-filename.js';
 
 const revealElements = document.querySelectorAll('[data-reveal]');
 if (revealElements.length && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
@@ -245,6 +246,7 @@ if (document.body.dataset.page === 'prepare') {
       const note = Object.assign(document.createElement('p'), { className: 'result-details', textContent: 'This checks measurable file rules only. Inspect the image yourself and confirm the latest application notice; no tool can guarantee portal acceptance.' });
       const details = Object.assign(document.createElement('p'), { className: 'result-details', textContent: `Output: ${actualWidth} × ${actualHeight}px · ${prettyBytes(blob.size)}${activePreset ? ` · ${activePreset.exam} ${activePreset.cycle}` : ''}` });
       const link = Object.assign(document.createElement('a'), { className: 'download-button', href: outputUrl, download: `formready-${mode}.${type === 'image/jpeg' ? 'jpg' : type.split('/')[1]}`, textContent: 'Download prepared image' });
+      bindDownloadFilename(link, `formready-${mode}.${type === 'image/jpeg' ? 'jpg' : type.split('/')[1]}`);
       container.append(badge, preview, checksList, details);
       if (activePreset) {
         const source = Object.assign(document.createElement('a'), { href: activePreset.sourceUrl, target: '_blank', rel: 'noopener noreferrer', className: 'source-result-link', textContent: `Check source: ${activePreset.sourceTitle}` });

@@ -1,5 +1,17 @@
 # Browser QA checklist and evidence
 
+## Editable download filenames — 2026-11-02
+
+- [x] Added a shared, responsive filename field to generated downloads across QuickKit, WorkKit and FormReady. The filename stem is editable while the actual output extension stays fixed to the file format.
+- [x] Verified actual renamed downloads for image-to-PDF, image compression, Wi-Fi QR, PDF editor output, PDF merge, WorkKit CSV, and FormReady prepared images. Browser download names matched the chosen value and correct extension.
+- [x] Verified PDF-to-DOCX, PDF editor TXT and Word extraction names; DOCX-to-PDF reflects the chosen name in the print preview title; WorkKit print/PDF passes its chosen name to the browser print flow.
+- [x] Verified video export rename after compression and geo-tagged JPEG rename after GPS metadata export.
+- [x] Mobile layout passed at 390px for Image to PDF, WorkKit and FormReady; the fields fit inside the viewport without horizontal overflow. Screenshots: `qa-results/download-filenames/`.
+- [x] Browser regression: filename suite **19/19**, document/OCR/photo suite **36/36**, video suite **47/47**, geo-photo suite **38/38**; all three production builds passed.
+- [ ] Native browser print dialogs vary by browser and OS. Confirm the suggested Save as PDF name in a real Chrome/Edge print dialog; users can still change the name there before saving.
+- [x] Deployed to the stable Cloudflare Pages aliases. Immutable deployments: QuickKit `https://baa3214b.quickkit-browser-tools.pages.dev`, WorkKit `https://8463d42c.workkit-hours-tools.pages.dev`, FormReady `https://6cb44bdb.formready-photo-tools.pages.dev`.
+- [x] Rechecked the live stable aliases: filename suite **19/19**, document/OCR/photo suite **36/36**, video suite **47/47**, and geo-photo suite **38/38**. This includes the download name fields and actual chosen filenames for generated files.
+
 ## QuickKit geo-photo place lookup release — 2026-11-01
 
 - [x] Deployed map search, reverse-geocoded place labels and a draggable precision pin to stable QuickKit; immutable deployment: `https://8b151773.quickkit-browser-tools.pages.dev/geo-photo.html`.

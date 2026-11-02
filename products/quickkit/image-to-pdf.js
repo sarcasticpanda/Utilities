@@ -1,6 +1,7 @@
 import Cropper from 'cropperjs';
 import 'cropperjs/dist/cropper.css';
 import { PDFDocument } from 'pdf-lib';
+import { bindDownloadFilename } from '../shared/download-filename.js';
 
 const MAX_IMAGES = 20;
 const MAX_FILE_BYTES = 20 * 1024 * 1024;
@@ -337,6 +338,7 @@ async function convertImages() {
     const title = document.createElement('strong'); title.textContent = `${pdf.getPageCount()}-page PDF ready`;
     const details = document.createElement('span'); details.textContent = `${formatBytes(blob.size)} · ${paperSelect.options[paperSelect.selectedIndex].text} · ${orientationSelect.options[orientationSelect.selectedIndex].text}`;
     const download = document.createElement('a'); download.className = 'download-link'; download.href = outputUrl; download.download = 'quickkit-images.pdf'; download.textContent = 'Download PDF';
+    bindDownloadFilename(download, 'quickkit-images.pdf');
     content.append(title, details, download); result.replaceChildren(content); message.textContent = '';
   } catch (error) {
     message.textContent = error instanceof Error ? error.message : 'Could not create this PDF. Check the selected images and try again.';

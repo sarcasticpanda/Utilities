@@ -2,6 +2,7 @@ import { PDFDocument, rgb } from 'pdf-lib';
 import { createPdfToolkit } from 'pdfstudio';
 import qpdfWasmUrl from 'pdfstudio/qpdf.wasm?url';
 import { applyEditablePdfText, canEncodePdfText, scanEditablePdfPage } from './pdf-source-text.js';
+import { createDownloadFilenameControl } from '../shared/download-filename.js';
 
 let pdfjsLib = null;
 let pdfjsLoadPromise = null;
@@ -32,6 +33,10 @@ const viewerScroll = $('#pdf-viewer-scroll');
 const editorMessage = $('#editor-message');
 const editorStatus = $('#pdf-editor-status');
 const tools = [...document.querySelectorAll('[data-tool]')];
+const editedPdfFilename = createDownloadFilenameControl('document-edited.pdf');
+$('.pdf-editor-topbar').after(editedPdfFilename.element);
+const extractedFilename = createDownloadFilenameControl('document-text.txt', { extensionHint: '.txt or .docx' });
+$('#pdf-extract-actions').before(extractedFilename.element);
 
 let sourceBytes = null;
 let pdfDocument = null;
@@ -1111,6 +1116,9 @@ async function loadFile(file) {
     pageOrder = Array.from({ length: originalPageCount }, (_, index) => index);
     annotationItems = []; selectedId = null; itemId = 0; activePosition = 0; zoom = 1; fileName = file.name;
     $('#pdf-file-name').textContent = file.name;
+    const baseName = file.name.replace(/\.pdf$/iu, '').replace(/[^\p{L}\p{N}._-]+/gu, '-').slice(0, 100) || 'document';
+    editedPdfFilename.setFilename(`${baseName}-edited.pdf`);
+    extractedFilename.setBaseName(`${baseName}-text`);
     uploadPanel.hidden = true; workspace.hidden = false;
     renderPageList(); await renderActivePage();
     $('#download-pdf').disabled = false;
@@ -1152,7 +1160,7 @@ $('#download-pdf-text').addEventListener('click', () => {
   const text = $('#pdf-extracted-text').value;
   if (!text) return;
   const baseName = fileName.replace(/\.pdf$/iu, '').replace(/[^\p{L}\p{N}._-]+/gu, '-').slice(0, 100) || 'document';
-  saveBlob(new Blob([text], { type: 'text/plain;charset=utf-8' }), `${baseName}-text.txt`);
+  saveBlob(new Blob([text], { type: 'text/plain;charset=utf-8' }), extractedFilename.getFilename('txt'));
 });
 $('#download-pdf-docx').addEventListener('click', async () => {
   if (!extractedPdfPages.length) return;
@@ -1161,7 +1169,7 @@ $('#download-pdf-docx').addEventListener('click', async () => {
     const { createDocxFromPdfPages } = await import('./pdf-to-docx.js');
     const blob = await createDocxFromPdfPages(extractedPdfPages, fileName.replace(/\.pdf$/iu, ''));
     const baseName = fileName.replace(/\.pdf$/iu, '').replace(/[^\p{L}\p{N}._-]+/gu, '-').slice(0, 100) || 'document';
-    saveBlob(blob, `${baseName}-converted.docx`);
+    saveBlob(blob, extractedFilename.getFilename('docx'));
     $('#pdf-extract-status').textContent = 'Word document downloaded. Text and page order are included; exact PDF layout, images and tables may need cleanup.';
   } catch (error) {
     $('#pdf-extract-status').textContent = `Could not create the Word file: ${error?.message || 'Try a smaller PDF.'}`;
@@ -1374,7 +1382,7 @@ $('#download-pdf').addEventListener('click', async () => {
     const blob = new Blob([bytes], { type: 'application/pdf' });
     const url = URL.createObjectURL(blob);
     const link = document.createElement('a');
-    link.href = url; link.download = fileName.replace(/\.pdf$/iu, '') + '-edited.pdf';
+    link.href = url; link.download = editedPdfFilename.getFilename();
     document.body.append(link); link.click(); link.remove();
     setTimeout(() => URL.revokeObjectURL(url), 30000);
     button.textContent = 'Download PDF';

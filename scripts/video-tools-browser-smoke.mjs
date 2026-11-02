@@ -98,7 +98,8 @@ async function waitForResult() {
   await page.waitForFunction(() => document.querySelector('#video-preview').readyState >= 1, null, { timeout: 20000 });
   return page.evaluate(async () => {
     const video = document.querySelector('#video-preview');
-    const href = document.querySelector('#video-download').href;
+    const downloadLink = document.querySelector('#video-download');
+    const href = downloadLink.href;
     const response = await fetch(href);
     const bytes = await response.arrayBuffer();
     video.currentTime = Math.min(0.2, Math.max(0, video.duration - 0.1));
@@ -109,7 +110,7 @@ async function waitForResult() {
     const data = new Uint8Array(bytes);
     let binary = '';
     for (let offset = 0; offset < data.length; offset += 0x8000) binary += String.fromCharCode(...data.subarray(offset, offset + 0x8000));
-    return { duration: video.duration, width: video.videoWidth, height: video.videoHeight, playback: video.currentTime > 0, audioTrackCount, decodedAudioBytes, size: bytes.byteLength, type: response.headers.get('content-type'), base64: btoa(binary) };
+    return { duration: video.duration, width: video.videoWidth, height: video.videoHeight, playback: video.currentTime > 0, audioTrackCount, decodedAudioBytes, size: bytes.byteLength, type: response.headers.get('content-type'), suggestedFilename: downloadLink.download, base64: btoa(binary) };
   });
 }
 async function loadResult(result, name = 'quickkit-result.webm') {
@@ -207,6 +208,13 @@ try {
 
   await page.locator('#video-run-compress').click();
   const compressed = await waitForResult();
+  const videoFilename = page.locator('#video-result .download-filename-input');
+  check('Video export shows an editable filename', await videoFilename.isVisible());
+  await videoFilename.fill('my-compressed-video');
+  const compressedDownloadPromise = page.waitForEvent('download');
+  await page.locator('#video-download').click();
+  const compressedDownload = await compressedDownloadPromise;
+  check('Video download uses the chosen name and keeps its encoded format', compressedDownload.suggestedFilename() === `my-compressed-video.${compressed.suggestedFilename.split('.').at(-1)}`, compressedDownload.suggestedFilename());
   check('compression creates playable export with audio', compressed.size > 1000 && compressed.playback && compressed.width === 320 && compressed.height === 180 && (compressed.audioTrackCount > 0 || compressed.decodedAudioBytes > 0), `${compressed.size} B · ${compressed.duration.toFixed(2)} s · audio tracks ${compressed.audioTrackCount}, decoded ${compressed.decodedAudioBytes} B`);
   const compressedDetails = await loadResult(compressed);
   check('compressed export reopens in the tool', compressedDetails.includes('320 × 180'), compressedDetails);

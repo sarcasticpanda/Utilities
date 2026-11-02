@@ -165,6 +165,13 @@ try {
     for (let index = 0; index < bytes.length; index += 0x8000) binary += String.fromCharCode(...bytes.subarray(index, index + 0x8000));
     return { name: document.querySelector('#geo-download').download, type: blob.type, width: image.naturalWidth, height: image.naturalHeight, base64: btoa(binary), size: blob.size };
   });
+  const geoFilename = page.locator('#geo-result .download-filename-input');
+  check('Geo-tagged photo result shows an editable output name', await geoFilename.isVisible() && (await geoFilename.inputValue()).includes('geo-fixture-geo-tagged'), await geoFilename.inputValue());
+  await geoFilename.fill('field-trip-photo');
+  const geoDownloadPromise = page.waitForEvent('download');
+  await page.locator('#geo-download').click();
+  const geoDownload = await geoDownloadPromise;
+  check('Geo-tagged photo uses the chosen filename and .jpg extension', geoDownload.suggestedFilename() === 'field-trip-photo.jpg', geoDownload.suggestedFilename());
   const exif = piexif.load(`data:image/jpeg;base64,${output.base64}`);
   const gps = exif.GPS;
   const latitude = dmsToDecimal(gps[piexif.GPSIFD.GPSLatitude]) * (gps[piexif.GPSIFD.GPSLatitudeRef] === 'S' ? -1 : 1);
