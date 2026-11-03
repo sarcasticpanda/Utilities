@@ -57,6 +57,31 @@ try {
   check('DOCX to PDF exposes an editable suggested filename', await printName.isVisible() && await printName.inputValue() === 'converter-sample');
   await printName.fill('renamed-conversion');
   check('DOCX filename updates the browser print-to-PDF document title', await page.evaluate(() => document.querySelector('#docx-preview').contentDocument.title) === 'renamed-conversion');
+  for (const width of [600, 390, 320]) {
+    await page.setViewportSize({ width, height: 900 });
+    const mobileLayout = await page.evaluate(() => {
+      const rect = (selector) => {
+        const element = document.querySelector(selector);
+        const box = element.getBoundingClientRect();
+        return { top: box.top, bottom: box.bottom, width: box.width, left: box.left, right: box.right };
+      };
+      const field = rect('#docx-actions .download-filename-control');
+      const print = rect('#print-docx');
+      const clear = rect('#clear-docx');
+      const preview = rect('#docx-preview');
+      const panel = rect('.document-converter-panel[aria-labelledby="docx-pdf-title"]');
+      return {
+        ordered: field.bottom <= print.top && print.bottom <= clear.top && clear.bottom <= preview.top,
+        fieldFits: field.left >= panel.left && field.right <= panel.right,
+        printFits: print.left >= panel.left && print.right <= panel.right,
+        previewSeparated: preview.top - clear.bottom >= 12,
+        noHorizontalOverflow: document.documentElement.scrollWidth <= window.innerWidth + 1
+      };
+    });
+    check(`DOCX controls stack cleanly at ${width}px`, mobileLayout.ordered && mobileLayout.fieldFits && mobileLayout.printFits && mobileLayout.previewSeparated && mobileLayout.noHorizontalOverflow, JSON.stringify(mobileLayout));
+    if (width === 390) await page.screenshot({ path: path.join(fixtureDir, 'docx-to-pdf-mobile.png'), fullPage: true });
+  }
+  await page.setViewportSize({ width: 1440, height: 1000 });
   await page.evaluate(() => { window.__quickkitPrintCalled = false; document.querySelector('#docx-preview').contentWindow.print = () => { window.__quickkitPrintCalled = true; }; });
   await page.locator('#print-docx').click();
   check('DOCX print / Save as PDF action calls the browser print flow', await page.evaluate(() => window.__quickkitPrintCalled));

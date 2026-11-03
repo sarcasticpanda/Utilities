@@ -274,3 +274,11 @@ Owner-supplied files were exercised in a local production build so their content
 - [x] Local production Chromium: full video suite **45/45**, focused multi-range suite **11/11**.
 - [x] Stable QuickKit production URL after deployment: full video suite **45/45**, focused multi-range suite **11/11**. Synthetic generated videos only; no supplied personal video was uploaded.
 - [ ] Real-device touch, Safari/iOS codec behavior, large files and constrained-memory performance still require owner checks.
+
+## Word-to-PDF mobile action layout — 2026-11-03
+
+- [x] On tablet and phone widths, stack the editable PDF filename, full-width Print / Save as PDF action, and Clear control in a readable order; add separation before the print preview.
+- [x] Browser-verified the control order, panel fit, preview gap, and no horizontal page overflow at 600px, 390px and 320px.
+- [x] Full QuickKit document browser suite passed **39/39** locally and **39/39** against `https://quickkit-browser-tools.pages.dev` after the Cloudflare deployment. Existing PDF extraction/OCR, image-to-PDF filter/order/margin, and DOCX print-flow checks passed in the same run.
+- [x] Captured the phone layout at `qa-results/quickkit-document-fixtures/docx-to-pdf-mobile.png`.
+- [ ] Native print dialog and Save as PDF behavior should still be confirmed on the owner’s device; automated QA verifies that the browser print flow is invoked and the selected filename is applied to the print document title.
